@@ -6,5 +6,3 @@ Trello Link:
 
 
 ### Screenshot(s) of Frontend Change:
-
-
