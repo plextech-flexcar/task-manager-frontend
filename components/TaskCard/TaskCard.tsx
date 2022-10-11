@@ -1,44 +1,40 @@
 import React from 'react'
-import { Box, Stack, HStack, Image, VStack, Heading, Container, Button, Text, Icon } from "native-base";
+import { Box, View, Stack, HStack, Image, VStack, Heading, Container, Button, Text, Icon } from "native-base";
+import {styles} from '../styles.js'
 
 const TaskCard = () => {
     return (
-      <Box width="366px" height = "Hug" rounded="lg" borderColor="violet.400"  //change width to fill later
-      borderWidth="1" borderRadius="9px"
-      _dark={{
-      borderColor: "coolGray.600",
-      backgroundColor: "violet.400"
-      }}>
+      <View style={styles.card}>
+        <Box>
         <VStack p="4" space={0} width = "Fill" height = "Hug">
             <HStack justifyContent= "space-between">
-                <Text font-family = "Inter" fontSize="17px" fontWeight = "700" color = "#080726">
+                <Text>
+                  <View style={styles.taskHeading}>
                  Glass Chip
+                  </View>
                 </Text>
-                <Image  source={{
-      uri: "./Users/rhythmseth/Desktop/Plextech/FlexCar/plextech-flexcar-task-manager-frontend/assets/Vector 6.svg"
-    }} alt="svg arrow priority"/>
+                <Image  source={require('../../assets/Vector6.png')}/>
             </HStack>
-            <Text font-family = "Inter" fontSize="13px" color= "#76757d" 
-            fontWeight="400" >
+            <Text>
+            <View style={styles.taskDateText}>
               3 days old
+              </View>
             </Text> 
-
-            <Text font-family = "Inter" fontSize="15px" color= "#080726" 
-            fontWeight="400" >
+            <Text>
+            <View style={styles.vehicleText}>
               Black Land Rover
+              </View>
             </Text> 
-
             <HStack justifyContent="space-between">
-                <Text font-family = "Inter" fontSize="15px" color= "#080726" 
-            fontWeight="400" >
+            <Text>
+              <View style={styles.vehicleText}>
               23HJ349, NC • 91884092
+              </View>
                 </Text>
-                <Image  source={{
-      uri: "/Users/rhythmseth/Desktop/Plextech/FlexCar/plextech-flexcar-task-manager-frontend/assets/Vector 6.svg"
-    }} alt="assignee circle thing"/>
-            </HStack>
+                <Image  source={require('../../assets/Vector6.png')}/>
+    </HStack>
         </VStack>
     </Box>
-    )
-}
+      </View>
+  )}
 export default TaskCard
