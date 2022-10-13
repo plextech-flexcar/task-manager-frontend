@@ -4,22 +4,16 @@ import {Image} from 'react-native';
 import { Box, View, Stack, HStack, VStack, Heading, Container, Button, Text, Icon } from "native-base";
 import {styles} from '../styles.js'
 import { PRIORITY_ICON_MAP } from "./TaskCardPriorityIconMap"
+import { Task } from '../../models/task.js';
 
-const TaskCard = ( {
+const TaskCard = ({
   taskTitle,
   taskAge,
   carModel,
   licensePlate,
   mva,
   priority,
-}: {
-  taskTitle: string,
-  taskAge: number,
-  carModel: string,
-  licensePlate: string,
-  mva: number,
-  priority: string,
-}) => {
+}: Task) => {
     return (
       <View style={styles.card}>
         <Box>
