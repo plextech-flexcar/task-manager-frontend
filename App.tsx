@@ -29,8 +29,6 @@ declare module "native-base" {
 }
 export default function App() {
   return (
-    
-    
     <NativeBaseProvider>
           <TaskCard></TaskCard>
     </NativeBaseProvider>

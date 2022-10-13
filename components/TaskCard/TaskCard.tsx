@@ -1,5 +1,7 @@
 import React from 'react'
-import { Box, View, Stack, HStack, Image, VStack, Heading, Container, Button, Text, Icon } from "native-base";
+import Svg from 'react-native-svg';
+import {Image} from 'react-native';
+import { Box, View, Stack, HStack, VStack, Heading, Container, Button, Text, Icon } from "native-base";
 import {styles} from '../styles.js'
 
 const TaskCard = () => {
@@ -13,7 +15,8 @@ const TaskCard = () => {
                  Glass Chip
                   </View>
                 </Text>
-                <Image  source={require('../../assets/Vector6.png')}/>
+                <Image source={{uri: require('../../assets/Vector6.svg')}}
+       style={{width: 20, height: 20}} />
             </HStack>
             <Text>
             <View style={styles.taskDateText}>
@@ -27,11 +30,14 @@ const TaskCard = () => {
             </Text> 
             <HStack justifyContent="space-between">
             <Text>
-              <View style={styles.vehicleText}>
+              <View style={styles.vehicleText}> 
               23HJ349, NC • 91884092
               </View>
                 </Text>
-                <Image  source={require('../../assets/Vector6.png')}/>
+                <Box >
+                <Image source={{uri: require('../../assets/Assigned.svg')}}
+       style={{width: 27, height: 27}} />
+       </Box>
     </HStack>
         </VStack>
     </Box>

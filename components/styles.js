@@ -2,7 +2,7 @@ import { StyleSheet} from 'react-native';
 
 const styles = StyleSheet.create({
     card: {
-        width: "366px" , //change width to fill later
+        width: "300px" , //change width to fill later
         height: "Hug",
         rounded: "lg", 
         borderColor: "violet.400",  
@@ -23,8 +23,8 @@ const styles = StyleSheet.create({
     },
     vehicleText: {
         fontfamily: "Inter",
-         fontSize:"15px",
-          color: "#080726"
+        fontSize:"15px",
+        color: "#080726"
     }
 });
 
