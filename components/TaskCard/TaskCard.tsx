@@ -24,7 +24,7 @@ const TaskCard = ({
                     {taskTitle}
                   </View>
                 </Text>
-                <Image source={{uri: require(PRIORITY_ICON_MAP[priority])}} style={{width: 20, height: 20}} />
+                <Image source={{uri: PRIORITY_ICON_MAP[priority]}} style={{width: 20, height: 20}} />
             </HStack>
             <Text>
               <View style={styles.taskDateText}>

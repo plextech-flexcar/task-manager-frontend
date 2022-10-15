@@ -28,9 +28,18 @@ declare module "native-base" {
   interface ICustomTheme extends MyThemeType {}
 }
 export default function App() {
+  let task1: Task = {
+    taskTitle: "Glass Chip",
+    taskAge: 3,
+    carModel: "Black Range Rover",
+    licensePlate: "123test",
+    mva: 123123,
+    priority: "high",
+  }
+
   return (
     <NativeBaseProvider>
-          <TaskCard></TaskCard>
+          <TaskCard {...task1}/>
     </NativeBaseProvider>
   );
 }

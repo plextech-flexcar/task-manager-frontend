@@ -1,6 +1,6 @@
 export const PRIORITY_ICON_MAP: { [key: string]: string } = {
-    low: "../../assets/priorities/lowPriority.svg",
-    normal: "../../assets/priorities/normalPriority.svg",
-    high: "../../assets/priorities/highPriority.svg",
-    top: "../../assets/priorities/topPriority.svg",
+    low: require("../../assets/priorities/lowPriority.svg"),
+    normal: require("../../assets/priorities/normalPriority.svg"),
+    high: require("../../assets/priorities/highPriority.svg"),
+    top: require("../../assets/priorities/topPriority.svg"),
 }
