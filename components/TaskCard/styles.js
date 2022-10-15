@@ -31,7 +31,8 @@ const styles = StyleSheet.create({
         color: "#080726"
     },
     userBox: {
-        margin: "0",
+
+        margin: "-15px",
         width: "50px" , //change width to fill later
         height: "50px",
         rounded: "lg", 
@@ -41,7 +42,10 @@ const styles = StyleSheet.create({
         shadowOffset: { width: 0, height: 0 },
         shadowOpacity: .3,
         shadowRadius: 3,
-        elevation: 1
+        elevation: 1,
+        flex: 1,
+        backgroundColor: "#EDEDED"
+
     },
 });
 
