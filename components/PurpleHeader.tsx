@@ -1,13 +1,6 @@
-import React from "react";
-import {
-  ScrollView,
-  SafeAreaView,
-  StyleSheet,
-  Text,
-  View,
-  Image,
-  TouchableHighlight,
-} from "react-native";
+import React, { useState } from "react";
+import { StyleSheet, Text, View, Image } from "react-native";
+import HeaderButtons from "./HeaderButton";
 
 export default function PurpleHeader() {
   return (
@@ -48,45 +41,15 @@ export default function PurpleHeader() {
           borderTopWidth: StyleSheet.hairlineWidth,
           borderBottomColor: "#d1cdd8",
           borderBottomWidth: StyleSheet.hairlineWidth,
-
           justifyContent: "space-between",
           flexDirection: "row",
           alignItems: "center",
         }}
       >
-        <TouchableHighlight
-          style={{
-            paddingHorizontal: 12,
-            paddingVertical: 4,
-            width: "auto",
-            height: 32,
-            backgroundColor: "#27007A",
-            borderRadius: 18,
-            display: "flex",
-            flexDirection: "row",
-            justifyContent: "space-around",
-            alignItems: "baseline",
-          }}
-          onPress={() => console.log("hi")}
-        >
-          <>
-            <Text
-              style={{
-                color: "white",
-                display: "flex",
-                flexDirection: "row",
-                justifyContent: "space-around",
-                alignItems: "center",
-              }}
-            >
-              Quick view: 1
-            </Text>
-            <Image
-              source={{ uri: require("../assets/HeaderIcons/whitebolt.svg") }}
-              style={{ width: 8, height: 12 }}
-            />
-          </>
-        </TouchableHighlight>
+        <HeaderButtons buttonName={"Quick View "} buttonImage={"whitebolt"} />
+        <HeaderButtons buttonName={"Sort "} buttonImage={"sort"} />
+        <HeaderButtons buttonName={"Filter "} buttonImage={"filter"} />
+        <HeaderButtons buttonName={"Clear "} buttonImage={""} />
       </View>
     </>
   );

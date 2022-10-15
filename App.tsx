@@ -12,66 +12,6 @@ import {
 import PurpleHeader from "./components/PurpleHeader";
 
 export default function App() {
-  const ScrollView_Header = () => {
-    return (
-      <>
-        <View
-          style={{
-            width: "100%",
-            height: 56,
-            backgroundColor: "#27007A",
-          }}
-        ></View>
-        <View
-          style={{
-            width: "100%",
-            height: 56,
-            backgroundColor: "#F5F2FB",
-            justifyContent: "space-between",
-            flexDirection: "row",
-            alignItems: "center",
-          }}
-        >
-          <Image
-            source={{ uri: require("./assets/HeaderIcons/user.svg") }}
-            style={{ width: 50, height: 50 }}
-          />
-          <Text style={{ fontSize: 16, fontWeight: "700" }}>Task List</Text>
-          <Image
-            source={{ uri: require("./assets/HeaderIcons/addlist.svg") }}
-            style={{ width: 50, height: 50 }}
-          />
-        </View>
-        <View
-          style={{
-            width: "100%",
-            height: 40,
-            backgroundColor: "#F5F2FB",
-            borderTopColor: "#d1cdd8",
-            borderTopWidth: StyleSheet.hairlineWidth,
-            borderBottomColor: "#d1cdd8",
-            borderBottomWidth: StyleSheet.hairlineWidth,
-          }}
-        >
-          <TouchableHighlight
-            style={{
-              paddingTop: 20,
-              paddingBottom: 20,
-              backgroundColor: "#27007A",
-              borderRadius: 10,
-              borderWidth: 1,
-              borderColor: "#fff",
-            }}
-            underlayColor={"BLACK"}
-            onPress={() => console.log("hi")}
-          >
-            <View>hello</View>
-          </TouchableHighlight>
-        </View>
-      </>
-    );
-  };
-
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <PurpleHeader />
