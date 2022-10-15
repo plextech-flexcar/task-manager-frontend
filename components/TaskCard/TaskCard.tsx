@@ -27,7 +27,7 @@ const TaskCard = ({
             </HStack>
             <Text>
               <View style={styles.taskDateText}>
-                {taskAge}
+                {taskAge} days old
               </View>
             </Text> 
             <Text>
