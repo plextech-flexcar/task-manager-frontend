@@ -12,7 +12,6 @@ import {
   VStack,
   Box,
 } from "native-base";
-import NativeBaseIcon from "./components/NativeBaseIcon";
 import TaskCard from "./components/TaskCard/TaskCard";
 import { Task } from "./models/task";
 
@@ -27,6 +26,14 @@ export const theme = extendTheme({ config });
 type MyThemeType = typeof theme;
 declare module "native-base" {
   interface ICustomTheme extends MyThemeType {}
+}
+let task1: Task = {
+  taskTitle: "Glass Chip",
+  taskAge: 3,
+  carModel: "Black Land Rover",
+  licensePlate: "123test, CA",
+  mva: 12391929,
+  priority: "high"
 }
 export default function App() {
   let task1: Task = {
