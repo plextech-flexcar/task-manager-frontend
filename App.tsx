@@ -14,6 +14,7 @@ import {
 } from "native-base";
 import NativeBaseIcon from "./components/NativeBaseIcon";
 import TaskCard from "./components/TaskCard/TaskCard";
+import { Task } from "./models/task";
 
 // Define the config
 const config = {
