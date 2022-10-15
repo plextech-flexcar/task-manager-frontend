@@ -1,10 +1,9 @@
-import React from 'react'
-import Svg from 'react-native-svg';
+import React from 'react';
 import {Image} from 'react-native';
 import { Box, View, Stack, HStack, VStack, Heading, Container, Button, Text, Icon } from "native-base";
 import {styles} from '../styles.js'
 import { PRIORITY_ICON_MAP } from "./TaskCardPriorityIconMap"
-import { Task } from '../../models/task.js';
+import { Task } from '../../models/Task.js';
 
 const TaskCard = ({
   taskTitle,
