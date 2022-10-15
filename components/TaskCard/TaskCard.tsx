@@ -35,8 +35,10 @@ const TaskCard = () => {
               </View>
                 </Text>
                 <Box >
+                <View style={styles.userBox}> 
                 <Image source={{uri: require('../../assets/Assigned.svg')}}
-       style={{width: 27, height: 27}} />
+       style={{width: 20, height: 20}} />
+       </View>
        </Box>
     </HStack>
         </VStack>

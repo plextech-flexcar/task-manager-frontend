@@ -2,12 +2,16 @@ import { StyleSheet} from 'react-native';
 
 const styles = StyleSheet.create({
     card: {
-        width: "300px" , //change width to fill later
+        width: "300px" ,
         height: "Hug",
         rounded: "lg", 
         borderColor: "violet.400",  
         borderWidth: "1",
-        borderRadius: "9px"
+        borderRadius: "9px",
+        shadowOffset: { width: 0, height: 0 },
+        shadowOpacity: .3,
+        shadowRadius: 3,
+        elevation: 1
     },
     taskHeading: {
         fontfamily: "Inter",
@@ -25,7 +29,20 @@ const styles = StyleSheet.create({
         fontfamily: "Inter",
         fontSize:"15px",
         color: "#080726"
-    }
+    },
+    userBox: {
+        margin: "0",
+        width: "50px" , //change width to fill later
+        height: "50px",
+        rounded: "lg", 
+        borderColor: "violet.400",  
+        borderWidth: "1",
+        borderRadius: "9px",
+        shadowOffset: { width: 0, height: 0 },
+        shadowOpacity: .3,
+        shadowRadius: 3,
+        elevation: 1
+    },
 });
 
 export {styles};
