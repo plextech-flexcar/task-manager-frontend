@@ -14,6 +14,7 @@ import {
 } from "native-base";
 import NativeBaseIcon from "./components/NativeBaseIcon";
 import TaskCard from "./components/TaskCard/TaskCard";
+import TaskCardList from "./components/TaskCardList/TaskCardList"
 import { Task } from "./models/task";
 
 // Define the config
@@ -38,9 +39,29 @@ export default function App() {
     priority: "high",
   }
 
+  let task2: Task = {
+    taskTitle: "Front Damage",
+    taskAge: 3,
+    carModel: "Black Range Rover",
+    licensePlate: "123test",
+    mva: 123123,
+    priority: "normal",
+  }
+
+  let task3: Task = {
+    taskTitle: "Blood stains",
+    taskAge: 5,
+    carModel: "Black Range Rover",
+    licensePlate: "123test",
+    mva: 123123,
+    priority: "low",
+  }
+
+  let tasks: Task[] = [task1, task2, task3]
+
   return (
     <NativeBaseProvider>
-          <TaskCard {...task1}/>
+          <TaskCardList tasks={tasks}/>
     </NativeBaseProvider>
   );
 }
