@@ -36,9 +36,18 @@ let task1: Task = {
   priority: "high"
 }
 export default function App() {
+  let task1: Task = {
+    taskTitle: "Glass Chip",
+    taskAge: 3,
+    carModel: "Black Range Rover",
+    licensePlate: "123test",
+    mva: 123123,
+    priority: "high",
+  }
+
   return (
     <NativeBaseProvider>
-          <TaskCard {...task1}></TaskCard>
+          <TaskCard {...task1}/>
     </NativeBaseProvider>
   );
 }
