@@ -5,14 +5,52 @@ import {
   SafeAreaView,
   StyleSheet,
   Text,
-  View,
-  Image,
-  TouchableHighlight,
-} from "react-native";
-import PurpleHeader from "./components/PurpleHeader";
+  Link,
+  HStack,
+  Center,
+  Heading,
+  Switch,
+  useColorMode,
+  NativeBaseProvider,
+  extendTheme,
+  VStack,
+  Box,
+} from "native-base";
+import TaskCard from "./components/TaskCard/TaskCard";
+import { Task } from "./models/task";
 
+// Define the config
+const config = {
+  useSystemColorMode: false,
+  initialColorMode: "dark",
+};
+
+// extend the theme
+export const theme = extendTheme({ config });
+type MyThemeType = typeof theme;
+declare module "native-base" {
+  interface ICustomTheme extends MyThemeType {}
+}
+let task1: Task = {
+  taskTitle: "Glass Chip",
+  taskAge: 3,
+  carModel: "Black Land Rover",
+  licensePlate: "123test, CA",
+  mva: 12391929,
+  priority: "high"
+}
 export default function App() {
+  let task1: Task = {
+    taskTitle: "Glass Chip",
+    taskAge: 3,
+    carModel: "Black Range Rover",
+    licensePlate: "123test",
+    mva: 123123,
+    priority: "high",
+  }
+
   return (
+<<<<<<< HEAD
     <SafeAreaView style={{ flex: 1 }}>
       <PurpleHeader />
       <ScrollView stickyHeaderIndices={[1]}>
@@ -21,6 +59,13 @@ export default function App() {
             {" "}
             Example of Vertical ScrollView in React Native{" "}
           </Text>
+=======
+    <NativeBaseProvider>
+          <TaskCard {...task1}/>
+    </NativeBaseProvider>
+  );
+}
+>>>>>>> origin/main
 
           <Text style={styleSheet.text}>
             {" "}

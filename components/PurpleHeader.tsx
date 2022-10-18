@@ -15,7 +15,7 @@ export default function PurpleHeader() {
         backgroundColor: "#EDEDED",
         borderBottomColor: "#d1cdd8",
         borderBottomWidth: StyleSheet.hairlineWidth,
-        justifyContent: "end",
+        justifyContent: "flex-end",
         flexDirection: "column",
       }}
     >
