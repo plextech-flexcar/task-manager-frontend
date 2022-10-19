@@ -41,11 +41,10 @@ const TaskCard = ({
                   {licensePlate} • {mva}
                 </View>
               </Text>
-              <Box>
-                <View style={styles.userBox}>
-                <Image source={{uri: require('../../assets/Assigned.svg')}} style={{width: 27, height: 27, alignContent: ""}} />
+                <View>
+                  <Image source={{uri: require('../../assets/Assigned.svg')}} 
+                  style={{width: 27, height: 27}} />
                 </View>
-              </Box>
             </HStack>
           </VStack>
         </Box>
