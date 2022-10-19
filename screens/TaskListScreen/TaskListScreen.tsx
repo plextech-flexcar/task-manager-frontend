@@ -6,6 +6,7 @@ import {
 import {styles} from "./styles"
 import { Task } from "../../models/Task"
 import TaskCardList from "../../components/TaskCardList/TaskCardList"
+import PurpleHeader from "../../components/PurpleHeader"
 
 const TaskListScreen = () => {
     let task1: Task = {
@@ -55,7 +56,8 @@ const TaskListScreen = () => {
 
     return (
         <SafeAreaView style={styles.view}>
-            <TaskCardList tasks={tasks}/>
+          <PurpleHeader/>
+          <TaskCardList tasks={tasks}/>
         </SafeAreaView>
     )
 }
