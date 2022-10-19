@@ -16,8 +16,7 @@ import {
   VStack,
   Box,
 } from "native-base";
-import TaskCard from "./components/TaskCard/TaskCard";
-import { Task } from "./models/task";
+import TaskListScreen from "./screens/TaskListScreen/TaskListScreen";
 
 // Define the config
 const config = {
@@ -31,26 +30,9 @@ type MyThemeType = typeof theme;
 declare module "native-base" {
   interface ICustomTheme extends MyThemeType {}
 }
-let task1: Task = {
-  taskTitle: "Glass Chip",
-  taskAge: 3,
-  carModel: "Black Land Rover",
-  licensePlate: "123test, CA",
-  mva: 12391929,
-  priority: "high"
-}
-export default function App() {
-  let task1: Task = {
-    taskTitle: "Glass Chip",
-    taskAge: 3,
-    carModel: "Black Range Rover",
-    licensePlate: "123test",
-    mva: 123123,
-    priority: "high",
-  }
 
+export default function App() {
   return (
-<<<<<<< HEAD
     <SafeAreaView style={{ flex: 1 }}>
       <PurpleHeader />
       <ScrollView stickyHeaderIndices={[1]}>
@@ -59,14 +41,6 @@ export default function App() {
             {" "}
             Example of Vertical ScrollView in React Native{" "}
           </Text>
-=======
-    <NativeBaseProvider>
-          <TaskCard {...task1}/>
-    </NativeBaseProvider>
-  );
-}
->>>>>>> origin/main
-
           <Text style={styleSheet.text}>
             {" "}
             Example of Vertical ScrollView in React Native{" "}
@@ -165,3 +139,4 @@ const styleSheet = StyleSheet.create({
     fontSize: 22,
   },
 });
+}

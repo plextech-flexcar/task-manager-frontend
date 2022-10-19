@@ -7,7 +7,10 @@ import {
  import TaskCard from '../TaskCard/TaskCard';
  import { Task } from '../../models/task';
 
- const TaskCardList = (tasks: Task[]) => {
+ const TaskCardList = (props: {
+    tasks: Task[]
+ }) => {
+    let {tasks} = props;
 
     const renderTaskCard: ListRenderItem<Task>= ({ item }) => {
         return (
@@ -24,3 +27,5 @@ import {
         </View>
     )
 }
+
+export default TaskCardList
