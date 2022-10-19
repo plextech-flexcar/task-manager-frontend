@@ -11,7 +11,8 @@ const styles = StyleSheet.create({
         shadowOffset: { width: 0, height: 0 },
         shadowOpacity: .3,
         shadowRadius: 3,
-        elevation: 1
+        elevation: 1,
+        marginVertical: 8
     },
     taskHeading: {
         fontfamily: "Inter",
