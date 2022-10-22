@@ -1,4 +1,5 @@
 import React from "react";
+
 import {
   Text,
   Link,
@@ -13,6 +14,7 @@ import {
   Box,
 } from "native-base";
 import TaskListScreen from "./screens/TaskListScreen/TaskListScreen";
+import TaskInfoScreen from "./screens/TaskInfoScreen";
 
 // Define the config
 const config = {
@@ -30,7 +32,9 @@ declare module "native-base" {
 export default function App() {
   return (
     <NativeBaseProvider>
-          <TaskListScreen/>
+      {/* <TaskListScreen /> */}
+      {/* <Text>Hi</Text> */}
+      <TaskInfoScreen />
     </NativeBaseProvider>
   );
 }
