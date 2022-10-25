@@ -58,6 +58,19 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         alignItems: "center",
         paddingVertical: "5px",
+    },
+    iconSize: {
+        width: 16,
+        height: 16
+    },
+    numTasks: {
+        color: "#76757D",
+        paddingVertical: 4
+    },
+    searchBarStyle: {
+        width: "60%",
+        height: 30,
+        backgroundColor: "#FFFFFF",
     }
 });
 export { styles };

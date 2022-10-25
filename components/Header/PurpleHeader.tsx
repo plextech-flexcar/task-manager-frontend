@@ -15,28 +15,24 @@ export default function PurpleHeader() {
       <View style={styles.headerSearchRow}>
         <Image
           source={{ uri: require("../../assets/HeaderIcons/user.svg") }}
-          style={{ width: 16, height: 16 }}
+          style={styles.iconSize}
         />
         <Searchbar
           placeholder="Search tasks"
           placeholderTextColor="#76757D"
           onChangeText={onChangeSearch}
           value={searchQuery}
-          style={{
-            width: "60%",
-            height: 30,
-            backgroundColor: "#FFFFFF",
-          }}
+          style={styles.searchBarStyle}
           inputStyle={{ fontSize: 15 }}
         />
         <Image
           source={{ uri: require("../../assets/HeaderIcons/addlist.svg") }}
-          style={{ width: 16, height: 16 }}
+          style={styles.iconSize}
         />
       </View>
       <View style={styles.headerButtonRow}>
         <HeaderButtons buttonName={"Reset "} />
-        <Text style={{ color: "#76757D", paddingVertical: 4 }}>50 Tasks</Text>
+        <Text style={styles.numTasks}>50 Tasks</Text>
         <HeaderButtons buttonName={"Sort & Filter"} />
       </View>
     </View>
