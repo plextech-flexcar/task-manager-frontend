@@ -34,6 +34,7 @@ export default function App() {
     <NativeBaseProvider>
       {/* <TaskListScreen /> */}
       {/* <Text>Hi</Text> */}
+
       <TaskInfoScreen />
     </NativeBaseProvider>
   );
