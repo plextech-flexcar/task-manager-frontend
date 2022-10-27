@@ -14,7 +14,7 @@ import {
   Box,
 } from "native-base";
 import TaskListScreen from "./screens/TaskListScreen/TaskListScreen";
-import TaskInfoScreen from "./screens/TaskInfoScreen";
+import TaskInfoScreen from "./screens/TaskInfoScreen/TaskInfoScreen";
 
 // Define the config
 const config = {
@@ -33,8 +33,6 @@ export default function App() {
   return (
     <NativeBaseProvider>
       {/* <TaskListScreen /> */}
-      {/* <Text>Hi</Text> */}
-
       <TaskInfoScreen />
     </NativeBaseProvider>
   );
