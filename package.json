@@ -18,11 +18,8 @@
     "eject": "expo eject"
   },
   "dependencies": {
-<<<<<<< HEAD
     "@react-navigation/native": "^6.0.13",
-=======
     "@expo/webpack-config": "^0.17.0",
->>>>>>> origin/main
     "@typescript-eslint/eslint-plugin": "4.8.1",
     "@typescript-eslint/parser": "4.8.1",
     "eslint": "7.13.0",
@@ -37,18 +34,12 @@
     "prettier": "2.1.2",
     "react": "17.0.1",
     "react-dom": "17.0.1",
-<<<<<<< HEAD
     "react-native": "0.64.3",
     "react-native-paper": "5.0.0-rc.6",
     "react-native-safe-area-context": "3.3.2",
     "react-native-screens": "~3.10.1",
     "react-native-svg": "^13.4.0",
     "react-native-svg-uri": "^1.2.3",
-=======
-    "react-native": "0.68.2",
-    "react-native-safe-area-context": "3.3.2",
-    "react-native-svg": "^12.4.4",
->>>>>>> origin/main
     "react-native-web": "0.17.1"
   },
   "devDependencies": {

@@ -1,20 +1,22 @@
-import { StyleSheet} from 'react-native';
+import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
     card: {
-        width: "382px" ,
+        width: "90%",
         height: "hug",
-        rounded: "lg", 
-        top:"16px",
-        bottom:"16px",
-        borderColor: "violet.400",  
+        rounded: "lg",
+        top: "16px",
+        bottom: "16px",
+        borderColor: "violet.400",
         borderWidth: "1",
         borderRadius: "9px",
-        shadowOffset: { width: 0, height: 0 },
-        shadowOpacity: .3,
-        shadowRadius: 3,
+        shadowOffset: { width: 0, height: 3 },
+        shadowOpacity: .2,
+        shadowRadius: 10,
         elevation: 1,
-        marginVertical: 8
+        marginVertical: 8,
+        alignSelf: "center",
+        overflow: "hidden"
     },
     taskHeading: {
         fontfamily: "Inter",
@@ -24,16 +26,16 @@ const styles = StyleSheet.create({
     },
     taskDateText: {
         fontfamily: "Inter",
-        fontSize:"13px",
+        fontSize: "13px",
         color: "#76757d",
-        fontWeight:"400" 
+        fontWeight: "400"
     },
     vehicleText: {
         fontfamily: "Inter",
-        fontSize:"15px",
+        fontSize: "15px",
         color: "#080726",
-        fontWeight:"400" 
+        fontWeight: "400"
     }
 });
 
-export {styles};
+export { styles };
