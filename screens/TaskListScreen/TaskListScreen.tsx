@@ -1,9 +1,10 @@
 import React from "react";
-import { SafeAreaView, StyleSheet } from "react-native";
+import { SafeAreaView, StyleSheet, Text } from "react-native";
 import { styles } from "./styles";
 import { Task } from "../../models/Task";
 import TaskCardList from "../../components/TaskCardList/TaskCardList";
 import PurpleHeader from "../../components/Header/PurpleHeader";
+import BottomPopup from "../../components/SortFilter/BottomPopup";
 
 const TaskListScreen = () => {
   let task1: Task = {
@@ -53,8 +54,7 @@ const TaskListScreen = () => {
 
   return (
     <SafeAreaView style={styles.view}>
-      <PurpleHeader />
-      <TaskCardList tasks={tasks} />
+      <BottomPopup />
     </SafeAreaView>
   );
 };
