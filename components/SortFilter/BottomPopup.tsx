@@ -1,3 +1,4 @@
+import { ScrollView } from "native-base";
 import React, { useState } from "react";
 import {
   Button,
@@ -9,10 +10,12 @@ import {
 } from "react-native";
 import Modal from "react-native-modal";
 import CircleCheckBox from "./CircleCheckBox";
-import SquareCheckBox from "./SquareCheckbox";
+import FilterBox from "./FilterBox";
+import SquareBoxes from "./SquareBoxes";
 
 export default function BottomPopup() {
   const [isModalVisible, setModalVisible] = useState(false);
+  const [title, setTitle] = useState("Sort & Filter");
 
   const toggleModal = () => {
     setModalVisible(!isModalVisible);
@@ -42,19 +45,13 @@ export default function BottomPopup() {
               ></Image>
               <Text></Text>
             </TouchableOpacity>
-            <Text style={styles.modalHeaderTitle}>Sort and Filter</Text>
-            <TouchableOpacity onPress={toggleModal}>
-              <Image
-                source={require("../../assets/closeModal.png")}
-                style={{ height: 20, width: 20 }}
-              ></Image>
-              <Text></Text>
-            </TouchableOpacity>
+            <Text style={styles.modalHeaderTitle}>{title}</Text>
           </View>
-
-          <CircleCheckBox />
-
-          <SquareCheckBox />
+          <ScrollView>
+            <CircleCheckBox />
+            <SquareBoxes />
+            <FilterBox/>
+          </ScrollView>
         </View>
       </Modal>
     </View>
@@ -74,14 +71,17 @@ const styles = StyleSheet.create({
   },
 
   modalHeader: {
-    paddingVertical: 20,
+    paddingVertical: 15,
     flexDirection: "row",
     alignItems: "baseline",
-    justifyContent: "space-between",
     paddingHorizontal: 15,
+    width: "100%",
   },
   modalHeaderTitle: {
+    //uhhhh We have a problem I cant center this div for the life of me someone else fix this please
+    left: "300%",
+    textAlign: "center",
     fontWeight: "700",
-    fontSize: 15,
+    fontSize: 17,
   },
 });
