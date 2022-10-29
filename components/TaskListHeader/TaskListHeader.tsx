@@ -5,7 +5,7 @@ import { Searchbar } from "react-native-paper";
 import HeaderButtons from "./HeaderButton";
 import { styles } from "./styles";
 
-export default function PurpleHeader() {
+export default function TaskListHeader() {
   const [searchQuery, setSearchQuery] = React.useState("");
 
   const onChangeSearch = (query: React.SetStateAction<string>) =>
