@@ -18,8 +18,8 @@
     "eject": "expo eject"
   },
   "dependencies": {
-    "@react-navigation/native": "^6.0.13",
     "@expo/webpack-config": "^0.17.0",
+    "@react-navigation/native": "^6.0.13",
     "@typescript-eslint/eslint-plugin": "4.8.1",
     "@typescript-eslint/parser": "4.8.1",
     "eslint": "7.13.0",
@@ -35,6 +35,7 @@
     "react": "17.0.1",
     "react-dom": "17.0.1",
     "react-native": "0.64.3",
+    "react-native-modal": "^13.0.1",
     "react-native-paper": "5.0.0-rc.6",
     "react-native-safe-area-context": "3.3.2",
     "react-native-screens": "~3.10.1",

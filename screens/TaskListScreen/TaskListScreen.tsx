@@ -4,6 +4,7 @@ import { styles } from "./styles";
 import { Task } from "../../models/Task";
 import TaskCardList from "../../components/TaskCardList/TaskCardList";
 import PurpleHeader from "../../components/Header/TaskHeader";
+import SortFilter from "../../components/SortFilter/SortFilter";
 
 const TaskListScreen = () => {
   let task1: Task = {
@@ -55,6 +56,7 @@ const TaskListScreen = () => {
     <SafeAreaView style={styles.view}>
       <PurpleHeader />
       <TaskCardList tasks={tasks} />
+      <SortFilter />
     </SafeAreaView>
   );
 };
