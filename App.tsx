@@ -13,8 +13,15 @@ import {
   Box,
 } from "native-base";
 import TaskListScreen from "./screens/TaskListScreen/TaskListScreen";
-import { useAtom } from "jotai";
+// import { useAtom } from "jotai";
 import { allTasksAtom, displayTasksAtom } from "./atoms";
+import NameCard from "./components/NameCard/NameCard";
+import TaskCard from "./components/TaskCard/TaskCard";
+import AssignModal from "./components/TaskAssign/AssignModal";
+import NameCardList from "./components/NameCardList/NameCardList";
+import NameListScreen from "./screens/NameListScreen/NameListScreen";
+import IconComponent from "./components/IconComponent";
+
 
 // Define the config
 const config = {
@@ -30,8 +37,8 @@ declare module "native-base" {
 }
 
 export default function App() {
-  const [allTasks, setAllTasks] = useAtom(allTasksAtom)
-  const [displayTasks, setDisplayTasks] = useAtom(displayTasksAtom)
+  // const [allTasks, setAllTasks] = useAtom(allTasksAtom)
+  // const [displayTasks, setDisplayTasks] = useAtom(displayTasksAtom)
 
   // fetch("localhost:8080/api/v1/task")
   //   .then(response => response.json())
@@ -44,7 +51,8 @@ export default function App() {
 
   return (
     <NativeBaseProvider>
-          <TaskListScreen/>
+        <NameListScreen/>
+        <IconComponent first={"Nandish"} last={"Khandhars"}></IconComponent>
     </NativeBaseProvider>
   );
 }
