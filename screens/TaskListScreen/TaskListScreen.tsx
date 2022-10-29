@@ -3,7 +3,7 @@ import { SafeAreaView, StyleSheet } from "react-native";
 import { styles } from "./styles";
 import { Task } from "../../models/Task";
 import TaskCardList from "../../components/TaskCardList/TaskCardList";
-import PurpleHeader from "../../components/Header/PurpleHeader";
+import PurpleHeader from "../../components/Header/TaskHeader";
 
 const TaskListScreen = () => {
   let task1: Task = {
