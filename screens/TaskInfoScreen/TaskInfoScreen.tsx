@@ -4,7 +4,7 @@ import TaskInfoHeader from "../../components/TaskInfo/TaskInfoHeader";
 import { HStack, VStack, Divider } from "native-base";
 import { styles } from "./TaskInfoStyles.js";
 
-const TaskInfoScreen = () => {
+const TaskInfoScreen = ({}) => {
   return (
     <SafeAreaView style={styles.whitebg}>
       <TaskInfoHeader />

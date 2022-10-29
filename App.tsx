@@ -15,6 +15,8 @@ import {
 } from "native-base";
 import TaskListScreen from "./screens/TaskListScreen/TaskListScreen";
 import TaskInfoScreen from "./screens/TaskInfoScreen/TaskInfoScreen";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 // Define the config
 const config = {
@@ -28,12 +30,18 @@ type MyThemeType = typeof theme;
 declare module "native-base" {
   interface ICustomTheme extends MyThemeType {}
 }
-
+const Stack = createNativeStackNavigator();
 export default function App() {
   return (
     <NativeBaseProvider>
       {/* <TaskListScreen /> */}
-      <TaskInfoScreen />
+      {/* <TaskInfoScreen /> */}
+      <NavigationContainer>
+        <Stack.Navigator>
+          <Stack.Screen name="TaskListScreen" component={TaskListScreen} />
+          <Stack.Screen name="TaskInfoScreen" component={TaskInfoScreen} />
+        </Stack.Navigator>
+      </NavigationContainer>
     </NativeBaseProvider>
   );
 }

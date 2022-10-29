@@ -1,5 +1,5 @@
 import React from "react";
-import { Image } from "react-native";
+import { Image, Pressable } from "react-native";
 import {
   Box,
   View,
@@ -29,6 +29,7 @@ const TaskCard = ({
   // let firstInitial = userNameArray[0].charAt(0);
   // let lastInitial = userNameArray[1].charAt(0);
   return (
+    // <Pressable onPress={navigation.navigate("TaskInfoPage")}>
     <View style={styles.card}>
       <Box>
         <VStack p="4" space={0} width="Fill" height="Hug">
@@ -63,6 +64,7 @@ const TaskCard = ({
         </VStack>
       </Box>
     </View>
+    // </Pressable>
   );
 };
 export default TaskCard;
