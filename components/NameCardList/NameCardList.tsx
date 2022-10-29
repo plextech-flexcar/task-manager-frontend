@@ -8,6 +8,7 @@ import {
  import { Name } from '../../models/Name';
 import { background, border, space } from 'native-base/lib/typescript/theme/styled-system';
 import FlatListItemSeparator from '../ItemSeperation';
+import { styles } from '../NameCardList/styles';
 
  const NameCardList = (props: {
     name: Name[]
@@ -25,7 +26,7 @@ import FlatListItemSeparator from '../ItemSeperation';
             <FlatList
                 data={name}
                 renderItem={renderNameCard}
-                style={{width: '100%', height:'110%', borderRadius:10, borderWidth:"1px", borderStyle:"solid",borderColor:"white", left:"1px"}}
+                style={styles.box}
                 ItemSeparatorComponent={FlatListItemSeparator}
                 
             />

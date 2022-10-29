@@ -1,9 +1,21 @@
-import React from 'react';
-import {Image} from 'react-native';
-import { Box, View, Stack, HStack, VStack, Heading, Container, Button, Text, Icon, Center } from "native-base";
-import {styles} from './styles.js'
-import { PRIORITY_ICON_MAP } from "./TaskCardPriorityIconMap"
-import { Task } from '../../models/Task.js';
+import React from "react";
+import { Image } from "react-native";
+import {
+  Box,
+  View,
+  Stack,
+  HStack,
+  VStack,
+  Heading,
+  Container,
+  Button,
+  Text,
+  Icon,
+  Center,
+} from "native-base";
+import { styles } from "./styles.js";
+import { PRIORITY_ICON_MAP } from "./TaskCardPriorityIconMap";
+import { Task } from "../../models/Task.js";
 
 const TaskCard = ({
   taskTitle,
@@ -13,41 +25,41 @@ const TaskCard = ({
   mva,
   priority,
 }: Task) => {
-    return (
-      <View style={styles.card}>
-        <Box>
-          <VStack p="4" space={0} width = "Fill" height = "Hug">
-            <HStack justifyContent= "space-between">
-                <Text>
-                  <View style={styles.taskHeading}>
-                    {taskTitle}
-                  </View>
-                </Text>
-                <Image source={{uri: PRIORITY_ICON_MAP[priority]}} style={{width: 20, height: 20}} />
-            </HStack>
+  return (
+    <View style={styles.card}>
+      <Box style={{ width: "100%" }}>
+        <VStack p="4" space={0} width="Fill" height="Hug">
+          <HStack justifyContent="space-between">
             <Text>
-              <View style={styles.taskDateText}>
-                {taskAge} days old
-              </View>
-            </Text> 
+              <View style={styles.taskHeading}>{taskTitle}</View>
+            </Text>
+            <Image
+              source={{ uri: PRIORITY_ICON_MAP[priority] }}
+              style={{ width: 20, height: 20 }}
+            />
+          </HStack>
+          <Text>
+            <View style={styles.taskDateText}>{taskAge} days old</View>
+          </Text>
+          <Text>
+            <View style={styles.vehicleText}>{carModel}</View>
+          </Text>
+          <HStack justifyContent="space-between">
             <Text>
               <View style={styles.vehicleText}>
-                {carModel}
+                {licensePlate} • {mva}
               </View>
-            </Text> 
-            <HStack justifyContent="space-between">
-              <Text>
-                <View style={styles.vehicleText}> 
-                  {licensePlate} • {mva}
-                </View>
-              </Text>
-                <View>
-                  <Image source={{uri: require('../../assets/Assigned.svg')}} 
-                  style={{width: 27, height: 27}} />
-                </View>
-            </HStack>
-          </VStack>
-        </Box>
-      </View>
-  )}
-export default TaskCard
+            </Text>
+            <View>
+              <Image
+                source={{ uri: require("../../assets/Assigned.svg") }}
+                style={{ width: 27, height: 27 }}
+              />
+            </View>
+          </HStack>
+        </VStack>
+      </Box>
+    </View>
+  );
+};
+export default TaskCard;

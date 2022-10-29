@@ -37,8 +37,7 @@ declare module "native-base" {
 export default function App() {
   return (
     <NativeBaseProvider>
-        <NameListScreen/>
-        <IconComponent first={"Nandish"} last={"Khandhars"}></IconComponent>
+      <NameListScreen/>
     </NativeBaseProvider>
   );
 }

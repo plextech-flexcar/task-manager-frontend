@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
         fontfamily: "Inter",
         fontSize: "17px",
         fontWeight: "400",
-        color: "#080726",
+        color: "black",
         position: 'absolute'
     },
     taskDateText: {
