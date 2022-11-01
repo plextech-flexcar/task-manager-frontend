@@ -30,23 +30,28 @@ const TaskCard = ({
       <Box style={{ width: "100%" }}>
         <VStack p="4" space={0} width="Fill" height="Hug">
           <HStack justifyContent="space-between">
-            <View>
-              <Text style={styles.taskHeading}>{taskTitle}</Text>
+            <View style={styles.taskHeading}>
+              <Text>
+                {taskTitle}
+              </Text>
             </View>
             <Image
               source={{ uri: PRIORITY_ICON_MAP[priority] }}
-              style={{ width: 20, height: 20 }}
-            />
+              style={{ width: 20, height: 20 }}/>
           </HStack>
-          <View>
-            <Text style={styles.taskDateText}>{taskAge} days old</Text>
+          <View style={styles.taskDateText}>
+            <Text>
+              {taskAge} days old
+            </Text>
           </View>
-          <View>
-            <Text style={styles.vehicleText}>{carModel}</Text>
+          <View style={styles.vehicleText}>
+            <Text>
+              {carModel}
+            </Text>
           </View>
           <HStack justifyContent="space-between">
-            <View>
-              <Text style={styles.vehicleText}>
+            <View style={styles.vehicleText}>
+              <Text>
                 {licensePlate} • {mva}
               </Text>
             </View>
