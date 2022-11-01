@@ -16,9 +16,17 @@ import SquareBoxes from "./SquareBoxes";
 export default function SortFilter() {
   const [isModalVisible, setModalVisible] = useState(false);
   const [title, setTitle] = useState("Sort & Filter");
+  let modalIcon = "closeModal";
 
   const toggleModal = () => {
+    setTitle("Sort & Filter");
     setModalVisible(!isModalVisible);
+  };
+
+  const changeFilter = (filterName: string) => {
+    modalIcon = "next";
+    console.log(modalIcon);
+    setTitle(filterName);
   };
 
   return (
@@ -40,7 +48,7 @@ export default function SortFilter() {
           <View style={styles.modalHeader}>
             <TouchableOpacity onPress={toggleModal}>
               <Image
-                source={require("../../assets/closeModal.png")}
+                source={require(`../../assets/${modalIcon}.png`)}
                 style={{ height: 20, width: 20 }}
               ></Image>
               <Text></Text>
@@ -48,9 +56,14 @@ export default function SortFilter() {
             <Text style={styles.modalHeaderTitle}>{title}</Text>
           </View>
           <ScrollView>
-            <CircleCheckBox />
-            <SquareBoxes />
-            <FilterBox />
+            {title == "Sort & Filter" && (
+              <>
+                <CircleCheckBox />
+                <SquareBoxes />
+                <FilterBox changeFilter={changeFilter} />
+              </>
+            )}
+            {title == "Filter by Market" && <SquareBoxes />}
           </ScrollView>
         </View>
       </Modal>

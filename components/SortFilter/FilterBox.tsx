@@ -3,15 +3,19 @@ import * as React from "react";
 import { Checkbox } from "react-native-paper";
 import { StyleSheet, View, TouchableOpacity, Image, Text } from "react-native";
 
-export default function FilterBox() {
+export default function FilterBox(props: {
+  changeFilter: React.Dispatch<React.SetStateAction<any>>;
+}) {
+  let { changeFilter } = props;
   const data = ["Market", "Task type", "Make & model", "Status", "Priority"];
+
   return (
     <View style={styles.circleRow}>
       {data.map((title) => {
         return (
           <TouchableOpacity
             key={title}
-            onPress={() => console.log(title)}
+            onPress={() => changeFilter("Filter by " + title)}
             style={styles.filterRow}
           >
             <Text style={styles.filterText}>{title}</Text>
