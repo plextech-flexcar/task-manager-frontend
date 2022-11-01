@@ -37,8 +37,8 @@
         "@typescript-eslint/no-empty-interface": "off",
         "@typescript-eslint/no-inferrable-types": "off",
         "@typescript-eslint/no-parameter-properties": "off",
-        "@typescript-eslint/triple-slash-reference": "off"
-      "array-callback-return": "warn",
+        "@typescript-eslint/triple-slash-reference": "off",
+        "array-callback-return": "warn",
         "default-case": "off",
         "dot-location": [
             "warn",
