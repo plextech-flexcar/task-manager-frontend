@@ -12,7 +12,7 @@ const TaskListScreen = () => {
     carModel: "Black Range Rover",
     licensePlate: "123test",
     mva: 123123,
-    priority: "high",
+    priority: 3,
   };
 
   let task2: Task = {
@@ -21,7 +21,7 @@ const TaskListScreen = () => {
     carModel: "Black Range Rover",
     licensePlate: "123test",
     mva: 123123,
-    priority: "normal",
+    priority: 2,
   };
 
   let task3: Task = {
@@ -30,7 +30,7 @@ const TaskListScreen = () => {
     carModel: "Black Range Rover",
     licensePlate: "123test",
     mva: 123123,
-    priority: "low",
+    priority: 1,
   };
 
   let tasks: Task[] = [
