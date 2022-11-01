@@ -4,9 +4,30 @@ import TaskInfoHeader from "../../components/TaskInfo/TaskInfoHeader";
 import { HStack, VStack, Divider } from "native-base";
 import { styles } from "./TaskInfoStyles.js";
 
-const TaskInfoScreen = ({}) => {
+const TaskInfoScreen = ({ navigation }) => {
   const topPriorityImage = require("../../assets/vector.png");
   const vehicleImage = require("../../assets/car.png");
+  const {
+    type,
+    age,
+    assigned,
+    createdBy,
+    date,
+    comment,
+    make,
+    model,
+    color,
+    license,
+    mva,
+    priority,
+    status,
+  } = navigation.props;
+  const getInitials = (name) => {
+    return name
+      .split(" ")
+      .map((n) => n[0])
+      .join("");
+  };
   return (
     <SafeAreaView style={styles.whitebg}>
       <TaskInfoHeader />
@@ -14,9 +35,7 @@ const TaskInfoScreen = ({}) => {
       <View style={styles.headermt}>
         <View style={styles.headerHorizontalStack}>
           <View style={styles.headerContainer}>
-            <Text style={styles.header}>
-              Glass Chip: Rear Window Passenger's side
-            </Text>
+            <Text style={styles.header}>{type}</Text>
           </View>
 
           <View style={styles.mrView}>
@@ -29,11 +48,15 @@ const TaskInfoScreen = ({}) => {
         <View style={styles.viewMarginLeft}>
           <HStack>
             <Text style={styles.textTop}>
-              Status: Assigned to Elias Charalambides
+              {assigned ? "Status: Assigned to " + assigned : "Not assigned"}
             </Text>
-            <View style={styles.assignBox}>
-              <Text style={styles.assignBoxText}>EC</Text>
-            </View>
+            {assigned ? (
+              <View style={styles.assignBox}>
+                <Text style={styles.assignBoxText}>
+                  {getInitials(assigned)}
+                </Text>
+              </View>
+            ) : null}
           </HStack>
         </View>
         <Text style={[styles.textTop, styles.viewMarginLeft]}>
