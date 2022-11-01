@@ -30,26 +30,31 @@ const TaskCard = ({
       <Box style={{ width: "100%" }}>
         <VStack p="4" space={0} width="Fill" height="Hug">
           <HStack justifyContent="space-between">
-            <Text>
-              <View style={styles.taskHeading}>{taskTitle}</View>
-            </Text>
+            <View style={styles.taskHeading}>
+              <Text>
+                {taskTitle}
+              </Text>
+            </View>
             <Image
               source={{ uri: PRIORITY_ICON_MAP[priority] }}
-              style={{ width: 20, height: 20 }}
-            />
+              style={{ width: 20, height: 20 }}/>
           </HStack>
-          <Text>
-            <View style={styles.taskDateText}>{taskAge} days old</View>
-          </Text>
-          <Text>
-            <View style={styles.vehicleText}>{carModel}</View>
-          </Text>
-          <HStack justifyContent="space-between">
+          <View style={styles.taskDateText}>
             <Text>
-              <View style={styles.vehicleText}>
-                {licensePlate} • {mva}
-              </View>
+              {taskAge} days old
             </Text>
+          </View>
+          <View style={styles.vehicleText}>
+            <Text>
+              {carModel}
+            </Text>
+          </View>
+          <HStack justifyContent="space-between">
+            <View style={styles.vehicleText}>
+              <Text>
+                {licensePlate} • {mva}
+              </Text>
+            </View>
             <View>
               <Image
                 source={{ uri: require("../../assets/Assigned.svg") }}
