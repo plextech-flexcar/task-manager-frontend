@@ -4,5 +4,5 @@ export interface Task {
     carModel: string,
     licensePlate: string,
     mva: number,
-    priority: string,
+    priority: number,
 }
