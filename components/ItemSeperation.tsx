@@ -7,7 +7,7 @@ const FlatListItemSeparator = () => {
         style={{
           height: 1,
           width: "100%",
-          backgroundColor: "#000",
+          backgroundColor: "lightgrey",
         }}
       />
     );

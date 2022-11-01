@@ -22,6 +22,7 @@
     "@react-navigation/native": "^6.0.13",
     "@typescript-eslint/eslint-plugin": "4.8.1",
     "@typescript-eslint/parser": "4.8.1",
+    "atomic": "^1.0.0",
     "eslint": "7.13.0",
     "eslint-config-prettier": "6.15.0",
     "eslint-plugin-import": "2.22.1",
@@ -40,7 +41,6 @@
     "react-native-safe-area-context": "4.3.1",
     "react-native-screens": "~3.15.0",
     "react-native-svg": "12.3.0",
-    "react-native-svg-uri": "^1.2.3",
     "react-native-web": "~0.18.7"
   },
   "devDependencies": {
