@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
   },
   textCarType: {
     fontWeight: "bold",
-    fontSize: 13,
+    fontSize: 15,
     marginTop: 3,
   },
   unavailableBox: {
@@ -70,8 +70,18 @@ const styles = StyleSheet.create({
     padding: 5,
     marginTop: 3,
   },
-  imageMarginRight: {
+  avialbleBox: {
+    backgroundColor: "#39BD09",
+    alignSelf: "flex-start",
+    padding: 5,
+    marginTop: 3,
+  },
+  image: {
     marginRight: 16,
+    flex: 1,
+    width: 72,
+    height: 92,
+    resizeMode: "contain",
   },
   vehicleDivider: {
     width: "90%",

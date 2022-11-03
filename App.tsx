@@ -35,8 +35,6 @@ const Stack = createNativeStackNavigator();
 export default function App() {
   return (
     <NativeBaseProvider>
-      {/* <TaskListScreen /> */}
-      {/* <TaskInfoScreen /> */}
       <NavigationContainer>
         <Stack.Navigator
           screenOptions={{

@@ -37,6 +37,10 @@ const TaskCard = ({
   market,
   status,
   createdBy,
+  carImage,
+  description,
+  state,
+  vin,
 }: Task) => {
   // let userNameArray = user.split(" ");
   // let firstInitial = userNameArray[0].charAt(0);
@@ -59,7 +63,7 @@ const TaskCard = ({
       onPress={() =>
         navigation.navigate("TaskInfoScreen", {
           type: type,
-          age: age,
+          age: calculateAge(age),
           assigned: assigned,
           createdBy: createdBy,
           date: date,
@@ -71,6 +75,10 @@ const TaskCard = ({
           mva: mva,
           priority: priority,
           status: status,
+          carImage: carImage,
+          description: description,
+          state: state,
+          vin: vin,
         })
       }
     >

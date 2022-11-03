@@ -2,14 +2,11 @@ export interface Task {
   id: number;
   vehicleid: number;
   type: string;
-  //taskTitle: string;
   date: number;
-  // taskAge: number;
+  description: string;
   comment: string;
-
   make: string;
   model: string;
-  // carModel: string;]
   color: string;
   license: string;
   mva: string;
@@ -17,6 +14,9 @@ export interface Task {
   age: number;
   assigned: string | null;
   market: string;
-  status: false;
+  status: boolean;
   createdBy: string | null;
+  carImage: string;
+  state: string;
+  vin: string;
 }

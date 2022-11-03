@@ -4,9 +4,8 @@ import TaskInfoHeader from "../../components/TaskInfo/TaskInfoHeader";
 import { HStack, VStack, Divider } from "native-base";
 import { styles } from "./TaskInfoStyles.js";
 
-const TaskInfoScreen = ({ navigation }) => {
+const TaskInfoScreen = ({ route, navigation }) => {
   const topPriorityImage = require("../../assets/vector.png");
-  const vehicleImage = require("../../assets/car.png");
   const {
     type,
     age,
@@ -21,13 +20,22 @@ const TaskInfoScreen = ({ navigation }) => {
     mva,
     priority,
     status,
-  } = navigation.props;
+    carImage,
+    description,
+    state,
+    vin,
+  } = route.params;
   const getInitials = (name) => {
     return name
       .split(" ")
       .map((n) => n[0])
       .join("");
   };
+  const fromEpochToDate = (date) => {
+    var newDate = new Date(date * 1000);
+    return newDate.toLocaleString();
+  };
+  console.log(route.params);
   return (
     <SafeAreaView style={styles.whitebg}>
       <TaskInfoHeader />
@@ -44,11 +52,11 @@ const TaskInfoScreen = ({ navigation }) => {
           </View>
         </View>
 
-        <Text style={styles.textDate}>3 Days old</Text>
+        <Text style={styles.textDate}>{age}</Text>
         <View style={styles.viewMarginLeft}>
           <HStack>
             <Text style={styles.textTop}>
-              {assigned ? "Status: Assigned to " + assigned : "Not assigned"}
+              {assigned ? "Status: Assigned to " + assigned : "Open"}
             </Text>
             {assigned ? (
               <View style={styles.assignBox}>
@@ -60,31 +68,33 @@ const TaskInfoScreen = ({ navigation }) => {
           </HStack>
         </View>
         <Text style={[styles.textTop, styles.viewMarginLeft]}>
-          Created by: Adam Miller on 3/15/22 - 4:28pm
+          Created by: {createdBy} on {fromEpochToDate(date)}
         </Text>
       </View>
 
       <View style={styles.middleBox}>
         <View style={styles.middleHorizontalStack}>
           <View>
-            <Text style={styles.textCarType}>White Honda Civic 2020</Text>
-            <Text style={styles.textTop}>23HJ349, NC MVA: 91884092</Text>
-            <Text style={styles.textTop}>VIN: SHSRD78775Y233242</Text>
-            <View style={styles.unavailableBox}>
-              <Text>Unavialble/Servicer</Text>
+            <Text style={styles.textCarType}>
+              {color} {make}
+            </Text>
+            <Text style={styles.textTop}>
+              {license}, {state} MVA: {mva}
+            </Text>
+            <Text style={styles.textTop}>VIN: {vin}</Text>
+            <View style={status ? styles.avialbleBox : styles.unavailableBox}>
+              <Text>{status ? "Available" : "Unavialble/Service"}</Text>
             </View>
           </View>
-          <Image style={styles.imageMarginRight} source={vehicleImage} />
+          <Image style={styles.image} source={{ uri: carImage }} />
         </View>
         <Divider style={styles.vehicleDivider} />
         <VStack style={styles.vehicleVerticalStack}>
           <Text>Using a windshied repair kit: </Text>
-          <Text style={styles.vehicleMarginTop}>
-            1. Remove the broken glass
-          </Text>
-          <Text style={styles.vehicleMarginTop}>2. Clean the area</Text>
+          <Text style={styles.vehicleMarginTop}>{description}</Text>
+          {/* <Text style={styles.vehicleMarginTop}>2. Clean the area</Text>
           <Text style={styles.vehicleMarginTop}>3. Apply the adhesive</Text>
-          <Text style={styles.vehicleMarginTop}>4. Apply the glass</Text>
+          <Text style={styles.vehicleMarginTop}>4. Apply the glass</Text> */}
         </VStack>
       </View>
       <VStack style={styles.commentVStack}>
@@ -93,9 +103,18 @@ const TaskInfoScreen = ({ navigation }) => {
           <Divider orientation="vertical" mr={3} />
           <VStack>
             <Text style={styles.commentBox}>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur
-              ante felis, placerat in dapibus nec, consectetur sit amet nunc.
-              Integer nec accumsan metus.
+              {comment ? comment : "No comments"}
+            </Text>
+            <Text style={styles.commentBy}>
+              by Adam Miller on 3/15/22 - 4:30pm
+            </Text>
+          </VStack>
+        </HStack>
+        <HStack>
+          <Divider orientation="vertical" mr={3} mt={5} />
+          <VStack marginTop={5}>
+            <Text style={styles.commentBox}>
+              {comment ? comment : "No comments"}
             </Text>
             <Text style={styles.commentBy}>
               by Adam Miller on 3/15/22 - 4:30pm
