@@ -1,14 +1,9 @@
-import React from "react";
-import { View, FlatList, ListRenderItem } from "react-native";
-import NameCard from "../NameCard/NameCard";
-import { Name } from "../../models/Name";
-import {
-  background,
-  border,
-  space,
-} from "native-base/lib/typescript/theme/styled-system";
-import FlatListItemSeparator from "../ItemSeperation";
-import { styles } from "../NameCardList/styles";
+import React from 'react';
+import { View, FlatList, ListRenderItem } from 'react-native';
+import NameCard from '../NameCard/NameCard';
+import { Name } from '../../models/Name';
+import FlatListItemSeparator from '../ItemSeperation';
+import { styles } from './styles';
 
 const NameCardList = (props: { name: Name[] }) => {
   let { name } = props;

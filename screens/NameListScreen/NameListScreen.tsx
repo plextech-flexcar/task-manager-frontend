@@ -1,14 +1,14 @@
-import React from "react";
-import { SafeAreaView, StyleSheet, View } from "react-native";
-import { styles } from "./styles";
-import { Name } from "../../models/Name";
-import NameCardList from "../../components/NameCardList/NameCardList";
-import AssignModalFunc from "../../components/TaskAssign/AssignModal";
+import React from 'react';
+import { SafeAreaView} from 'react-native';
+import { styles } from './styles';
+import { Name } from '../../models/Name';
+import NameCardList from '../../components/NameCardList/NameCardList';
+import AssignModalFunc from '../../components/TaskAssign/AssignModal';
 
 const NameListScreen = () => {
   let name1: Name = {
-    first: "Rhythm",
-    last: "Chao",
+    first: 'Rhythm',
+    last: 'Chao',
   };
   let nameList: Name[] = [name1, name1, name1, name1, name1, name1];
 

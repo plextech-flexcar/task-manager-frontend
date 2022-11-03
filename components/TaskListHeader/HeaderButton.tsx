@@ -1,7 +1,6 @@
-import React, { useState } from "react";
-import { TouchableHighlight, Text, Image, StyleSheet } from "react-native";
-import { styles } from "./styles.js";
-import SvgUri from "react-native-svg-uri";
+import React, { useState } from 'react';
+import { TouchableHighlight, Text, Image, StyleSheet } from 'react-native';
+import { styles } from './styles.js';
 
 export default function HeaderButtons(props: { buttonName: string }) {
   let { buttonName } = props;

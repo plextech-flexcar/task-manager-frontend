@@ -1,24 +1,11 @@
-import React from "react";
-import { Image } from "react-native";
-import {
-  Box,
-  View,
-  Stack,
-  HStack,
-  VStack,
-  Heading,
-  Container,
-  Button,
-  Text,
-  Icon,
-  Center,
-} from "native-base";
-import { styles } from "./styles.js";
-import { Name } from "../../models/Name.js";
-import IconComponent from "../IconComponent";
+import React from 'react';
+import { View, HStack, VStack, Text } from 'native-base';
+import { styles } from './styles.js';
+import { Name } from '../../models/Name.js';
+import IconComponent from '../IconComponent';
 
 const NameCard = ({ first, last }: Name) => {
-  let fullName = first + " " + last;
+  let fullName = first + ' ' + last;
   console.log(fullName);
   return (
     <View style={styles.card}>
