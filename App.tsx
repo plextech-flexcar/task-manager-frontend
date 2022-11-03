@@ -45,7 +45,7 @@ export default function App() {
 
   return (
     <NativeBaseProvider>
-      <NameListScreen/>
+      <NameListScreen />
     </NativeBaseProvider>
   );
 }

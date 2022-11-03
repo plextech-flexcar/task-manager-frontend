@@ -1,4 +1,4 @@
 export interface Name {
-    first: string,
-    last: string,
+  first: string;
+  last: string;
 }

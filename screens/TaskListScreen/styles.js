@@ -1,15 +1,13 @@
-import { border } from 'native-base/lib/typescript/theme/styled-system';
-import { StyleSheet} from 'react-native';
-import { styles } from '../NameListScreen/styles';
+import { border } from "native-base/lib/typescript/theme/styled-system";
+import { StyleSheet } from "react-native";
+import { styles } from "../NameListScreen/styles";
 
 const styles = StyleSheet.create({
-    view: {
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        borderBottomWidth:"10px"
-    }
-})
+  view: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+  },
+});
 
-
-export {styles};
+export { styles };
