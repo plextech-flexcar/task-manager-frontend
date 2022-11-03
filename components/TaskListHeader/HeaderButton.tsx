@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { TouchableHighlight, Text, Image, StyleSheet } from 'react-native';
+import { TouchableHighlight, Text } from 'react-native';
 import { styles } from './styles.js';
 
 export default function HeaderButtons(props: { buttonName: string }) {
-  let { buttonName } = props;
+  const { buttonName } = props;
   const [isActive, setIsActive] = useState(false);
 
   const handleClick = () => {

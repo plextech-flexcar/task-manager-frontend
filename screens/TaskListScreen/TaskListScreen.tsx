@@ -6,7 +6,7 @@ import TaskCardList from '../../components/TaskCardList/TaskCardList';
 import TaskListHeader from '../../components/TaskListHeader/TaskListHeader';
 
 const TaskListScreen = () => {
-  let task1: Task = {
+  const task1: Task = {
     taskTitle: 'Glass Chip',
     taskAge: 3,
     carModel: 'Black Range Rover',
@@ -15,7 +15,7 @@ const TaskListScreen = () => {
     priority: 3,
   };
 
-  let task2: Task = {
+  const task2: Task = {
     taskTitle: 'Front Damage',
     taskAge: 3,
     carModel: 'Black Range Rover',
@@ -24,7 +24,7 @@ const TaskListScreen = () => {
     priority: 2,
   };
 
-  let task3: Task = {
+  const task3: Task = {
     taskTitle: 'Blood stains',
     taskAge: 5,
     carModel: 'Black Range Rover',
@@ -33,7 +33,7 @@ const TaskListScreen = () => {
     priority: 1,
   };
 
-  let tasks: Task[] = [
+  const tasks: Task[] = [
     task1,
     task1,
     task1,
