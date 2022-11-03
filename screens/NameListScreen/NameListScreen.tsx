@@ -7,7 +7,6 @@ import {
 import {styles} from "./styles"
 import { Name } from "../../models/Name"
 import NameCardList from "../../components/NameCardList/NameCardList"
-import PurpleHeader from "../../components/PurpleHeader"
 import AssignModalFunc from "../../components/TaskAssign/AssignModal"
 
 const NameListScreen = () => {
