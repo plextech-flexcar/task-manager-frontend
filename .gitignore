@@ -12,5 +12,12 @@ web-build/
 # macOS
 .DS_Store
 
-# remove npm
+### Node ###
+# npm
 package-lock.json
+
+# Logs
+logs
+*.log
+yarn-debug.log*
+yarn-error.log*
