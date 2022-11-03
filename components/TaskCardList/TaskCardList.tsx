@@ -1,10 +1,10 @@
 import React from 'react';
-import { View, FlatList, ListRenderItem } from 'react-native';
+import { FlatList, ListRenderItem } from 'react-native';
 import TaskCard from '../TaskCard/TaskCard';
 import { Task } from '../../models/task';
 
 const TaskCardList = (props: { tasks: Task[] }) => {
-  let { tasks } = props;
+  const { tasks } = props;
 
   const renderTaskCard: ListRenderItem<Task> = ({ item }) => {
     return <TaskCard {...item} />;

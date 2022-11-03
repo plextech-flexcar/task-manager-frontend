@@ -1,34 +1,34 @@
-import React from "react";
-import { SafeAreaView, StyleSheet } from "react-native";
-import { styles } from "./styles";
-import { Task } from "../../models/Task";
-import TaskCardList from "../../components/TaskCardList/TaskCardList";
-import TaskListHeader from "../../components/TaskListHeader/TaskListHeader";
+import React from 'react';
+import { SafeAreaView } from 'react-native';
+import { styles } from './styles';
+import { Task } from '../../models/Task';
+import TaskCardList from '../../components/TaskCardList/TaskCardList';
+import TaskListHeader from '../../components/TaskListHeader/TaskListHeader';
 
 const TaskListScreen = () => {
   let task1: Task = {
-    taskTitle: "Glass Chip",
+    taskTitle: 'Glass Chip',
     taskAge: 3,
-    carModel: "Black Range Rover",
-    licensePlate: "123test",
+    carModel: 'Black Range Rover',
+    licensePlate: '123test',
     mva: 123123,
     priority: 3,
   };
 
   let task2: Task = {
-    taskTitle: "Front Damage",
+    taskTitle: 'Front Damage',
     taskAge: 3,
-    carModel: "Black Range Rover",
-    licensePlate: "123test",
+    carModel: 'Black Range Rover',
+    licensePlate: '123test',
     mva: 123123,
     priority: 2,
   };
 
   let task3: Task = {
-    taskTitle: "Blood stains",
+    taskTitle: 'Blood stains',
     taskAge: 5,
-    carModel: "Black Range Rover",
-    licensePlate: "123test",
+    carModel: 'Black Range Rover',
+    licensePlate: '123test',
     mva: 123123,
     priority: 1,
   };

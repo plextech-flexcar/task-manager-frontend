@@ -1,5 +1,4 @@
 import { StyleSheet } from 'react-native';
-import { styles } from '../NameListScreen/styles';
 
 const styles = StyleSheet.create({
   view: {

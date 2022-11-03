@@ -5,7 +5,7 @@ import { Name } from '../../models/Name.js';
 import IconComponent from '../IconComponent';
 
 const NameCard = ({ first, last }: Name) => {
-  let fullName = first + ' ' + last;
+  const fullName = first + ' ' + last;
   console.log(fullName);
   return (
     <View style={styles.card}>

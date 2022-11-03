@@ -6,7 +6,7 @@ import FlatListItemSeparator from '../ItemSeperation';
 import { styles } from './styles';
 
 const NameCardList = (props: { name: Name[] }) => {
-  let { name } = props;
+  const { name } = props;
 
   const renderNameCard: ListRenderItem<Name> = ({ item }) => {
     return <NameCard {...item} />;
