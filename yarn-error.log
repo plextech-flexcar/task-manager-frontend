@@ -928,7 +928,7 @@ Lockfile:
       "@babel/plugin-syntax-jsx" "^7.18.6"
       "@babel/types" "^7.19.0"
   
-  "@babel/plugin-transform-regenerator@^7.0.0", "@babel/plugin-transform-regenerator@^7.18.6":
+  "@babel/plugin-transform-regenerator@^7.18.6":
     version "7.18.6"
     resolved "https://registry.npmjs.org/@babel/plugin-transform-regenerator/-/plugin-transform-regenerator-7.18.6.tgz"
     integrity sha512-poqRI2+qiSdeldcz4wTSTXBRryoq3Gc70ye7m7UD5Ww0nE29IXqMl6r7Nd15WBgRd74vloEMlShtH6CKxVzfmQ==
@@ -1303,7 +1303,15 @@ Lockfile:
     resolved "https://registry.npmjs.org/@expo/config-plugins/-/config-plugins-4.1.5.tgz"
     integrity sha512-RVvU40RtZt12HavuDAe+LDIq9lHj7sheOfMEHdmpJ/uTA8pgvkbc56XF6JHQD+yRr6+uhhb+JnAasGq49dsQbw==
     dependencies:
-      "@expo/config-types" "^45.0.0"
+      node-forge "^1.2.1"
+      nullthrows "^1.1.1"
+  
+  "@expo/config-plugins@~5.0.0", "@expo/config-plugins@~5.0.1":
+    version "5.0.1"
+    resolved "https://registry.npmjs.org/@expo/config-plugins/-/config-plugins-5.0.1.tgz"
+    integrity sha512-1OfnsOrfeSkB0VZfT01UjQ5Uq6p+yYbq8yNkj0e99K/6NLHpyvIxj+5tZIV0nQXgkOcqBIABL2uA7lwB8CkaBQ==
+    dependencies:
+      "@expo/config-types" "^46.0.0"
       "@expo/json-file" "8.2.36"
       "@expo/plist" "0.0.18"
       "@expo/sdk-runtime-versions" "^1.0.0"
@@ -2395,7 +2403,6 @@ Lockfile:
       lodash "^4.17.15"
       logkitty "^0.7.1"
       slash "^3.0.0"
-      xmldoc "^1.1.2"
   
   "@react-native-community/cli-platform-android@^7.0.1":
     version "7.0.1"
@@ -2454,7 +2461,7 @@ Lockfile:
       compression "^1.7.1"
       connect "^3.6.5"
       errorhandler "^1.5.0"
-      nocache "^2.1.0"
+      nocache "^3.0.1"
       pretty-format "^26.6.2"
       serve-static "^1.13.1"
       ws "^7.5.1"
@@ -2493,7 +2500,7 @@ Lockfile:
     resolved "https://registry.npmjs.org/@react-native-community/cli-types/-/cli-types-6.0.0.tgz"
     integrity sha512-K493Fk2DMJC0ZM8s8gnfseKxGasIhuDaCUDeLZcoCSFlrjKEuEs1BKKEJiev0CARhKEXKOyyp/uqYM9nWhisNw==
     dependencies:
-      ora "^3.4.0"
+      joi "^17.2.1"
   
   "@react-native-community/cli@^7.0.3":
     version "7.0.4"
@@ -2510,15 +2517,10 @@ Lockfile:
       chalk "^4.1.2"
       command-exists "^1.2.8"
       commander "^2.19.0"
-      cosmiconfig "^5.1.0"
-      deepmerge "^3.2.0"
-      envinfo "^7.7.2"
       execa "^1.0.0"
       find-up "^4.1.0"
       fs-extra "^8.1.0"
-      glob "^7.1.3"
       graceful-fs "^4.1.3"
-      joi "^17.2.1"
       leven "^3.1.0"
       lodash "^4.17.15"
       minimist "^1.2.0"
@@ -2527,10 +2529,6 @@ Lockfile:
       pretty-format "^26.6.2"
       prompts "^2.4.0"
       semver "^6.3.0"
-      serve-static "^1.13.1"
-      strip-ansi "^5.2.0"
-      sudo-prompt "^9.0.0"
-      wcwidth "^1.0.1"
   
   "@react-native/assets@1.0.0":
     version "1.0.0"
@@ -6417,6 +6415,11 @@ Lockfile:
     dependencies:
       to-regex-range "^5.0.1"
   
+  filter-obj@^1.1.0:
+    version "1.1.0"
+    resolved "https://registry.npmjs.org/filter-obj/-/filter-obj-1.1.0.tgz"
+    integrity sha512-8rXg1ZnX7xzy2NGDVkBVaAy+lSlPNwad13BtgSlLuxfIslyt5Vg64U7tFcCt4WS1R0hvtnQybT/IyCkGZ3DpXQ==
+  
   finalhandler@1.1.2:
     version "1.1.2"
     resolved "https://registry.npmjs.org/finalhandler/-/finalhandler-1.1.2.tgz"
@@ -6818,11 +6821,26 @@ Lockfile:
     resolved "https://registry.npmjs.org/glob/-/glob-8.0.3.tgz"
     integrity sha512-ull455NHSHI/Y1FqGaaYFaLGkNMMJbavMrEGFXG/PGrg6y7sutWHUHrz6gy6WEBH6akM1M414dWKCNs+IhKdiQ==
     dependencies:
-      fs.realpath "^1.0.0"
       inflight "^1.0.4"
       inherits "2"
       minimatch "^5.0.1"
       once "^1.3.0"
+  
+  global-modules@2.0.0:
+    version "2.0.0"
+    resolved "https://registry.npmjs.org/global-modules/-/global-modules-2.0.0.tgz"
+    integrity sha512-NGbfmJBp9x8IxyJSd1P+otYK8vonoJactOogrVfFRIAEY1ukil8RSKDz2Yo7wh1oihl51l/r6W4epkeKJHqL8A==
+    dependencies:
+      global-prefix "^3.0.0"
+  
+  global-prefix@^3.0.0:
+    version "3.0.0"
+    resolved "https://registry.npmjs.org/global-prefix/-/global-prefix-3.0.0.tgz"
+    integrity sha512-awConJSVCHVGND6x3tmMaKcQvwXLhjdkmomy2W+Goaui8YPgYgXJZewhg3fWC+DlfqqQuWg8AwqjGTD2nAPVWg==
+    dependencies:
+      ini "^1.3.5"
+      kind-of "^6.0.2"
+      which "^1.3.1"
   
   global-modules@2.0.0:
     version "2.0.0"
@@ -7271,7 +7289,34 @@ Lockfile:
     resolved "https://registry.npmjs.org/iconv-lite/-/iconv-lite-0.6.3.tgz"
     integrity sha512-4fCk79wshMdzMp2rH06qWrJE4iolqLhCUH+OiuIgU++RB0+94NlDL81atO7GX55uUKueo0txHNtvEyI6D7WdMw==
     dependencies:
-      safer-buffer ">= 2.1.2 < 3.0.0"
+      safer-buffer ">= 2.1.2 < 3"
+  
+  icss-utils@^4.0.0, icss-utils@^4.1.1:
+    version "4.1.1"
+    resolved "https://registry.npmjs.org/icss-utils/-/icss-utils-4.1.1.tgz"
+    integrity sha512-4aFq7wvWyMHKgxsH8QQtGpvbASCf+eM3wPRLI6R+MgAnTCZ6STYsRvttLvRWK0Nfif5piF394St3HeJDaljGPA==
+    dependencies:
+      postcss "^7.0.14"
+  
+  ieee754@^1.1.13, ieee754@^1.1.4:
+    version "1.2.1"
+    resolved "https://registry.npmjs.org/ieee754/-/ieee754-1.2.1.tgz"
+    integrity sha512-dcyqhDvX1C46lXZcVqCpK+FtMRQVdIMN6/Df5js2zouUsqG7I6sFxitIC+7KYK29KdXOLHdu9zL4sFnoVQnqaA==
+  
+  iferr@^0.1.5:
+    version "0.1.5"
+    resolved "https://registry.npmjs.org/iferr/-/iferr-0.1.5.tgz"
+    integrity sha512-DUNFN5j7Tln0D+TxzloUjKB+CtVu6myn0JEFak6dG18mNt9YkQ6lzGCdafwofISZ1lLF3xRHJ98VKy9ynkcFaA==
+  
+  ignore@^4.0.6:
+    version "4.0.6"
+    resolved "https://registry.npmjs.org/ignore/-/ignore-4.0.6.tgz"
+    integrity sha512-cyFDKrqc/YdcWFniJhzI42+AzS+gNwmUzOSFcRCQYwySuBBBy/KjuxWLZ/FHEH6Moq1NizMOBWyTcv8O4OZIMg==
+  
+  ignore@^5.1.4, ignore@^5.2.0:
+    version "5.2.0"
+    resolved "https://registry.npmjs.org/ignore/-/ignore-5.2.0.tgz"
+    integrity sha512-CmxgYGiEPCLhfLnpPp1MoRmifwEIOgjcHXxOBjv7mY96c+eWScsOP9c112ZyLdWHi0FxHjI+4uVhKYp/gcdRmQ==
   
   icss-utils@^4.0.0, icss-utils@^4.1.1:
     version "4.1.1"
@@ -8814,17 +8859,15 @@ Lockfile:
       "@babel/plugin-transform-destructuring" "^7.0.0"
       "@babel/plugin-transform-exponentiation-operator" "^7.0.0"
       "@babel/plugin-transform-flow-strip-types" "^7.0.0"
-      "@babel/plugin-transform-for-of" "^7.0.0"
       "@babel/plugin-transform-function-name" "^7.0.0"
       "@babel/plugin-transform-literals" "^7.0.0"
       "@babel/plugin-transform-modules-commonjs" "^7.0.0"
-      "@babel/plugin-transform-object-assign" "^7.0.0"
+      "@babel/plugin-transform-named-capturing-groups-regex" "^7.0.0"
       "@babel/plugin-transform-parameters" "^7.0.0"
       "@babel/plugin-transform-react-display-name" "^7.0.0"
       "@babel/plugin-transform-react-jsx" "^7.0.0"
       "@babel/plugin-transform-react-jsx-self" "^7.0.0"
       "@babel/plugin-transform-react-jsx-source" "^7.0.0"
-      "@babel/plugin-transform-regenerator" "^7.0.0"
       "@babel/plugin-transform-runtime" "^7.0.0"
       "@babel/plugin-transform-shorthand-properties" "^7.0.0"
       "@babel/plugin-transform-spread" "^7.0.0"
@@ -8975,7 +9018,7 @@ Lockfile:
       "@babel/types" "^7.0.0"
       absolute-path "^0.0.0"
       accepts "^1.3.7"
-      async "^2.4.0"
+      async "^3.2.2"
       chalk "^4.0.0"
       ci-info "^2.0.0"
       connect "^3.6.5"
@@ -9006,7 +9049,6 @@ Lockfile:
       metro-transform-plugins "0.67.0"
       metro-transform-worker "0.67.0"
       mime-types "^2.1.27"
-      mkdirp "^0.5.1"
       node-fetch "^2.2.0"
       nullthrows "^1.1.1"
       rimraf "^2.5.4"
@@ -11073,8 +11115,7 @@ Lockfile:
     integrity sha512-6eV150oJZ9U2t9svnsspTMrWNyHc6chX0KzDeAOXftRa8bNeOKTTfCJ7KorIwenkHd2xqVTBTCZd79yk/lx/Ug==
     dependencies:
       loose-envify "^1.1.0"
-      object-assign "^4.1.1"
-      scheduler "^0.20.1"
+      scheduler "^0.21.0"
   
   react-error-overlay@^6.0.9:
     version "6.0.11"
@@ -11166,13 +11207,13 @@ Lockfile:
     resolved "https://registry.npmjs.org/react-native-web/-/react-native-web-0.17.1.tgz"
     integrity sha512-lUnn+2O8ynQ6/gJKylSxm7DLi2vHw6AujdDV1+LSa8Epe1bYFJNUcJTEhJf0jNYUFGOujzMtuG8Mkz3HdWTkag==
     dependencies:
-      array-find-index "^1.0.2"
+      "@babel/runtime" "^7.18.6"
       create-react-class "^15.7.0"
-      fbjs "^3.0.0"
-      hyphenate-style-name "^1.0.4"
-      inline-style-prefixer "^6.0.0"
+      fbjs "^3.0.4"
+      inline-style-prefixer "^6.0.1"
       normalize-css-color "^1.0.2"
-      prop-types "^15.6.0"
+      postcss-value-parser "^4.2.0"
+      styleq "^0.1.2"
   
   react-native@0.68.2:
     version "0.68.2"
@@ -11690,7 +11731,50 @@ Lockfile:
     integrity sha512-2eWfGgAqqWFGqtdMmcL5zCMK1U8KlXv8SQFGglL3CEtd0aDVDWgeF/YoCmvln55m5zSk3J/20hTaSBeSObsQDQ==
     dependencies:
       loose-envify "^1.1.0"
-      object-assign "^4.1.1"
+  
+  schema-utils@^1.0.0:
+    version "1.0.0"
+    resolved "https://registry.npmjs.org/schema-utils/-/schema-utils-1.0.0.tgz"
+    integrity sha512-i27Mic4KovM/lnGsy8whRCHhc7VicJajAjTrYg11K9zfZXnYIt4k5F+kZkwjnrhKzLic/HLU4j11mjsz2G/75g==
+    dependencies:
+      ajv "^6.1.0"
+      ajv-errors "^1.0.0"
+      ajv-keywords "^3.1.0"
+  
+  schema-utils@^2.6.5, schema-utils@^2.6.6, schema-utils@^2.7.0:
+    version "2.7.1"
+    resolved "https://registry.npmjs.org/schema-utils/-/schema-utils-2.7.1.tgz"
+    integrity sha512-SHiNtMOUGWBQJwzISiVYKu82GiV4QYGePp3odlY1tuKO7gPtphAT5R/py0fA6xtbgLL/RvtJZnU9b8s0F1q0Xg==
+    dependencies:
+      "@types/json-schema" "^7.0.5"
+      ajv "^6.12.4"
+      ajv-keywords "^3.5.2"
+  
+  schema-utils@^3.0.0, schema-utils@^3.1.1:
+    version "3.1.1"
+    resolved "https://registry.npmjs.org/schema-utils/-/schema-utils-3.1.1.tgz"
+    integrity sha512-Y5PQxS4ITlC+EahLuXaY86TXfR7Dc5lw294alXOq86JAHCihAIZfqv8nNCWvaEJvaC51uN9hbLGeV0cFBdH+Fw==
+    dependencies:
+      "@types/json-schema" "^7.0.8"
+      ajv "^6.12.5"
+      ajv-keywords "^3.5.2"
+  
+  select-hose@^2.0.0:
+    version "2.0.0"
+    resolved "https://registry.npmjs.org/select-hose/-/select-hose-2.0.0.tgz"
+    integrity sha512-mEugaLK+YfkijB4fx0e6kImuJdCIt2LxCRcbEYPqRGCs4F2ogyfZU5IAZRdjCP8JPq2AtdNoC/Dux63d9Kiryg==
+  
+  selfsigned@^1.10.7:
+    version "1.10.14"
+    resolved "https://registry.npmjs.org/selfsigned/-/selfsigned-1.10.14.tgz"
+    integrity sha512-lkjaiAye+wBZDCBsu5BGi0XiLRxeUlsGod5ZP924CRSEoGuZAw/f7y9RKu28rwTfiHVhdavhB0qH0INV6P1lEA==
+    dependencies:
+      node-forge "^0.10.0"
+  
+  "semver@2 || 3 || 4 || 5", semver@^5.4.1, semver@^5.5.0, semver@^5.6.0:
+    version "5.7.1"
+    resolved "https://registry.npmjs.org/semver/-/semver-5.7.1.tgz"
+    integrity sha512-sauaDf/PZdVgrLTNYHRtpXa1iRiKcaebiKQ1BJdpQlWH2lCvexQdX55snPFyK7QzpudqbCI0qXFfOasHdyNDGQ==
   
   schema-utils@^1.0.0:
     version "1.0.0"

@@ -1,10 +1,10 @@
-import React from "react";
-import { View, FlatList, ListRenderItem } from "react-native";
-import TaskCard from "../TaskCard/TaskCard";
-import { Task } from "../../models/task";
+import React from 'react';
+import { FlatList, ListRenderItem } from 'react-native';
+import TaskCard from '../TaskCard/TaskCard';
+import { Task } from '../../models/task';
 
 const TaskCardList = (props: { tasks: Task[] }) => {
-  let { tasks } = props;
+  const { tasks } = props;
 
   const renderTaskCard: ListRenderItem<Task> = ({ item }) => {
     return <TaskCard {...item} />;
@@ -14,7 +14,7 @@ const TaskCardList = (props: { tasks: Task[] }) => {
     <FlatList
       data={tasks}
       renderItem={renderTaskCard}
-      style={{ width: "100%", overflow: "hidden" }}
+      style={{ width: '100%', overflow: 'hidden' }}
     />
   );
 };

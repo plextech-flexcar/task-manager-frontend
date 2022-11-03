@@ -1,33 +1,25 @@
 import React from 'react';
-import {Image} from 'react-native';
-import { Box, View, Stack, HStack, VStack, Heading, Container, Button, Text, Icon, Center } from "native-base";
-import {styles} from './styles.js'
-import { PRIORITY_ICON_MAP } from "./TaskCardPriorityIconMap"
+import { View, HStack, VStack, Text } from 'native-base';
+import { styles } from './styles.js';
 import { Name } from '../../models/Name.js';
+import IconComponent from '../IconComponent';
 
-const NameCard = ({
-  FullName,
-  priority,
-}: Name) => {
-    return (
-      <View style={styles.card}>
- 
-          <VStack p="2" space={0} width = "Fill" height = "hug">
-            <HStack justifyContent= "space-between">
-                <Text>
-                  <View style={styles.taskHeading} left="40px" top="2.5px">
-                    {FullName}
-                  </View>
-                </Text>
-                <Image source={{uri: PRIORITY_ICON_MAP[priority]}} style={{width: 20, height: 20, position:'absolute'}} />
-            </HStack>
-            <View>
-                  <Image source={{uri: require('../../assets/Assigned.svg')}} 
-                  style={{width: 27, height: 27}} />
-                </View>
-
-          </VStack>
-   
-      </View>
-  )}
-export default NameCard
+const NameCard = ({ first, last }: Name) => {
+  const fullName = first + ' ' + last;
+  console.log(fullName);
+  return (
+    <View style={styles.card}>
+      <VStack p="2" space={0} width="Fill" height="hug">
+        <HStack justifyContent="space-between">
+          <IconComponent first={first} last={last} />
+          <Text>
+            <View style={styles.taskHeading} left="40px" top="2.5px">
+              {fullName}
+            </View>
+          </Text>
+        </HStack>
+      </VStack>
+    </View>
+  );
+};
+export default NameCard;

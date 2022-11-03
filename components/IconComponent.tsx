@@ -1,19 +1,29 @@
 import React from 'react';
-import { View, Text } from 'react-native';
-import { Box } from "native-base";
+import { Box } from 'native-base';
 
-const IconComponent = (props: {
-    first: string,
-    last: string
-}) => {
+const IconComponent = (props: { first: string; last: string }) => {
   return (
-    <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'center', alignItems: 'center', backgroundColor: "2A00A5"}}>
-        <Box>
-          <Text>
-              name
-          </Text>
-        </Box>
-    </View>
+    <Box
+      rounded="md"
+      alignSelf="center"
+      _text={{
+        fontSize: 'sm',
+        textAlign: 'center',
+        height: '100%',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderColor: 'black',
+        fontWeight: 'bold',
+        color: 'white',
+        letterSpacing: 'lg',
+      }}
+      bg={['#2A00A5']}
+      width="27px"
+      height="27px"
+    >
+      {props.first.charAt(0) + props.last.charAt(0)}
+    </Box>
   );
-}
-export default IconComponent
+};
+export default IconComponent;
