@@ -21,14 +21,23 @@ export default function App() {
   const [allTasks, setAllTasks] = useAtom(allTasksAtom);
   const [displayTasks, setDisplayTasks] = useAtom(displayTasksAtom);
 
-  fetch('localhost:8080/api/v1/task')
-    .then((response) => response.json())
-    .then((data) => {
-      setAllTasks(data);
-      setDisplayTasks(data);
-      console.log(allTasks);
-      console.log(displayTasks);
-    });
+  fetch(
+    "http://localhost:8080/api/v1/task",
+    {
+      mode: 'cors',
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept' : 'application/json',
+        'Origin' : 'http://localhost:19006'
+      }
+    }
+  )
+  .then(response => response.json())
+  .then(json => {
+    setAllTasks(json)
+    setDisplayTasks(json)
+  })
 
   return (
     <NativeBaseProvider>
