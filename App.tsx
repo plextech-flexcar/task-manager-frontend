@@ -15,6 +15,9 @@ import {
 } from "native-base";
 import TaskListScreen from "./screens/TaskListScreen/TaskListScreen";
 import TaskInfoScreen from "./screens/TaskInfoScreen/TaskInfoScreen";
+import TaskInfoPopup from "./components/TaskInfo/TaskInfoPopup";
+import NewComment from "./components/TaskInfo/Modals/LeaveComment";
+import ResolveTask from "./components/TaskInfo/Modals/ResolveTask"
 
 // Define the config
 const config = {
@@ -33,7 +36,9 @@ export default function App() {
   return (
     <NativeBaseProvider>
       {/* <TaskListScreen /> */}
-      <TaskInfoScreen />
+      {/* <TaskInfoPopup /> */}
+      <ResolveTask />
+      {/* <NewComment /> */}
     </NativeBaseProvider>
   );
 }
