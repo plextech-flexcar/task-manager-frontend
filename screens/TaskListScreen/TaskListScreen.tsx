@@ -1,9 +1,9 @@
-import React from "react";
-import { SafeAreaView, StyleSheet } from "react-native";
-import { styles } from "./styles";
-import { Task } from "../../models/Task";
-import TaskCardList from "../../components/TaskCardList/TaskCardList";
-import PurpleHeader from "../../components/Header/TaskHeader";
+import React from 'react';
+import { SafeAreaView } from 'react-native';
+import { styles } from './styles';
+import { Task } from '../../models/Task';
+import TaskCardList from '../../components/TaskCardList/TaskCardList';
+import TaskListHeader from '../../components/TaskListHeader/TaskListHeader';
 
 const TaskListScreen = () => {
   let task1: Task = {
@@ -78,7 +78,7 @@ const TaskListScreen = () => {
     vin: "vy6si92Chj",
   };
 
-  let tasks: Task[] = [
+  const tasks: Task[] = [
     task1,
     task1,
     task1,
@@ -98,7 +98,7 @@ const TaskListScreen = () => {
 
   return (
     <SafeAreaView style={styles.view}>
-      <PurpleHeader />
+      <TaskListHeader />
       <TaskCardList tasks={tasks} />
     </SafeAreaView>
   );

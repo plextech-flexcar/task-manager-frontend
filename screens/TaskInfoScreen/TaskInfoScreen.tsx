@@ -1,11 +1,11 @@
-import React from "react";
-import { Image, SafeAreaView, Text, View, StyleSheet } from "react-native";
-import TaskInfoHeader from "../../components/TaskInfo/TaskInfoHeader";
-import { HStack, VStack, Divider } from "native-base";
-import { styles } from "./TaskInfoStyles.js";
-
+import React from 'react';
+import { Image, SafeAreaView, Text, View } from 'react-native';
+import TaskInfoHeader from '../../components/TaskInfo/TaskInfoHeader';
+import { HStack, VStack, Divider } from 'native-base';
+import { styles } from './TaskInfoStyles.js';
+import { PRIORITY_ICON_MAP } from '../../components/TaskCard/TaskCardPriorityIconMap';
 const TaskInfoScreen = ({ route, navigation }) => {
-  const topPriorityImage = require("../../assets/vector.png");
+  const topPriorityImage = require('../../assets/vector.png');
   const {
     type,
     age,
@@ -27,15 +27,14 @@ const TaskInfoScreen = ({ route, navigation }) => {
   } = route.params;
   const getInitials = (name) => {
     return name
-      .split(" ")
+      .split(' ')
       .map((n) => n[0])
-      .join("");
+      .join('');
   };
   const fromEpochToDate = (date) => {
     var newDate = new Date(date * 1000);
     return newDate.toLocaleString();
   };
-  console.log(route.params);
   return (
     <SafeAreaView style={styles.whitebg}>
       <TaskInfoHeader />
@@ -43,11 +42,16 @@ const TaskInfoScreen = ({ route, navigation }) => {
       <View style={styles.headermt}>
         <View style={styles.headerHorizontalStack}>
           <View style={styles.headerContainer}>
-            <Text style={styles.header}>{type}</Text>
+            <Text style={styles.header}>
+              {type} {model}
+            </Text>
           </View>
 
           <View style={styles.mrView}>
-            <Image source={topPriorityImage} />
+            <Image
+              source={{ uri: PRIORITY_ICON_MAP[priority] }}
+              style={{ width: 20, height: 20 }}
+            />
             <Text style={styles.priorityTop}>Top</Text>
           </View>
         </View>
@@ -56,13 +60,11 @@ const TaskInfoScreen = ({ route, navigation }) => {
         <View style={styles.viewMarginLeft}>
           <HStack>
             <Text style={styles.textTop}>
-              {assigned ? "Status: Assigned to " + assigned : "Open"}
+              {assigned ? 'Status: Assigned to ' + assigned : 'Open'}
             </Text>
             {assigned ? (
               <View style={styles.assignBox}>
-                <Text style={styles.assignBoxText}>
-                  {getInitials(assigned)}
-                </Text>
+                <Text style={styles.assignBoxText}>{getInitials(assigned)}</Text>
               </View>
             ) : null}
           </HStack>
@@ -83,7 +85,7 @@ const TaskInfoScreen = ({ route, navigation }) => {
             </Text>
             <Text style={styles.textTop}>VIN: {vin}</Text>
             <View style={status ? styles.avialbleBox : styles.unavailableBox}>
-              <Text>{status ? "Available" : "Unavialble/Service"}</Text>
+              <Text>{status ? 'Available' : 'Unavialble/Service'}</Text>
             </View>
           </View>
           <Image style={styles.image} source={{ uri: carImage }} />
@@ -102,23 +104,15 @@ const TaskInfoScreen = ({ route, navigation }) => {
         <HStack>
           <Divider orientation="vertical" mr={3} />
           <VStack>
-            <Text style={styles.commentBox}>
-              {comment ? comment : "No comments"}
-            </Text>
-            <Text style={styles.commentBy}>
-              by Adam Miller on 3/15/22 - 4:30pm
-            </Text>
+            <Text style={styles.commentBox}>{comment ? comment : 'No comments'}</Text>
+            <Text style={styles.commentBy}>by Adam Miller on 3/15/22 - 4:30pm</Text>
           </VStack>
         </HStack>
         <HStack>
           <Divider orientation="vertical" mr={3} mt={5} />
           <VStack marginTop={5}>
-            <Text style={styles.commentBox}>
-              {comment ? comment : "No comments"}
-            </Text>
-            <Text style={styles.commentBy}>
-              by Adam Miller on 3/15/22 - 4:30pm
-            </Text>
+            <Text style={styles.commentBox}>{comment ? comment : 'No comments'}</Text>
+            <Text style={styles.commentBy}>by Adam Miller on 3/15/22 - 4:30pm</Text>
           </VStack>
         </HStack>
       </VStack>
