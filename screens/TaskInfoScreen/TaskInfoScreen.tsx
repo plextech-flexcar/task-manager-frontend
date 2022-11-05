@@ -4,8 +4,7 @@ import TaskInfoHeader from '../../components/TaskInfo/TaskInfoHeader';
 import { HStack, VStack, Divider } from 'native-base';
 import { styles } from './TaskInfoStyles.js';
 import { PRIORITY_ICON_MAP } from '../../components/TaskCard/TaskCardPriorityIconMap';
-const TaskInfoScreen = ({ route, navigation }) => {
-  const topPriorityImage = require('../../assets/vector.png');
+const TaskInfoScreen = ({ route }) => {
   const {
     type,
     age,
@@ -32,7 +31,7 @@ const TaskInfoScreen = ({ route, navigation }) => {
       .join('');
   };
   const fromEpochToDate = (date) => {
-    var newDate = new Date(date * 1000);
+    const newDate = new Date(date * 1000);
     return newDate.toLocaleString();
   };
   return (
