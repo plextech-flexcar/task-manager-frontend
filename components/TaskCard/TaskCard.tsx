@@ -5,6 +5,7 @@ import { styles } from './styles.js';
 import { PRIORITY_ICON_MAP } from './TaskCardPriorityIconMap';
 import { Task } from '../../models/Task.js';
 import { useNavigation } from '@react-navigation/native';
+import IconComponent from '../IconComponent';
 const TaskCard = ({
   type,
   date,
@@ -73,6 +74,7 @@ const TaskCard = ({
               <Image
                 source={{ uri: PRIORITY_ICON_MAP[priority] }}
                 style={{ width: 20, height: 20 }}
+                alt="top"
               />
             </HStack>
             <View style={styles.taskDateText}>
@@ -87,12 +89,7 @@ const TaskCard = ({
                   {license} • {mva}
                 </Text>
               </View>
-              <View>
-                <Image
-                  source={{ uri: require('../../assets/Assigned.svg') }}
-                  style={{ width: 27, height: 27 }}
-                />
-              </View>
+              <IconComponent first = {assigned ? assigned.split(' ')[0].charAt(0) : ""} last = {assigned ? assigned.split(' ')[1].charAt(0) : ""} />
             </HStack>
           </VStack>
         </Box>
