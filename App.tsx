@@ -1,8 +1,11 @@
 import React from 'react';
 import { NativeBaseProvider, extendTheme } from 'native-base';
 import TaskListScreen from './screens/TaskListScreen/TaskListScreen';
+import TaskInfoScreen from './screens/TaskInfoScreen/TaskInfoScreen';
 import { useAtom } from 'jotai';
 import { allTasksAtom, displayTasksAtom } from './atoms';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 // Define the config
 const config = {
@@ -17,6 +20,7 @@ declare module 'native-base' {
   interface ICustomTheme extends MyThemeType {}
 }
 
+const Stack = createNativeStackNavigator();
 export default function App() {
   const [allTasks, setAllTasks] = useAtom(allTasksAtom);
   const [displayTasks, setDisplayTasks] = useAtom(displayTasksAtom);
@@ -41,7 +45,16 @@ export default function App() {
 
   return (
     <NativeBaseProvider>
-      <TaskListScreen />
+      <NavigationContainer>
+        <Stack.Navigator
+          screenOptions={{
+            headerShown: false,
+          }}
+        >
+          <Stack.Screen name="TaskListScreen" component={TaskListScreen} />
+          <Stack.Screen name="TaskInfoScreen" component={TaskInfoScreen} />
+        </Stack.Navigator>
+      </NavigationContainer>
     </NativeBaseProvider>
   );
 }
