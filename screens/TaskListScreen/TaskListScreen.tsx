@@ -4,7 +4,8 @@ import { styles } from './styles';
 import { Task } from '../../models/Task';
 import TaskCardList from '../../components/TaskCardList/TaskCardList';
 import TaskListHeader from '../../components/TaskListHeader/TaskListHeader';
-
+import { allTasksAtom } from '../../atoms';
+import { useAtom } from 'jotai';
 const TaskListScreen = () => {
   const task1: Task = {
     id: 4,
@@ -31,11 +32,12 @@ const TaskListScreen = () => {
   };
 
   const tasks: Task[] = [task1];
-
+  const [taskAPI] = useAtom(allTasksAtom);
+  console.log('Task API', taskAPI);
   return (
     <SafeAreaView style={styles.view}>
       <TaskListHeader />
-      <TaskCardList tasks={tasks} />
+      <TaskCardList tasks={taskAPI} />
     </SafeAreaView>
   );
 };
