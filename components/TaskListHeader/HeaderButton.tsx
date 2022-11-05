@@ -6,7 +6,7 @@ import { atomModalVisible } from "../../atoms.js";
 import { useAtom } from "jotai";
 
 export default function HeaderButtons(props: { buttonName: string }) {
-  let { buttonName } = props;
+  const { buttonName } = props;
   const [isActive, setIsActive] = useState(false);
 
   const [isModalVisible, setModalVisible] = useAtom(atomModalVisible);
