@@ -6,7 +6,7 @@ import TaskCardList from '../../components/TaskCardList/TaskCardList';
 import TaskListHeader from '../../components/TaskListHeader/TaskListHeader';
 
 const TaskListScreen = () => {
-  let task1: Task = {
+  const task1: Task = {
     id: 4,
     vehicleid: 4,
     date: 1667185142,
@@ -30,8 +30,8 @@ const TaskListScreen = () => {
     vin: 'vy6si92Chj',
   };
 
-  let task2: Task = {
-    id: 4,
+  const task2: Task = {
+    id: 5,
     vehicleid: 4,
     date: 1667185142,
     type: "Glass Chip: Rear Window Pasenger's side",
@@ -54,8 +54,8 @@ const TaskListScreen = () => {
     vin: 'vy6si92Chj',
   };
 
-  let task3: Task = {
-    id: 4,
+  const task3: Task = {
+    id: 6,
     vehicleid: 4,
     date: 1667185142,
     type: "Glass Chip: Rear Window Pasenger's side",
@@ -78,23 +78,7 @@ const TaskListScreen = () => {
     vin: 'vy6si92Chj',
   };
 
-  const tasks: Task[] = [
-    task1,
-    task2,
-    task3,
-    task1,
-    task2,
-    task3,
-    task1,
-    task2,
-    task3,
-    task1,
-    task2,
-    task3,
-    task1,
-    task2,
-    task3,
-  ];
+  const tasks: Task[] = [task1, task2, task3, task1, task2, task3];
 
   return (
     <SafeAreaView style={styles.view}>
