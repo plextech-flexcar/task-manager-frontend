@@ -4,12 +4,12 @@ import { StyleSheet } from "react-native";
 import { View } from "native-base";
 import SquareCheckBox from "./SquareCheckbox";
 
-export default function SquareBoxes() {
-  const data = ["Boston", "Atlanta", "Nashville", "Ayaka", "is", "tired"];
-
+export default function SquareBoxes(props: { filterCheck: string[] }) {
+  let { filterCheck } = props;
+  
   return (
     <View style={styles.circleRow}>
-      {data.map((title) => {
+      {filterCheck.map((title) => {
         return <SquareCheckBox checkBoxLabel={title} key={title} />;
       })}
     </View>

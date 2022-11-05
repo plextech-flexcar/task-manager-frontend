@@ -7,7 +7,7 @@ export default function FilterBox(props: {
   changeFilter: React.Dispatch<React.SetStateAction<any>>;
 }) {
   let { changeFilter } = props;
-  const data = ["Market", "Task type", "Make & model", "Status", "Priority"];
+  const data = ["market", "task type", "make & model", "status", "priority"];
 
   return (
     <View style={styles.circleRow}>
@@ -15,7 +15,7 @@ export default function FilterBox(props: {
         return (
           <TouchableOpacity
             key={title}
-            onPress={() => changeFilter("Filter by " + title)}
+            onPress={() => changeFilter(title)}
             style={styles.filterRow}
           >
             <Text style={styles.filterText}>{title}</Text>

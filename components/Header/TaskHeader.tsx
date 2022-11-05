@@ -6,7 +6,7 @@ import HeaderButtons from "./HeaderButton";
 import { styles } from "./styles";
 
 export default function PurpleHeader() {
-  const [searchQuery, setSearchQuery] = React.useState("");
+  const [searchQuery, setSearchQuery] = useState("");
 
   const onChangeSearch = (query: React.SetStateAction<string>) =>
     setSearchQuery(query);

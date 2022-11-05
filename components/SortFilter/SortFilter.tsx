@@ -12,11 +12,15 @@ import Modal from "react-native-modal";
 import CircleCheckBox from "./CircleCheckBox";
 import FilterBox from "./FilterBox";
 import SquareBoxes from "./SquareBoxes";
+import { atomFilterOptions, atomModalVisible } from "../../atoms";
+import { useAtom } from "jotai";
 
 export default function SortFilter() {
-  const [isModalVisible, setModalVisible] = useState(false);
+  const [isModalVisible, setModalVisible] = useAtom(atomModalVisible);
   const [title, setTitle] = useState("Sort & Filter");
-  let modalIcon = "closeModal";
+  const [filter, setFilter] = useAtom(atomFilterOptions);
+
+  const [modalIcon, setModalIcon] = useState("closeModal");
 
   const toggleModal = () => {
     setTitle("Sort & Filter");
@@ -24,15 +28,11 @@ export default function SortFilter() {
   };
 
   const changeFilter = (filterName: string) => {
-    modalIcon = "next";
-    console.log(modalIcon);
     setTitle(filterName);
   };
 
   return (
     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-      <Button title="Show modal" onPress={toggleModal} />
-
       <Modal
         hasBackdrop
         hideModalContentWhileAnimating
@@ -59,11 +59,18 @@ export default function SortFilter() {
             {title == "Sort & Filter" && (
               <>
                 <CircleCheckBox />
-                <SquareBoxes />
                 <FilterBox changeFilter={changeFilter} />
               </>
             )}
-            {title == "Filter by Market" && <SquareBoxes />}
+            {title == "market" && <SquareBoxes filterCheck={filter[title]} />}
+            {title == "task type" && (
+              <SquareBoxes filterCheck={filter[title]} />
+            )}
+            {title == "status" && <SquareBoxes filterCheck={filter[title]} />}
+            {title == "priority" && <SquareBoxes filterCheck={filter[title]} />}
+            {title == "quick view" && (
+              <SquareBoxes filterCheck={filter[title]} />
+            )}
           </ScrollView>
         </View>
       </Modal>
@@ -85,16 +92,14 @@ const styles = StyleSheet.create({
 
   modalHeader: {
     paddingVertical: 15,
+    display: "flex",
+    justifyContent: "space-between",
     flexDirection: "row",
     alignItems: "baseline",
     paddingHorizontal: 15,
-    width: "100%",
+    width: "55%",
   },
   modalHeaderTitle: {
-    //uhhhh We have a problem I cant center this div for the life of me someone else fix this please
-    left: "300%",
-    textAlign: "center",
-    fontWeight: "700",
     fontSize: 17,
   },
 });
