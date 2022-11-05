@@ -12,7 +12,7 @@ export interface Task {
   mva: string;
   priority: number;
   age: number;
-  assigned: string | null ;
+  assigned: string | null;
   market: string;
   status: boolean;
   createdBy: string | null;
