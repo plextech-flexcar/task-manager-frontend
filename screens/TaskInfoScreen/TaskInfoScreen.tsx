@@ -48,7 +48,7 @@ const TaskInfoScreen = ({ route }) => {
 
           <View style={styles.mrView}>
             <Image
-              source={{ uri: PRIORITY_ICON_MAP[priority] }}
+              source={PRIORITY_ICON_MAP[priority]}
               style={{ width: 20, height: 20 }}
             />
             <Text style={styles.priorityTop}>Top</Text>
