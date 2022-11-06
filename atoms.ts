@@ -20,3 +20,4 @@ export const atomFilters = atom<Record<string, string[]>>({
     "Priority" : [],
     "Quick View": []
 })
+export const atomSorts = atom("")

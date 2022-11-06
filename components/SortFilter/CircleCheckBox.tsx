@@ -2,9 +2,12 @@ import * as React from "react";
 import { RadioButton } from "react-native-paper";
 import { StyleSheet } from "react-native";
 import { View } from "native-base";
+import { atomSorts } from "../../atoms";
+import { useAtom } from "jotai";
 
 export default function CircleCheckBox() {
-  const [value, setValue] = React.useState("first");
+  const [sorts, setSorts] = useAtom(atomSorts);
+  const [value, setValue] = React.useState(sorts);
   const data = [
     "Priority: Top to low",
     "Priority: Low to top",
@@ -13,10 +16,15 @@ export default function CircleCheckBox() {
     "Alphabetical",
   ];
 
+  const changeSorts = (value: string) => {
+    setValue(value);
+    setSorts(value);
+  }
+
   return (
     <View style={styles.circleRow}>
       <RadioButton.Group
-        onValueChange={(value) => setValue(value)}
+        onValueChange={changeSorts}
         value={value}
       >
         {data.map((title) => {
