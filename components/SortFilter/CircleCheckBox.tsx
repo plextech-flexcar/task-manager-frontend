@@ -27,6 +27,7 @@ export default function CircleCheckBox() {
               key={title}
               position={"leading"}
               labelStyle={{ textAlign: "left" }}
+              color={"#2A00A5"}
             />
           );
         })}

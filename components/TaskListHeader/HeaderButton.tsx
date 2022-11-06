@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import { TouchableHighlight, Text, Image, StyleSheet } from "react-native";
 import { styles } from "./styles.js";
-import SvgUri from "react-native-svg-uri";
-import { atomModalVisible } from "../../atoms.js";
+import { atomModalVisible } from "../../atoms";
 import { useAtom } from "jotai";
 
 export default function HeaderButtons(props: { buttonName: string }) {

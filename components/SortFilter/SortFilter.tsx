@@ -1,7 +1,6 @@
-import { ScrollView } from "native-base";
+import { ScrollView, HStack } from "native-base";
 import React, { useState } from "react";
 import {
-  Button,
   Text,
   View,
   StyleSheet,
@@ -29,7 +28,17 @@ export default function SortFilter() {
 
   const changeFilter = (filterName: string) => {
     setTitle(filterName);
+    setModalIcon("backChevronModal")
   };
+
+  const x = () => {
+    if (title === "Sort & Filter") {
+      toggleModal();
+    } else {
+      setModalIcon("closeModal")
+      setTitle("Sort & Filter")
+    }
+  }
 
   return (
     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
@@ -46,29 +55,33 @@ export default function SortFilter() {
       >
         <View style={styles.modalView}>
           <View style={styles.modalHeader}>
-            <TouchableOpacity onPress={toggleModal}>
-              <Image
-                source={require(`../../assets/${modalIcon}.png`)}
-                style={{ height: 20, width: 20 }}
-              ></Image>
-              <Text></Text>
+            <TouchableOpacity onPress={ x }>
+              <HStack>
+                <Image
+                  source={require(`../../assets/${modalIcon}.png`)}
+                  style={{ height: 20, width: 20 }}
+                ></Image>
+                {title !== "Sort & Filter" && (
+                    <Text style={styles.backText}> Back </Text>
+                )}
+              </HStack>
             </TouchableOpacity>
             <Text style={styles.modalHeaderTitle}>{title}</Text>
           </View>
           <ScrollView>
-            {title == "Sort & Filter" && (
+            {title === "Sort & Filter" && (
               <>
                 <CircleCheckBox />
                 <FilterBox changeFilter={changeFilter} />
               </>
             )}
-            {title == "market" && <SquareBoxes filterCheck={filter[title]} />}
-            {title == "task type" && (
+            {title === "Market" && <SquareBoxes filterCheck={filter[title]} />}
+            {title === "Task Type" && (
               <SquareBoxes filterCheck={filter[title]} />
             )}
-            {title == "status" && <SquareBoxes filterCheck={filter[title]} />}
-            {title == "priority" && <SquareBoxes filterCheck={filter[title]} />}
-            {title == "quick view" && (
+            {title === "Status" && <SquareBoxes filterCheck={filter[title]} />}
+            {title === "Priority" && <SquareBoxes filterCheck={filter[title]} />}
+            {title === "Quick View" && (
               <SquareBoxes filterCheck={filter[title]} />
             )}
           </ScrollView>
@@ -102,4 +115,10 @@ const styles = StyleSheet.create({
   modalHeaderTitle: {
     fontSize: 17,
   },
+  backText: {
+    fontfamily: 'Inter',
+    color: '#2A00A5',
+    fontWeight: '400',
+    fontSize: 20
+  }
 });

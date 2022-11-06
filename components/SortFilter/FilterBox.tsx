@@ -6,8 +6,8 @@ import { StyleSheet, View, TouchableOpacity, Image, Text } from "react-native";
 export default function FilterBox(props: {
   changeFilter: React.Dispatch<React.SetStateAction<any>>;
 }) {
-  let { changeFilter } = props;
-  const data = ["market", "task type", "make & model", "status", "priority"];
+ const { changeFilter } = props;
+  const data = ["Market", "Task Type", "Make & Model", "Status", "Priority"];
 
   return (
     <View style={styles.circleRow}>
