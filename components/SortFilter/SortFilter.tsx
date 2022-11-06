@@ -17,7 +17,7 @@ import { useAtom } from "jotai";
 export default function SortFilter() {
   const [isModalVisible, setModalVisible] = useAtom(atomModalVisible);
   const [title, setTitle] = useState("Sort & Filter");
-  const [filter, setFilter] = useAtom(atomFilterOptions);
+  const [filterOptions, setFilterOptions] = useAtom(atomFilterOptions);
 
   const [modalIcon, setModalIcon] = useState("closeModal");
 
@@ -31,7 +31,7 @@ export default function SortFilter() {
     setModalIcon("backChevronModal")
   };
 
-  const x = () => {
+  const modalNavigation = () => {
     if (title === "Sort & Filter") {
       toggleModal();
     } else {
@@ -55,11 +55,11 @@ export default function SortFilter() {
       >
         <View style={styles.modalView}>
           <View style={styles.modalHeader}>
-            <TouchableOpacity onPress={ x }>
+            <TouchableOpacity onPress={ modalNavigation }>
               <HStack>
                 <Image
                   source={require(`../../assets/${modalIcon}.png`)}
-                  style={{ height: 20, width: 20 }}
+                  style={{ height: 16, width: 16 }}
                 ></Image>
                 {title !== "Sort & Filter" && (
                     <Text style={styles.backText}> Back </Text>
@@ -75,14 +75,14 @@ export default function SortFilter() {
                 <FilterBox changeFilter={changeFilter} />
               </>
             )}
-            {title === "Market" && <SquareBoxes filterCheck={filter[title]} />}
+            {title === "Market" && <SquareBoxes filterCategory={title} />}
             {title === "Task Type" && (
-              <SquareBoxes filterCheck={filter[title]} />
+              <SquareBoxes filterCategory={title} />
             )}
-            {title === "Status" && <SquareBoxes filterCheck={filter[title]} />}
-            {title === "Priority" && <SquareBoxes filterCheck={filter[title]} />}
+            {title === "Status" && <SquareBoxes filterCategory={title} />}
+            {title === "Priority" && <SquareBoxes filterCategory={title} />}
             {title === "Quick View" && (
-              <SquareBoxes filterCheck={filter[title]} />
+              <SquareBoxes filterCategory={title} />
             )}
           </ScrollView>
         </View>

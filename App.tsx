@@ -3,7 +3,7 @@ import { NativeBaseProvider, extendTheme } from 'native-base';
 import TaskListScreen from './screens/TaskListScreen/TaskListScreen';
 import TaskInfoScreen from './screens/TaskInfoScreen/TaskInfoScreen';
 import { useAtom } from 'jotai';
-import { allTasksAtom, displayTasksAtom } from './atomsDiff';
+import { allTasksAtom, displayTasksAtom } from './atoms';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 

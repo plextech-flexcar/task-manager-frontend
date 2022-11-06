@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { TouchableHighlight, Text, Image, StyleSheet } from "react-native";
+import { TouchableHighlight, Text} from "react-native";
 import { styles } from "./styles.js";
 import { atomModalVisible } from "../../atoms";
 import { useAtom } from "jotai";
