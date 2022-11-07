@@ -1,31 +1,22 @@
 import React from 'react';
-import { 
-    View, 
-    FlatList, 
-    ListRenderItem
- } from 'react-native';
- import TaskCard from '../TaskCard/TaskCard';
- import { Task } from '../../models/task';
+import { FlatList, ListRenderItem } from 'react-native';
+import TaskCard from '../TaskCard/TaskCard';
+import { Task } from '../../models/task';
 
- const TaskCardList = (props: {
-    tasks: Task[]
- }) => {
-    let {tasks} = props;
+const TaskCardList = (props: { tasks: Task[] }) => {
+  const { tasks } = props;
 
-    const renderTaskCard: ListRenderItem<Task>= ({ item }) => {
-        return (
-            <TaskCard {...item} />
-        )
-    }
+  const renderTaskCard: ListRenderItem<Task> = ({ item }) => {
+    return <TaskCard {...item} />;
+  };
 
-    return (
-        <View>
-            <FlatList
-                data={tasks}
-                renderItem={renderTaskCard}
-            />
-        </View>
-    )
-}
+  return (
+    <FlatList
+      data={tasks}
+      renderItem={renderTaskCard}
+      style={{ width: '100%', overflow: 'hidden' }}
+    />
+  );
+};
 
-export default TaskCardList
+export default TaskCardList;

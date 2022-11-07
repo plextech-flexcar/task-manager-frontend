@@ -1,6 +1,6 @@
-export const PRIORITY_ICON_MAP: { [key: string]: string } = {
-    low: require("../../assets/priorities/lowPriority.svg"),
-    normal: require("../../assets/priorities/normalPriority.svg"),
-    high: require("../../assets/priorities/highPriority.svg"),
-    top: require("../../assets/priorities/topPriority.svg"),
-}
+export const PRIORITY_ICON_MAP: { [key: number]: string } = {
+  1: require('../../assets/priorities/lowPriority.png'),
+  2: require('../../assets/priorities/normalPriority.png'),
+  3: require('../../assets/priorities/highPriority.png'),
+  4: require('../../assets/priorities/topPriority.png'),
+};

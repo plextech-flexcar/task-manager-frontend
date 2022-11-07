@@ -1,10 +1,39 @@
-import React from "react";
-import { Image, SafeAreaView, Text, View, StyleSheet } from "react-native";
-import TaskInfoHeader from "../../components/TaskInfo/TaskInfoHeader";
-import { HStack, VStack, Divider } from "native-base";
-import { styles } from "./TaskInfoStyles.js";
-
-const TaskInfoScreen = () => {
+import React from 'react';
+import { Image, SafeAreaView, Text, View } from 'react-native';
+import TaskInfoHeader from '../../components/TaskInfo/TaskInfoHeader';
+import { HStack, VStack, Divider } from 'native-base';
+import { styles } from './TaskInfoStyles.js';
+import { PRIORITY_ICON_MAP } from '../../components/TaskCard/TaskCardPriorityIconMap';
+const TaskInfoScreen = ({ route }) => {
+  const {
+    type,
+    age,
+    assigned,
+    createdBy,
+    date,
+    comment,
+    make,
+    model,
+    color,
+    license,
+    mva,
+    priority,
+    status,
+    carImage,
+    description,
+    state,
+    vin,
+  } = route.params;
+  const getInitials = (name) => {
+    return name
+      .split(' ')
+      .map((n) => n[0])
+      .join('');
+  };
+  const fromEpochToDate = (date) => {
+    const newDate = new Date(date * 1000);
+    return newDate.toLocaleString();
+  };
   return (
     <SafeAreaView style={styles.whitebg}>
       <TaskInfoHeader />
@@ -13,56 +42,60 @@ const TaskInfoScreen = () => {
         <View style={styles.headerHorizontalStack}>
           <View style={styles.headerContainer}>
             <Text style={styles.header}>
-              Glass Chip: Rear Window Passenger's side
+              {type} {model}
             </Text>
           </View>
 
           <View style={styles.mrView}>
-            <Image source={require("../../assets/vector.png")} />
+            <Image
+              source={PRIORITY_ICON_MAP[priority]}
+              style={{ width: 20, height: 20 }}
+            />
             <Text style={styles.priorityTop}>Top</Text>
           </View>
         </View>
 
-        <Text style={styles.textDate}>3 Days old</Text>
+        <Text style={styles.textDate}>{age}</Text>
         <View style={styles.viewMarginLeft}>
           <HStack>
             <Text style={styles.textTop}>
-              Status: Assigned to Elias Charalambides
+              {assigned ? 'Status: Assigned to ' + assigned : 'Open'}
             </Text>
-            <View style={styles.assignBox}>
-              <Text style={styles.assignBoxText}>EC</Text>
-            </View>
+            {assigned ? (
+              <View style={styles.assignBox}>
+                <Text style={styles.assignBoxText}>{getInitials(assigned)}</Text>
+              </View>
+            ) : null}
           </HStack>
         </View>
         <Text style={[styles.textTop, styles.viewMarginLeft]}>
-          Created by: Adam Miller on 3/15/22 - 4:28pm
+          Created by: {createdBy} on {fromEpochToDate(date)}
         </Text>
       </View>
 
       <View style={styles.middleBox}>
         <View style={styles.middleHorizontalStack}>
           <View>
-            <Text style={styles.textCarType}>White Honda Civic 2020</Text>
-            <Text style={styles.textTop}>23HJ349, NC MVA: 91884092</Text>
-            <Text style={styles.textTop}>VIN: SHSRD78775Y233242</Text>
-            <View style={styles.unavailableBox}>
-              <Text>Unavialble/Servicer</Text>
+            <Text style={styles.textCarType}>
+              {color} {make}
+            </Text>
+            <Text style={styles.textTop}>
+              {license}, {state} MVA: {mva}
+            </Text>
+            <Text style={styles.textTop}>VIN: {vin}</Text>
+            <View style={status ? styles.avialbleBox : styles.unavailableBox}>
+              <Text>{status ? 'Available' : 'Unavialble/Service'}</Text>
             </View>
           </View>
-          <Image
-            style={styles.imageMarginRight}
-            source={require("../../assets/car.png")}
-          />
+          <Image style={styles.image} source={{ uri: carImage }} />
         </View>
         <Divider style={styles.vehicleDivider} />
         <VStack style={styles.vehicleVerticalStack}>
           <Text>Using a windshied repair kit: </Text>
-          <Text style={styles.vehicleMarginTop}>
-            1. Remove the broken glass
-          </Text>
-          <Text style={styles.vehicleMarginTop}>2. Clean the area</Text>
+          <Text style={styles.vehicleMarginTop}>{description}</Text>
+          {/* <Text style={styles.vehicleMarginTop}>2. Clean the area</Text>
           <Text style={styles.vehicleMarginTop}>3. Apply the adhesive</Text>
-          <Text style={styles.vehicleMarginTop}>4. Apply the glass</Text>
+          <Text style={styles.vehicleMarginTop}>4. Apply the glass</Text> */}
         </VStack>
       </View>
       <VStack style={styles.commentVStack}>
@@ -70,14 +103,15 @@ const TaskInfoScreen = () => {
         <HStack>
           <Divider orientation="vertical" mr={3} />
           <VStack>
-            <Text style={styles.commentBox}>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur
-              ante felis, placerat in dapibus nec, consectetur sit amet nunc.
-              Integer nec accumsan metus.
-            </Text>
-            <Text style={styles.commentBy}>
-              by Adam Miller on 3/15/22 - 4:30pm
-            </Text>
+            <Text style={styles.commentBox}>{comment ? comment : 'No comments'}</Text>
+            <Text style={styles.commentBy}>by Adam Miller on 3/15/22 - 4:30pm</Text>
+          </VStack>
+        </HStack>
+        <HStack>
+          <Divider orientation="vertical" mr={3} mt={5} />
+          <VStack marginTop={5}>
+            <Text style={styles.commentBox}>{comment ? comment : 'No comments'}</Text>
+            <Text style={styles.commentBy}>by Adam Miller on 3/15/22 - 4:30pm</Text>
           </VStack>
         </HStack>
       </VStack>

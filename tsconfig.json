@@ -1,6 +1,12 @@
 {
   "extends": "expo/tsconfig.base",
+  "include": [
+    "components",
+    "models",
+    "screens"
+  ],
   "compilerOptions": {
+    "jsx": "react",
     "strict": true
   }
 }

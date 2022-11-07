@@ -1,9 +1,8 @@
-import React, { useState } from "react";
-import { TouchableHighlight, Text, Image } from "react-native";
-import SvgUri from "react-native-svg-uri";
+import React, { useState } from 'react';
+import { TouchableHighlight, Text } from 'react-native';
 
 export default function HeaderButtons(props: { buttonName: string }) {
-  let { buttonName } = props;
+  const { buttonName } = props;
   const [isActive, setIsActive] = useState(false);
 
   const handleClick = () => {
@@ -16,23 +15,23 @@ export default function HeaderButtons(props: { buttonName: string }) {
         style={{
           paddingHorizontal: 12,
           paddingVertical: 4,
-          width: "auto",
-          backgroundColor: isActive ? "#27007A" : "",
+          width: 'auto',
+          backgroundColor: isActive ? '#27007A' : '',
           borderRadius: 18,
-          display: "flex",
-          flexDirection: "row",
-          justifyContent: "space-around",
+          display: 'flex',
+          flexDirection: 'row',
+          justifyContent: 'space-around',
         }}
         onPress={handleClick}
       >
         <>
           <Text
             style={{
-              color: isActive ? "white" : "#27007A",
-              display: "flex",
-              flexDirection: "row",
-              justifyContent: "space-around",
-              alignItems: "center",
+              color: isActive ? 'white' : '#27007A',
+              display: 'flex',
+              flexDirection: 'row',
+              justifyContent: 'space-around',
+              alignItems: 'center',
             }}
           >
             {buttonName}

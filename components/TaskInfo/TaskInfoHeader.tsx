@@ -1,21 +1,10 @@
 import React from "react";
-// import {
-//   VStack,
-//   HStack,
-//   Button,
-//   IconButton,
-//   Icon,
-//   NativeBaseProvider,
-//   Center,
-//   Box,
-//   StatusBar,
-//   Stack,
-// } from "native-base";
-import { Text, View } from "react-native";
+import { Text, View, Pressable } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
 import { IconButton } from "native-base";
-
+import { useNavigation } from "@react-navigation/native";
 const TaskInfoHeader = () => {
+  const navigation = useNavigation();
   return (
     <View
       style={{
@@ -32,17 +21,21 @@ const TaskInfoHeader = () => {
         <IconButton
           icon={<AntDesign name="left" size={15} color="#2A00A5" />}
           marginTop="3"
+          onPress={() => navigation.goBack()}
+          _pressed={{ bg: null }}
         />
-        <Text
-          style={{
-            color: "#2A00A5",
-            fontSize: 15,
-            marginTop: 20,
-            fontWeight: "bold",
-          }}
-        >
-          All Tasks
-        </Text>
+        <Pressable onPress={() => navigation.goBack()}>
+          <Text
+            style={{
+              color: "#2A00A5",
+              fontSize: 15,
+              marginTop: 20,
+              fontWeight: "bold",
+            }}
+          >
+            All Tasks
+          </Text>
+        </Pressable>
       </View>
 
       <View
