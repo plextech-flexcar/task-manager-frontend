@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Image, SafeAreaView, Text, View, StyleSheet, TouchableOpacity, TextInput } from "react-native";
-import TaskInfoHeader from "../TaskInfoHeader";
-import { HStack, VStack, Divider, Modal, Button } from "native-base";
+import { HStack } from "native-base";
 import { styles } from "../../../screens/TaskInfoScreen/TaskInfoStyles.js";
 
 const onPress = () => {};

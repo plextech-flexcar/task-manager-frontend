@@ -1,9 +1,7 @@
 import React, { useState } from "react";
-import { Image, SafeAreaView, Text, View, StyleSheet, TouchableOpacity } from "react-native";
-import TaskInfoHeader from "../TaskInfoHeader";
-import { HStack, VStack, Divider, Modal, Button } from "native-base";
+import { SafeAreaView, Text, View, StyleSheet, TouchableOpacity } from "react-native";
+import { HStack, Modal, Button } from "native-base";
 import { styles } from "../../../screens/TaskInfoScreen/TaskInfoStyles.js";
-import { flexbox } from "native-base/lib/typescript/theme/styled-system";
 
 const onPress = () => {};
 const TaskInfoPopup = () => {
@@ -21,11 +19,6 @@ const TaskInfoPopup = () => {
         </Modal.Body>
         <Modal.Footer style={{borderTopWidth: 0, elevation: 0, margin: 0}}>
           <Button.Group space={2} style={styles1.buttonGroup}>
-            {/* <Button variant="ghost" colorScheme="blueGray" onPress={() => {
-            setShowModal(false);
-          }}>
-              Cancel
-            </Button> */}
              <TouchableOpacity onPress={onPress} style={styles1.button}>
               <Text style={styles1.buttonText}><Text style={{textAlign: "center", justifyContent:"center"}}>CANCEL</Text></Text>
             </TouchableOpacity>

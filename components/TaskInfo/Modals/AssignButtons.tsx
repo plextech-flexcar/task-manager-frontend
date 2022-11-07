@@ -1,9 +1,7 @@
 import React, { useState } from "react";
 import { Image, SafeAreaView, Text, View, StyleSheet, TouchableOpacity } from "react-native";
-import TaskInfoHeader from "../TaskInfoHeader";
-import { HStack, VStack, Divider, Modal, Button } from "native-base";
+import { HStack } from "native-base";
 import { styles } from "../../../screens/TaskInfoScreen/TaskInfoStyles.js";
-import { flexbox } from "native-base/lib/typescript/theme/styled-system";
 
 const onPress = () => {};
 const TaskInfoPopup = () => {

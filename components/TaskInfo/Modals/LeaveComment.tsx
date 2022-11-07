@@ -1,10 +1,8 @@
 import React, { useState } from "react";
-import { Image, SafeAreaView, Text, View, StyleSheet, TouchableOpacity, TextInput, KeyboardAvoidingView, Platform, Pressable } from "react-native";
-import TaskInfoHeader from "../TaskInfoHeader";
-import { HStack, VStack, Divider, Modal, Button, FormControl, Input } from "native-base";
+import { Image, Text, View, StyleSheet, TextInput, KeyboardAvoidingView, Platform, Pressable } from "react-native";
+import { Modal, FormControl } from "native-base";
 import { styles } from "../../../screens/TaskInfoScreen/TaskInfoStyles.js";
-import { flexbox } from "native-base/lib/typescript/theme/styled-system";
-import { nodeModuleNameResolver } from "typescript";
+
 
 
 const TaskInfoPopup = () => {
@@ -19,11 +17,8 @@ const TaskInfoPopup = () => {
             <Modal.Content style={styles1.bottomModal} justifyContent={"center"}>
               <Modal.CloseButton variant="#2A00A5" tintColor="#2A00A5" color="#2A00A5" style={{}}/>
               <Modal.Header  style={{borderBottomWidth: 0, alignContent: "center", justifyContent:"center"}}><Text style={{fontWeight: "600", textAlign: "center", justifyContent:"center"}}>Leave comment</Text></Modal.Header>
-              {/* <Modal.Body style={{borderBottomWidth: 0,}}>
-              </Modal.Body> */}
               <Modal.Footer style={{borderTopWidth: 0, elevation: 0, margin: 0}}>
                 <FormControl style={styles1.form}>
-                      {/* <FormControl.Label>Name</FormControl.Label> */}
                       <View style={{flexDirection:'row', margin: 5, padding:0, alignItems:'center', justifyContent:'center'}}>
                         <View style={{flex:8}}>
                           <TextInput placeholder="Reason" autoFocus={true} style={styles1.input} onSubmitEditing={() => setShowModal(false)}/>
@@ -53,7 +48,6 @@ const styles1 = StyleSheet.create({
     flex: 1,
   },
   input: {
-    // backgroundColor: "",
     borderColor: "#2A00A5",
     padding: 10,
   },
