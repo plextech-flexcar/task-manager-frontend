@@ -1,5 +1,12 @@
 import React, { useState } from "react";
-import { Image, SafeAreaView, Text, View, StyleSheet, TouchableOpacity } from "react-native";
+import {
+  Image,
+  SafeAreaView,
+  Text,
+  View,
+  StyleSheet,
+  TouchableOpacity,
+} from "react-native";
 import { HStack } from "native-base";
 import { styles } from "../../../screens/TaskInfoScreen/TaskInfoStyles.js";
 
@@ -9,19 +16,29 @@ const TaskInfoPopup = () => {
 
   return (
     <SafeAreaView style={styles.whitebg}>
-    <View style={styles1.contain}>
-             <TouchableOpacity onPress={onPress} style={styles1.button}>
-              <Text style={styles1.buttonText}><Text style={{textAlign: "center", justifyContent:"center"}}>COMMENT</Text></Text>
-            </TouchableOpacity>
-            <TouchableOpacity onPress={() => setShowModal(false)} style={styles1.buttonPurple}>
-              <HStack space={1} alignItems="center" justifyContent={"center"}>
-                    <Text style={styles1.buttonTextWhite}>ASSIGN</Text>
+      <View style={styles1.contain}>
+        <TouchableOpacity onPress={onPress} style={styles1.button}>
+          <Text style={styles1.buttonText}>
+            <Text style={{ textAlign: "center", justifyContent: "center" }}>
+              COMMENT
+            </Text>
+          </Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => setShowModal(false)}
+          style={styles1.buttonPurple}
+        >
+          <HStack space={1} alignItems="center" justifyContent={"center"}>
+            <Text style={styles1.buttonTextWhite}>ASSIGN</Text>
 
-                    <Image style={{width: 20, height: 20}} source={require("../../../assets/person_search.png")} />
-              </HStack>
-            </TouchableOpacity>
-    </View>
-  </SafeAreaView>
+            <Image
+              style={{ width: 20, height: 20 }}
+              source={require("../../../assets/person_search.png")}
+            />
+          </HStack>
+        </TouchableOpacity>
+      </View>
+    </SafeAreaView>
   );
 };
 
@@ -43,7 +60,6 @@ const styles1 = StyleSheet.create({
     borderRadius: 30,
     width: "100%",
     flex: 1,
-    
   },
   buttonText: {
     color: "#2A00A5",
