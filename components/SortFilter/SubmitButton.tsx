@@ -11,18 +11,27 @@ import { HStack } from 'native-base';
 import { styles } from '../../screens/TaskInfoScreen/TaskInfoStyles.js';
 import { filterTasks } from './utilityFilter';
 import { useAtom } from 'jotai';
-import { allTasksAtom, displayTasksAtom, atomFilters } from '../../atoms';
 
-
-const TaskInfoPopup = () => {
-  const [showModal, setShowModal] = useState(true);
+import {
+  allTasksAtom,
+  displayTasksAtom,
+  atomFilters,
+  atomModalVisible,
+} from '../../atoms';
+export default function SubmitButton(props: {
+  changeFilter: React.Dispatch<React.SetStateAction<any>>;
+}) {
+  const { changeFilter } = props;
+  const [isModalVisible, setModalVisible] = useAtom(atomModalVisible);
   const [allTasks, setAllTasks] = useAtom(allTasksAtom);
   const [displayTasks, setDisplayTasks] = useAtom(displayTasksAtom);
-  const [filter, setFilter] = useAtom(atomFilters)
+  const [filter, setFilter] = useAtom(atomFilters);
 
   const onPress = () => {
     const newDisplayTasks = filterTasks(filter, allTasks);
-    setDisplayTasks(newDisplayTasks)
+    setModalVisible(false);
+    setDisplayTasks(newDisplayTasks);
+    changeFilter('Sort & Filter');
   };
 
   return (
@@ -38,9 +47,7 @@ const TaskInfoPopup = () => {
       </View>
     </SafeAreaView>
   );
-};
-
-export default TaskInfoPopup;
+}
 
 const styles1 = StyleSheet.create({
   buttonGroup: {

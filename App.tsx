@@ -31,7 +31,7 @@ export default function App() {
     id: 4,
     vehicleid: 4,
     date: 1667185142,
-    type: "Glass Chip",
+    type: 'Glass Chip',
     description:
       'Using a windshield repair kit, you can remove the broken glass and replace it with a new piece of glass, and clean the area, apply the adhesive.',
     comment: 'Pls finish ASAP',
@@ -42,7 +42,7 @@ export default function App() {
     mva: 'R436542',
     age: 1667271542,
     assigned: 'Elias Charambides',
-    market: 'Wisconsin',
+    market: 'Atlanta',
     status: true,
     createdBy: 'Willium Hopkin',
     carImage:
@@ -55,7 +55,7 @@ export default function App() {
     id: 4,
     vehicleid: 4,
     date: 1667185142,
-    type: "Low tread",
+    type: 'Low tread',
     description:
       'Using a windshield repair kit, you can remove the broken glass and replace it with a new piece of glass, and clean the area, apply the adhesive.',
     comment: 'Pls finish ASAP',
@@ -76,20 +76,13 @@ export default function App() {
     priority: 4,
   };
 
-  const tasks: Task[] = [
-    task1,
-    task2,
-    task1,
-    task2,
-    task1,
-  ];
+  const tasks: Task[] = [task1, task2, task1, task2, task1];
 
   // Loads dummy tasks without connecting to backend
   useEffect(() => {
     setDisplayTasks(tasks);
     setAllTasks(tasks);
   }, []);
-
 
   // fetch(
   //   "http://localhost:8080/api/v1/task",

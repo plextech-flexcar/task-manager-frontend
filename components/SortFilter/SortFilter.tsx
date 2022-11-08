@@ -7,8 +7,8 @@ import FilterBox from './FilterBox';
 import SquareBoxes from './SquareBoxes';
 import { atomFilterOptions, atomModalVisible } from '../../atoms';
 import { useAtom } from 'jotai';
-import { flexbox } from 'native-base/lib/typescript/theme/styled-system';
 import SubmitButton from './SubmitButton';
+import { styles } from './styles.js';
 
 export default function SortFilter() {
   const [isModalVisible, setModalVisible] = useAtom(atomModalVisible);
@@ -77,47 +77,10 @@ export default function SortFilter() {
           </ScrollView>
           <View>
             {' '}
-            <SubmitButton />{' '}
+            <SubmitButton changeFilter={changeFilter} />{' '}
           </View>
         </View>
       </Modal>
     </View>
   );
 }
-const styles = StyleSheet.create({
-  view: {
-    justifyContent: 'flex-end',
-    margin: 0,
-  },
-  modalIcon: {
-    display: 'flex',
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  modalView: {
-    height: '85%',
-    backgroundColor: '#EDEDED',
-    borderTopLeftRadius: 20,
-    borderTopRightRadius: 20,
-    overflow: 'hidden',
-  },
-
-  modalHeader: {
-    paddingVertical: 15,
-    display: 'flex',
-    justifyContent: 'space-between',
-    flexDirection: 'row',
-    alignItems: 'baseline',
-    paddingHorizontal: 15,
-    width: '55%',
-  },
-  modalHeaderTitle: {
-    fontSize: 17,
-  },
-  backText: {
-    fontfamily: 'Inter',
-    color: '#2A00A5',
-    fontWeight: '400',
-    fontSize: 20,
-  },
-});
