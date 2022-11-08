@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Image, SafeAreaView, Text, View } from 'react-native';
 import TaskInfoHeader from '../../components/TaskInfo/TaskInfoHeader';
 import { HStack, VStack, Divider } from 'native-base';
 import { styles } from './TaskInfoStyles.js';
 import { PRIORITY_ICON_MAP } from '../../components/TaskCard/TaskCardPriorityIconMap';
+import AssignButtons from '../../components/TaskInfo/Modals/AssignButtons';
 const TaskInfoScreen = ({ route }) => {
   const {
     type,
@@ -24,6 +25,18 @@ const TaskInfoScreen = ({ route }) => {
     state,
     vin,
   } = route.params;
+  const [modalVisible, setModalVisible] = useState(false);
+  const getPriority = (priority: number) => {
+    if (priority === 1) {
+      return 'Low';
+    } else if (priority === 2) {
+      return 'Normal';
+    } else if (priority === 3) {
+      return 'High';
+    } else {
+      return 'Top';
+    }
+  };
   const getInitials = (name) => {
     return name
       .split(' ')
@@ -51,7 +64,7 @@ const TaskInfoScreen = ({ route }) => {
               source={PRIORITY_ICON_MAP[priority]}
               style={{ width: 20, height: 20 }}
             />
-            <Text style={styles.priorityTop}>Top</Text>
+            <Text style={styles.priorityTop}>{getPriority(priority)}</Text>
           </View>
         </View>
 
@@ -114,6 +127,8 @@ const TaskInfoScreen = ({ route }) => {
             <Text style={styles.commentBy}>by Adam Miller on 3/15/22 - 4:30pm</Text>
           </VStack>
         </HStack>
+
+        <AssignButtons />
       </VStack>
     </SafeAreaView>
   );
