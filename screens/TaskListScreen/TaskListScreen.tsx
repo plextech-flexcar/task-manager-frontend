@@ -29,7 +29,7 @@ const TaskListScreen = () => {
       'https://www.freepnglogos.com/uploads/honda-car-png/honda-car-honda-civic-very-good-car-honda-civic-10.png',
     state: 'NC',
     vin: 'vy6si92Chj',
-    priority: 3
+    priority: 1
   };
 
   const tasks: Task[] = [task1];
