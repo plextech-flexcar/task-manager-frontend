@@ -18,7 +18,7 @@ export function initialFindMake(tasklist: Task[]){
             makeFilter[currMake].push(currModel)
         }
         }
-        //if model is in list of dict, dont do anything
+        //if model is in list of dict, don't do anything
       }
       console.log(makeFilter)
       return makeFilter;

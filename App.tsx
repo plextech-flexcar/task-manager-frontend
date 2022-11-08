@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { NativeBaseProvider, extendTheme } from 'native-base';
 import TaskListScreen from './screens/TaskListScreen/TaskListScreen';
 import TaskInfoScreen from './screens/TaskInfoScreen/TaskInfoScreen';
@@ -24,24 +24,27 @@ const Stack = createNativeStackNavigator();
 export default function App() {
   const [allTasks, setAllTasks] = useAtom(allTasksAtom);
   const [displayTasks, setDisplayTasks] = useAtom(displayTasksAtom);
-
-  // fetch(
-  //   "http://localhost:8080/api/v1/task",
-  //   {
+  // const getTasksAPI = async () => {
+  //   fetch('http://localhost:8080/api/v1/task', {
   //     mode: 'cors',
   //     method: 'GET',
   //     headers: {
   //       'Content-Type': 'application/json',
-  //       'Accept' : 'application/json',
-  //       'Origin' : 'http://localhost:19006'
-  //     }
-  //   }
-  // )
-  // .then(response => response.json())
-  // .then(json => {
-  //   setAllTasks(json)
-  //   setDisplayTasks(json)
-  // })
+  //       'Accept': 'application/json',
+  //       'Origin': 'http://localhost:19006',
+  //     },
+  //   })
+  //     .then((response) => response.json())
+  //     .then((json) => {
+  //       setAllTasks(json);
+  //       setDisplayTasks(json);
+  //     });
+  // };
+
+  // useEffect(() => {
+  //   getTasksAPI();
+  //   console.log(allTasks);
+  // }, []);
 
   return (
     <NativeBaseProvider>
