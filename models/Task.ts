@@ -14,7 +14,7 @@ export interface Task {
   age: number;
   assigned: string | null;
   market: string;
-  status: string;
+  status: boolean;
   createdBy: string | null;
   carImage: string;
   state: string;
