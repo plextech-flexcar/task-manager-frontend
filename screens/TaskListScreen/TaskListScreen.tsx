@@ -29,16 +29,15 @@ const TaskListScreen = () => {
       'https://www.freepnglogos.com/uploads/honda-car-png/honda-car-honda-civic-very-good-car-honda-civic-10.png',
     state: 'NC',
     vin: 'vy6si92Chj',
-    priority: 1
+    priority: 3,
   };
 
-  const tasks: Task[] = [task1];
   const [taskAPI] = useAtom(allTasksAtom);
   console.log('Task API', taskAPI);
   return (
     <SafeAreaView style={styles.view}>
       <TaskListHeader />
-      <TaskCardList tasks={tasks} />
+      <TaskCardList tasks={taskAPI} />
     </SafeAreaView>
   );
 };
