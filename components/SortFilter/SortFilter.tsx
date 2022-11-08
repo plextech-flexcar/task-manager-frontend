@@ -8,6 +8,7 @@ import SquareBoxes from './SquareBoxes';
 import { atomFilterOptions, atomModalVisible } from '../../atoms';
 import { useAtom } from 'jotai';
 import { flexbox } from 'native-base/lib/typescript/theme/styled-system';
+import SubmitButton from './SubmitButton';
 
 export default function SortFilter() {
   const [isModalVisible, setModalVisible] = useAtom(atomModalVisible);
@@ -74,6 +75,10 @@ export default function SortFilter() {
             {title === 'Priority' && <SquareBoxes filterCategory={title} />}
             {title === 'Quick View' && <SquareBoxes filterCategory={title} />}
           </ScrollView>
+          <View>
+            {' '}
+            <SubmitButton />{' '}
+          </View>
         </View>
       </Modal>
     </View>

@@ -98,16 +98,21 @@ export default function App() {
   //     method: 'GET',
   //     headers: {
   //       'Content-Type': 'application/json',
-  //       'Accept' : 'application/json',
-  //       'Origin' : 'http://localhost:19006'
-  //     }
-  //   }
-  // )
-  // .then(response => response.json())
-  // .then(json => {
-  //   setAllTasks(json)
-  //   setDisplayTasks(json)
-  // })
+  //       'Accept': 'application/json',
+  //       'Origin': 'http://localhost:19006',
+  //     },
+  //   })
+  //     .then((response) => response.json())
+  //     .then((json) => {
+  //       setAllTasks(json);
+  //       setDisplayTasks(json);
+  //     });
+  // };
+
+  // useEffect(() => {
+  //   getTasksAPI();
+  //   console.log(allTasks);
+  // }, []);
 
   return (
     <NativeBaseProvider>

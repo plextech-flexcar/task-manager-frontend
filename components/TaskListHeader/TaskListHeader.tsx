@@ -2,7 +2,7 @@ import React from 'react';
 import { Text, View, Image } from 'react-native';
 import { Searchbar } from 'react-native-paper';
 
-import HeaderButtons from './HeaderButton';
+import HeaderButton from './HeaderButton';
 import { styles } from './styles';
 
 export default function TaskListHeader() {
@@ -30,9 +30,9 @@ export default function TaskListHeader() {
         />
       </View>
       <View style={styles.headerButtonRow}>
-        <HeaderButtons buttonName={'Reset '} />
+        <HeaderButton buttonName={'Reset '} />
         <Text style={styles.numTasks}>50 Tasks</Text>
-        <HeaderButtons buttonName={'Sort & Filter'} />
+        <HeaderButton buttonName={'Sort & Filter'} />
       </View>
     </View>
   );
