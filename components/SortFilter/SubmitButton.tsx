@@ -9,10 +9,21 @@ import {
 } from 'react-native';
 import { HStack } from 'native-base';
 import { styles } from '../../screens/TaskInfoScreen/TaskInfoStyles.js';
+import { filterTasks } from './utilityFilter';
+import { useAtom } from 'jotai';
+import { allTasksAtom, displayTasksAtom, atomFilters } from '../../atoms';
 
-const onPress = () => {};
+
 const TaskInfoPopup = () => {
   const [showModal, setShowModal] = useState(true);
+  const [allTasks, setAllTasks] = useAtom(allTasksAtom);
+  const [displayTasks, setDisplayTasks] = useAtom(displayTasksAtom);
+  const [filter, setFilter] = useAtom(atomFilters)
+
+  const onPress = () => {
+    const newDisplayTasks = filterTasks(filter, allTasks);
+    setDisplayTasks(newDisplayTasks)
+  };
 
   return (
     <SafeAreaView style={styles.whitebg}>

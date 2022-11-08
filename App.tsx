@@ -31,7 +31,7 @@ export default function App() {
     id: 4,
     vehicleid: 4,
     date: 1667185142,
-    type: "Glass Chip: Rear Window Passenger's side",
+    type: "Glass Chip",
     description:
       'Using a windshield repair kit, you can remove the broken glass and replace it with a new piece of glass, and clean the area, apply the adhesive.',
     comment: 'Pls finish ASAP',
@@ -55,7 +55,7 @@ export default function App() {
     id: 4,
     vehicleid: 4,
     date: 1667185142,
-    type: "Glass Chip: Rear Window Passenger's side",
+    type: "Low tread",
     description:
       'Using a windshield repair kit, you can remove the broken glass and replace it with a new piece of glass, and clean the area, apply the adhesive.',
     comment: 'Pls finish ASAP',
