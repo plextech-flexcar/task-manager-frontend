@@ -11,16 +11,17 @@ import { HStack } from 'native-base';
 import { styles } from '../../../screens/TaskInfoScreen/TaskInfoStyles';
 import { Alert, Modal, Pressable } from 'react-native';
 import NameListScreen from '../../../screens/NameListScreen/NameListScreen';
+import GenericButton from '../../GenericButton/GenericButton';
 
-const TaskInfoPopup = () => {
+const TaskInfoPopup = (props) => {
+  const { assigned } = props
   const [showModal, setShowModal] = useState(false);
-  const [resolveShowModal, setResolveShowModal] = useState(false);
-  const [resolve, setResolve] = useState(false);
+  const [resolve, setResolve] = useState(assigned !== '');
   const onPressFunction = () => {
     setShowModal(!showModal);
     setResolve(!resolve);
   };
-
+  const personSearch = require('../../../assets/person_search.png')
   return (
     <SafeAreaView style={styles.whitebg}>
       <View style={style_temp.centeredView}>
@@ -34,14 +35,7 @@ const TaskInfoPopup = () => {
           }}
         >
           <NameListScreen />
-          <View
-            style={{
-              flex: 'display',
-              flexDirection: 'row',
-              alignItems: 'center',
-              justifyContent: 'center',
-            }}
-          >
+          <View style={styles1.centerView}>
             <Pressable
               style={[style_temp.button, style_temp.buttonClose]}
               onPress={() => onPressFunction()}
@@ -53,32 +47,11 @@ const TaskInfoPopup = () => {
       </View>
       <View style={styles1.contain}>
         <HStack space={3} alignItems="center" justifyContent={'center'}>
-          <TouchableOpacity style={styles1.button}>
-            <Text style={styles1.buttonText}>
-              <Text style={{ textAlign: 'center', justifyContent: 'center' }}>
-                COMMENT
-              </Text>
-            </Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            onPress={() => {
-              resolve ? setResolveShowModal(!resolveShowModal) : setShowModal(!showModal);
-            }}
-            style={styles1.buttonPurple}
-          >
-            <HStack space={1} alignItems="center" justifyContent={'center'}>
-              {resolve! ? (
-                <Text style={styles1.buttonTextWhite}>ASSIGN</Text>
-              ) : (
-                <Text style={styles1.buttonTextWhite}>RESOLVE</Text>
-              )}
-
-              <Image
-                style={{ width: 20, height: 20 }}
-                source={require('../../../assets/person_search.png')}
-              />
-            </HStack>
-          </TouchableOpacity>
+        <GenericButton isPurple={false} text={'COMMENT'} />
+          { resolve ? <GenericButton isPurple={true} text={'RESOLVE'} /> :
+            <GenericButton isPurple={true} imageSource={personSearch} text={'ASSIGN'} />
+          }
+          
         </HStack>
       </View>
     </SafeAreaView>
@@ -88,6 +61,12 @@ const TaskInfoPopup = () => {
 export default TaskInfoPopup;
 
 const styles1 = StyleSheet.create({
+  centerView: {
+    flex: 'display',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
   buttonGroup: {
     display: 'flex',
     alignItems: 'center',

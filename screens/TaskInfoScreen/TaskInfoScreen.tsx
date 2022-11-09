@@ -128,7 +128,7 @@ const TaskInfoScreen = ({ route }) => {
           </VStack>
         </HStack>
 
-        <AssignButtons />
+        <AssignButtons assigned = {assigned} />
       </VStack>
     </SafeAreaView>
   );
