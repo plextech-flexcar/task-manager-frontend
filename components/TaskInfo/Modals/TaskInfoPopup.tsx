@@ -1,17 +1,21 @@
 import React, { useState } from 'react';
-import { Alert, Pressable, SafeAreaView, StyleSheet, Modal } from 'react-native';
-import { HStack, Text, View, Image } from 'native-base';
+import { Alert, SafeAreaView, StyleSheet, Modal } from 'react-native';
+import { HStack, View } from 'native-base';
 import { styles } from '../../../screens/TaskInfoScreen/TaskInfoStyles';
 import GenericButton from '../../GenericButton/GenericButton';
 import NameListScreen from '../../../screens/NameListScreen/NameListScreen';
 import ResolveTask from './ResolveTask';
+import ReopenTask from './ReopenTask';
+import LeaveComment from './LeaveComment';
 
 const TaskInfoPopup = (props) => {
   const [showModal, setShowModal] = useState(false);
   const { assigned } = props;
-  // const [assignPress, setAssignPress] = useState(false);
   const [resolve, setResolve] = useState(assigned !== '');
   const [resolveModal, setResolveModal] = useState(false);
+  const [finalResolve, setFinalResolve] = useState(false);
+  const [reOpenModel, setReopenModal] = useState(false);
+  const [commentModal, setCommentModal] = useState(false);
   const onAssign = () => {
     setShowModal(!showModal);
     setResolve(!resolve);
@@ -23,10 +27,28 @@ const TaskInfoPopup = (props) => {
   const onShowResolveToggle = () => {
     setResolveModal(!resolveModal);
   };
+  const onResolve = () => {
+    setFinalResolve(true);
+    setResolveModal(false);
+  };
+  const resolveToggle = () => {
+    setResolveModal(!resolveModal);
+  };
+  const reopenToggle = () => {
+    setReopenModal(!reOpenModel);
+  };
+  const onSubmit = () => {
+    setReopenModal(!reOpenModel);
+    setResolve(false);
+  };
+  const commentToggle = () => {
+    setCommentModal(!commentModal);
+  };
+
   const personSearch = require('../../../assets/person_search.png');
   return (
     <SafeAreaView style={styles.whitebg}>
-      <View style={style_temp.centeredView}>
+      <View>
         <Modal
           animationType="slide"
           transparent={false}
@@ -41,45 +63,46 @@ const TaskInfoPopup = (props) => {
         </Modal>
       </View>
       <View style={style_temp.centeredView}>
-        <Modal
-          animationType="slide"
-          transparent={false}
-          visible={resolveModal}
-          onRequestClose={() => {
-            Alert.alert('Modal has been closed.');
-            setShowModal(!showModal);
-          }}
-          presentationStyle="fullScreen"
-        >
-          <ResolveTask />
-          <Pressable onPress={onShowResolveToggle}>
-            <Text>Close</Text>
-          </Pressable>
-        </Modal>
+        <ResolveTask
+          resolveShowModal={resolveModal}
+          onCloseCall={onShowResolveToggle}
+          onResolve={onResolve}
+        />
+      </View>
+      <View style={style_temp.centeredView}>
+        <ReopenTask
+          showModal={reOpenModel}
+          closeCall={reopenToggle}
+          onSubmit={onSubmit}
+        />
+      </View>
+      <View style={style_temp.centeredView}>
+        <LeaveComment showModal={commentModal} onClose={commentToggle} />
       </View>
       <View style={styles1.contain}>
-        <HStack space={3} alignItems="center" justifyContent={'center'}>
-          <GenericButton
-            isPurple={false}
-            text={resolve && resolveModal ? 'CANCEL' : 'COMMENT'}
-            cancelResolve={onShowResolveToggle}
-          />
-          {resolve ? (
-            <GenericButton
-              isPurple={true}
-              text={'RESOLVE'}
-              functionCall={setResolveModal}
-            />
-          ) : (
+        {!resolveModal ? (
+          <HStack space={3} alignItems="center" justifyContent={'center'}>
             <GenericButton
               isPurple={false}
-              imageSource={personSearch}
-              text={'ASSIGN'}
-              functionCall={onShowToggle}
-              assignCall={onAssign}
+              text={'COMMENT'}
+              functionCall={() => commentToggle()}
             />
-          )}
-        </HStack>
+            {resolve ? (
+              <GenericButton
+                isPurple={true}
+                text={finalResolve ? 'REOPEN' : 'RESOLVE'}
+                functionCall={finalResolve ? reopenToggle : resolveToggle}
+              />
+            ) : (
+              <GenericButton
+                isPurple={true}
+                imageSource={personSearch}
+                text={'ASSIGN'}
+                functionCall={onShowToggle}
+              />
+            )}
+          </HStack>
+        ) : null}
       </View>
     </SafeAreaView>
   );

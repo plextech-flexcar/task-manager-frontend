@@ -1,21 +1,19 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { SafeAreaView, Text, View, StyleSheet, TouchableOpacity } from 'react-native';
 import { HStack, Modal, Button } from 'native-base';
 import { styles } from '../../../screens/TaskInfoScreen/TaskInfoStyles.js';
 
-const onPress = () => {};
-const ResolveTask = () => {
-  const [showModal, setShowModal] = useState(true);
-
+const ResolveTask = ({ resolveShowModal, onCloseCall, onResolve }) => {
   return (
     <SafeAreaView style={styles.whitebg}>
       <View style={styles1.contain}>
         <Modal
-          isOpen={showModal}
-          onClose={() => setShowModal(false)}
+          isOpen={resolveShowModal}
+          onClose={() => onCloseCall()}
           safeAreaTop={true}
           style={styles1.modal}
           size={'full'}
+          presentationStyle="fullScreen"
         >
           <Modal.Content style={styles1.bottomModal} justifyContent={'center'}>
             <Modal.Header style={{ borderBottomWidth: 0 }}>
@@ -36,7 +34,7 @@ const ResolveTask = () => {
             </Modal.Body>
             <Modal.Footer style={{ borderTopWidth: 0, elevation: 0, margin: 0 }}>
               <Button.Group space={2} style={styles1.buttonGroup}>
-                <TouchableOpacity onPress={onPress} style={styles1.button}>
+                <TouchableOpacity onPress={() => onCloseCall()} style={styles1.button}>
                   <Text style={styles1.buttonText}>
                     <Text style={{ textAlign: 'center', justifyContent: 'center' }}>
                       CANCEL
@@ -44,7 +42,7 @@ const ResolveTask = () => {
                   </Text>
                 </TouchableOpacity>
                 <TouchableOpacity
-                  onPress={() => setShowModal(false)}
+                  onPress={() => onResolve()}
                   style={styles1.buttonPurple}
                 >
                   <HStack space={1} alignItems="center" justifyContent={'center'}>

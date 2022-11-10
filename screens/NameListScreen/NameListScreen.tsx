@@ -6,7 +6,6 @@ import NameCardList from '../../components/NameCardList/NameCardList';
 import AssignModalFunc from '../../components/TaskAssign/AssignModal';
 import FlatListItemSeparator from '../../components/ItemSeperation';
 import { IconButton } from 'react-native-paper';
-import { position } from 'native-base/lib/typescript/theme/styled-system';
 
 const NameListScreen = ({ closeCall, onAssignCall }: any) => {
   const name1: Name = {

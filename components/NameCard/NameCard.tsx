@@ -7,6 +7,7 @@ import { Pressable } from 'react-native';
 const NameCard = (props: { name: Name; onAssignCall: any }) => {
   const first = props.name.first;
   const last = props.name.last;
+  const name = first + ' ' + last;
   const { onAssignCall } = props;
   return (
     <Pressable onPress={() => onAssignCall()}>
@@ -15,8 +16,8 @@ const NameCard = (props: { name: Name; onAssignCall: any }) => {
           <HStack justifyContent="space-between">
             <IconComponent first={first} last={last} />
             <Text>
-              <View style={styles.taskHeading} left="40px" top="2.5px">
-                {first + ' ' + last}
+              <View style={styles.taskHeading} left="40" top="2.5">
+                <Text>{name}</Text>
               </View>
             </Text>
           </HStack>

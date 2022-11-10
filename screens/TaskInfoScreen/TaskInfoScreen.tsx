@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Image, SafeAreaView, Text, View } from 'react-native';
 import TaskInfoHeader from '../../components/TaskInfo/TaskInfoHeader';
-import { HStack, VStack, Divider, Container } from 'native-base';
+import { HStack, VStack, Divider } from 'native-base';
 import { styles } from './TaskInfoStyles.js';
 import { PRIORITY_ICON_MAP } from '../../components/TaskCard/TaskCardPriorityIconMap';
 import TaskInfoPopup from '../../components/TaskInfo/Modals/TaskInfoPopup';
@@ -25,7 +25,6 @@ const TaskInfoScreen = ({ route }) => {
     state,
     vin,
   } = route.params;
-  const [modalVisible, setModalVisible] = useState(false);
   const getPriority = (priority: number) => {
     if (priority === 1) {
       return 'Low';
@@ -106,9 +105,6 @@ const TaskInfoScreen = ({ route }) => {
         <VStack style={styles.vehicleVerticalStack}>
           <Text>Using a windshied repair kit: </Text>
           <Text style={styles.vehicleMarginTop}>{description}</Text>
-          {/* <Text style={styles.vehicleMarginTop}>2. Clean the area</Text>
-          <Text style={styles.vehicleMarginTop}>3. Apply the adhesive</Text>
-          <Text style={styles.vehicleMarginTop}>4. Apply the glass</Text> */}
         </VStack>
       </View>
       <VStack style={styles.commentVStack}>
@@ -131,9 +127,6 @@ const TaskInfoScreen = ({ route }) => {
           <TaskInfoPopup style={{}} assigned={assigned} />
         </View>
       </VStack>
-      {/* <View style={{marginRight: "5%", marginLeft: "5%"}}>
-        <AssignButtons style={{}} assigned = {assigned} />
-      </View> */}
     </SafeAreaView>
   );
 };

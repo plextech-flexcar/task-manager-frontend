@@ -34,11 +34,11 @@ const TaskListScreen = () => {
 
   const [taskAPI] = useAtom(allTasksAtom);
   console.log('Task API', taskAPI);
-  const taskDummyList = [task1, task1, task1]
+  const taskDummyList = [task1, task1, task1];
   return (
     <SafeAreaView style={styles.view}>
       <TaskListHeader />
-      <TaskCardList tasks={taskDummyList} />
+      <TaskCardList tasks={taskAPI} />
     </SafeAreaView>
   );
 };
