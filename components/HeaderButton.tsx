@@ -10,34 +10,30 @@ export default function HeaderButtons(props: { buttonName: string }) {
   };
 
   return (
-    <>
-      <TouchableHighlight
+    <TouchableHighlight
+      style={{
+        paddingHorizontal: 12,
+        paddingVertical: 4,
+        width: 'auto',
+        backgroundColor: isActive ? '#27007A' : '',
+        borderRadius: 18,
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'space-around',
+      }}
+      onPress={handleClick}
+    >
+      <Text
         style={{
-          paddingHorizontal: 12,
-          paddingVertical: 4,
-          width: 'auto',
-          backgroundColor: isActive ? '#27007A' : '',
-          borderRadius: 18,
+          color: isActive ? 'white' : '#27007A',
           display: 'flex',
           flexDirection: 'row',
           justifyContent: 'space-around',
+          alignItems: 'center',
         }}
-        onPress={handleClick}
       >
-        <>
-          <Text
-            style={{
-              color: isActive ? 'white' : '#27007A',
-              display: 'flex',
-              flexDirection: 'row',
-              justifyContent: 'space-around',
-              alignItems: 'center',
-            }}
-          >
-            {buttonName}
-          </Text>
-        </>
-      </TouchableHighlight>
-    </>
+        {buttonName}
+      </Text>
+    </TouchableHighlight>
   );
 }

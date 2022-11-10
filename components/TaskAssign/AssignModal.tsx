@@ -1,6 +1,6 @@
 import React from 'react';
 import { Searchbar } from 'react-native-paper';
-
+import { styles } from './styles';
 export default function AssignModalFunc() {
   const [searchQuery, setSearchQuery] = React.useState('');
 
@@ -11,18 +11,7 @@ export default function AssignModalFunc() {
       placeholderTextColor="#76757D"
       onChangeText={onChangeSearch}
       value={searchQuery}
-      style={{
-        width: 382,
-        height: '40px',
-        backgroundColor: '#FFFFFF',
-        left: '1px',
-        borderWidth: '2px',
-        borderRadius: '8px',
-        borderColor: '#2A00A5',
-        bottom: '16px',
-        top: '1px',
-        marginBottom: '16px',
-      }}
+      style={styles.searchBar}
       inputStyle={{ fontSize: 15 }}
     />
   );

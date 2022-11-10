@@ -8,9 +8,8 @@ const styles = StyleSheet.create({
     borderWidth: '1px',
     borderStyle: 'solid',
     borderColor: 'white',
-    top: "16px",
-    backgroundColor: "white",    
-    
+    top: '16px',
+    backgroundColor: 'white',
   },
 });
 

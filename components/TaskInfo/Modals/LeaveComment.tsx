@@ -3,7 +3,6 @@ import {
   Image,
   Text,
   View,
-  StyleSheet,
   TextInput,
   KeyboardAvoidingView,
   Platform,
@@ -11,7 +10,7 @@ import {
 } from 'react-native';
 import { Modal, FormControl } from 'native-base';
 import { styles } from '../../../screens/TaskInfoScreen/TaskInfoStyles.js';
-
+import { styles1 } from './leaveCommentStyles';
 const LeaveComment = ({ showModal, onClose }) => {
   const [comment, setComment] = useState('');
   return (
@@ -91,69 +90,3 @@ const LeaveComment = ({ showModal, onClose }) => {
 };
 
 export default LeaveComment;
-
-const styles1 = StyleSheet.create({
-  keyboardView: {
-    backgroundColor: '#EDEDED',
-    flex: 1,
-  },
-  input: {
-    borderColor: '#2A00A5',
-    padding: 10,
-  },
-  form: {
-    placeholderTextColor: '#76757D',
-    borderWidth: 2,
-    borderRadius: 10,
-    borderColor: '#2A00A5',
-    onselect: 'none',
-    boxShadow: 'none',
-    backgroundColor: '#fff',
-  },
-  buttonGroup: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    width: '100%',
-  },
-  button: {
-    textAlign: 'center',
-    backgroundColor: '#FFF',
-    borderColor: '#2A00A5',
-    borderWidth: 2,
-    padding: 10,
-    borderRadius: 30,
-    width: '100%',
-    flex: 1,
-  },
-  buttonText: {
-    color: '#2A00A5',
-    fontWeight: '700',
-  },
-  buttonPurple: {
-    textAlign: 'center',
-    backgroundColor: '#2A00A5',
-    padding: 10,
-    borderRadius: 30,
-    width: '100%',
-    flex: 1,
-  },
-  buttonTextWhite: {
-    color: '#FFF',
-    fontWeight: '700',
-  },
-  contain: {
-    marginTop: 20,
-    marginBottom: 20,
-  },
-  modal: {
-    width: '100%',
-    borderBottomWidth: 0,
-    textAlign: 'center',
-  },
-  bottomModal: {
-    marginBottom: 20,
-    marginTop: 'auto',
-    borderBottomWidth: 0,
-  },
-});

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Alert, SafeAreaView, StyleSheet, Modal } from 'react-native';
+import { Alert, SafeAreaView, Modal } from 'react-native';
 import { HStack, View } from 'native-base';
 import { styles } from '../../../screens/TaskInfoScreen/TaskInfoStyles';
 import GenericButton from '../../GenericButton/GenericButton';
@@ -7,7 +7,7 @@ import NameListScreen from '../../../screens/NameListScreen/NameListScreen';
 import ResolveTask from './ResolveTask';
 import ReopenTask from './ReopenTask';
 import LeaveComment from './LeaveComment';
-
+import { styles1 } from './taskInfoPopupStyles';
 const TaskInfoPopup = (props) => {
   const [showModal, setShowModal] = useState(false);
   const { assigned } = props;
@@ -62,23 +62,13 @@ const TaskInfoPopup = (props) => {
           <NameListScreen closeCall={onShowToggle} onAssignCall={onAssign} />
         </Modal>
       </View>
-      <View style={style_temp.centeredView}>
-        <ResolveTask
-          resolveShowModal={resolveModal}
-          onCloseCall={onShowResolveToggle}
-          onResolve={onResolve}
-        />
-      </View>
-      <View style={style_temp.centeredView}>
-        <ReopenTask
-          showModal={reOpenModel}
-          closeCall={reopenToggle}
-          onSubmit={onSubmit}
-        />
-      </View>
-      <View style={style_temp.centeredView}>
-        <LeaveComment showModal={commentModal} onClose={commentToggle} />
-      </View>
+      <ResolveTask
+        resolveShowModal={resolveModal}
+        onCloseCall={onShowResolveToggle}
+        onResolve={onResolve}
+      />
+      <ReopenTask showModal={reOpenModel} closeCall={reopenToggle} onSubmit={onSubmit} />
+      <LeaveComment showModal={commentModal} onClose={commentToggle} />
       <View style={styles1.contain}>
         {!resolveModal ? (
           <HStack space={3} alignItems="center" justifyContent={'center'}>
@@ -108,103 +98,3 @@ const TaskInfoPopup = (props) => {
   );
 };
 export default TaskInfoPopup;
-
-const styles1 = StyleSheet.create({
-  centerView: {
-    flex: 'display',
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  buttonGroup: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    width: '100%',
-  },
-  button: {
-    textAlign: 'center',
-    backgroundColor: '#FFF',
-    borderColor: '#2A00A5',
-    borderWidth: 2,
-    padding: 10,
-    borderRadius: 30,
-    width: '100%',
-    flex: 1,
-  },
-  buttonText: {
-    color: '#2A00A5',
-    fontWeight: '700',
-  },
-  buttonPurple: {
-    textAlign: 'center',
-    backgroundColor: '#2A00A5',
-    padding: 10,
-    borderRadius: 30,
-    width: '100%',
-    flex: 1,
-  },
-  buttonTextWhite: {
-    color: '#FFF',
-    fontWeight: '700',
-  },
-  contain: {
-    marginTop: 20,
-    marginBottom: 20,
-  },
-  modal: {
-    width: '100%',
-    borderBottomWidth: 0,
-    textAlign: 'center',
-  },
-  bottomModal: {
-    marginBottom: 0,
-    marginTop: 'auto',
-    borderBottomWidth: 0,
-  },
-});
-
-const style_temp = StyleSheet.create({
-  centeredView: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginTop: 22,
-  },
-  modalView: {
-    margin: 20,
-    backgroundColor: 'white',
-    borderRadius: 20,
-    padding: 35,
-    alignItems: 'center',
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 4,
-    elevation: 5,
-  },
-  button: {
-    borderRadius: 20,
-    padding: 10,
-    elevation: 2,
-  },
-  buttonOpen: {
-    backgroundColor: '#F194FF',
-  },
-  buttonClose: {
-    backgroundColor: 'gray',
-    width: '13%',
-  },
-  textStyle: {
-    color: 'white',
-    fontWeight: 'bold',
-    textAlign: 'center',
-  },
-  modalText: {
-    marginBottom: 15,
-    textAlign: 'center',
-  },
-});
