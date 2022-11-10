@@ -73,7 +73,7 @@ const TaskInfoScreen = ({ route }) => {
             <Text style={styles.textTop}>
               {statusVar(status)}
             </Text>
-            {assigned && status !== "OPEN" ? (
+            {assigned && status !== Status.OPEN ? (
               <View style={styles.assignBox}>
                 <Text style={styles.assignBoxText}>{getInitials(assigned)}</Text>
               </View>
@@ -95,8 +95,8 @@ const TaskInfoScreen = ({ route }) => {
               {license}, {state} MVA: {mva}
             </Text>
             <Text style={styles.textTop}>VIN: {vin}</Text>
-            <View style={vehicleStatus ? styles.avialbleBox : styles.unavailableBox}>
-              <Text>{vehicleStatus ? 'Available' : 'Unavialble/Service'}</Text>
+            <View style={vehicleStatus ? styles.availableBox : styles.unavailableBox}>
+              <Text>{vehicleStatus ? 'Available' : 'Unavailable/Service'}</Text>
             </View>
           </View>
           <Image style={styles.image} source={{ uri: carImage }} />
