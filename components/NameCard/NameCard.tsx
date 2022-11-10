@@ -3,11 +3,13 @@ import { View, HStack, VStack, Text } from 'native-base';
 import { styles } from './styles.js';
 import { Name } from '../../models/Name.js';
 import IconComponent from '../IconComponent';
+import { Pressable } from 'react-native';
 
 const NameCard = ({ first, last }: Name) => {
   const fullName = first + ' ' + last;
   console.log(fullName);
   return (
+    <Pressable>
     <View style={styles.card}>
       <VStack p="2" space={0} width="Fill" height="hug">
         <HStack justifyContent="space-between">
@@ -20,6 +22,7 @@ const NameCard = ({ first, last }: Name) => {
         </HStack>
       </VStack>
     </View>
+  </Pressable>
   );
 };
 export default NameCard;

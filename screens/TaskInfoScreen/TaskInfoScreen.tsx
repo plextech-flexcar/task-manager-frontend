@@ -1,5 +1,6 @@
 import React from 'react';
-import { Image, SafeAreaView, Text, View } from 'react-native';
+import { Image, Text, View} from 'native-base'
+import { SafeAreaView } from 'react-native';
 import TaskInfoHeader from '../../components/TaskInfo/TaskInfoHeader';
 import { HStack, VStack, Divider } from 'native-base';
 import { styles } from './TaskInfoStyles.js';
