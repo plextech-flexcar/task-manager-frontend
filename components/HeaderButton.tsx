@@ -10,30 +10,30 @@ export default function HeaderButtons(props: { buttonName: string }) {
   };
 
   return (
-    <TouchableHighlight
-      style={{
-        paddingHorizontal: 12,
-        paddingVertical: 4,
-        width: 'auto',
-        backgroundColor: isActive ? '#27007A' : '',
-        borderRadius: 18,
-        display: 'flex',
-        flexDirection: 'row',
-        justifyContent: 'space-around',
-      }}
-      onPress={handleClick}
-    >
-      <Text
-        style={{
-          color: isActive ? 'white' : '#27007A',
-          display: 'flex',
-          flexDirection: 'row',
-          justifyContent: 'space-around',
-          alignItems: 'center',
-        }}
-      >
+    <TouchableHighlight style={styles.headerButton} onPress={handleClick}>
+      <Text style={styles.headerText}>
         {buttonName}
       </Text>
     </TouchableHighlight>
   );
 }
+
+const styles = Stylesheet.create({
+  headerButton: {
+    paddingHorizontal: 12,
+    paddingVertical: 4,
+    width: 'auto',
+    backgroundColor: isActive ? '#27007A' : '',
+    borderRadius: 18,
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+  },
+  headerText: {
+    color: isActive ? 'white' : '#27007A',
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    alignItems: 'center',
+  },
+});
