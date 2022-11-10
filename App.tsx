@@ -25,27 +25,27 @@ const Stack = createNativeStackNavigator();
 export default function App() {
   const [allTasks, setAllTasks] = useAtom(allTasksAtom);
   const [displayTasks, setDisplayTasks] = useAtom(displayTasksAtom);
-  // const getTasksAPI = async () => {
-  //   fetch('http://localhost:8080/api/v1/task', {
-  //     mode: 'cors',
-  //     method: 'GET',
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //       'Accept': 'application/json',
-  //       'Origin': 'http://localhost:19006',
-  //     },
-  //   })
-  //     .then((response) => response.json())
-  //     .then((json) => {
-  //       setAllTasks(json==-);
-  //       setDisplayTasks(json);
-  //     });
-  // };
+  const getTasksAPI = async () => {
+   fetch('http://localhost:8080/api/v1/task', {
+     mode: 'cors',
+     method: 'GET',
+     headers: {
+       'Content-Type': 'application/json',
+       'Accept': 'application/json',
+       'Origin': 'http://localhost:19006',
+     },
+  })
+     .then((response) => response.json())
+     .then((json) => {
+       setAllTasks(json);
+       setDisplayTasks(json);
+  });
+ };
 
-  // useEffect(() => {
-  //   getTasksAPI();
-  //   console.log(allTasks);
-  // }, []);
+ useEffect(() => {
+   getTasksAPI();
+ console.log(allTasks);
+ }, []);
 
   return (
     <NativeBaseProvider>
