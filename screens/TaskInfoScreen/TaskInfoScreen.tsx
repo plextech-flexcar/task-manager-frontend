@@ -105,9 +105,6 @@ const TaskInfoScreen = ({ route }) => {
         <VStack style={styles.vehicleVerticalStack}>
           <Text>Using a windshied repair kit: </Text>
           <Text style={styles.vehicleMarginTop}>{description}</Text>
-          {/* <Text style={styles.vehicleMarginTop}>2. Clean the area</Text>
-          <Text style={styles.vehicleMarginTop}>3. Apply the adhesive</Text>
-          <Text style={styles.vehicleMarginTop}>4. Apply the glass</Text> */}
         </VStack>
       </View>
       <VStack style={styles.commentVStack}>
