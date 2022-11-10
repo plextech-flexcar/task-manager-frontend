@@ -9,7 +9,7 @@ import { IconButton } from 'react-native-paper';
 
 const NameListScreen = ({ closeCall, onAssignCall }: any) => {
   const name1: Name = {
-    first: 'Rhythm',
+    first: 'Denver',
     last: 'Chao',
   };
   const nameList: Name[] = [name1, name1, name1, name1, name1, name1];
@@ -20,9 +20,8 @@ const NameListScreen = ({ closeCall, onAssignCall }: any) => {
         <IconButton icon="close" color="#2A00A5" size={20} onPress={() => closeCall()} />
       </Pressable>
       <Text style={styles.text}>Assign 4 Tasks</Text>
-
       <AssignModalFunc />
-      <FlatListItemSeparator></FlatListItemSeparator>
+      <FlatListItemSeparator/>
       <NameCardList name={nameList} onAssignCall={onAssignCall} />
     </SafeAreaView>
   );

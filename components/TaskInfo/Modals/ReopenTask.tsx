@@ -11,8 +11,19 @@ import {
 import { Modal, FormControl } from 'native-base';
 import { styles } from '../../../screens/TaskInfoScreen/TaskInfoStyles.js';
 import { styles1 } from './reOpenTaskStyles';
-const ReopenTask = ({ showModal, closeCall, onSubmit }) => {
+const ReopenTask = ({
+    showModal, 
+    closeCall, 
+    onSubmit 
+  } : 
+  {
+    showModal: boolean,
+    closeCall: () => void,
+    onSubmit: () => void,
+  }
+  ) => {
   const [comment, setComment] = useState('');
+  const submitIcon = require('../../../assets/submit.png');
   return (
     <View style={styles1.contain}>
       <Modal
@@ -80,7 +91,7 @@ const ReopenTask = ({ showModal, closeCall, onSubmit }) => {
                   <View style={{ flex: 1 }}>
                     <Pressable onPress={() => onSubmit()}>
                       <Image
-                        source={require('../../../assets/submit.png')}
+                        source={submitIcon}
                         style={{ width: 20, height: 20 }}
                       />
                     </Pressable>

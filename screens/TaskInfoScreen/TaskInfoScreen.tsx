@@ -36,13 +36,13 @@ const TaskInfoScreen = ({ route }) => {
       return 'Top';
     }
   };
-  const getInitials = (name) => {
+  const getInitials = (name: string) => {
     return name
       .split(' ')
       .map((n) => n[0])
       .join('');
   };
-  const fromEpochToDate = (date) => {
+  const fromEpochToDate = (date: number) => {
     const newDate = new Date(date * 1000);
     return newDate.toLocaleString();
   };
@@ -95,15 +95,15 @@ const TaskInfoScreen = ({ route }) => {
               {license}, {state} MVA: {mva}
             </Text>
             <Text style={styles.textTop}>VIN: {vin}</Text>
-            <View style={status ? styles.avialbleBox : styles.unavailableBox}>
-              <Text>{status ? 'Available' : 'Unavialble/Service'}</Text>
+            <View style={status ? styles.availableBox : styles.unavailableBox}>
+              <Text>{status ? 'Available' : 'Unavailable/Service'}</Text>
             </View>
           </View>
           <Image style={styles.image} source={{ uri: carImage }} />
         </View>
         <Divider style={styles.vehicleDivider} />
         <VStack style={styles.vehicleVerticalStack}>
-          <Text>Using a windshied repair kit: </Text>
+          <Text>Using a windshield repair kit: </Text>
           <Text style={styles.vehicleMarginTop}>{description}</Text>
         </VStack>
       </View>
