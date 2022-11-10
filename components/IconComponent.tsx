@@ -2,6 +2,8 @@ import React from 'react';
 import { Box } from 'native-base';
 
 const IconComponent = (props: { first: string; last: string }) => {
+  const { first, last } = props;
+  const fillColor = first === "" && last === "" ? "#FFFFFF" : "#2A00A5";
   return (
     <Box
       rounded="md"
@@ -18,7 +20,9 @@ const IconComponent = (props: { first: string; last: string }) => {
         color: 'white',
         letterSpacing: 'lg',
       }}
-      bg={['#2A00A5']}
+      borderColor = "#2A00A5"
+      borderWidth = "2"
+      bg={[fillColor]}
       width="27px"
       height="27px"
     >

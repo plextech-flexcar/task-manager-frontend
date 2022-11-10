@@ -5,6 +5,7 @@ import { HStack, VStack, Divider } from 'native-base';
 import { styles } from './TaskInfoStyles.js';
 import { PRIORITY_ICON_MAP } from '../../components/TaskCard/TaskCardPriorityIconMap';
 import { Status } from '../../models/Status';
+import TaskInfoPopup from '../../components/TaskInfo/Modals/TaskInfoPopup';
 const TaskInfoScreen = ({ route }) => {
   const {
     type,
@@ -26,13 +27,24 @@ const TaskInfoScreen = ({ route }) => {
     state,
     vin,
   } = route.params;
-  const getInitials = (name) => {
+  const getPriority = (priority: number) => {
+    if (priority === 1) {
+      return 'Low';
+    } else if (priority === 2) {
+      return 'Normal';
+    } else if (priority === 3) {
+      return 'High';
+    } else {
+      return 'Top';
+    }
+  };
+  const getInitials = (name: string) => {
     return name
       .split(' ')
       .map((n) => n[0])
       .join('');
   };
-  const fromEpochToDate = (date) => {
+  const fromEpochToDate = (date: number) => {
     const newDate = new Date(date * 1000);
     return newDate.toLocaleString();
   };
@@ -63,7 +75,7 @@ const TaskInfoScreen = ({ route }) => {
               source={PRIORITY_ICON_MAP[priority]}
               style={{ width: 20, height: 20 }}
             />
-            <Text style={styles.priorityTop}>Top</Text>
+            <Text style={styles.priorityTop}>{getPriority(priority)}</Text>
           </View>
         </View>
 
@@ -103,7 +115,7 @@ const TaskInfoScreen = ({ route }) => {
         </View>
         <Divider style={styles.vehicleDivider} />
         <VStack style={styles.vehicleVerticalStack}>
-          <Text>Using a windshied repair kit: </Text>
+          <Text>Using a windshield repair kit: </Text>
           <Text style={styles.vehicleMarginTop}>{description}</Text>
         </VStack>
       </View>
@@ -123,6 +135,9 @@ const TaskInfoScreen = ({ route }) => {
             <Text style={styles.commentBy}>by Adam Miller on 3/15/22 - 4:30pm</Text>
           </VStack>
         </HStack>
+        <View style={{ marginRight: '5%', marginLeft: '5%' }}>
+          <TaskInfoPopup style={{}} assigned={assigned} />
+        </View>
       </VStack>
     </SafeAreaView>
   );

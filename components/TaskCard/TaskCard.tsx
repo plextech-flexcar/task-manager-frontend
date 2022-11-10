@@ -1,6 +1,6 @@
 import React from 'react';
-import { TouchableOpacity, Image} from 'react-native';
-import { Box, View, HStack, VStack, Text,  } from 'native-base';
+import { TouchableOpacity, Image } from 'react-native';
+import { Box, View, HStack, VStack, Text } from 'native-base';
 import { styles } from './styles.js';
 import { PRIORITY_ICON_MAP } from './TaskCardPriorityIconMap';
 import { Task } from '../../models/Task.js';
@@ -90,7 +90,10 @@ const TaskCard = ({
                   {license} • {mva}
                 </Text>
               </View>
-              <IconComponent first = {assigned ? assigned.split(' ')[0].charAt(0) : ""} last = {assigned ? assigned.split(' ')[1].charAt(0) : ""} />
+              <IconComponent
+                first={assigned ? assigned.split(' ')[0].charAt(0) : ''}
+                last={assigned ? assigned.split(' ')[1].charAt(0) : ''}
+              />
             </HStack>
           </VStack>
         </Box>

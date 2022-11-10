@@ -18,18 +18,14 @@ const styles = StyleSheet.create({
     fontSize: '17px',
     fontWeight: '400',
     color: 'black',
-    position: 'absolute',
+  },
+  textSpacing: {
+    marginLeft: 10
   },
   taskDateText: {
     fontfamily: 'Inter',
     fontSize: '13px',
     color: '#76757d',
-    fontWeight: '400',
-  },
-  vehicleText: {
-    fontfamily: 'Inter',
-    fontSize: '15px',
-    color: '#080726',
     fontWeight: '400',
   },
 });
