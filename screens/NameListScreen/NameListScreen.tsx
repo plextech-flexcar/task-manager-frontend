@@ -1,11 +1,13 @@
 import React from 'react';
-import { SafeAreaView } from 'react-native';
+import { Pressable, SafeAreaView, Text } from 'react-native';
 import { styles } from './styles';
 import { Name } from '../../models/Name';
 import NameCardList from '../../components/NameCardList/NameCardList';
 import AssignModalFunc from '../../components/TaskAssign/AssignModal';
+import FlatListItemSeparator from '../../components/ItemSeperation';
+import { IconButton } from 'react-native-paper';
 
-const NameListScreen = () => {
+const NameListScreen = ({ closeCall, onAssignCall }: any) => {
   const name1: Name = {
     first: 'Rhythm',
     last: 'Chao',
@@ -14,10 +16,14 @@ const NameListScreen = () => {
 
   return (
     <SafeAreaView style={styles.view}>
-      <h3>Assign 4 Tasks</h3>
-      <AssignModalFunc />
+      <Pressable style={styles.icon}>
+        <IconButton icon="close" color="#2A00A5" size={20} onPress={() => closeCall()} />
+      </Pressable>
+      <Text style={styles.text}>Assign 4 Tasks</Text>
 
-      <NameCardList name={nameList} />
+      <AssignModalFunc />
+      <FlatListItemSeparator></FlatListItemSeparator>
+      <NameCardList name={nameList} onAssignCall={onAssignCall} />
     </SafeAreaView>
   );
 };

@@ -11,9 +11,9 @@ const TaskListScreen = () => {
     id: 4,
     vehicleid: 4,
     date: 1667185142,
-    type: "Glass Chip: Rear Window Pasenger's side",
+    type: "Glass Chip: Rear Window Passenger's side",
     description:
-      'Using a windshied repair kit, you can remove the broken glass and replace it with a new piece of glass, and clean the area, apply the adhesive.',
+      'Using a windshield repair kit, you can remove the broken glass and replace it with a new piece of glass, and clean the area, apply the adhesive.',
     comment: 'Pls finish ASAP',
     make: 'Skoda',
     model: 'Rapid',
@@ -21,7 +21,7 @@ const TaskListScreen = () => {
     license: 'qjt7Bi',
     mva: 'R436542',
     age: 1667271542,
-    assigned: 'Elias Charambides',
+    assigned: '',
     market: 'Wisconsin',
     status: true,
     createdBy: 'Willium Hopkin',
@@ -34,6 +34,7 @@ const TaskListScreen = () => {
 
   const [taskAPI] = useAtom(allTasksAtom);
   console.log('Task API', taskAPI);
+  const taskDummyList = [task1, task1, task1];
   return (
     <SafeAreaView style={styles.view}>
       <TaskListHeader />
