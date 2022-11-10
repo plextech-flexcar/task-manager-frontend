@@ -1,25 +1,25 @@
 import React, { useState } from 'react';
-import {
-  SafeAreaView,
-  StyleSheet,
-  TouchableOpacity,
-} from "react-native";
-import { HStack, Text, View, Image } from "native-base";
-import { styles } from "../../../screens/TaskInfoScreen/TaskInfoStyles.js";
-
-const onPress = () => {};
-const TaskInfoPopup = () => {
-  const [showModal, setShowModal] = useState(true);
+import { Alert, Pressable, SafeAreaView, StyleSheet, Modal } from 'react-native';
+import { HStack, Text, View, Image } from 'native-base';
+import { styles } from '../../../screens/TaskInfoScreen/TaskInfoStyles';
+import GenericButton from '../../GenericButton/GenericButton';
+import NameListScreen from '../../../screens/NameListScreen/NameListScreen';
 
 const TaskInfoPopup = (props) => {
-  const { assigned } = props
   const [showModal, setShowModal] = useState(false);
+  const { assigned } = props;
+  // const [assignPress, setAssignPress] = useState(false);
   const [resolve, setResolve] = useState(assigned !== '');
-  const onPressFunction = () => {
+
+  const onAssign = () => {
     setShowModal(!showModal);
     setResolve(!resolve);
   };
-  const personSearch = require('../../../assets/person_search.png')
+
+  const onShowToggle = () => {
+    setShowModal(!showModal);
+  };
+  const personSearch = require('../../../assets/person_search.png');
   return (
     <SafeAreaView style={styles.whitebg}>
       <View style={style_temp.centeredView}>
@@ -31,31 +31,30 @@ const TaskInfoPopup = (props) => {
             Alert.alert('Modal has been closed.');
             setShowModal(!showModal);
           }}
+          presentationStyle="fullScreen"
         >
-          <NameListScreen />
-          <View style={styles1.centerView}>
-            <Pressable
-              style={[style_temp.button, style_temp.buttonClose]}
-              onPress={() => onPressFunction()}
-            >
-              <Text>Close</Text>
-            </Pressable>
-          </View>
+          <NameListScreen closeCall={onShowToggle} onAssignCall={onAssign} />
         </Modal>
       </View>
       <View style={styles1.contain}>
         <HStack space={3} alignItems="center" justifyContent={'center'}>
-        <GenericButton isPurple={false} text={'COMMENT'} />
-          { resolve ? <GenericButton isPurple={true} text={'RESOLVE'} /> :
-            <GenericButton isPurple={true} imageSource={personSearch} text={'ASSIGN'} />
-          }
-          
+          <GenericButton isPurple={false} text={'COMMENT'} />
+          {resolve ? (
+            <GenericButton isPurple={true} text={'RESOLVE'} />
+          ) : (
+            <GenericButton
+              isPurple={true}
+              imageSource={personSearch}
+              text={'ASSIGN'}
+              functionCall={onShowToggle}
+              assignCall={onAssign}
+            />
+          )}
         </HStack>
       </View>
     </SafeAreaView>
   );
 };
-
 export default TaskInfoPopup;
 
 const styles1 = StyleSheet.create({

@@ -8,8 +8,7 @@ import FlatListItemSeparator from '../../components/ItemSeperation';
 import { IconButton } from 'react-native-paper';
 import { position } from 'native-base/lib/typescript/theme/styled-system';
 
-
-const NameListScreen = () => {
+const NameListScreen = ({ closeCall, onAssignCall }: any) => {
   const name1: Name = {
     first: 'Rhythm',
     last: 'Chao',
@@ -18,22 +17,14 @@ const NameListScreen = () => {
 
   return (
     <SafeAreaView style={styles.view}>
-
-<Pressable  style={styles.icon}>
-      <IconButton
-    icon="close"
-    color="#2A00A5"
-    size={20}
-    onPress={() => console.log('Pressed')}
-  />
-  </Pressable>
-     <Text style={styles.text}>Assign 4 Tasks</Text>
-
-
+      <Pressable style={styles.icon}>
+        <IconButton icon="close" color="#2A00A5" size={20} onPress={() => closeCall()} />
+      </Pressable>
+      <Text style={styles.text}>Assign 4 Tasks</Text>
 
       <AssignModalFunc />
       <FlatListItemSeparator></FlatListItemSeparator>
-      <NameCardList name={nameList} />
+      <NameCardList name={nameList} onAssignCall={onAssignCall} />
     </SafeAreaView>
   );
 };

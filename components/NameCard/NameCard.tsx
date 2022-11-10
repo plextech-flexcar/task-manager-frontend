@@ -4,17 +4,19 @@ import { styles } from './styles.js';
 import { Name } from '../../models/Name.js';
 import IconComponent from '../IconComponent';
 import { Pressable } from 'react-native';
-const NameCard = ({ first, last }: Name) => {
-
+const NameCard = (props: { name: Name; onAssignCall: any }) => {
+  const first = props.name.first;
+  const last = props.name.last;
+  const { onAssignCall } = props;
   return (
-    <Pressable>
+    <Pressable onPress={() => onAssignCall()}>
       <View style={styles.card}>
         <VStack p="2" space={0} width="Fill" height="hug">
           <HStack justifyContent="space-between">
             <IconComponent first={first} last={last} />
             <Text>
               <View style={styles.taskHeading} left="40px" top="2.5px">
-                {first + " " + last}
+                {first + ' ' + last}
               </View>
             </Text>
           </HStack>

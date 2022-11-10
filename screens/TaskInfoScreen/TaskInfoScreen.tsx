@@ -4,7 +4,7 @@ import TaskInfoHeader from '../../components/TaskInfo/TaskInfoHeader';
 import { HStack, VStack, Divider, Container } from 'native-base';
 import { styles } from './TaskInfoStyles.js';
 import { PRIORITY_ICON_MAP } from '../../components/TaskCard/TaskCardPriorityIconMap';
-import AssignButtons from '../../components/TaskInfo/Modals/AssignButtons';
+import TaskInfoPopup from '../../components/TaskInfo/Modals/TaskInfoPopup';
 const TaskInfoScreen = ({ route }) => {
   const {
     type,
@@ -127,19 +127,14 @@ const TaskInfoScreen = ({ route }) => {
             <Text style={styles.commentBy}>by Adam Miller on 3/15/22 - 4:30pm</Text>
           </VStack>
         </HStack>
-         <View style={{marginRight: "5%", marginLeft: "5%"}}>
-        <AssignButtons style={{}} assigned = {assigned} />
-      </View>
-
+        <View style={{ marginRight: '5%', marginLeft: '5%' }}>
+          <TaskInfoPopup style={{}} assigned={assigned} />
+        </View>
       </VStack>
       {/* <View style={{marginRight: "5%", marginLeft: "5%"}}>
         <AssignButtons style={{}} assigned = {assigned} />
       </View> */}
-
-
-
     </SafeAreaView>
-
   );
 };
 

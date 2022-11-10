@@ -5,11 +5,12 @@ import { Name } from '../../models/Name';
 import FlatListItemSeparator from '../ItemSeperation';
 import { styles } from './styles';
 
-const NameCardList = (props: { name: Name[] }) => {
+const NameCardList = (props: { name: Name[]; onAssignCall: any }) => {
   const { name } = props;
+  const { onAssignCall } = props;
 
   const renderNameCard: ListRenderItem<Name> = ({ item }) => {
-    return <NameCard {...item} />;
+    return <NameCard name={item} onAssignCall={onAssignCall} />;
   };
 
   return (
