@@ -8,6 +8,7 @@ import TaskInfoPopup from '../../components/TaskInfo/Modals/TaskInfoPopup';
 const TaskInfoScreen = ({ route }) => {
   const {
     type,
+    status,
     age,
     assigned,
     createdBy,
@@ -19,7 +20,7 @@ const TaskInfoScreen = ({ route }) => {
     license,
     mva,
     priority,
-    status,
+    vehicle_status,
     carImage,
     description,
     state,
@@ -46,6 +47,17 @@ const TaskInfoScreen = ({ route }) => {
     const newDate = new Date(date * 1000);
     return newDate.toLocaleString();
   };
+  const statusvar = (status) => {
+    if(status === "OPEN"){
+      return "Status: OPEN"
+      
+    }
+    else if(status === "RESOLVE"){
+      return 'Status: assigned to ' + assigned
+    }
+      
+    
+  };
   return (
     <SafeAreaView style={styles.whitebg}>
       <TaskInfoHeader />
@@ -71,9 +83,9 @@ const TaskInfoScreen = ({ route }) => {
         <View style={styles.viewMarginLeft}>
           <HStack>
             <Text style={styles.textTop}>
-              {assigned ? 'Status: Assigned to ' + assigned : 'Open'}
+              {statusvar(status)}
             </Text>
-            {assigned ? (
+            {assigned && status !== "OPEN" ? (
               <View style={styles.assignBox}>
                 <Text style={styles.assignBoxText}>{getInitials(assigned)}</Text>
               </View>
@@ -95,8 +107,8 @@ const TaskInfoScreen = ({ route }) => {
               {license}, {state} MVA: {mva}
             </Text>
             <Text style={styles.textTop}>VIN: {vin}</Text>
-            <View style={status ? styles.availableBox : styles.unavailableBox}>
-              <Text>{status ? 'Available' : 'Unavailable/Service'}</Text>
+            <View style={vehicle_status ? styles.availableBox : styles.unavailableBox}>
+              <Text>{vehicle_status ? 'Available' : 'Unavialble/Service'}</Text>
             </View>
           </View>
           <Image style={styles.image} source={{ uri: carImage }} />

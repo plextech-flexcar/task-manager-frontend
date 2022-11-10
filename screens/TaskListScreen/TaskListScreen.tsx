@@ -23,7 +23,8 @@ const TaskListScreen = () => {
     age: 1667271542,
     assigned: '',
     market: 'Wisconsin',
-    status: true,
+    vehicle_status: true,
+    status: "OPEN",
     createdBy: 'Willium Hopkin',
     carImage:
       'https://www.freepnglogos.com/uploads/honda-car-png/honda-car-honda-civic-very-good-car-honda-civic-10.png',
