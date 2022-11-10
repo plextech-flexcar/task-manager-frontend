@@ -4,6 +4,7 @@ import TaskInfoHeader from '../../components/TaskInfo/TaskInfoHeader';
 import { HStack, VStack, Divider } from 'native-base';
 import { styles } from './TaskInfoStyles.js';
 import { PRIORITY_ICON_MAP } from '../../components/TaskCard/TaskCardPriorityIconMap';
+import { Status } from '../../models/Status';
 import TaskInfoPopup from '../../components/TaskInfo/Modals/TaskInfoPopup';
 const TaskInfoScreen = ({ route }) => {
   const {
@@ -20,7 +21,7 @@ const TaskInfoScreen = ({ route }) => {
     license,
     mva,
     priority,
-    vehicle_status,
+    vehicleStatus,
     carImage,
     description,
     state,
@@ -47,16 +48,15 @@ const TaskInfoScreen = ({ route }) => {
     const newDate = new Date(date * 1000);
     return newDate.toLocaleString();
   };
-  const statusvar = (status) => {
-    if(status === "OPEN"){
+
+  const statusVar = (status) => {
+    if(status === Status.OPEN){
       return "Status: OPEN"
       
     }
     else if(status === "RESOLVE"){
       return 'Status: assigned to ' + assigned
-    }
-      
-    
+    }    
   };
   return (
     <SafeAreaView style={styles.whitebg}>
@@ -83,7 +83,7 @@ const TaskInfoScreen = ({ route }) => {
         <View style={styles.viewMarginLeft}>
           <HStack>
             <Text style={styles.textTop}>
-              {statusvar(status)}
+              {statusVar(status)}
             </Text>
             {assigned && status !== "OPEN" ? (
               <View style={styles.assignBox}>
@@ -107,8 +107,8 @@ const TaskInfoScreen = ({ route }) => {
               {license}, {state} MVA: {mva}
             </Text>
             <Text style={styles.textTop}>VIN: {vin}</Text>
-            <View style={vehicle_status ? styles.availableBox : styles.unavailableBox}>
-              <Text>{vehicle_status ? 'Available' : 'Unavialble/Service'}</Text>
+            <View style={vehicleStatus ? styles.avialbleBox : styles.unavailableBox}>
+              <Text>{vehicleStatus ? 'Available' : 'Unavialble/Service'}</Text>
             </View>
           </View>
           <Image style={styles.image} source={{ uri: carImage }} />
