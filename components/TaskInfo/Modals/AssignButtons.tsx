@@ -1,17 +1,24 @@
 import React, { useState } from 'react';
 import {
-  Image,
   SafeAreaView,
-  Text,
-  View,
   StyleSheet,
   TouchableOpacity,
+<<<<<<< HEAD
+} from "react-native";
+import { HStack, Text, View, Image } from "native-base";
+import { styles } from "../../../screens/TaskInfoScreen/TaskInfoStyles.js";
+
+const onPress = () => {};
+const TaskInfoPopup = () => {
+  const [showModal, setShowModal] = useState(true);
+=======
 } from 'react-native';
 import { HStack } from 'native-base';
 import { styles } from '../../../screens/TaskInfoScreen/TaskInfoStyles';
 import { Alert, Modal, Pressable } from 'react-native';
 import NameListScreen from '../../../screens/NameListScreen/NameListScreen';
 import GenericButton from '../../GenericButton/GenericButton';
+>>>>>>> origin/connect-nav
 
 const TaskInfoPopup = (props) => {
   const { assigned } = props

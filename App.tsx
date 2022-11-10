@@ -6,6 +6,7 @@ import { useAtom } from 'jotai';
 import { allTasksAtom, displayTasksAtom } from './atoms';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import NameListScreen from './screens/NameListScreen/NameListScreen';
 
 // Define the config
 const config = {
@@ -48,16 +49,7 @@ export default function App() {
 
   return (
     <NativeBaseProvider>
-      <NavigationContainer>
-        <Stack.Navigator
-          screenOptions={{
-            headerShown: false,
-          }}
-        >
-          <Stack.Screen name="TaskListScreen" component={TaskListScreen} />
-          <Stack.Screen name="TaskInfoScreen" component={TaskInfoScreen} />
-        </Stack.Navigator>
-      </NavigationContainer>
-    </NativeBaseProvider>
-  );
+    <NameListScreen/>
+  </NativeBaseProvider>
+  )
 }

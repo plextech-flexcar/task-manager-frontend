@@ -1,9 +1,13 @@
 import React from 'react';
-import { SafeAreaView } from 'react-native';
+import { Pressable, SafeAreaView, Text } from 'react-native';
 import { styles } from './styles';
 import { Name } from '../../models/Name';
 import NameCardList from '../../components/NameCardList/NameCardList';
 import AssignModalFunc from '../../components/TaskAssign/AssignModal';
+import FlatListItemSeparator from '../../components/ItemSeperation';
+import { IconButton } from 'react-native-paper';
+import { position } from 'native-base/lib/typescript/theme/styled-system';
+
 
 const NameListScreen = () => {
   const name1: Name = {
@@ -14,9 +18,21 @@ const NameListScreen = () => {
 
   return (
     <SafeAreaView style={styles.view}>
-      <h3>Assign 4 Tasks</h3>
-      <AssignModalFunc />
 
+<Pressable  style={styles.icon}>
+      <IconButton
+    icon="close"
+    color="#2A00A5"
+    size={20}
+    onPress={() => console.log('Pressed')}
+  />
+  </Pressable>
+     <Text style={styles.text}>Assign 4 Tasks</Text>
+
+
+
+      <AssignModalFunc />
+      <FlatListItemSeparator></FlatListItemSeparator>
       <NameCardList name={nameList} />
     </SafeAreaView>
   );
