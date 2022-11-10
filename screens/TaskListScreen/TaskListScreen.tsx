@@ -6,6 +6,7 @@ import TaskCardList from '../../components/TaskCardList/TaskCardList';
 import TaskListHeader from '../../components/TaskListHeader/TaskListHeader';
 import { allTasksAtom } from '../../atoms';
 import { useAtom } from 'jotai';
+import { Status } from '../../models/Status';
 const TaskListScreen = () => {
   const task1: Task = {
     id: 4,
@@ -23,7 +24,8 @@ const TaskListScreen = () => {
     age: 1667271542,
     assigned: '',
     market: 'Wisconsin',
-    status: true,
+    status: Status.OPEN,
+    vehicleStatus: true,
     createdBy: 'Willium Hopkin',
     carImage:
       'https://www.freepnglogos.com/uploads/honda-car-png/honda-car-honda-civic-very-good-car-honda-civic-10.png',

@@ -71,8 +71,13 @@ const styles = StyleSheet.create({
     marginTop: 3,
   },
   availableBox: {
+<<<<<<< HEAD
+    backgroundColor: "#39BD09",
+    alignSelf: "flex-start",
+=======
     backgroundColor: '#39BD09',
     alignSelf: 'flex-start',
+>>>>>>> aff0061d39d6b164e66ded691e8dbabefa95fd90
     padding: 5,
     marginTop: 3,
   },
