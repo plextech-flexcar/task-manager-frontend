@@ -5,7 +5,6 @@ import {
   StyleSheet,
   TouchableOpacity,
   ImageSourcePropType,
-  GestureResponderEvent,
 } from 'react-native';
 import { HStack } from 'native-base';
 
@@ -14,16 +13,29 @@ const GenericButton = ({
   imageSource,
   text,
   functionCall,
+  cancelResolve,
+  commentCall,
 }: {
   isPurple: boolean;
   imageSource?: ImageSourcePropType;
   text: string;
   functionCall?: any;
+  cancelResolve?: any;
+  commentCall?: any;
 }) => {
+  const funcSelect = () => {
+    if (functionCall) {
+      return functionCall;
+    } else if (cancelResolve) {
+      return cancelResolve;
+    } else if (commentCall) {
+      return commentCall;
+    }
+  };
   return (
     <TouchableOpacity
       style={isPurple ? styles1.buttonPurple : styles1.buttonWhite}
-      onPress={() => functionCall()}
+      onPress={() => funcSelect()()}
     >
       <HStack space={1} alignItems="center" justifyContent={'center'}>
         <Text style={isPurple ? styles1.buttonTextWhite : styles1.buttonTextPurple}>

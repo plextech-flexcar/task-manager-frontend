@@ -4,13 +4,14 @@ import { HStack, Text, View, Image } from 'native-base';
 import { styles } from '../../../screens/TaskInfoScreen/TaskInfoStyles';
 import GenericButton from '../../GenericButton/GenericButton';
 import NameListScreen from '../../../screens/NameListScreen/NameListScreen';
+import ResolveTask from './ResolveTask';
 
 const TaskInfoPopup = (props) => {
   const [showModal, setShowModal] = useState(false);
   const { assigned } = props;
   // const [assignPress, setAssignPress] = useState(false);
   const [resolve, setResolve] = useState(assigned !== '');
-
+  const [resolveModal, setResolveModal] = useState(false);
   const onAssign = () => {
     setShowModal(!showModal);
     setResolve(!resolve);
@@ -18,6 +19,9 @@ const TaskInfoPopup = (props) => {
 
   const onShowToggle = () => {
     setShowModal(!showModal);
+  };
+  const onShowResolveToggle = () => {
+    setResolveModal(!resolveModal);
   };
   const personSearch = require('../../../assets/person_search.png');
   return (
@@ -36,14 +40,39 @@ const TaskInfoPopup = (props) => {
           <NameListScreen closeCall={onShowToggle} onAssignCall={onAssign} />
         </Modal>
       </View>
+      <View style={style_temp.centeredView}>
+        <Modal
+          animationType="slide"
+          transparent={false}
+          visible={resolveModal}
+          onRequestClose={() => {
+            Alert.alert('Modal has been closed.');
+            setShowModal(!showModal);
+          }}
+          presentationStyle="fullScreen"
+        >
+          <ResolveTask />
+          <Pressable onPress={onShowResolveToggle}>
+            <Text>Close</Text>
+          </Pressable>
+        </Modal>
+      </View>
       <View style={styles1.contain}>
         <HStack space={3} alignItems="center" justifyContent={'center'}>
-          <GenericButton isPurple={false} text={'COMMENT'} />
+          <GenericButton
+            isPurple={false}
+            text={resolve && resolveModal ? 'CANCEL' : 'COMMENT'}
+            cancelResolve={onShowResolveToggle}
+          />
           {resolve ? (
-            <GenericButton isPurple={true} text={'RESOLVE'} />
-          ) : (
             <GenericButton
               isPurple={true}
+              text={'RESOLVE'}
+              functionCall={setResolveModal}
+            />
+          ) : (
+            <GenericButton
+              isPurple={false}
               imageSource={personSearch}
               text={'ASSIGN'}
               functionCall={onShowToggle}
