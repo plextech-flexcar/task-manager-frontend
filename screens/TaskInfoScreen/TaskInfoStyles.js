@@ -70,7 +70,7 @@ const styles = StyleSheet.create({
     padding: 5,
     marginTop: 3,
   },
-  avialbleBox: {
+  availableBox: {
     backgroundColor: "#39BD09",
     alignSelf: "flex-start",
     padding: 5,
