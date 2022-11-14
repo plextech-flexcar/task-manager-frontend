@@ -54,7 +54,7 @@ const TaskInfoScreen = ({ route }) => {
       return "Status: OPEN"
       
     }
-    else if(status === "RESOLVE"){
+    else if(status === Status.RESOLVE){
       return 'Status: assigned to ' + assigned
     }    
   };
