@@ -16,6 +16,7 @@ const LeaveComment = ({ showModal, onClose }) => {
   return (
     <View style={styles1.contain}>
       <Modal
+        _backdrop={{bg: "#2A00A5"}}
         isOpen={showModal}
         onClose={() => onClose()}
         safeAreaTop={true}

@@ -19,7 +19,7 @@ const NameListScreen = ({ closeCall, onAssignCall }: any) => {
       <Pressable style={styles.icon}>
         <IconButton icon="close" color="#2A00A5" size={20} onPress={() => closeCall()} />
       </Pressable>
-      <Text style={styles.text}>Assign 4 Tasks</Text>
+      <Text style={styles.text}>Assign Tasks</Text>
       <AssignModalFunc />
       <FlatListItemSeparator/>
       <NameCardList name={nameList} onAssignCall={onAssignCall} />
