@@ -4,6 +4,8 @@ import { useAtom } from 'jotai';
 import { allTasksAtom, displayTasksAtom } from './atoms';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import TaskListScreen from'./screens/TaskListScreen/TaskListScreen'
+import TaskInfoScreen from './screens/TaskInfoScreen/TaskInfoScreen';
 
 // Define the config
 const config = {
