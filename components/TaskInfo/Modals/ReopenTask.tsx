@@ -10,24 +10,22 @@ import {
 } from 'react-native';
 import { Modal, FormControl } from 'native-base';
 import { styles } from '../../../screens/TaskInfoScreen/TaskInfoStyles.js';
-import { styles1 } from './reOpenTaskStyles';
+import { styles1 } from './TaskInfoPopupStyles';
 const ReopenTask = ({
-    showModal, 
-    closeCall, 
-    onSubmit 
-  } : 
-  {
-    showModal: boolean,
-    closeCall: () => void,
-    onSubmit: () => void,
-  }
-  ) => {
+  showModal,
+  closeCall,
+  onSubmit,
+}: {
+  showModal: boolean;
+  closeCall: () => void;
+  onSubmit: () => void;
+}) => {
   const [comment, setComment] = useState('');
   const submitIcon = require('../../../assets/submit.png');
   return (
     <View style={styles1.contain}>
       <Modal
-        _backdrop={{bg: "#2A00A5"}}
+        _backdrop={{ bg: '#2A00A5' }}
         isOpen={showModal}
         onClose={() => closeCall()}
         safeAreaTop={true}
@@ -91,10 +89,7 @@ const ReopenTask = ({
 
                   <View style={{ flex: 1 }}>
                     <Pressable onPress={() => onSubmit()}>
-                      <Image
-                        source={submitIcon}
-                        style={{ width: 20, height: 20 }}
-                      />
+                      <Image source={submitIcon} style={{ width: 20, height: 20 }} />
                     </Pressable>
                   </View>
                 </View>
