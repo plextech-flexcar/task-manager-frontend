@@ -68,13 +68,13 @@ const TaskCard = ({
     >
       <View>
         <Box>
-          <VStack p="4" space={0} width="Fill" height="Hug">
+          <VStack p="4" space={0} width="full" height="Hug">
             <HStack justifyContent="space-between">
               <View>
                 <Text style={styles.taskHeading}>{type}</Text>
               </View>
               <Image
-                source={PRIORITY_ICON_MAP[priority]}
+                source={{ uri: PRIORITY_ICON_MAP[priority] }}
                 style={{ width: 20, height: 20 }}
               />
             </HStack>

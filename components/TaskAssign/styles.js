@@ -3,14 +3,14 @@ import { StyleSheet } from 'react-native';
 export const styles = StyleSheet.create({
   searchBar: {
     width: 382,
-    height: '40px',
+    height: 40,
     backgroundColor: '#FFFFFF',
-    left: '1px',
-    borderWidth: '2px',
-    borderRadius: '8px',
+    left: 1,
+    borderWidth: 2,
+    borderRadius: 8,
     borderColor: '#2A00A5',
-    bottom: '16px',
-    top: '1px',
-    marginBottom: '16px',
+    bottom: 16,
+    top: 1,
+    marginBottom: 16,
   },
 });

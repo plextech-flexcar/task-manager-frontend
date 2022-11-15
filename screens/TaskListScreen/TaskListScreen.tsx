@@ -40,7 +40,7 @@ const TaskListScreen = () => {
   return (
     <SafeAreaView style={styles.view}>
       <TaskListHeader />
-      <TaskCardList tasks={taskAPI} />
+      <TaskCardList tasks={taskDummyList} />
     </SafeAreaView>
   );
 };

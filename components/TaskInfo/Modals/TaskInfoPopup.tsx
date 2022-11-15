@@ -7,7 +7,7 @@ import NameListScreen from '../../../screens/NameListScreen/NameListScreen';
 import ResolveTask from './ResolveTask';
 import ReopenTask from './ReopenTask';
 import LeaveComment from './LeaveComment';
-import { styles1 } from './taskInfoPopupStyles';
+import { styles1 } from './TaskInfoPopupStyles';
 const TaskInfoPopup = (props) => {
   const [showModal, setShowModal] = useState(false);
   const { assigned } = props;
