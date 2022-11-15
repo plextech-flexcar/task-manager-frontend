@@ -27,6 +27,7 @@ const ReopenTask = ({
   return (
     <View style={styles1.contain}>
       <Modal
+        _backdrop={{bg: "#2A00A5"}}
         isOpen={showModal}
         onClose={() => closeCall()}
         safeAreaTop={true}
