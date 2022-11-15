@@ -7,11 +7,16 @@ export default function SquareCheckBox(props: {
   checkBoxLabel: string;
   filterCategory: string;
 }) {
-  const [filter, setFilter] = useAtom(atomFilters);
+  const { checkBoxLabel, filterCategory } = props;
+  let [filter, setFilter] = useAtom(atomFilters);
+  const inFilter = filterCategory in filter;
+  const tempFilter = filter;
+  if (!inFilter) {
+    filter = filter['Make & Model'][filterCategory];
+  }
   const checkBoxFilled = () => {
     return filter[filterCategory].includes(checkBoxLabel);
   };
-  const { checkBoxLabel, filterCategory } = props;
   const [checked, setChecked] = React.useState(checkBoxFilled());
 
   const checkFilter = () => {
@@ -25,7 +30,12 @@ export default function SquareCheckBox(props: {
         newFilter[filterCategory].splice(index, 1);
       }
     }
-    setFilter(newFilter);
+    if (inFilter) {
+      setFilter(newFilter);
+    } else {
+      tempFilter['Make and Model'] = newFilter;
+      setFilter(tempFilter);
+    }
   };
 
   return (

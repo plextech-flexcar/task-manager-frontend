@@ -9,6 +9,7 @@ import { atomFilterOptions, atomModalVisible } from '../../atoms';
 import { useAtom } from 'jotai';
 import SubmitButton from './SubmitButton';
 import { styles } from './styles.js';
+import CheckBoxFilter from './CheckBoxFilter';
 
 export default function SortFilter() {
   const [isModalVisible, setModalVisible] = useAtom(atomModalVisible);
@@ -23,6 +24,7 @@ export default function SortFilter() {
   };
 
   const changeFilter = (filterName: string) => {
+    console.log(filterName);
     setTitle(filterName);
     setModalIcon('backChevronModal');
   };
@@ -71,9 +73,15 @@ export default function SortFilter() {
             )}
             {title === 'Market' && <SquareBoxes filterCategory={title} />}
             {title === 'Task Type' && <SquareBoxes filterCategory={title} />}
+            {title === 'Make & Model' && (
+              <CheckBoxFilter filterCategory={title} changeFilter={changeFilter} />
+            )}
             {title === 'Status' && <SquareBoxes filterCategory={title} />}
             {title === 'Priority' && <SquareBoxes filterCategory={title} />}
             {title === 'Quick View' && <SquareBoxes filterCategory={title} />}
+            {title in filterOptions['Make & Model'] && (
+              <SquareBoxes filterCategory={title} />
+            )}
           </ScrollView>
           <View>
             {' '}

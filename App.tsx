@@ -7,7 +7,9 @@ import { allTasksAtom, displayTasksAtom } from './atoms';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Task } from './models/Task';
+import { initialFindMake } from './utils/findTasks';
 import { createMakeAndModelFilter } from './utils/createMakeAndModelFilter';
+import { atomFilterOptions } from './atoms';
 
 // Define the config
 const config = {
@@ -26,6 +28,7 @@ const Stack = createNativeStackNavigator();
 export default function App() {
   const [allTasks, setAllTasks] = useAtom(allTasksAtom);
   const [displayTasks, setDisplayTasks] = useAtom(displayTasksAtom);
+  const [filterOptions, setFilterOptions] = useAtom(atomFilterOptions);
 
   const task1: Task = {
     id: 4,
@@ -77,11 +80,15 @@ export default function App() {
   };
 
   const tasks: Task[] = [task1, task2, task1, task2, task1];
+  let makeAndModel = {};
 
   // Loads dummy tasks without connecting to backend
   useEffect(() => {
     setDisplayTasks(tasks);
     setAllTasks(tasks);
+    makeAndModel = initialFindMake(tasks);
+    filterOptions['Make & Model'] = makeAndModel;
+    setFilterOptions(filterOptions);
   }, []);
 
   // fetch(

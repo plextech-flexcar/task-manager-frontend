@@ -4,6 +4,7 @@ import { Task } from './models/Task';
 export const allTasksAtom = atom<Task[]>([])
 export const displayTasksAtom = atom<Task[]>([])
 export const atomModalVisible = atom(false);
+
 export const atomFilterOptions = atom<Record<string, any>>({
     "Market": ["Boston", "Atlanta", "Nashville", "Charlotte"],
     "Task Type": ["Body damage/Collision", "Small dent/Scratch", "Glass chip", "Glass crack or scratch", "Tire pressure", "Low tread", "Tech", "Key issue", "Battery issue", "Check engine", "Mechanical issue", "Oil light on"],

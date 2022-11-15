@@ -9,7 +9,12 @@ import { styles } from './styles.js';
 export default function SquareBoxes(props: { filterCategory: string }) {
   const { filterCategory } = props;
   const [filterOptions, setFilterOptions] = useAtom(atomFilterOptions);
-  const filterList = filterOptions[filterCategory];
+  let filterList = [];
+  if (filterCategory in filterOptions) {
+    filterList = filterOptions[filterCategory];
+  } else {
+    filterList = filterOptions['Make & Model'][filterCategory];
+  }
 
   return (
     <View style={styles.boxRow}>

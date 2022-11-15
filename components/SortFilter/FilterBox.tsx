@@ -2,18 +2,19 @@ import { Square } from 'native-base';
 import * as React from 'react';
 import { Checkbox } from 'react-native-paper';
 import { StyleSheet, View, TouchableOpacity, Image, Text } from 'react-native';
+import { atomFilterOptions } from '../../atoms';
 
 import { styles } from './styles.js';
+import { useAtom } from 'jotai';
 
 export default function FilterBox(props: {
   changeFilter: React.Dispatch<React.SetStateAction<any>>;
 }) {
   const { changeFilter } = props;
-  const data = ['Market', 'Task Type', 'Make & Model', 'Status', 'Priority'];
-
+  const [filterOptions, setFilterOptions] = useAtom(atomFilterOptions);
   return (
     <View style={styles.circleRow}>
-      {data.map((title) => {
+      {Object.keys(filterOptions).map((title: string) => {
         return (
           <TouchableOpacity
             key={title}

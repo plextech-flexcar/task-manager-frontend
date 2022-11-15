@@ -8,6 +8,7 @@ import { styles } from './styles.js';
 export default function CircleCheckBox() {
   const [sorts, setSorts] = useAtom(atomSorts);
   const [value, setValue] = React.useState(sorts);
+
   const data = [
     'Priority: Top to low',
     'Priority: Low to top',
