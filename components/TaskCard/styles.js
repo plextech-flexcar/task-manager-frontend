@@ -22,7 +22,8 @@ const styles = StyleSheet.create({
     fontSize: '17px',
     lineHeight: '24px',
     fontWeight: '700',
-    color: '#080726',
+    letterSpacing: '0.2px',
+    color: '#080726'
   },
   taskDateText: {
     fontfamily: 'Inter',
@@ -35,6 +36,7 @@ const styles = StyleSheet.create({
     fontSize: '15px',
     color: '#080726',
     fontWeight: '400',
+    letterSpacing: '1px',
   },
 });
 
