@@ -7,6 +7,7 @@ import { Task } from '../../models/Task.js';
 import { useNavigation } from '@react-navigation/native';
 import IconComponent from '../IconComponent';
 const TaskCard = ({
+  id,
   type,
   date,
   comment,
@@ -44,6 +45,7 @@ const TaskCard = ({
     <TouchableOpacity
       onPress={() =>
         navigation.navigate('TaskInfoScreen', {
+          id: id,
           type: type,
           age: calculateAge(age),
           assigned: assigned,
@@ -68,7 +70,7 @@ const TaskCard = ({
     >
       <View>
         <Box>
-          <VStack p="4" space={0} width="full" height="Hug">
+          <VStack p="4" space={0} width="full" height="hug">
             <HStack justifyContent="space-between">
               <View>
                 <Text style={styles.taskHeading}>{type}</Text>
