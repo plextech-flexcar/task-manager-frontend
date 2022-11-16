@@ -21,7 +21,6 @@ const styles = StyleSheet.create({
     fontfamily: 'Inter',
     fontSize: '17px',
     lineHeight: '24px',
-    flexWrap:1,
     fontWeight: '700',
     color: '#080726',
   },

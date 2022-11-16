@@ -75,7 +75,7 @@ const LeaveComment = ({ showModal, onClose }) => {
                   <View style={{ flex: 1 }}>
                     <Pressable onPress={() => onClose()}>
                       <Image
-                        source={require('../../../assets/submit.png')}
+                        source={require('../../../assets/submit.webp')}
                         style={{ width: 20, height: 20 }}
                       />
                     </Pressable>

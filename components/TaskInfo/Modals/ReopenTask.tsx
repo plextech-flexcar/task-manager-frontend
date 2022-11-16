@@ -23,7 +23,7 @@ const ReopenTask = ({
   }
   ) => {
   const [comment, setComment] = useState('');
-  const submitIcon = require('../../../assets/submit.png');
+  const submitIcon = require('../../../assets/submit.webp');
   return (
     <View style={styles1.contain}>
       <Modal

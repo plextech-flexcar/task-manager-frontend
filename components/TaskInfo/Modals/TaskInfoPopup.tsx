@@ -45,7 +45,7 @@ const TaskInfoPopup = (props) => {
     setCommentModal(!commentModal);
   };
 
-  const personSearch = require('../../../assets/person_search.png');
+  const personSearch = require('../../../assets/person_search.webp');
   return (
     <SafeAreaView style={styles.whitebg}>
       <View>

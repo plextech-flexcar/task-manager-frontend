@@ -24,7 +24,7 @@ const TaskInfoPopup = () => {
 
               <Image
                 style={{ width: 20, height: 20 }}
-                source={require('../../assets/person_search.png')}
+                source={require('../../assets/person_search.webp')}
               />
             </HStack>
           </TouchableOpacity>
