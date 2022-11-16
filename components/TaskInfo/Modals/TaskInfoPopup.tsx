@@ -23,7 +23,6 @@ const TaskInfoPopup = (props) => {
     setAssignedName(name);
     putAssignAPI(name);
   };
-  console.log('taskId: ', taskId);
   const putAssignAPI = async (name: String) => {
     fetch(`http://localhost:8080/api/v1/assign/${taskId}`, {
       mode: 'cors',
@@ -36,11 +35,6 @@ const TaskInfoPopup = (props) => {
       body: JSON.stringify({ name: name }),
     });
   };
-  // useEffect(() => {
-  //   if (taskId != null && showModal) {
-  //     putAssignAPI(assignedName);
-  //   }
-  // }, [assignedName]);
   const onShowToggle = () => {
     setShowModal(!showModal);
   };
