@@ -6,6 +6,7 @@ import { PRIORITY_ICON_MAP } from './TaskCardPriorityIconMap';
 import { Task } from '../../models/Task.js';
 import { useNavigation } from '@react-navigation/native';
 import IconComponent from '../IconComponent';
+
 const TaskCard = ({
   type,
   date,
