@@ -9,6 +9,7 @@ import TaskInfoPopup from '../../components/TaskInfo/Modals/TaskInfoPopup';
 import { PRIORITY_ICON_COLOR_MAP } from './TaskCardPriorityColorMap';
 const TaskInfoScreen = ({ route }) => {
   const {
+    id,
     type,
     status,
     age,
@@ -132,7 +133,7 @@ const TaskInfoScreen = ({ route }) => {
           </VStack>
         </HStack>
         <View style={{ marginRight: '5%', marginLeft: '5%' }}>
-          <TaskInfoPopup style={{}} assigned={assigned} />
+          <TaskInfoPopup style={{}} assigned={assigned} taskId={id} />
         </View>
       </VStack>
     </SafeAreaView>
