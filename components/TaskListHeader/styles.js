@@ -51,13 +51,13 @@ const styles = StyleSheet.create({
     backgroundColor: '#EDEDED',
     flexDirection: 'row',
     alignItems: 'center',
-    paddingHorizontal: '12px',
+    paddingHorizontal: 12,
   },
   headerButtonRow: {
     justifyContent: 'space-between',
     flexDirection: 'row',
     alignItems: 'center',
-    paddingVertical: '5px',
+    paddingVertical: 5,
   },
   iconSize: {
     width: 16,
