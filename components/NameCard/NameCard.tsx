@@ -12,7 +12,7 @@ const NameCard = (props: { name: Name; onAssignCall: any }) => {
   return (
     <Pressable onPress={() => onAssignCall()}>
       <View style={styles.card}>
-        <VStack p="2" space={0} width="Fill" height="hug">
+        <VStack p="2" space={0} width="80%" height="full">
           <HStack>
             <IconComponent first={first} last={last} />
             <Text>
