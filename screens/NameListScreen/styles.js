@@ -11,9 +11,9 @@ const styles = StyleSheet.create({
     borderRadius: '5px',
   },
   icon: {
-    position: 'absolute',
-    top: '4.25px',
-    right: '4.25px',
+    left: '44%',
+    top: '4.7%'
+
   },
 
   text: {
@@ -21,8 +21,6 @@ const styles = StyleSheet.create({
     fontSize: 15,
     fontWeight: 'bold',
     position: 'relative',
-    top: '16px',
-    marginBottom: '32px',
   },
 });
 

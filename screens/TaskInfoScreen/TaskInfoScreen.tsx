@@ -1,7 +1,7 @@
 import React from 'react';
-import { Image, SafeAreaView, Text, View } from 'react-native';
+import { SafeAreaView } from 'react-native';
 import TaskInfoHeader from '../../components/TaskInfo/TaskInfoHeader';
-import { HStack, VStack, Divider } from 'native-base';
+import { HStack, VStack, Divider, View, Text, Image } from 'native-base';
 import { styles } from './TaskInfoStyles.js';
 import { PRIORITY_ICON_MAP } from '../../components/TaskCard/TaskCardPriorityIconMap';
 import { Status } from '../../models/Status';

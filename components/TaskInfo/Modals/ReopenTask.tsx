@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 import { Modal, FormControl } from 'native-base';
 import { styles } from '../../../screens/TaskInfoScreen/TaskInfoStyles.js';
-import { styles1 } from './reOpenTaskStyles';
+import { styles1 } from './reopenTaskStyles';
 const ReopenTask = ({
     showModal, 
     closeCall, 
