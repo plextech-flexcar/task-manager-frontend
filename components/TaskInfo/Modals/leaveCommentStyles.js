@@ -57,6 +57,7 @@ export const styles1 = StyleSheet.create({
     width: '100%',
     borderBottomWidth: 0,
     textAlign: 'center',
+    margin: 0,
   },
   bottomModal: {
     marginBottom: 20,

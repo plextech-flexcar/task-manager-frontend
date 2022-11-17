@@ -132,10 +132,12 @@ const TaskInfoScreen = ({ route }) => {
             <Text style={styles.commentBy}>by Adam Miller on 3/15/22 - 4:30pm</Text>
           </VStack>
         </HStack>
-        <View style={{ marginRight: '5%', marginLeft: '5%' }}>
-          <TaskInfoPopup style={{}} assigned={assigned} taskId={id} />
-        </View>
       </VStack>
+      <View style={{flex: 1, justifyContent: 'flex-end'}}>
+          <View style={{ marginRight: '5%', marginLeft: '5%' }}>
+            <TaskInfoPopup style={{}} assigned={assigned} taskId={id} />
+          </View>
+        </View>
     </SafeAreaView>
   );
 };
