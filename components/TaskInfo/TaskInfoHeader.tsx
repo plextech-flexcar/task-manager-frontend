@@ -50,28 +50,6 @@ const TaskInfoHeader = () => {
         <Text style={{ fontWeight: "bold" }}>Task Info</Text>
       </View>
     </View>
-    // <HStack
-    //   px="1"
-    //   py="3"
-    //   justifyContent="space-between"
-    //   alignItems="center"
-    //   w="100%"
-    //   maxW="100%"
-    //   bg="red.500"
-    //   display={{ base: "flex", md: "none" }}
-    // >
-    //   <HStack>
-    //     <IconButton
-    //       icon={<AntDesign name="left" size={15} color="#2A00A5" />}
-    //     />
-    //     <Text color="#2A00A5" fontSize="15" fontWeight="bold">
-    //       All Tasks
-    //     </Text>
-    //   </HStack>
-    //   <Text fontSize="15" fontWeight="bold">
-    //     Task Info
-    //   </Text>
-    // </HStack>
   );
 };
 export default TaskInfoHeader;
