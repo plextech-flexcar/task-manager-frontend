@@ -17,7 +17,7 @@ export default function TaskListHeader() {
     <View style={styles.headerBack}>
       <View style={styles.headerSearchRow}>
         <Image
-          source={{ uri: require('../../assets/HeaderIcons/user.webp') }}
+          source={require('../../assets/HeaderIcons/user.webp') }
           style={styles.iconSize}
         />
         <Searchbar
@@ -29,7 +29,7 @@ export default function TaskListHeader() {
           inputStyle={{ fontSize: 15 }}
         />
         <Image
-          source={{ uri: require('../../assets/HeaderIcons/addlist.webp') }}
+          source={require('../../assets/HeaderIcons/addlist.webp')}
           style={styles.iconSize}
         />
       </View>
