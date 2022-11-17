@@ -7,6 +7,9 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import TaskListScreen from'./screens/TaskListScreen/TaskListScreen'
 import TaskInfoScreen from './screens/TaskInfoScreen/TaskInfoScreen';
 
+import TaskListScreen from './screens/TaskListScreen/TaskListScreen';
+import TaskInfoScreen from './screens/TaskInfoScreen/TaskInfoScreen';
+
 // Define the config
 const config = {
   useSystemColorMode: false,

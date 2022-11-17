@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Alert, SafeAreaView, Modal } from 'react-native';
 import { HStack, View } from 'native-base';
 import { styles } from '../../../screens/TaskInfoScreen/TaskInfoStyles';
@@ -10,17 +10,31 @@ import LeaveComment from './LeaveComment';
 import { styles1 } from './TaskInfoPopupStyles';
 const TaskInfoPopup = (props) => {
   const [showModal, setShowModal] = useState(false);
-  const { assigned } = props;
+  const { assigned, taskId } = props;
   const [resolve, setResolve] = useState(assigned !== '');
   const [resolveModal, setResolveModal] = useState(false);
   const [finalResolve, setFinalResolve] = useState(false);
   const [reOpenModel, setReopenModal] = useState(false);
   const [commentModal, setCommentModal] = useState(false);
-  const onAssign = () => {
+  const [assignedName, setAssignedName] = useState('');
+  const onAssign = (name: String) => {
     setShowModal(!showModal);
     setResolve(!resolve);
+    setAssignedName(name);
+    putAssignAPI(name);
   };
-
+  const putAssignAPI = async (name: String) => {
+    fetch(`http://localhost:8080/api/v1/assign/${taskId}`, {
+      mode: 'cors',
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+        'Origin': 'http://localhost:19006',
+      },
+      body: JSON.stringify({ name: name }),
+    });
+  };
   const onShowToggle = () => {
     setShowModal(!showModal);
   };

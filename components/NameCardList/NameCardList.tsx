@@ -2,7 +2,7 @@ import React from 'react';
 import { View, FlatList, ListRenderItem } from 'react-native';
 import NameCard from '../NameCard/NameCard';
 import { Name } from '../../models/Name';
-import FlatListItemSeparator from '../ItemSeperation';
+import FlatListItemSeparator from '../ItemSeparation';
 import { styles } from './styles';
 
 const NameCardList = (props: { name: Name[]; onAssignCall: any }) => {
