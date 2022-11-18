@@ -8,7 +8,6 @@ export default function SquareCheckBox(props: {
   filterCategory: string;
 }) {
   const [filterOptions, setFilterOptions] = useAtom(atomFilterOptions);
-  console.log(filterOptions)
   const { checkBoxLabel, filterCategory } = props;
   const [filter, setFilter] = useAtom(atomFilters);
   const isMake = !(filterCategory in filter);
@@ -22,8 +21,6 @@ export default function SquareCheckBox(props: {
   const [checked, setChecked] = React.useState(checkBoxFilled());
 
   const checkFilter = () => {
-    console.log("3")
-    console.log(filterOptions)
     if (isMake) {
       if (!checked) {
         tempFilter['Make & Model'][filterCategory].push(checkBoxLabel);
@@ -45,8 +42,6 @@ export default function SquareCheckBox(props: {
     }
     setFilter(tempFilter);
     setChecked(checkBoxFilled());
-    console.log("4")
-    console.log(filterOptions);
   };
 
   return (

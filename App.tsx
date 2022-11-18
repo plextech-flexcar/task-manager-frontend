@@ -104,44 +104,50 @@ export default function App() {
     priority: 4,
   }
 
-  const tasks: Task[] = [task1, task2, task3, task2, task1];
+
   let makeAndModel = {};
   let makes = {};
 
   // Loads dummy tasks without connecting to backend
-  useEffect(() => {
-    setDisplayTasks(tasks);
-    setAllTasks(tasks);
-    makeAndModel = initialFindMakeAndModel(tasks);
-    makes = initialFindMakes(tasks);
-    filterOptions['Make & Model'] = makeAndModel;
-    filter['Make & Model'] = makes;
-    setFilterOptions(filterOptions);
-    setFilter(filter);
-  }, []);
-
-  // fetch(
-  //   "http://localhost:8080/api/v1/task",
-  //   {
-  //     mode: 'cors',
-  //     method: 'GET',
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //       'Accept': 'application/json',
-  //       'Origin': 'http://localhost:19006',
-  //     },
-  //   })
-  //     .then((response) => response.json())
-  //     .then((json) => {
-  //       setAllTasks(json);
-  //       setDisplayTasks(json);
-  //     });
-  // };
-
+  // const tasks: Task[] = [task1, task2, task3, task2, task1];
   // useEffect(() => {
-  //   getTasksAPI();
-  //   console.log(allTasks);
+  //   setDisplayTasks(tasks);
+  //   setAllTasks(tasks);
+  //   makeAndModel = initialFindMakeAndModel(tasks);
+  //   makes = initialFindMakes(tasks);
+  //   filterOptions['Make & Model'] = makeAndModel;
+  //   filter['Make & Model'] = makes;
+  //   setFilterOptions(filterOptions);
+  //   setFilter(filter);
   // }, []);
+
+  const getTasksAPI = async () => {
+    fetch('http://localhost:8080/api/v1/task', {
+      mode: 'cors',
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+        'Origin': 'http://localhost:19006',
+      },
+    })
+      .then((response) => response.json())
+      .then((json) => {
+        setAllTasks(json);
+        setDisplayTasks(json);
+        makeAndModel = initialFindMakeAndModel(json);
+        makes = initialFindMakes(json);
+        filterOptions['Make & Model'] = makeAndModel;
+        filter['Make & Model'] = makes;
+        setFilterOptions(filterOptions);
+        setFilter(filter);
+      });
+  };
+
+  useEffect(() => {
+    getTasksAPI();
+    console.log(allTasks);
+  }, []);
 
   return (
     <NativeBaseProvider>

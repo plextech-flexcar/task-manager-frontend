@@ -26,8 +26,6 @@ const MakeCheckbox = (props: {
   }
   const [checkType, setCheckType] = React.useState(checkCurrentState());
   const checkboxChangeState = () => {
-    console.log("1")
-    console.log(filterOptions)
     if (checkType === 'unchecked') {
       const updateFilter = filter;
       updateFilter['Make & Model'][title] = [...filterOptions['Make & Model'][title]];
@@ -38,8 +36,6 @@ const MakeCheckbox = (props: {
       setFilter(updateFilter);
     }
     setCheckType(checkCurrentState());
-    console.log("2")
-    console.log(filterOptions)
   };
     return (
     <View style={styles.makesRow}>
