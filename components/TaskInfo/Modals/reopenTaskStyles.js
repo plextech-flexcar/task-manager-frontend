@@ -3,11 +3,13 @@ import { StyleSheet } from 'react-native';
 export const styles1 = StyleSheet.create({
   keyboardView: {
     backgroundColor: '#EDEDED',
-    flex: 1,
+    // flex: 1,
+    width: '100%',
   },
   input: {
     borderColor: '#2A00A5',
     padding: 10,
+    outlineStyle: 'none',
   },
   form: {
     placeholderTextColor: '#76757D',
@@ -17,6 +19,7 @@ export const styles1 = StyleSheet.create({
     onselect: 'none',
     boxShadow: 'none',
     backgroundColor: '#fff',
+    width: '100%',
   },
   buttonGroup: {
     display: 'flex',
@@ -51,6 +54,7 @@ export const styles1 = StyleSheet.create({
     fontWeight: '700',
   },
   contain: {
+    width: '100%',
     // marginTop: 20,
     // marginBottom: 20,
   },
@@ -60,8 +64,8 @@ export const styles1 = StyleSheet.create({
     textAlign: 'center',
   },
   bottomModal: {
-    marginBottom: 20,
-    marginTop: 'auto',
+    // marginBottom: 20,
+    // marginTop: 'auto',
     borderBottomWidth: 0,
   },
 });

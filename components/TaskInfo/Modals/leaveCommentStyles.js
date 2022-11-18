@@ -2,11 +2,12 @@ import { StyleSheet } from 'react-native';
 export const styles1 = StyleSheet.create({
   keyboardView: {
     backgroundColor: '#EDEDED',
-    flex: 1,
+    width: '100%',
   },
   input: {
     borderColor: '#2A00A5',
     padding: 10,
+    outlineStyle: 'none',
   },
   form: {
     placeholderTextColor: '#76757D',
