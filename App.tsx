@@ -9,6 +9,9 @@ import TaskListScreen from './screens/TaskListScreen/TaskListScreen';
 import AssignModalFunc from './components/TaskAssign/AssignModal';
 import NameListScreen from './screens/NameListScreen/NameListScreen';
 
+import TaskListScreen from './screens/TaskListScreen/TaskListScreen';
+import TaskInfoScreen from './screens/TaskInfoScreen/TaskInfoScreen';
+
 // Define the config
 const config = {
   useSystemColorMode: false,

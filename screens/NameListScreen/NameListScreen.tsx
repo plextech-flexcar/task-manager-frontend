@@ -4,7 +4,7 @@ import { styles } from './styles';
 import { Name } from '../../models/Name';
 import NameCardList from '../../components/NameCardList/NameCardList';
 import AssignModalFunc from '../../components/TaskAssign/AssignModal';
-import FlatListItemSeparator from '../../components/ItemSeperation';
+import FlatListItemSeparator from '../../components/ItemSeparation';
 import { IconButton } from 'react-native-paper';
 
 const NameListScreen = ({ closeCall, onAssignCall }: any) => {
@@ -19,7 +19,7 @@ const NameListScreen = ({ closeCall, onAssignCall }: any) => {
       <Pressable style={styles.icon}>
         <IconButton icon="close" color="#2A00A5" size={20} onPress={() => closeCall()} />
       </Pressable>
-      <Text style={styles.text}>Assign 4 Tasks</Text>
+      <Text style={styles.text}>Assign Tasks</Text>
       <AssignModalFunc />
       <FlatListItemSeparator/>
       <NameCardList name={nameList} onAssignCall={onAssignCall} />

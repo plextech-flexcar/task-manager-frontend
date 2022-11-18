@@ -6,8 +6,10 @@ import { styles } from './TaskInfoStyles.js';
 import { PRIORITY_ICON_MAP } from '../../components/TaskCard/TaskCardPriorityIconMap';
 import { Status } from '../../models/Status';
 import TaskInfoPopup from '../../components/TaskInfo/Modals/TaskInfoPopup';
+import { PRIORITY_ICON_COLOR_MAP } from './TaskCardPriorityColorMap';
 const TaskInfoScreen = ({ route }) => {
   const {
+    id,
     type,
     status,
     age,
@@ -50,6 +52,7 @@ const TaskInfoScreen = ({ route }) => {
   };
 
   const statusVar = (status) => {
+<<<<<<< HEAD
     if(status === Status.OPEN){
       return "Status: OPEN"
       
@@ -57,6 +60,13 @@ const TaskInfoScreen = ({ route }) => {
     else if(status === Status.RESOLVE){
       return 'Status: assigned to ' + assigned
     }    
+=======
+    if (status === Status.OPEN) {
+      return 'Status: OPEN';
+    } else if (status === Status.RESOLVE) {
+      return 'Status: assigned to ' + assigned;
+    }
+>>>>>>> origin/main
   };
   return (
     <SafeAreaView style={styles.whitebg}>
@@ -70,21 +80,24 @@ const TaskInfoScreen = ({ route }) => {
             </Text>
           </View>
 
-          <View style={styles.mrView}>
-            <Image
-              source={PRIORITY_ICON_MAP[priority]}
-              style={{ width: 20, height: 20 }}
-            />
-            <Text style={styles.priorityTop}>{getPriority(priority)}</Text>
+          <View style={styles.priorityView}>
+            <Image source={PRIORITY_ICON_MAP[priority]} style={styles.priorityImage} />
+            <Text style={{ color: PRIORITY_ICON_COLOR_MAP[priority] }}>
+              {getPriority(priority)}
+            </Text>
           </View>
         </View>
 
         <Text style={styles.textDate}>{age}</Text>
         <View style={styles.viewMarginLeft}>
           <HStack>
+<<<<<<< HEAD
             <Text style={styles.textTop}>
               {statusVar(status)}
             </Text>
+=======
+            <Text style={styles.textTop}>{statusVar(status)}</Text>
+>>>>>>> origin/main
             {assigned && status !== Status.OPEN ? (
               <View style={styles.assignBox}>
                 <Text style={styles.assignBoxText}>{getInitials(assigned)}</Text>
@@ -136,7 +149,7 @@ const TaskInfoScreen = ({ route }) => {
           </VStack>
         </HStack>
         <View style={{ marginRight: '5%', marginLeft: '5%' }}>
-          <TaskInfoPopup style={{}} assigned={assigned} />
+          <TaskInfoPopup style={{}} assigned={assigned} taskId={id} />
         </View>
       </VStack>
     </SafeAreaView>

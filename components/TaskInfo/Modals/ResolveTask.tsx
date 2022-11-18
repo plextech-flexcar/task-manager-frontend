@@ -8,6 +8,7 @@ const ResolveTask = ({ resolveShowModal, onCloseCall, onResolve }) => {
     <SafeAreaView style={styles.whitebg}>
       <View style={styles1.contain}>
         <Modal
+          _backdrop={{bg: "#2A00A5"}}
           isOpen={resolveShowModal}
           onClose={() => onCloseCall()}
           safeAreaTop={true}

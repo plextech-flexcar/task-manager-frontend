@@ -8,7 +8,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#EDEDED',
     height: '100%',
     width: '100%',
-    borderRadius: '5px',
+    borderRadius: 5,
   },
   icon: {
     left: '44%',

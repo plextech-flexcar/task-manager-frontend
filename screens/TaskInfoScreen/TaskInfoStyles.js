@@ -20,14 +20,14 @@ const styles = StyleSheet.create({
     fontSize: 21,
     fontWeight: '800',
   },
-  mrView: {
-    marginRight: 20,
+  priorityView: {
+    marginRight: 30,
+    display: 'flex',
+    alignContent: 'center',
+    alignItems: 'center',
   },
   headerContainer: {
     width: '90%',
-  },
-  priorityTop: {
-    color: 'black',
   },
   textDate: {
     marginLeft: 20,
@@ -106,6 +106,10 @@ const styles = StyleSheet.create({
   },
   commentBy: {
     color: '#76757D',
+  },
+  priorityImage: {
+    width: 20,
+    height: 20,
   },
 });
 
