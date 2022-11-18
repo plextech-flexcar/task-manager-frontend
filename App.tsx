@@ -3,11 +3,11 @@ import { NativeBaseProvider, extendTheme } from 'native-base';
 import TaskListScreen from './screens/TaskListScreen/TaskListScreen';
 import TaskInfoScreen from './screens/TaskInfoScreen/TaskInfoScreen';
 import { useAtom } from 'jotai';
-import { allTasksAtom, displayTasksAtom } from './atoms';
+import { allTasksAtom, atomFilters, displayTasksAtom } from './atoms';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Task } from './models/Task';
-import { initialFindMake } from './utils/findTasks';
+import { initialFindMakes, initialFindMakeAndModel } from './utils/findTasks';
 import { createMakeAndModelFilter } from './utils/createMakeAndModelFilter';
 import { atomFilterOptions } from './atoms';
 
@@ -29,6 +29,7 @@ export default function App() {
   const [allTasks, setAllTasks] = useAtom(allTasksAtom);
   const [displayTasks, setDisplayTasks] = useAtom(displayTasksAtom);
   const [filterOptions, setFilterOptions] = useAtom(atomFilterOptions);
+  const [filter, setFilter] = useAtom(atomFilters)
 
   const task1: Task = {
     id: 4,
@@ -62,8 +63,8 @@ export default function App() {
     description:
       'Using a windshield repair kit, you can remove the broken glass and replace it with a new piece of glass, and clean the area, apply the adhesive.',
     comment: 'Pls finish ASAP',
-    make: 'ayo',
-    model: 'HELLo',
+    make: 'Ayo',
+    model: 'Hello',
     color: 'Magenta',
     license: 'qjt7Bi',
     mva: 'R436542',
@@ -78,17 +79,45 @@ export default function App() {
     vin: 'vy6si92Chj',
     priority: 4,
   };
+  const task3: Task = {
+    id: 5,
+    vehicleid: 4,
+    date: 1667185142,
+    type: 'Body damage/Collision',
+    description:
+      'Go to a body shop TBH. This is kinda screwed',
+    comment: 'Uh Oh',
+    make: 'Ayo',
+    model: 'Hello2',
+    color: 'Magenta',
+    license: 'qjt7Bi',
+    mva: 'R436542',
+    age: 1667271542,
+    assigned: 'Elias Charambides',
+    market: 'Wisconsin',
+    status: true,
+    createdBy: 'Willium Hopkin',
+    carImage:
+      'https://www.freepnglogos.com/uploads/honda-car-png/honda-car-honda-civic-very-good-car-honda-civic-10.png',
+    state: 'NC',
+    vin: 'vy6si92Chj',
+    priority: 4,
+  }
 
-  const tasks: Task[] = [task1, task2, task1, task2, task1];
+  const tasks: Task[] = [task1, task2, task3, task2, task1];
   let makeAndModel = {};
+  let makes = {};
 
   // Loads dummy tasks without connecting to backend
   useEffect(() => {
     setDisplayTasks(tasks);
     setAllTasks(tasks);
-    makeAndModel = initialFindMake(tasks);
+    makeAndModel = initialFindMakeAndModel(tasks);
+    makes = initialFindMakes(tasks);
     filterOptions['Make & Model'] = makeAndModel;
+    filter['Make & Model'] = makes;
     setFilterOptions(filterOptions);
+    setFilter(filter);
   }, []);
 
   // fetch(

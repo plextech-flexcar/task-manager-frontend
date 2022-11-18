@@ -1,41 +1,52 @@
 import * as React from 'react';
 import { Checkbox } from 'react-native-paper';
-import { atomFilters } from '../../atoms';
+import { atomFilterOptions, atomFilters } from '../../atoms';
 import { useAtom } from 'jotai';
 
 export default function SquareCheckBox(props: {
   checkBoxLabel: string;
   filterCategory: string;
 }) {
+  const [filterOptions, setFilterOptions] = useAtom(atomFilterOptions);
+  console.log(filterOptions)
   const { checkBoxLabel, filterCategory } = props;
-  let [filter, setFilter] = useAtom(atomFilters);
-  const inFilter = filterCategory in filter;
+  const [filter, setFilter] = useAtom(atomFilters);
+  const isMake = !(filterCategory in filter);
   const tempFilter = filter;
-  if (!inFilter) {
-    filter = filter['Make & Model'][filterCategory];
-  }
   const checkBoxFilled = () => {
-    return filter[filterCategory].includes(checkBoxLabel);
+    if (isMake) {
+      return tempFilter['Make & Model'][filterCategory].includes(checkBoxLabel);
+    }
+    return tempFilter[filterCategory].includes(checkBoxLabel);
   };
   const [checked, setChecked] = React.useState(checkBoxFilled());
 
   const checkFilter = () => {
-    setChecked(!checked);
-    const newFilter = filter;
-    if (!checked) {
-      newFilter[filterCategory].push(checkBoxLabel);
+    console.log("3")
+    console.log(filterOptions)
+    if (isMake) {
+      if (!checked) {
+        tempFilter['Make & Model'][filterCategory].push(checkBoxLabel);
+      } else {
+        const index = tempFilter['Make & Model'][filterCategory].indexOf(checkBoxLabel);
+        if (index > -1) {
+          tempFilter['Make & Model'][filterCategory].splice(index, 1);
+        }
+      }
     } else {
-      const index = newFilter[filterCategory].indexOf(checkBoxLabel);
-      if (index > -1) {
-        newFilter[filterCategory].splice(index, 1);
+      if (!checked) {
+        tempFilter[filterCategory].push(checkBoxLabel);
+      } else {
+        const index = tempFilter[filterCategory].indexOf(checkBoxLabel);
+        if (index > -1) {
+          tempFilter[filterCategory].splice(index, 1);
+        }
       }
     }
-    if (inFilter) {
-      setFilter(newFilter);
-    } else {
-      tempFilter['Make and Model'] = newFilter;
-      setFilter(tempFilter);
-    }
+    setFilter(tempFilter);
+    setChecked(checkBoxFilled());
+    console.log("4")
+    console.log(filterOptions);
   };
 
   return (
@@ -46,6 +57,7 @@ export default function SquareCheckBox(props: {
       status={checked ? 'checked' : 'unchecked'}
       labelStyle={{ textAlign: 'left' }}
       onPress={checkFilter}
+      uncheckedColor={'#2A00A5'}
       color={'#2A00A5'}
     />
   );

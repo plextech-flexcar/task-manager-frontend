@@ -6,7 +6,6 @@ import IconComponent from '../IconComponent';
 
 const NameCard = ({ first, last }: Name) => {
   const fullName = first + ' ' + last;
-  console.log(fullName);
   return (
     <View style={styles.card}>
       <VStack p="2" space={0} width="Fill" height="hug">

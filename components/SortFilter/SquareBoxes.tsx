@@ -15,16 +15,19 @@ export default function SquareBoxes(props: { filterCategory: string }) {
   } else {
     filterList = filterOptions['Make & Model'][filterCategory];
   }
-
+  const lastElem = filterList.at(-1);
   return (
-    <View style={styles.boxRow}>
+    <View style={styles.circleRow}>
       {filterList.map((title: string) => {
         return (
-          <SquareCheckBox
-            checkBoxLabel={title}
-            filterCategory={filterCategory}
-            key={title}
-          />
+          <>
+            <SquareCheckBox
+              checkBoxLabel={title}
+              filterCategory={filterCategory}
+              key={title}
+            />
+            {!(lastElem === title) && <View style={styles.lineSeparator}/>}
+          </>
         );
       })}
     </View>

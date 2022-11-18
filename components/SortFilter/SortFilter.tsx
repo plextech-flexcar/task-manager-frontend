@@ -5,7 +5,7 @@ import Modal from 'react-native-modal';
 import CircleCheckBox from './CircleCheckBox';
 import FilterBox from './FilterBox';
 import SquareBoxes from './SquareBoxes';
-import { atomFilterOptions, atomModalVisible } from '../../atoms';
+import { atomFilterOptions, atomFilters, atomModalVisible } from '../../atoms';
 import { useAtom } from 'jotai';
 import SubmitButton from './SubmitButton';
 import { styles } from './styles.js';
@@ -15,6 +15,7 @@ export default function SortFilter() {
   const [isModalVisible, setModalVisible] = useAtom(atomModalVisible);
   const [title, setTitle] = useState('Sort & Filter');
   const [filterOptions, setFilterOptions] = useAtom(atomFilterOptions);
+  const [filter, setFilter] = useAtom(atomFilters);
 
   const [modalIcon, setModalIcon] = useState('closeModal');
 
@@ -24,14 +25,31 @@ export default function SortFilter() {
   };
 
   const changeFilter = (filterName: string) => {
-    console.log(filterName);
     setTitle(filterName);
     setModalIcon('backChevronModal');
   };
 
+  const resetFilters = () => {
+    const defaultFilter = {
+      "Market": [],
+      "Task Type": [],
+      "Make & Model": {},
+      "Status": [],
+      "Priority" : [],
+      "Quick View": [],
+  };
+    const defaultMakesModels = filterOptions["Make & Model"];
+    Object.keys(defaultMakesModels).forEach((make: string) => {
+      defaultFilter["Make & Model"][make] = [];
+    })
+    setFilter(defaultFilter);
+  }
+
   const modalNavigation = () => {
     if (title === 'Sort & Filter') {
       toggleModal();
+    } else if (title in filterOptions['Make & Model']) {
+        setTitle('Make & Model')
     } else {
       setModalIcon('closeModal');
       setTitle('Sort & Filter');
@@ -41,7 +59,6 @@ export default function SortFilter() {
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
       <Modal
-        hasBackdrop
         hideModalContentWhileAnimating
         animationOut={'slideOutDown'}
         backdropOpacity={0.2}
@@ -63,6 +80,11 @@ export default function SortFilter() {
               </View>
             </TouchableOpacity>
             <Text style={styles.modalHeaderTitle}>{title}</Text>
+            <TouchableOpacity onPress={resetFilters}>
+              <View style={styles.modalIcon}>
+                {title === 'Sort & Filter' && <Text style={styles.resetText}> Reset </Text>}
+              </View>
+            </TouchableOpacity>
           </View>
           <ScrollView>
             {title === 'Sort & Filter' && (
@@ -74,7 +96,7 @@ export default function SortFilter() {
             {title === 'Market' && <SquareBoxes filterCategory={title} />}
             {title === 'Task Type' && <SquareBoxes filterCategory={title} />}
             {title === 'Make & Model' && (
-              <CheckBoxFilter filterCategory={title} changeFilter={changeFilter} />
+              <CheckBoxFilter changeFilter={changeFilter} />
             )}
             {title === 'Status' && <SquareBoxes filterCategory={title} />}
             {title === 'Priority' && <SquareBoxes filterCategory={title} />}

@@ -1,15 +1,36 @@
 import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
+    lineSeparator: {
+        borderBottomColor: "#CECED0",
+        borderBottomWidth: 1,
+        display: "flex",
+        width: "95%",
+        alignSelf: "flex-end",
+      },
     circleRow: {
+        borderRadius: 7.5,
         backgroundColor: "white",
-        marginBottom: 15,
-        marginHorizontal: 15,
+        marginVertical: 16,
+        marginHorizontal: 16,
+    },
+    makesRow: {
+        display: "flex", 
+        flexDirection: "row", 
+        alignItems: "center",
+        marginHorizontal: 16,
+        marginVertical: 8,
+    },
+    makesRowPressable : {
+        display: "flex", 
+        flexDirection:"row", 
+        width: "90%", 
+        justifyContent: "space-between",
     },
     filterRow: {
         flexDirection: "row",
         justifyContent: "space-between",
-        marginHorizontal: 10,
+        marginHorizontal: 16,
         marginVertical: 15,
     },
     filterText: {
@@ -31,29 +52,33 @@ const styles = StyleSheet.create({
         borderTopRightRadius: 20,
         overflow: 'hidden',
     },
-
     modalHeader: {
-        paddingVertical: 15,
+        paddingTop: 20,
+        paddingBottom: 10, 
+        paddingHorizontal: 15,
+        marginLeft: 10,
         display: 'flex',
         justifyContent: 'space-between',
         flexDirection: 'row',
-        alignItems: 'baseline',
-        paddingHorizontal: 15,
-        width: '63%',
+        alignItems: 'center',
+        width: '97.5%',
+        alignContent: 'center'
     },
     modalHeaderTitle: {
         fontSize: 17,
+        fontWeight: '700',
     },
     backText: {
         fontfamily: 'Inter',
         color: '#2A00A5',
         fontWeight: '400',
-        fontSize: 20,
+        fontSize: 15,
     },
-    boxRow: {
-        backgroundColor: 'white',
-        marginBottom: 15,
-        marginHorizontal: 15,
-    },
+    resetText: {
+        fontfamily: 'Inter',
+        color: '#2A00A5',
+        fontWeight: '400',
+        fontSize: 15,
+    }
 });
 export { styles };

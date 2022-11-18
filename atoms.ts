@@ -19,6 +19,6 @@ export const atomFilters = atom<Record<string, any>>({
     "Make & Model": {},
     "Status": [],
     "Priority" : [],
-    "Quick View": []
+    "Quick View": [],
 })
 export const atomSorts = atom("")

@@ -12,10 +12,12 @@ export default function FilterBox(props: {
 }) {
   const { changeFilter } = props;
   const [filterOptions, setFilterOptions] = useAtom(atomFilterOptions);
+  const lastElem = Object.keys(filterOptions).at(-1)
   return (
     <View style={styles.circleRow}>
       {Object.keys(filterOptions).map((title: string) => {
         return (
+          <>
           <TouchableOpacity
             key={title}
             onPress={() => changeFilter(title)}
@@ -27,6 +29,8 @@ export default function FilterBox(props: {
               style={{ height: 15, width: 15 }}
             ></Image>
           </TouchableOpacity>
+          {!(lastElem === title) && <View style={styles.lineSeparator}/>}
+          </>
         );
       })}
     </View>

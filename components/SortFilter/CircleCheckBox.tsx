@@ -21,12 +21,13 @@ export default function CircleCheckBox() {
     setValue(value);
     setSorts(value);
   };
-
+  const lastElem = data.at(-1);
   return (
     <View style={styles.circleRow}>
       <RadioButton.Group onValueChange={changeSorts} value={value}>
         {data.map((title) => {
           return (
+            <>
             <RadioButton.Item
               label={title}
               value={title}
@@ -35,6 +36,8 @@ export default function CircleCheckBox() {
               labelStyle={{ textAlign: 'left' }}
               color={'#2A00A5'}
             />
+            {!(lastElem === title) && <View style={styles.lineSeparator}/>}
+            </>
           );
         })}
       </RadioButton.Group>
