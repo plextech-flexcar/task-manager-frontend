@@ -61,7 +61,7 @@ const TaskInfoPopup = (props) => {
 
   const personSearch = require('../../../assets/person_search.png');
   return (
-    <SafeAreaView style={styles.whitebg}>
+    <SafeAreaView style={{}}>
       <View>
         <Modal
           animationType="slide"

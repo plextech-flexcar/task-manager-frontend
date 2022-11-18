@@ -111,6 +111,12 @@ const styles = StyleSheet.create({
     width: 20,
     height: 20,
   },
+  fixedBottom: {
+    // position:'absolute',bottom:0,alignSelf:'flex-end',
+    // flex: 1,
+    // justifyContent: 'flex-end',
+    // marginBottom: 36
+  },
 });
 
 export { styles };
