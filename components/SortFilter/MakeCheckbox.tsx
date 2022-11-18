@@ -30,7 +30,7 @@ const MakeCheckbox = (props: {
     console.log(filterOptions)
     if (checkType === 'unchecked') {
       const updateFilter = filter;
-      updateFilter['Make & Model'][title] = filterOptions['Make & Model'][title];
+      updateFilter['Make & Model'][title] = [...filterOptions['Make & Model'][title]];
       setFilter(updateFilter);
     } else {
       const updateFilter = filter;
