@@ -1,3 +1,5 @@
+import { Status } from "./Status";
+
 export interface Task {
   id: number;
   vehicleid: number;
@@ -14,9 +16,10 @@ export interface Task {
   age: number;
   assigned: string | null;
   market: string;
-  status: boolean;
+  status: Status;
   createdBy: string | null;
   carImage: string;
   state: string;
   vin: string;
+  vehicleStatus: boolean;
 }

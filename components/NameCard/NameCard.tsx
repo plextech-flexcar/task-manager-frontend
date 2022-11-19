@@ -3,22 +3,27 @@ import { View, HStack, VStack, Text } from 'native-base';
 import { styles } from './styles.js';
 import { Name } from '../../models/Name.js';
 import IconComponent from '../IconComponent';
-
-const NameCard = ({ first, last }: Name) => {
-  const fullName = first + ' ' + last;
+import { Pressable } from 'react-native';
+const NameCard = (props: { name: Name; onAssignCall: any }) => {
+  const first = props.name.first;
+  const last = props.name.last;
+  const name = first + ' ' + last;
+  const { onAssignCall } = props;
   return (
-    <View style={styles.card}>
-      <VStack p="2" space={0} width="Fill" height="hug">
-        <HStack justifyContent="space-between">
-          <IconComponent first={first} last={last} />
-          <Text>
-            <View style={styles.taskHeading} left="40px" top="2.5px">
-              {fullName}
-            </View>
-          </Text>
-        </HStack>
-      </VStack>
-    </View>
+    <Pressable onPress={() => onAssignCall(name)}>
+      <View style={styles.card}>
+        <VStack p="2" space={0} width="80%" height="full">
+          <HStack>
+            <IconComponent first={first} last={last} />
+            <Text>
+              <View style={styles.textSpacing}>
+                <Text style={styles.taskHeading}>{name}</Text>
+              </View>
+            </Text>
+          </HStack>
+        </VStack>
+      </View>
+    </Pressable>
   );
 };
 export default NameCard;

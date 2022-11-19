@@ -19,7 +19,7 @@ export default function HeaderButton(props: { buttonName: string }) {
   };
 
   return (
-    <>
+    <>  
       <TouchableHighlight
         style={isActive ? styles.active : styles.notActive}
         onPress={handleClick}

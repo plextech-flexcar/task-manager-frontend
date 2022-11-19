@@ -1,8 +1,8 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
   whitebg: {
-    backgroundColor: "#EDEDED",
+    backgroundColor: '#EDEDED',
   },
   headermt: {
     marginTop: 16,
@@ -12,67 +12,67 @@ const styles = StyleSheet.create({
   },
   headerHorizontalStack: {
     marginLeft: 20,
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "space-between",
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
   },
   header: {
     fontSize: 21,
-    fontWeight: "800",
+    fontWeight: '800',
   },
-  mrView: {
-    marginRight: 20,
+  priorityView: {
+    marginRight: 30,
+    display: 'flex',
+    alignContent: 'center',
+    alignItems: 'center',
   },
   headerContainer: {
-    width: "90%",
-  },
-  priorityTop: {
-    color: "#E53935",
+    width: '90%',
   },
   textDate: {
     marginLeft: 20,
-    color: "#76757D",
+    color: '#76757D',
     marginTop: 3,
   },
   assignBox: {
     marginLeft: 3,
-    backgroundColor: "#2A00A5",
+    backgroundColor: '#2A00A5',
     padding: 5,
     borderRadius: 8,
   },
   assignBoxText: {
-    color: "white",
+    color: 'white',
     fontSize: 11,
-    fontWeight: "bold",
+    fontWeight: 'bold',
   },
   textTop: {
     marginTop: 3,
   },
   middleBox: {
-    backgroundColor: "white",
+    backgroundColor: 'white',
     marginTop: 11,
   },
   middleHorizontalStack: {
-    display: "flex",
-    flexDirection: "row",
+    display: 'flex',
+    flexDirection: 'row',
     marginLeft: 20,
     marginTop: 20,
-    justifyContent: "space-between",
+    justifyContent: 'space-between',
   },
   textCarType: {
-    fontWeight: "bold",
+    fontWeight: 'bold',
     fontSize: 15,
     marginTop: 3,
   },
   unavailableBox: {
-    backgroundColor: "#FFB052",
-    alignSelf: "flex-start",
+    backgroundColor: '#FFB052',
+    alignSelf: 'flex-start',
     padding: 5,
     marginTop: 3,
   },
-  avialbleBox: {
-    backgroundColor: "#39BD09",
-    alignSelf: "flex-start",
+  availableBox: {
+    backgroundColor: '#39BD09',
+    alignSelf: 'flex-start',
     padding: 5,
     marginTop: 3,
   },
@@ -81,10 +81,10 @@ const styles = StyleSheet.create({
     flex: 1,
     width: 72,
     height: 92,
-    resizeMode: "contain",
+    resizeMode: 'contain',
   },
   vehicleDivider: {
-    width: "90%",
+    width: '90%',
     marginLeft: 16,
     marginTop: 3,
   },
@@ -98,14 +98,18 @@ const styles = StyleSheet.create({
   },
   commentVStack: {
     marginLeft: 20,
-    height: "100%",
+    height: '100%',
   },
   commentBox: {
     marginTop: 3,
     marginRight: 20,
   },
   commentBy: {
-    color: "#76757D",
+    color: '#76757D',
+  },
+  priorityImage: {
+    width: 20,
+    height: 20,
   },
 });
 

@@ -5,7 +5,7 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    marginBottom: '10px',
+    borderBottomWidth: 10,
   },
 });
 

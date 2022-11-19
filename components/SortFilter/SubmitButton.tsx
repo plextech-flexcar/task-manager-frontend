@@ -1,13 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
-  Image,
   SafeAreaView,
   Text,
   View,
   StyleSheet,
   TouchableOpacity,
 } from 'react-native';
-import { HStack } from 'native-base';
 import { styles } from '../../screens/TaskInfoScreen/TaskInfoStyles.js';
 import { filterTasks } from './utilityFilter';
 import { useAtom } from 'jotai';

@@ -1,7 +1,6 @@
 import React from 'react';
 import { SafeAreaView } from 'react-native';
 import { styles } from './styles';
-import { Task } from '../../models/Task';
 import TaskCardList from '../../components/TaskCardList/TaskCardList';
 import TaskListHeader from '../../components/TaskListHeader/TaskListHeader';
 import SortFilter from '../../components/SortFilter/SortFilter';

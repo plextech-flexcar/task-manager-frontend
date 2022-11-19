@@ -1,22 +1,17 @@
 import React from 'react';
 import { Searchbar } from 'react-native-paper';
-
+import { styles } from './styles';
 export default function AssignModalFunc() {
   const [searchQuery, setSearchQuery] = React.useState('');
 
   const onChangeSearch = (query: React.SetStateAction<string>) => setSearchQuery(query);
   return (
     <Searchbar
-      placeholder="Search Tasks"
+      placeholder="Search users"
       placeholderTextColor="#76757D"
       onChangeText={onChangeSearch}
       value={searchQuery}
-      style={{
-        width: 382,
-        height: 30,
-        backgroundColor: '#FFFFFF',
-        left: '1px',
-      }}
+      style={styles.searchBar}
       inputStyle={{ fontSize: 15 }}
     />
   );

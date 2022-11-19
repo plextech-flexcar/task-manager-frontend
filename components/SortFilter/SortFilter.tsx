@@ -1,6 +1,6 @@
-import { ScrollView, HStack } from 'native-base';
+import { ScrollView } from 'native-base';
 import React, { useState } from 'react';
-import { Text, View, StyleSheet, TouchableOpacity, Image } from 'react-native';
+import { Text, View, TouchableOpacity, Image } from 'react-native';
 import Modal from 'react-native-modal';
 import CircleCheckBox from './CircleCheckBox';
 import FilterBox from './FilterBox';
@@ -40,7 +40,7 @@ export default function SortFilter() {
   };
     const defaultMakesModels = filterOptions["Make & Model"];
     Object.keys(defaultMakesModels).forEach((make: string) => {
-      defaultFilter["Make & Model"][make] = [];
+      (defaultFilter["Make & Model"] as any)[make] = [];
     })
     setFilter(defaultFilter);
   }
@@ -57,7 +57,7 @@ export default function SortFilter() {
   };
 
   return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+    <View style={styles.sortFilterView}>
       <Modal
         hideModalContentWhileAnimating
         animationOut={'slideOutDown'}

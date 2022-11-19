@@ -1,7 +1,5 @@
 import React, { useEffect } from 'react';
 import { NativeBaseProvider, extendTheme } from 'native-base';
-import TaskListScreen from './screens/TaskListScreen/TaskListScreen';
-import TaskInfoScreen from './screens/TaskInfoScreen/TaskInfoScreen';
 import { useAtom } from 'jotai';
 import { allTasksAtom, atomFilters, displayTasksAtom } from './atoms';
 import { NavigationContainer } from '@react-navigation/native';
@@ -10,6 +8,9 @@ import { Task } from './models/Task';
 import { initialFindMakes, initialFindMakeAndModel } from './utils/findTasks';
 import { createMakeAndModelFilter } from './utils/createMakeAndModelFilter';
 import { atomFilterOptions } from './atoms';
+
+import TaskListScreen from './screens/TaskListScreen/TaskListScreen';
+import TaskInfoScreen from './screens/TaskInfoScreen/TaskInfoScreen';
 
 // Define the config
 const config = {

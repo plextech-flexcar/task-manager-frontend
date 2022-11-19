@@ -1,13 +1,18 @@
 import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
+    sortFilterView: { 
+        flex: 1, 
+        justifyContent: 'center', 
+        alignItems: 'center' 
+    },
     lineSeparator: {
         borderBottomColor: "#CECED0",
         borderBottomWidth: 1,
         display: "flex",
         width: "95%",
         alignSelf: "flex-end",
-      },
+    },
     circleRow: {
         borderRadius: 7.5,
         backgroundColor: "white",

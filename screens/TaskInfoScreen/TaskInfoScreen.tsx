@@ -4,9 +4,14 @@ import TaskInfoHeader from '../../components/TaskInfo/TaskInfoHeader';
 import { HStack, VStack, Divider } from 'native-base';
 import { styles } from './TaskInfoStyles.js';
 import { PRIORITY_ICON_MAP } from '../../components/TaskCard/TaskCardPriorityIconMap';
+import { Status } from '../../models/Status';
+import TaskInfoPopup from '../../components/TaskInfo/Modals/TaskInfoPopup';
+import { PRIORITY_ICON_COLOR_MAP } from './TaskCardPriorityColorMap';
 const TaskInfoScreen = ({ route }) => {
   const {
+    id,
     type,
+    status,
     age,
     assigned,
     createdBy,
@@ -18,21 +23,40 @@ const TaskInfoScreen = ({ route }) => {
     license,
     mva,
     priority,
-    status,
+    vehicleStatus,
     carImage,
     description,
     state,
     vin,
   } = route.params;
-  const getInitials = (name) => {
+  const getPriority = (priority: number) => {
+    if (priority === 1) {
+      return 'Low';
+    } else if (priority === 2) {
+      return 'Normal';
+    } else if (priority === 3) {
+      return 'High';
+    } else {
+      return 'Top';
+    }
+  };
+  const getInitials = (name: string) => {
     return name
       .split(' ')
       .map((n) => n[0])
       .join('');
   };
-  const fromEpochToDate = (date) => {
+  const fromEpochToDate = (date: number) => {
     const newDate = new Date(date * 1000);
     return newDate.toLocaleString();
+  };
+
+  const statusVar = (status) => {
+    if (status === Status.OPEN) {
+      return 'Status: OPEN';
+    } else if (status === Status.RESOLVE) {
+      return 'Status: assigned to ' + assigned;
+    }
   };
   return (
     <SafeAreaView style={styles.whitebg}>
@@ -46,22 +70,19 @@ const TaskInfoScreen = ({ route }) => {
             </Text>
           </View>
 
-          <View style={styles.mrView}>
-            <Image
-              source={PRIORITY_ICON_MAP[priority]}
-              style={{ width: 20, height: 20 }}
-            />
-            <Text style={styles.priorityTop}>Top</Text>
+          <View style={styles.priorityView}>
+            <Image source={PRIORITY_ICON_MAP[priority]} style={styles.priorityImage} />
+            <Text style={{ color: PRIORITY_ICON_COLOR_MAP[priority] }}>
+              {getPriority(priority)}
+            </Text>
           </View>
         </View>
 
         <Text style={styles.textDate}>{age}</Text>
         <View style={styles.viewMarginLeft}>
           <HStack>
-            <Text style={styles.textTop}>
-              {assigned ? 'Status: Assigned to ' + assigned : 'Open'}
-            </Text>
-            {assigned ? (
+            <Text style={styles.textTop}>{statusVar(status)}</Text>
+            {assigned && status !== Status.OPEN ? (
               <View style={styles.assignBox}>
                 <Text style={styles.assignBoxText}>{getInitials(assigned)}</Text>
               </View>
@@ -83,19 +104,16 @@ const TaskInfoScreen = ({ route }) => {
               {license}, {state} MVA: {mva}
             </Text>
             <Text style={styles.textTop}>VIN: {vin}</Text>
-            <View style={status ? styles.avialbleBox : styles.unavailableBox}>
-              <Text>{status ? 'Available' : 'Unavialble/Service'}</Text>
+            <View style={vehicleStatus ? styles.availableBox : styles.unavailableBox}>
+              <Text>{vehicleStatus ? 'Available' : 'Unavailable/Service'}</Text>
             </View>
           </View>
           <Image style={styles.image} source={{ uri: carImage }} />
         </View>
         <Divider style={styles.vehicleDivider} />
         <VStack style={styles.vehicleVerticalStack}>
-          <Text>Using a windshied repair kit: </Text>
+          <Text>Using a windshield repair kit: </Text>
           <Text style={styles.vehicleMarginTop}>{description}</Text>
-          {/* <Text style={styles.vehicleMarginTop}>2. Clean the area</Text>
-          <Text style={styles.vehicleMarginTop}>3. Apply the adhesive</Text>
-          <Text style={styles.vehicleMarginTop}>4. Apply the glass</Text> */}
         </VStack>
       </View>
       <VStack style={styles.commentVStack}>
@@ -114,6 +132,9 @@ const TaskInfoScreen = ({ route }) => {
             <Text style={styles.commentBy}>by Adam Miller on 3/15/22 - 4:30pm</Text>
           </VStack>
         </HStack>
+        <View style={{ marginRight: '5%', marginLeft: '5%' }}>
+          <TaskInfoPopup style={{}} assigned={assigned} taskId={id} />
+        </View>
       </VStack>
     </SafeAreaView>
   );

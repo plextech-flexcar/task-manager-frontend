@@ -1,12 +1,13 @@
 import React from 'react';
-import { TouchableOpacity, Image} from 'react-native';
-import { Box, View, HStack, VStack, Text,  } from 'native-base';
+import { TouchableOpacity, Image } from 'react-native';
+import { Box, View, HStack, VStack, Text } from 'native-base';
 import { styles } from './styles.js';
 import { PRIORITY_ICON_MAP } from './TaskCardPriorityIconMap';
 import { Task } from '../../models/Task.js';
 import { useNavigation } from '@react-navigation/native';
 import IconComponent from '../IconComponent';
 const TaskCard = ({
+  id,
   type,
   date,
   comment,
@@ -20,6 +21,7 @@ const TaskCard = ({
   assigned,
   market,
   status,
+  vehicleStatus,
   createdBy,
   carImage,
   description,
@@ -43,6 +45,7 @@ const TaskCard = ({
     <TouchableOpacity
       onPress={() =>
         navigation.navigate('TaskInfoScreen', {
+          id: id,
           type: type,
           age: calculateAge(age),
           assigned: assigned,
@@ -56,6 +59,7 @@ const TaskCard = ({
           mva: mva,
           priority: priority,
           status: status,
+          vehicleStatus: vehicleStatus,
           carImage: carImage,
           description: description,
           state: state,
@@ -66,13 +70,13 @@ const TaskCard = ({
     >
       <View>
         <Box>
-          <VStack p="4" space={0} width="Fill" height="Hug">
+          <VStack p="4" space={0} width="full" height="hug">
             <HStack justifyContent="space-between">
               <View>
                 <Text style={styles.taskHeading}>{type}</Text>
               </View>
               <Image
-                source={PRIORITY_ICON_MAP[priority]}
+                source={{ uri: PRIORITY_ICON_MAP[priority] }}
                 style={{ width: 20, height: 20 }}
               />
             </HStack>
@@ -88,7 +92,10 @@ const TaskCard = ({
                   {license} • {mva}
                 </Text>
               </View>
-              <IconComponent first = {assigned ? assigned.split(' ')[0].charAt(0) : ""} last = {assigned ? assigned.split(' ')[1].charAt(0) : ""} />
+              <IconComponent
+                first={assigned ? assigned.split(' ')[0].charAt(0) : ''}
+                last={assigned ? assigned.split(' ')[1].charAt(0) : ''}
+              />
             </HStack>
           </VStack>
         </Box>
