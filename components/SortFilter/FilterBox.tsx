@@ -6,29 +6,21 @@ import { atomFilterOptions } from '../../atoms';
 
 import { styles } from './styles.js';
 import { useAtom } from 'jotai';
+import FilterElement from './FilterElement';
 
 export default function FilterBox(props: {
   changeFilter: React.Dispatch<React.SetStateAction<any>>;
 }) {
   const { changeFilter } = props;
   const [filterOptions, setFilterOptions] = useAtom(atomFilterOptions);
-  const lastElem = Object.keys(filterOptions).at(-1)
+  const lastElem = Object.keys(filterOptions).at(-1);
+  
   return (
     <View style={styles.circleRow}>
       {Object.keys(filterOptions).map((title: string) => {
         return (
           <>
-          <TouchableOpacity
-            key={title}
-            onPress={() => changeFilter(title)}
-            style={styles.filterRow}
-          >
-            <Text style={styles.filterText}>{title}</Text>
-            <Image
-              source={require('../../assets/next.png')}
-              style={{ height: 15, width: 15 }}
-            ></Image>
-          </TouchableOpacity>
+          <FilterElement changeFilter={changeFilter} title={title}/>
           {!(lastElem === title) && <View style={styles.lineSeparator}/>}
           </>
         );

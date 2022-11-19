@@ -1,6 +1,11 @@
 import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
+    filterVector: {
+        display: "flex", 
+        flexDirection: "row",
+        alignItems: "center",
+    },
     sortFilterView: { 
         flex: 1, 
         justifyContent: 'center', 
@@ -35,10 +40,11 @@ const styles = StyleSheet.create({
     filterRow: {
         flexDirection: "row",
         justifyContent: "space-between",
-        marginHorizontal: 16,
+        marginHorizontal: 20,
         marginVertical: 15,
     },
     filterText: {
+        paddingLeft: 14,
         fontSize: 16,
     },
     view: {
