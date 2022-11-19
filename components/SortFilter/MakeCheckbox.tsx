@@ -1,5 +1,5 @@
 import React from 'react';
-import { HStack, View } from "native-base";
+import { View } from "native-base";
 import { TouchableOpacity, Text, Image } from 'react-native';
 import { Checkbox } from 'react-native-paper';
 import { styles } from './styles.js';
@@ -11,7 +11,7 @@ const MakeCheckbox = (props: {
   title: string;
 }) => {
   const {changeFilter, title } = props;
-  const [filterOptions, setFilterOptions] = useAtom(atomFilterOptions);
+  const [filterOptions] = useAtom(atomFilterOptions);
   const [filter, setFilter] = useAtom(atomFilters)
   const equals = (a: any , b: any) => JSON.stringify(a) === JSON.stringify(b);
   const checkCurrentState = (): 'indeterminate' | 'checked' | 'unchecked' => {

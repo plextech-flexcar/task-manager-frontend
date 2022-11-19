@@ -1,7 +1,5 @@
-import { Square } from 'native-base';
 import * as React from 'react';
-import { Checkbox } from 'react-native-paper';
-import { StyleSheet, View, TouchableOpacity, Image, Text } from 'react-native';
+import { View } from 'react-native';
 import { atomFilterOptions } from '../../atoms';
 
 import { styles } from './styles.js';
@@ -12,7 +10,7 @@ export default function FilterBox(props: {
   changeFilter: React.Dispatch<React.SetStateAction<any>>;
 }) {
   const { changeFilter } = props;
-  const [filterOptions, setFilterOptions] = useAtom(atomFilterOptions);
+  const [filterOptions] = useAtom(atomFilterOptions);
   const lastElem = Object.keys(filterOptions).at(-1);
   
   return (

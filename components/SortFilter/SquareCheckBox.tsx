@@ -1,13 +1,12 @@
 import * as React from 'react';
 import { Checkbox } from 'react-native-paper';
-import { atomFilterOptions, atomFilters } from '../../atoms';
+import { atomFilters } from '../../atoms';
 import { useAtom } from 'jotai';
 
 export default function SquareCheckBox(props: {
   checkBoxLabel: string;
   filterCategory: string;
 }) {
-  const [filterOptions, setFilterOptions] = useAtom(atomFilterOptions);
   const { checkBoxLabel, filterCategory } = props;
   const [filter, setFilter] = useAtom(atomFilters);
   const isMake = !(filterCategory in filter);

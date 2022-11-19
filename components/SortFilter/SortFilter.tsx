@@ -14,7 +14,7 @@ import CheckBoxFilter from './CheckBoxFilter';
 export default function SortFilter() {
   const [isModalVisible, setModalVisible] = useAtom(atomModalVisible);
   const [title, setTitle] = useState('Sort & Filter');
-  const [filterOptions, setFilterOptions] = useAtom(atomFilterOptions);
+  const [filterOptions] = useAtom(atomFilterOptions);
   const [filter, setFilter] = useAtom(atomFilters);
 
   const [modalIcon, setModalIcon] = useState('closeModal');

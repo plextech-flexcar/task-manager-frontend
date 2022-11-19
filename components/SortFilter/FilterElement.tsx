@@ -9,7 +9,7 @@ const FilterElement= (props: {
     changeFilter: React.Dispatch<React.SetStateAction<any>>,
     title:string
   }) => {
-    const [filter, setFilter] = useAtom(atomFilters);
+    const [filter] = useAtom(atomFilters);
     const { changeFilter, title } = props;
     const nextArrow = require('../../assets/next.png');
     const filterVector = require('../../assets/FilterVector.png');

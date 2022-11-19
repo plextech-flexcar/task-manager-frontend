@@ -1,4 +1,4 @@
-import { atom, useAtom } from 'jotai'
+import { atom } from 'jotai'
 import { Task } from './models/Task';
 
 export const allTasksAtom = atom<Task[]>([])
