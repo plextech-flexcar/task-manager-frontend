@@ -1,10 +1,11 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import { Task } from '../models/Task';
 import { useAtom } from 'jotai';
 import { allTasksAtom, atomFilterOptions } from '../atoms';
 
 
 export function createMakeAndModelFilter() {
-    const [allTasks, setAllTasks] = useAtom<Task[]>(allTasksAtom);
+    const [allTasks] = useAtom<Task[]>(allTasksAtom);
     const [filter, setFilter] = useAtom(atomFilterOptions)
 
     const makeFilter: {[type : string] : string[]} = {}

@@ -11,6 +11,7 @@ import { atomFilterOptions } from './atoms';
 
 import TaskListScreen from './screens/TaskListScreen/TaskListScreen';
 import TaskInfoScreen from './screens/TaskInfoScreen/TaskInfoScreen';
+import { Status } from './models/Status';
 
 // Define the config
 const config = {
@@ -48,7 +49,7 @@ export default function App() {
     age: 1667271542,
     assigned: 'Elias Charambides',
     market: 'Atlanta',
-    status: true,
+    status: Status.ASSIGNED,
     createdBy: 'Willium Hopkin',
     carImage:
       'https://www.freepnglogos.com/uploads/honda-car-png/honda-car-honda-civic-very-good-car-honda-civic-10.png',
@@ -71,8 +72,8 @@ export default function App() {
     mva: 'R436542',
     age: 1667271542,
     assigned: 'Elias Charambides',
-    market: 'Wisconsin',
-    status: true,
+    market: 'Atlanta',
+    status: Status.RESOLVE,
     createdBy: 'Willium Hopkin',
     carImage:
       'https://www.freepnglogos.com/uploads/honda-car-png/honda-car-honda-civic-very-good-car-honda-civic-10.png',
@@ -92,12 +93,12 @@ export default function App() {
     model: 'Hello2',
     color: 'Magenta',
     license: 'qjt7Bi',
-    mva: 'R436542',
+    mva: 'R436598',
     age: 1667271542,
-    assigned: 'Elias Charambides',
+    assigned: '',
     market: 'Wisconsin',
-    status: true,
-    createdBy: 'Willium Hopkin',
+    status: Status.OPEN,
+    createdBy: 'Denver Nguyen',
     carImage:
       'https://www.freepnglogos.com/uploads/honda-car-png/honda-car-honda-civic-very-good-car-honda-civic-10.png',
     state: 'NC',
