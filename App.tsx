@@ -135,6 +135,7 @@ export default function App() {
     })
       .then((response) => response.json())
       .then((json) => {
+        json.push(task1, task2, task3, task1);
         setAllTasks(json);
         setDisplayTasks(json);
         makeAndModel = initialFindMakeAndModel(json);
