@@ -112,10 +112,7 @@ const styles = StyleSheet.create({
     height: 20,
   },
   fixedBottom: {
-    // position:'absolute',bottom:0,alignSelf:'flex-end',
-    // flex: 1,
-    // justifyContent: 'flex-end',
-    // marginBottom: 36
+
   },
 });
 

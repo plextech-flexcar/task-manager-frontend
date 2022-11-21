@@ -3,7 +3,6 @@ import { StyleSheet } from 'react-native';
 export const styles1 = StyleSheet.create({
   keyboardView: {
     backgroundColor: '#EDEDED',
-    // flex: 1,
     width: '100%',
   },
   input: {
@@ -55,8 +54,6 @@ export const styles1 = StyleSheet.create({
   },
   contain: {
     width: '100%',
-    // marginTop: 20,
-    // marginBottom: 20,
   },
   modal: {
     width: '100%',
@@ -64,8 +61,6 @@ export const styles1 = StyleSheet.create({
     textAlign: 'center',
   },
   bottomModal: {
-    // marginBottom: 20,
-    // marginTop: 'auto',
     borderBottomWidth: 0,
   },
 });

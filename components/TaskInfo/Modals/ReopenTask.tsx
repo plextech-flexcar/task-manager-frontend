@@ -23,7 +23,6 @@ const ReopenTask = ({
   const [comment, setComment] = useState('');
   const submitIcon = require('../../../assets/submit.png');
   return (
-    // <SafeAreaView style={styles.whitebg}>
     <View style={styles1.contain}>
       <Modal
         _backdrop={{ bg: '#2A00A5' }}
@@ -101,7 +100,6 @@ const ReopenTask = ({
         </KeyboardAvoidingView>
       </Modal>
     </View>
-    // </SafeAreaView>
   );
 };
 

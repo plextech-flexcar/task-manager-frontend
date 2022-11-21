@@ -2,7 +2,6 @@ import { StyleSheet } from 'react-native';
 
 export const styles1 = StyleSheet.create({
   buttonGroup: {
-    // display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
     width: '100%',
@@ -34,8 +33,6 @@ export const styles1 = StyleSheet.create({
     fontWeight: '700',
   },
   contain: {
-    // marginTop: 20,
-    // marginBottom: 20,
   },
   modal: {
     width: '100%',
@@ -43,8 +40,6 @@ export const styles1 = StyleSheet.create({
     textAlign: 'center',
   },
   bottomModal: {
-    // marginBottom: 0,
-    // marginTop: 'auto',
     borderBottomWidth: 0,
   },
 });

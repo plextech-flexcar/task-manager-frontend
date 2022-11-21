@@ -40,8 +40,7 @@ export const styles1 = StyleSheet.create({
     fontWeight: '700',
   },
   contain: {
-    // marginTop: 20,
-    // marginBottom: 20,
+
   },
   modal: {
     width: '100%',
