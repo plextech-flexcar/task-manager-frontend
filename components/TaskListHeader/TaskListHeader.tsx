@@ -5,7 +5,8 @@ import { allTasksAtom } from '../../atoms';
 import HeaderButtons from './HeaderButton';
 import { styles } from './styles';
 import { useAtom } from 'jotai';
-
+const user = require('../../assets/HeaderIcons/user.webp');
+const addList = require('../../assets/HeaderIcons/addlist.webp');
 export default function TaskListHeader() {
   const [searchQuery, setSearchQuery] = React.useState('');
   const [allTasks] = useAtom(allTasksAtom);
@@ -14,7 +15,7 @@ export default function TaskListHeader() {
     <View style={styles.headerBack}>
       <View style={styles.headerSearchRow}>
         <Image
-          source={require('../../assets/HeaderIcons/user.webp') }
+          source={user}
           style={styles.iconSize}
         />
         <Searchbar
@@ -26,7 +27,7 @@ export default function TaskListHeader() {
           inputStyle={{ fontSize: 15 }}
         />
         <Image
-          source={require('../../assets/HeaderIcons/addlist.webp')}
+          source={addList}
           style={styles.iconSize}
         />
       </View>

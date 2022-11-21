@@ -3,6 +3,7 @@ import { Image, SafeAreaView, Text, View, TouchableOpacity } from 'react-native'
 import { HStack } from 'native-base';
 import { styles } from '../../../screens/TaskInfoScreen/TaskInfoStyles.js';
 import { styles1 } from './commentButtonStyles';
+const searchButton = require('../../assets/person_search.webp');
 const onPress = () => {};
 const TaskInfoPopup = () => {
   const [showModal, setShowModal] = useState(false);
@@ -24,7 +25,7 @@ const TaskInfoPopup = () => {
 
               <Image
                 style={{ width: 20, height: 20 }}
-                source={require('../../assets/person_search.webp')}
+                source={searchButton}
               />
             </HStack>
           </TouchableOpacity>
