@@ -11,6 +11,7 @@ import {
 import { Modal, FormControl } from 'native-base';
 import { styles } from '../../../screens/TaskInfoScreen/TaskInfoStyles.js';
 import { styles1 } from './leaveCommentStyles';
+const submitButton = require('../../../assets/submit.webp');
 const LeaveComment = ({ showModal, onClose }) => {
   const [comment, setComment] = useState('');
   return (
@@ -75,7 +76,7 @@ const LeaveComment = ({ showModal, onClose }) => {
                   <View style={{ flex: 1 }}>
                     <Pressable onPress={() => onClose()}>
                       <Image
-                        source={require('../../../assets/submit.png')}
+                        source={submitButton}
                         style={{ width: 20, height: 20 }}
                       />
                     </Pressable>
