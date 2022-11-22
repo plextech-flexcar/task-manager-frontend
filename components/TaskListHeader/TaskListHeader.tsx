@@ -1,10 +1,7 @@
-import React, { useState } from 'react';
-import { StyleSheet, Text, View, Image } from 'react-native';
+import React from 'react';
+import { Text, View, Image } from 'react-native';
 import { Searchbar } from 'react-native-paper';
-import TaskListScreen from '../../screens/TaskListScreen/TaskListScreen';
-import TaskCardList from '../TaskCardList/TaskCardList';
 import { allTasksAtom } from '../../atoms';
-
 import HeaderButtons from './HeaderButton';
 import { styles } from './styles';
 import { useAtom } from 'jotai';
