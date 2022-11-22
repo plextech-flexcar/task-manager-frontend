@@ -1,10 +1,11 @@
 import React, { useEffect } from 'react';
 import { NativeBaseProvider, extendTheme } from 'native-base';
 import { useAtom } from 'jotai';
-import { allTasksAtom, atomFilters, displayTasksAtom } from './atoms';
+import { allTasksAtom, atomFilters, displayTasksAtom, allVehiclesAtom } from './atoms';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Task } from './models/Task';
+import { Vehicle } from './models/Vehicle';
 import { initialFindMakes, initialFindMakeAndModel } from './utils/findTasks';
 import { createMakeAndModelFilter } from './utils/createMakeAndModelFilter';
 import { atomFilterOptions } from './atoms';
@@ -29,9 +30,10 @@ declare module 'native-base' {
 const Stack = createNativeStackNavigator();
 export default function App() {
   const [allTasks, setAllTasks] = useAtom(allTasksAtom);
+  const [allVehicles, setAllVehicles] = useAtom(allVehiclesAtom);
   const [displayTasks, setDisplayTasks] = useAtom(displayTasksAtom);
   const [filterOptions, setFilterOptions] = useAtom(atomFilterOptions);
-  const [filter, setFilter] = useAtom(atomFilters)
+  const [filter, setFilter] = useAtom(atomFilters);
 
   const task1: Task = {
     id: 4,
@@ -86,8 +88,7 @@ export default function App() {
     vehicleid: 4,
     date: 1667185142,
     type: 'Body damage/Collision',
-    description:
-      'Go to a body shop TBH. This is kinda screwed',
+    description: 'Go to a body shop TBH. This is kinda screwed',
     comment: 'Uh Oh',
     make: 'Ayo',
     model: 'Hello2',
@@ -104,8 +105,7 @@ export default function App() {
     state: 'NC',
     vin: 'vy6si92Chj',
     priority: 4,
-  }
-
+  };
 
   let makeAndModel = {};
   let makes = {};
@@ -145,10 +145,26 @@ export default function App() {
         setFilter(filter);
       });
   };
+  const getVehicleAPI = async () => {
+    fetch('http://localhost:8080/api/v1/vehicle', {
+      mode: 'cors',
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+        'Origin': 'http://localhost:19006',
+      },
+    })
+      .then((response) => response.json())
+      .then((json) => {
+        setAllVehicles(json);
+      });
+  };
 
   useEffect(() => {
     getTasksAPI();
-    console.log(allTasks);
+    getVehicleAPI();
+    console.log(allVehicles);
   }, []);
 
   return (
