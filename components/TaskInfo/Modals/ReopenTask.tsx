@@ -67,7 +67,9 @@ const ReopenTask = ({
                 You will need to enter a reason for reopening this task.
               </Text>
             </Modal.Body>
-            <Modal.Footer style={{ borderTopWidth: 0, elevation: 0, margin: 0 , width: '100%'}}>
+            <Modal.Footer
+              style={{ borderTopWidth: 0, elevation: 0, margin: 0, width: '100%' }}
+            >
               <FormControl style={styles1.form}>
                 <View
                   style={{

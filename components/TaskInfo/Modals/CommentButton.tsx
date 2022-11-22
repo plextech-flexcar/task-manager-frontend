@@ -23,10 +23,7 @@ const TaskInfoPopup = () => {
             <HStack space={1} alignItems="center" justifyContent={'center'}>
               <Text style={styles1.buttonTextWhite}>ASSIGN</Text>
 
-              <Image
-                style={{ width: 20, height: 20 }}
-                source={searchButton}
-              />
+              <Image style={{ width: 20, height: 20 }} source={searchButton} />
             </HStack>
           </TouchableOpacity>
         </HStack>

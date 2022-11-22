@@ -60,8 +60,8 @@ const TaskInfoScreen = ({ route }) => {
   };
   return (
     <SafeAreaView style={styles.whitebg}>
-      <View style={{flex: 1, height: "100%"}}>
-        <ScrollView style={{flex:1}}>
+      <View style={{ flex: 1, height: '100%' }}>
+        <ScrollView style={{ flex: 1 }}>
           <TaskInfoHeader />
           <Divider />
           <View style={styles.headermt}>
@@ -73,7 +73,10 @@ const TaskInfoScreen = ({ route }) => {
               </View>
 
               <View style={styles.priorityView}>
-                <Image source={PRIORITY_ICON_MAP[priority]} style={styles.priorityImage} />
+                <Image
+                  source={PRIORITY_ICON_MAP[priority]}
+                  style={styles.priorityImage}
+                />
                 <Text style={{ color: PRIORITY_ICON_COLOR_MAP[priority] }}>
                   {getPriority(priority)}
                 </Text>
@@ -148,15 +151,21 @@ const TaskInfoScreen = ({ route }) => {
                 <Text style={styles.commentBy}>by Adam Miller on 3/15/22 - 4:30pm</Text>
               </VStack>
             </HStack>
-            
           </VStack>
         </ScrollView>
         <SafeAreaView style={[styles.whitebg, styles.fixedBottom]}>
-            <View style={{ marginRight: '5%', marginLeft: '5%', marginBottom: '5%', marginTop: '5%' }}>
-              <TaskInfoPopup style={{}} assigned={assigned} taskId={id} />
-            </View>
+          <View
+            style={{
+              marginRight: '5%',
+              marginLeft: '5%',
+              marginBottom: '5%',
+              marginTop: '5%',
+            }}
+          >
+            <TaskInfoPopup style={{}} assigned={assigned} taskId={id} />
+          </View>
         </SafeAreaView>
-        </View>
+      </View>
     </SafeAreaView>
   );
 };

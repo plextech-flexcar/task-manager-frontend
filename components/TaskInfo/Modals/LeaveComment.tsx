@@ -17,7 +17,7 @@ const LeaveComment = ({ showModal, onClose }) => {
   return (
     <View style={styles1.contain}>
       <Modal
-        _backdrop={{bg: "#2A00A5"}}
+        _backdrop={{ bg: '#2A00A5' }}
         isOpen={showModal}
         onClose={() => onClose()}
         safeAreaTop={true}
@@ -75,10 +75,7 @@ const LeaveComment = ({ showModal, onClose }) => {
 
                   <View style={{ flex: 1 }}>
                     <Pressable onPress={() => onClose()}>
-                      <Image
-                        source={submitButton}
-                        style={{ width: 20, height: 20 }}
-                      />
+                      <Image source={submitButton} style={{ width: 20, height: 20 }} />
                     </Pressable>
                   </View>
                 </View>
