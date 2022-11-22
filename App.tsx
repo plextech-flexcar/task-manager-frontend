@@ -6,9 +6,8 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Task } from './models/Task';
 import { initialFindMakes, initialFindMakeAndModel } from './utils/findTasks';
-import { createMakeAndModelFilter } from './utils/createMakeAndModelFilter';
 import { atomFilterOptions } from './atoms';
-
+import CreateTaskScreen from './screens/CreateTaskScreen/CreateTaskScreen'
 import TaskListScreen from './screens/TaskListScreen/TaskListScreen';
 import TaskInfoScreen from './screens/TaskInfoScreen/TaskInfoScreen';
 import { Status } from './models/Status';
@@ -111,46 +110,46 @@ export default function App() {
   let makes = {};
 
   // Loads dummy tasks without connecting to backend
-  // const tasks: Task[] = [task1, task2, task3, task2, task1];
-  // useEffect(() => {
-  //   setDisplayTasks(tasks);
-  //   setAllTasks(tasks);
-  //   makeAndModel = initialFindMakeAndModel(tasks);
-  //   makes = initialFindMakes(tasks);
-  //   filterOptions['Make & Model'] = makeAndModel;
-  //   filter['Make & Model'] = makes;
-  //   setFilterOptions(filterOptions);
-  //   setFilter(filter);
-  // }, []);
-
-  const getTasksAPI = async () => {
-    fetch('http://localhost:8080/api/v1/task', {
-      mode: 'cors',
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json',
-        'Origin': 'http://localhost:19006',
-      },
-    })
-      .then((response) => response.json())
-      .then((json) => {
-        json.push(task1, task2, task3, task1);
-        setAllTasks(json);
-        setDisplayTasks(json);
-        makeAndModel = initialFindMakeAndModel(json);
-        makes = initialFindMakes(json);
-        filterOptions['Make & Model'] = makeAndModel;
-        filter['Make & Model'] = makes;
-        setFilterOptions(filterOptions);
-        setFilter(filter);
-      });
-  };
-
+  const tasks: Task[] = [task1, task2, task3, task2, task1];
   useEffect(() => {
-    getTasksAPI();
-    console.log(allTasks);
+    setDisplayTasks(tasks);
+    setAllTasks(tasks);
+    makeAndModel = initialFindMakeAndModel(tasks);
+    makes = initialFindMakes(tasks);
+    filterOptions['Make & Model'] = makeAndModel;
+    filter['Make & Model'] = makes;
+    setFilterOptions(filterOptions);
+    setFilter(filter);
   }, []);
+
+  // const getTasksAPI = async () => {
+  //   fetch('http://localhost:8080/api/v1/task', {
+  //     mode: 'cors',
+  //     method: 'GET',
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //       'Accept': 'application/json',
+  //       'Origin': 'http://localhost:19006',
+  //     },
+  //   })
+  //     .then((response) => response.json())
+  //     .then((json) => {
+  //       // json.push(task1, task2, task3, task1);
+  //       setAllTasks(json);
+  //       setDisplayTasks(json);
+  //       makeAndModel = initialFindMakeAndModel(json);
+  //       makes = initialFindMakes(json);
+  //       filterOptions['Make & Model'] = makeAndModel;
+  //       filter['Make & Model'] = makes;
+  //       setFilterOptions(filterOptions);
+  //       setFilter(filter);
+  //     });
+  // };
+
+  // useEffect(() => {
+  //   getTasksAPI();
+  //   console.log(allTasks);
+  // }, []);
 
   return (
     <NativeBaseProvider>
@@ -162,6 +161,7 @@ export default function App() {
         >
           <Stack.Screen name="TaskListScreen" component={TaskListScreen} />
           <Stack.Screen name="TaskInfoScreen" component={TaskInfoScreen} />
+          <Stack.Screen name="CreateTaskScreen" component={CreateTaskScreen} />
         </Stack.Navigator>
       </NavigationContainer>
     </NativeBaseProvider>
