@@ -8,36 +8,16 @@ const CreateTaskHeader = () => {
   const navigation = useNavigation();
   return (
     <View style={styles.headerStyle}>
-      <View style={styles.backButton}>
+      <Pressable style={styles.backButton} onPress={() => navigation.goBack()}>
         <IconButton
           icon={<AntDesign name="left" size={15} color="#2A00A5" />}
-          marginTop="3"
           onPress={() => navigation.goBack()}
           _pressed={{ bg: null }}
         />
-        <Pressable onPress={() => navigation.goBack()}>
-          <Text
-            style={{
-              color: "#2A00A5",
-              fontSize: 15,
-              marginTop: 20,
-              fontWeight: "bold",
-            }}
-          >
-            All Tasks
-          </Text>
-        </Pressable>
-      </View>
+          <Text style={styles.backText}> All Tasks </Text>
+      </Pressable>
 
-      <View
-        style={{
-          marginLeft: "15%",
-          display: "flex",
-          justifyContent: "center",
-          marginTop: 8,
-          alignItems: "center",
-        }}
-      >
+      <View style={styles.createTaskHeader}>
         <Text style={{ fontWeight: "bold" }}>Create Task</Text>
       </View>
     </View>
