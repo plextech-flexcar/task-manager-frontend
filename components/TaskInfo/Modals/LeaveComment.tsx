@@ -11,7 +11,6 @@ import {
 import { Modal, FormControl } from 'native-base';
 import { styles } from '../../../screens/TaskInfoScreen/TaskInfoStyles.js';
 import { styles1 } from './leaveCommentStyles';
-
 const LeaveComment = ({
   showModal,
   onClose,
@@ -104,7 +103,7 @@ const LeaveComment = ({
                       }}
                     >
                       <Image
-                        source={require('../../../assets/submit.png')}
+                        source={submitButton}
                         style={{ width: 20, height: 20 }}
                       />
                     </Pressable>

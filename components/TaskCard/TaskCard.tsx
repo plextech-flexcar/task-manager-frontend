@@ -6,6 +6,7 @@ import { PRIORITY_ICON_MAP } from './TaskCardPriorityIconMap';
 import { Task } from '../../models/Task.js';
 import { useNavigation } from '@react-navigation/native';
 import IconComponent from '../IconComponent';
+
 const TaskCard = ({
   id,
   type,
@@ -72,12 +73,14 @@ const TaskCard = ({
         <Box>
           <VStack p="4" space={0} width="full" height="hug">
             <HStack justifyContent="space-between">
+              <Box width= '70%'> 
               <View>
                 <Text style={styles.taskHeading}>{type}</Text>
               </View>
+              </Box>
               <Image
-                source={{ uri: PRIORITY_ICON_MAP[priority] }}
-                style={{ width: 20, height: 20 }}
+                source={PRIORITY_ICON_MAP[priority]}
+                style={{ width: 27, height: 27 }}
               />
             </HStack>
             <View>
