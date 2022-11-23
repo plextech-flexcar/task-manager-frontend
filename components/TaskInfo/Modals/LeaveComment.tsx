@@ -11,8 +11,30 @@ import {
 import { Modal, FormControl } from 'native-base';
 import { styles } from '../../../screens/TaskInfoScreen/TaskInfoStyles.js';
 import { styles1 } from './leaveCommentStyles';
-const submitButton = require('../../../assets/submit.webp');
-const LeaveComment = ({ showModal, onClose }) => {
+const LeaveComment = ({
+  showModal,
+  onClose,
+  taskId,
+  postedBy,
+  comments,
+  setComments,
+}) => {
+  const putComment = async (postedBy: String, content: String, taskId: String) => {
+    fetch(`http://localhost:8080/api/v1/newComment`, {
+      mode: 'cors',
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+        'Origin': 'http://localhost:19006',
+      },
+      body: JSON.stringify({ postedBy: postedBy, content: content, taskId: taskId }),
+    })
+      .then((response) => response.json())
+      .then((json) => {
+        setComments([...comments, json]);
+      });
+  };
   const [comment, setComment] = useState('');
   return (
     <View style={styles1.contain}>
@@ -74,8 +96,21 @@ const LeaveComment = ({ showModal, onClose }) => {
                   </View>
 
                   <View style={{ flex: 1 }}>
+<<<<<<< HEAD
                     <Pressable onPress={() => onClose()}>
                       <Image source={submitButton} style={{ width: 20, height: 20 }} />
+=======
+                    <Pressable
+                      onPress={() => {
+                        onClose();
+                        putComment(postedBy, comment, taskId);
+                      }}
+                    >
+                      <Image
+                        source={submitButton}
+                        style={{ width: 20, height: 20 }}
+                      />
+>>>>>>> 5c4a1fbf4ded65f4a0f0792b69e8458b649ddd18
                     </Pressable>
                   </View>
                 </View>

@@ -1,5 +1,5 @@
-import React from 'react';
-import { Image, SafeAreaView, ScrollView, Text, View } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { Image, SafeAreaView, Text, View } from 'react-native';
 import TaskInfoHeader from '../../components/TaskInfo/TaskInfoHeader';
 import { HStack, VStack, Divider } from 'native-base';
 import { styles } from './TaskInfoStyles.js';
@@ -16,7 +16,6 @@ const TaskInfoScreen = ({ route }) => {
     assigned,
     createdBy,
     date,
-    comment,
     make,
     model,
     color,
@@ -29,6 +28,8 @@ const TaskInfoScreen = ({ route }) => {
     state,
     vin,
   } = route.params;
+  const [comments, setComments] = useState([]);
+
   const getPriority = (priority: number) => {
     if (priority === 1) {
       return 'Low';
@@ -47,8 +48,9 @@ const TaskInfoScreen = ({ route }) => {
       .join('');
   };
   const fromEpochToDate = (date: number) => {
-    const newDate = new Date(date * 1000);
-    return newDate.toLocaleString();
+    // const newDate = new Date(date * 1000);
+    // return newDate.toLocaleString();
+    return new Date(date).toLocaleString();
   };
 
   const statusVar = (status) => {
@@ -58,114 +60,108 @@ const TaskInfoScreen = ({ route }) => {
       return 'Status: assigned to ' + assigned;
     }
   };
+
+  const getCommentsAPI = async (taskId: number) => {
+    fetch(`http://localhost:8080/api/v1/comment/${taskId}`, {
+      mode: 'cors',
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+        'Origin': 'http://localhost:19006',
+      },
+    })
+      .then((response) => response.json())
+      .then((json) => {
+        setComments(json);
+      });
+  };
+
+  useEffect(() => {
+    getCommentsAPI(id);
+  }, []);
+  console.log('COMMENTS: ', comments);
   return (
     <SafeAreaView style={styles.whitebg}>
-      <View style={{ flex: 1, height: '100%' }}>
-        <ScrollView style={{ flex: 1 }}>
-          <TaskInfoHeader />
-          <Divider />
-          <View style={styles.headermt}>
-            <View style={styles.headerHorizontalStack}>
-              <View style={styles.headerContainer}>
-                <Text style={styles.header}>
-                  {type} {model}
-                </Text>
-              </View>
-
-              <View style={styles.priorityView}>
-                <Image
-                  source={PRIORITY_ICON_MAP[priority]}
-                  style={styles.priorityImage}
-                />
-                <Text style={{ color: PRIORITY_ICON_COLOR_MAP[priority] }}>
-                  {getPriority(priority)}
-                </Text>
-              </View>
-            </View>
-
-            <Text style={styles.textDate}>{age}</Text>
-            <View style={styles.viewMarginLeft}>
-              <HStack>
-                <Text style={styles.textTop}>{statusVar(status)}</Text>
-                {assigned && status !== Status.OPEN ? (
-                  <View style={styles.assignBox}>
-                    <Text style={styles.assignBoxText}>{getInitials(assigned)}</Text>
-                  </View>
-                ) : null}
-              </HStack>
-            </View>
-            <Text style={[styles.textTop, styles.viewMarginLeft]}>
-              Created by: {createdBy} on {fromEpochToDate(date)}
+      <TaskInfoHeader />
+      <Divider />
+      <View style={styles.headermt}>
+        <View style={styles.headerHorizontalStack}>
+          <View style={styles.headerContainer}>
+            <Text style={styles.header}>
+              {type} {model}
             </Text>
           </View>
 
-          <View style={styles.middleBox}>
-            <View style={styles.middleHorizontalStack}>
-              <View>
-                <Text style={styles.textCarType}>
-                  {color} {make}
-                </Text>
-                <Text style={styles.textTop}>
-                  {license}, {state} MVA: {mva}
-                </Text>
-                <Text style={styles.textTop}>VIN: {vin}</Text>
-                <View style={vehicleStatus ? styles.availableBox : styles.unavailableBox}>
-                  <Text>{vehicleStatus ? 'Available' : 'Unavailable/Service'}</Text>
-                </View>
+          <View style={styles.priorityView}>
+            <Image source={PRIORITY_ICON_MAP[priority]} style={styles.priorityImage} />
+            <Text style={{ color: PRIORITY_ICON_COLOR_MAP[priority] }}>
+              {getPriority(priority)}
+            </Text>
+          </View>
+        </View>
+
+        <Text style={styles.textDate}>{age}</Text>
+        <View style={styles.viewMarginLeft}>
+          <HStack>
+            <Text style={styles.textTop}>{statusVar(status)}</Text>
+            {assigned && status !== Status.OPEN ? (
+              <View style={styles.assignBox}>
+                <Text style={styles.assignBoxText}>{getInitials(assigned)}</Text>
               </View>
-              <Image style={styles.image} source={{ uri: carImage }} />
-            </View>
-            <Divider style={styles.vehicleDivider} />
-            <VStack style={styles.vehicleVerticalStack}>
-              <Text>Using a windshield repair kit: </Text>
-              <Text style={styles.vehicleMarginTop}>{description}</Text>
-            </VStack>
-          </View>
-          <VStack style={styles.commentVStack}>
-            <Text style={styles.vehicleMarginTop}>4 Comments</Text>
-            <HStack>
-              <Divider orientation="vertical" mr={3} />
-              <VStack>
-                <Text style={styles.commentBox}>{comment ? comment : 'No comments'}</Text>
-                <Text style={styles.commentBy}>by Adam Miller on 3/15/22 - 4:30pm</Text>
-              </VStack>
-            </HStack>
-            <HStack>
-              <Divider orientation="vertical" mr={3} mt={5} />
-              <VStack marginTop={5}>
-                <Text style={styles.commentBox}>{comment ? comment : 'No comments'}</Text>
-                <Text style={styles.commentBy}>by Adam Miller on 3/15/22 - 4:30pm</Text>
-              </VStack>
-            </HStack>
-            <HStack>
-              <Divider orientation="vertical" mr={3} mt={5} />
-              <VStack marginTop={5}>
-                <Text style={styles.commentBox}>{comment ? comment : 'No comments'}</Text>
-                <Text style={styles.commentBy}>by Adam Miller on 3/15/22 - 4:30pm</Text>
-              </VStack>
-            </HStack>
-            <HStack>
-              <Divider orientation="vertical" mr={3} mt={5} />
-              <VStack marginTop={5}>
-                <Text style={styles.commentBox}>{comment ? comment : 'No comments'}</Text>
-                <Text style={styles.commentBy}>by Adam Miller on 3/15/22 - 4:30pm</Text>
-              </VStack>
-            </HStack>
-          </VStack>
-        </ScrollView>
-        <SafeAreaView style={[styles.whitebg, styles.fixedBottom]}>
-          <View
-            style={{
-              marginRight: '5%',
-              marginLeft: '5%',
-              marginBottom: '5%',
-              marginTop: '5%',
-            }}
-          >
-            <TaskInfoPopup style={{}} assigned={assigned} taskId={id} />
-          </View>
-        </SafeAreaView>
+            ) : null}
+          </HStack>
+        </View>
+        <Text style={[styles.textTop, styles.viewMarginLeft]}>
+          Created by: {createdBy} on {fromEpochToDate(date)}
+        </Text>
       </View>
+
+      <View style={styles.middleBox}>
+        <View style={styles.middleHorizontalStack}>
+          <View>
+            <Text style={styles.textCarType}>
+              {color} {make}
+            </Text>
+            <Text style={styles.textTop}>
+              {license}, {state} MVA: {mva}
+            </Text>
+            <Text style={styles.textTop}>VIN: {vin}</Text>
+            <View style={vehicleStatus ? styles.availableBox : styles.unavailableBox}>
+              <Text>{vehicleStatus ? 'Available' : 'Unavailable/Service'}</Text>
+            </View>
+          </View>
+          <Image style={styles.image} source={{ uri: carImage }} />
+        </View>
+        <Divider style={styles.vehicleDivider} />
+        <VStack style={styles.vehicleVerticalStack}>
+          <Text>Using a windshield repair kit: </Text>
+          <Text style={styles.vehicleMarginTop}>{description}</Text>
+        </VStack>
+      </View>
+      <VStack style={styles.commentVStack}>
+        <Text style={styles.vehicleMarginTop}>{comments.length} Comments</Text>
+        {comments.map((comment) => (
+          <HStack mt={4}>
+            <Divider orientation="vertical" mr={3} />
+            <VStack>
+              <Text style={styles.commentBox}>{comment.content}</Text>
+              <Text style={styles.commentBy}>
+                by {comment.postedBy} on {fromEpochToDate(comment.date)}
+              </Text>
+            </VStack>
+          </HStack>
+        ))}
+        <View style={{ marginRight: '5%', marginLeft: '5%' }}>
+          <TaskInfoPopup
+            style={{}}
+            assigned={assigned}
+            taskId={id}
+            comments={comments}
+            setComments={setComments}
+          />
+        </View>
+      </VStack>
     </SafeAreaView>
   );
 };
