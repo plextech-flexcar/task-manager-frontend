@@ -4,8 +4,7 @@ import { styles } from './dropdownSectionStyles';
 import { TouchableOpacity, Image } from 'react-native';
 
 
-const DropdownSection = (
-    {
+const DropdownSection = ({
         title, 
         placeholder,
         dropdownArrow,
@@ -17,7 +16,6 @@ const DropdownSection = (
         dropdownArrow: boolean,
         isSearch?: boolean,
         onPress: React.Dispatch<React.SetStateAction<any>>,
-
     }) => {
         const downArrow = require('../../../assets/CreateTaskIcons/downArrow.png')
         const searchIcon = require('../../../assets/CreateTaskIcons/searchIcon.png')
