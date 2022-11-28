@@ -6,9 +6,8 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Task } from './models/Task';
 import { initialFindMakes, initialFindMakeAndModel } from './utils/findTasks';
-import { createMakeAndModelFilter } from './utils/createMakeAndModelFilter';
 import { atomFilterOptions } from './atoms';
-
+import CreateTaskScreen from './screens/CreateTaskScreen/CreateTaskScreen'
 import TaskListScreen from './screens/TaskListScreen/TaskListScreen';
 import TaskInfoScreen from './screens/TaskInfoScreen/TaskInfoScreen';
 import { Status } from './models/Status';
@@ -162,6 +161,7 @@ export default function App() {
         >
           <Stack.Screen name="TaskListScreen" component={TaskListScreen} />
           <Stack.Screen name="TaskInfoScreen" component={TaskInfoScreen} />
+          <Stack.Screen name="CreateTaskScreen" component={CreateTaskScreen} />
         </Stack.Navigator>
       </NavigationContainer>
     </NativeBaseProvider>

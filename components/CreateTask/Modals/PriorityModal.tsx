@@ -3,33 +3,47 @@ import {
     Image,
     Text,
     View,
-    TextInput,
-    KeyboardAvoidingView,
-    Platform,
     Pressable,
   } from 'react-native';
 import { Modal, FormControl } from 'native-base';
-import { styles1 } from './PriorityModalStyles';
+import { styles } from './styles.js';
 import { PRIORITY_ICON_MAP } from '../../TaskCard/TaskCardPriorityIconMap';
 
 const PriorityModal = ({
     showModal,
+    changePriority,
     onClose,
   }: {
     showModal: boolean;
+    changePriority: (p: number) => void;
     onClose: () => void;
   }) => {
+    
+    const priority = [
+      [1, 'Low'],
+      [2, 'Normal'],
+      [3, 'High'],
+      [4, 'Top'],
+    ];
+    
+    const lastElem = priority[3][1];
+
+    const onPress = (p:number) => {
+      changePriority(p);
+      onClose();
+    }
+  
     return (
-        <View style={styles1.contain}>
+        <View style={styles.contain}>
           <Modal
             _backdrop={{bg: "#2A00A5"}}
             isOpen={showModal}
             onClose={() => onClose()}
             safeAreaTop={true}
-            style={styles1.modal}
+            style={styles.modal}
             size={'full'}
           >
-              <Modal.Content style={styles1.bottomModal} justifyContent={'center'}>
+              <Modal.Content style={styles.bottomModal} justifyContent={'center'}>
                 <Modal.CloseButton
                   variant="#2A00A5"
                   tintColor="#2A00A5"
@@ -37,71 +51,29 @@ const PriorityModal = ({
                   style={{}}
                 />
                 <Modal.Header
-                  style={{
-                    borderBottomWidth: 0,
-                    alignContent: 'center',
-                    justifyContent: 'center',
-                  }}
-                >
-                  <Text
-                    style={{
-                      fontWeight: '600',
-                      textAlign: 'center',
-                      justifyContent: 'center',
-                    }}
-                  >
-                    Priority
-                  </Text>
+                  style={styles.modalHeader}>
+                  <Text style={styles.modalHeaderText}>Priority</Text>
                 </Modal.Header>
-                <Modal.Footer style={{ borderTopWidth: 0, elevation: 0, margin: 0 }}>
-                  <FormControl style={styles1.form}>
-                    <View
-                      style={{
-                        flexDirection: 'row',
-                        margin: 5,
-                        padding: 0,
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                      }}
-                    >
-    
-                      <View style={{ flex: 1 }}>
-                        <Pressable onPress={() => onClose()}>
-                            <Image
-                                source={{ uri: PRIORITY_ICON_MAP[1] }}
-                                style={{ width: 20, height: 20 }}
-                            />
-                            <Text> Low <Text/>
-                        </Pressable>
-                      </View>
-
-                      <View style={{ flex: 1 }}>
-                        <Pressable onPress={() => onClose()}>
-                            <Image
-                                source={{ uri: PRIORITY_ICON_MAP[2] }}
-                                style={{ width: 20, height: 20 }}
-                            />
-                        </Pressable>
-                      </View>
-
-                      <View style={{ flex: 1 }}>
-                        <Pressable onPress={() => onClose()}>
-                            <Image
-                                source={{ uri: PRIORITY_ICON_MAP[3] }}
-                                style={{ width: 20, height: 20 }}
-                            />
-                        </Pressable>
-                      </View>
-
-                      <View style={{ flex: 1 }}>
-                        <Pressable onPress={() => onClose()}>
-                            <Image
-                                source={{ uri: PRIORITY_ICON_MAP[4] }}
-                                style={{ width: 20, height: 20 }}
-                            />
-                        </Pressable>
-                      </View>
-
+                <Modal.Footer style={styles.modalFooter}>
+                  <FormControl style={styles.form}>
+                    <View style={styles.circleRow}>
+                      {priority.map((pair : (number | string)[]) => {
+                        return (
+                         <View style={styles.makesRow}>
+                          <Pressable 
+                            style={styles.makesRowPressable} 
+                            onPress={() => onPress(pair[0] as number)}
+                          >
+                              <Image
+                                  source={{ uri: PRIORITY_ICON_MAP[pair[0] as number] }}
+                                  style={{ width: 20, height: 20 }}
+                              />
+                              <Text style={styles.priorityText}> {pair[1]} </Text>
+                          </Pressable>
+                          {!(lastElem === pair[1]) && <View style={styles.lineSeparator}/>}
+                          </View>
+                          )
+                      })}
                     </View>
                   </FormControl>
                 </Modal.Footer>
@@ -110,3 +82,5 @@ const PriorityModal = ({
         </View>
       );
   };
+
+  export default PriorityModal;
