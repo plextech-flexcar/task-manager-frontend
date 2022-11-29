@@ -96,10 +96,6 @@ const LeaveComment = ({
                   </View>
 
                   <View style={{ flex: 1 }}>
-<<<<<<< HEAD
-                    <Pressable onPress={() => onClose()}>
-                      <Image source={submitButton} style={{ width: 20, height: 20 }} />
-=======
                     <Pressable
                       onPress={() => {
                         onClose();
@@ -110,7 +106,6 @@ const LeaveComment = ({
                         source={submitButton}
                         style={{ width: 20, height: 20 }}
                       />
->>>>>>> 5c4a1fbf4ded65f4a0f0792b69e8458b649ddd18
                     </Pressable>
                   </View>
                 </View>
