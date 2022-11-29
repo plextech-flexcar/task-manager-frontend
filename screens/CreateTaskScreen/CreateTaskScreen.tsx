@@ -3,8 +3,10 @@ import React, { useState } from "react";
 import { SafeAreaView } from "react-native";
 import CreateTaskHeader from "../../components/CreateTask/CreateTaskHeader/CreateTaskHeader";
 import DropdownSection from "../../components/CreateTask/DropdownSection/DropdownSection";
+import AssignModal from "../../components/CreateTask/Modals/AssignModal";
 import DescriptionModal from "../../components/CreateTask/Modals/DescriptionModal";
 import PriorityModal from "../../components/CreateTask/Modals/PriorityModal";
+import TaskTypeModal from "../../components/CreateTask/Modals/TaskTypeModal";
 import PlaceholderTaskCard from "../../components/CreateTask/PlaceholderTaskCard/PlaceholderTaskCard";
 import { styles } from "./createTaskScreenStyles"
 
@@ -72,6 +74,16 @@ const CreateTaskScreen = () => {
             />    
             <DescriptionModal
                 showModal={visibleModal==="Task Description"}
+                onClose={() => setVisibleModal('')}
+            />
+            <TaskTypeModal
+                showModal={visibleModal==="Task Type"}
+                changeTask={(t) => setType(t)}
+                onClose={() => setVisibleModal('')}
+            />
+            <AssignModal
+                showModal={visibleModal==="Status"}
+                changeStatus={(s) => setAssigned(s)}
                 onClose={() => setVisibleModal('')}
             />
         </SafeAreaView>
