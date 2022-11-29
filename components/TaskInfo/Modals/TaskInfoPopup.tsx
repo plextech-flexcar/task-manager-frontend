@@ -61,7 +61,7 @@ const TaskInfoPopup = (props) => {
 
   const personSearch = require('../../../assets/person_search.webp');
   return (
-    <SafeAreaView style={styles.whitebg}>
+    <SafeAreaView>
       <View>
         <Modal
           animationType="slide"

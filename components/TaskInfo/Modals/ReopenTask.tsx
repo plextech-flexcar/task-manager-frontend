@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 import { Modal, FormControl } from 'native-base';
 import { styles } from '../../../screens/TaskInfoScreen/TaskInfoStyles.js';
-import { styles1 } from './TaskInfoPopupStyles';
+import { styles1 } from './reopenTaskStyles';
 const ReopenTask = ({
   showModal,
   closeCall,
@@ -31,9 +31,10 @@ const ReopenTask = ({
         safeAreaTop={true}
         style={styles1.modal}
         size={'full'}
+        presentationStyle="fullScreen"
       >
         <KeyboardAvoidingView
-          style={styles.whitebg}
+          style={styles1.keyboardView}
           behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
         >
           <Modal.Content style={styles1.bottomModal} justifyContent={'center'}>
@@ -66,7 +67,9 @@ const ReopenTask = ({
                 You will need to enter a reason for reopening this task.
               </Text>
             </Modal.Body>
-            <Modal.Footer style={{ borderTopWidth: 0, elevation: 0, margin: 0 }}>
+            <Modal.Footer
+              style={{ borderTopWidth: 0, elevation: 0, margin: 0, width: '100%' }}
+            >
               <FormControl style={styles1.form}>
                 <View
                   style={{

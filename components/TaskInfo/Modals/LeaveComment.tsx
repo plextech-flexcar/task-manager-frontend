@@ -47,7 +47,7 @@ const LeaveComment = ({
         size={'full'}
       >
         <KeyboardAvoidingView
-          style={styles.whitebg}
+          style={styles1.keyboardView}
           behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
         >
           <Modal.Content style={styles1.bottomModal} justifyContent={'center'}>
