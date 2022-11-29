@@ -38,7 +38,7 @@ const TaskCard = ({
     } else if (hours < 24) {
       return hours === 1 ? '1 hour old' : hours + ' hours old';
     }
-    return days === 1 ? '1 day old' : hours + ' days old';
+    return days === 1 ? '1 day old' : days + ' days old';
   };
 
   return (

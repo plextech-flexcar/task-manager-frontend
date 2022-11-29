@@ -133,7 +133,7 @@ const TaskInfoScreen = ({ route }) => {
           </VStack>
         </HStack>
         <View style={{ marginRight: '5%', marginLeft: '5%' }}>
-          <TaskInfoPopup style={{}} assigned={assigned} taskId={id} />
+          <TaskInfoPopup assigned={assigned} taskId={id} />
         </View>
       </VStack>
     </SafeAreaView>

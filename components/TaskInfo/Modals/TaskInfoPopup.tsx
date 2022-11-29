@@ -8,22 +8,27 @@ import ResolveTask from './ResolveTask';
 import ReopenTask from './ReopenTask';
 import LeaveComment from './LeaveComment';
 import { styles1 } from './TaskInfoPopupStyles';
-const TaskInfoPopup = (props) => {
+const TaskInfoPopup = ({
+  assigned, 
+  taskId
+} : {
+  assigned : string,
+  taskId: number
+}) => {
   const [showModal, setShowModal] = useState(false);
-  const { assigned, taskId } = props;
   const [resolve, setResolve] = useState(assigned !== '');
   const [resolveModal, setResolveModal] = useState(false);
   const [finalResolve, setFinalResolve] = useState(false);
   const [reOpenModel, setReopenModal] = useState(false);
   const [commentModal, setCommentModal] = useState(false);
   const [assignedName, setAssignedName] = useState('');
-  const onAssign = (name: String) => {
+  const onAssign = (name: string) => {
     setShowModal(!showModal);
     setResolve(!resolve);
     setAssignedName(name);
     putAssignAPI(name);
   };
-  const putAssignAPI = async (name: String) => {
+  const putAssignAPI = async (name: string) => {
     fetch(`http://localhost:8080/api/v1/assign/${taskId}`, {
       mode: 'cors',
       method: 'PUT',
