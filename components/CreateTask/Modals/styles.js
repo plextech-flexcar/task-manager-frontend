@@ -53,10 +53,6 @@ export const styles = StyleSheet.create({
     color: '#FFF',
     fontWeight: '700',
   },
-  contain: {
-    marginTop: 20,
-    marginBottom: 20,
-  },
   modal: {
     width: '100%',
     borderBottomWidth: 0,
@@ -78,18 +74,11 @@ export const styles = StyleSheet.create({
     paddingHorizontal: 15,
     marginLeft: 10,
     display: 'flex',
-    // justifyContent: 'space-between',
-    // flexDirection: 'row',
     alignItems: 'center',
     width: '97.5%',
     alignContent: 'center',
     textAlign: 'center',
   },
-  // modalHeader: {
-  //   borderBottomWidth: 0,
-  //   alignContent: 'center',
-  //   justifyContent: 'center',
-  // },
   modalHeaderTitle: {
     fontSize: 17,
     fontWeight: '700',
@@ -100,7 +89,6 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   bottomModal: {
-    // marginBottom: 20,
     marginTop: 'auto',
     borderBottomWidth: 0,
   },
@@ -126,13 +114,6 @@ export const styles = StyleSheet.create({
     paddingLeft: 14,
     fontSize: 16,
   },
-  // makesRow: {
-  //   display: "flex", 
-  //   flexDirection: "column", 
-  //   // alignItems: "center",
-  //   marginHorizontal: 16,
-  //   marginVertical: 8,
-  // },
   makesRow: {
     display: "flex", 
     flexDirection: "row", 
@@ -144,8 +125,5 @@ export const styles = StyleSheet.create({
     display: "flex", 
     flexDirection:"row", 
     width: "90%", 
-    // marginTop: 8,
-    // marginBottom: 8,
-    // justifyContent: "space-between",
   },
 });

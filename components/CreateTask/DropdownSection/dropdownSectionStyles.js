@@ -36,8 +36,14 @@ const styles = StyleSheet.create({
         flexWrap: 1,
         fontWeight: '400',
         color: '#080726',
-    }
-
+    },
+    valueText: {
+        fontfamily: 'Inter',
+        fontSize: 17,
+        lineHeight: 22,
+        flexWrap: 1,
+        fontWeight: '400',
+    },
 });
 
 export { styles };

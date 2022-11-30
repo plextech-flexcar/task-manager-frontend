@@ -32,7 +32,7 @@ const TaskTypeModal = ({
     }
   
     return (
-          <View style={styles.contain}>
+          <View>
             <Modal
               _backdrop={{bg: "#2A00A5"}}
               isOpen={showModal}

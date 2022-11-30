@@ -110,7 +110,7 @@ export default function App() {
   let makes = {};
 
   // Loads dummy tasks without connecting to backend
-  const tasks: Task[] = [task1, task2, task3, task2, task1];
+  const tasks: Task[] = [task1, task2, task3, task2, task1, task1, task3, task3, task2];
   useEffect(() => {
     setDisplayTasks(tasks);
     setAllTasks(tasks);

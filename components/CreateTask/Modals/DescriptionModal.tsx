@@ -20,7 +20,7 @@ const DescriptionModal = (({
   }) => {
   const [comment, setComment] = useState('');
   return (
-    <View style={styles.contain}>
+    <View>
       <Modal
         _backdrop={{bg: "#2A00A5"}}
         isOpen={showModal}
@@ -64,7 +64,7 @@ const DescriptionModal = (({
                     />
                   </View>
 
-                  <View style={{ flex: 1 }}>
+                  <View>
                     <Pressable onPress={() => onClose()}>
                       <Image
                         source={require('../../../assets/submit.png')}
