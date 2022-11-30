@@ -1,10 +1,10 @@
 import React from 'react';
-import { View, FlatList, ListRenderItem } from 'react-native';
+import {View, ListRenderItem } from 'react-native';
 import NameCard from '../NameCard/NameCard';
 import { Name } from '../../models/Name';
 import FlatListItemSeparator from '../ItemSeparation';
 import { styles } from './styles';
-
+import { FlatList } from 'native-base';
 const NameCardList = (props: { name: Name[]; onAssignCall: any }) => {
   const { name } = props;
   const { onAssignCall } = props;
@@ -14,14 +14,12 @@ const NameCardList = (props: { name: Name[]; onAssignCall: any }) => {
   };
 
   return (
-    <View>
       <FlatList
         data={name}
         renderItem={renderNameCard}
-        style={styles.box}
         ItemSeparatorComponent={FlatListItemSeparator}
+        style={styles.box}
       />
-    </View>
   );
 };
 

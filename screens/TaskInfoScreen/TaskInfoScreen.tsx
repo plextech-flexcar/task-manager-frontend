@@ -52,21 +52,11 @@ const TaskInfoScreen = ({ route }) => {
   };
 
   const statusVar = (status) => {
-<<<<<<< HEAD
-    if(status === Status.OPEN){
-      return "Status: OPEN"
-      
-    }
-    else if(status === Status.RESOLVE){
-      return 'Status: assigned to ' + assigned
-    }    
-=======
     if (status === Status.OPEN) {
       return 'Status: OPEN';
     } else if (status === Status.RESOLVE) {
       return 'Status: assigned to ' + assigned;
     }
->>>>>>> origin/main
   };
   return (
     <SafeAreaView style={styles.whitebg}>
@@ -91,13 +81,7 @@ const TaskInfoScreen = ({ route }) => {
         <Text style={styles.textDate}>{age}</Text>
         <View style={styles.viewMarginLeft}>
           <HStack>
-<<<<<<< HEAD
-            <Text style={styles.textTop}>
-              {statusVar(status)}
-            </Text>
-=======
             <Text style={styles.textTop}>{statusVar(status)}</Text>
->>>>>>> origin/main
             {assigned && status !== Status.OPEN ? (
               <View style={styles.assignBox}>
                 <Text style={styles.assignBoxText}>{getInitials(assigned)}</Text>
