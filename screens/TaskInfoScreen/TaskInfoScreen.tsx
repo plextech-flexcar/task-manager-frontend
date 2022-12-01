@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Image, SafeAreaView, Text, View } from 'react-native';
 import TaskInfoHeader from '../../components/TaskInfo/TaskInfoHeader';
 import { HStack, VStack, Divider } from 'native-base';
@@ -7,11 +7,14 @@ import { PRIORITY_ICON_MAP } from '../../components/TaskCard/TaskCardPriorityIco
 import { Status } from '../../models/Status';
 import TaskInfoPopup from '../../components/TaskInfo/Modals/TaskInfoPopup';
 import { PRIORITY_ICON_COLOR_MAP } from './TaskCardPriorityColorMap';
+import { allVehiclesAtom } from '../../atoms';
+import { useAtom } from 'jotai';
 const TaskInfoScreen = ({ route }) => {
   const {
     id,
     type,
     status,
+    vehicleid,
     age,
     assigned,
     createdBy,
@@ -29,6 +32,8 @@ const TaskInfoScreen = ({ route }) => {
     state,
     vin,
   } = route.params;
+  const [allVehicles] = useAtom(allVehiclesAtom);
+
   const getPriority = (priority: number) => {
     if (priority === 1) {
       return 'Low';
@@ -58,6 +63,7 @@ const TaskInfoScreen = ({ route }) => {
       return 'Status: assigned to ' + assigned;
     }
   };
+
   return (
     <SafeAreaView style={styles.whitebg}>
       <TaskInfoHeader />

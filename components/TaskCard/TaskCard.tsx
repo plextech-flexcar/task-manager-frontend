@@ -9,6 +9,7 @@ import IconComponent from '../IconComponent';
 
 const TaskCard = ({
   id,
+  vehicleid,
   type,
   date,
   comment,
@@ -47,6 +48,7 @@ const TaskCard = ({
       onPress={() =>
         navigation.navigate('TaskInfoScreen', {
           id: id,
+          vehicleid,
           type: type,
           age: calculateAge(age),
           assigned: assigned,
@@ -73,10 +75,10 @@ const TaskCard = ({
         <Box>
           <VStack p="4" space={0} width="full" height="hug">
             <HStack justifyContent="space-between">
-              <Box width= '70%'> 
-              <View>
-                <Text style={styles.taskHeading}>{type}</Text>
-              </View>
+              <Box width="70%">
+                <View>
+                  <Text style={styles.taskHeading}>{type}</Text>
+                </View>
               </Box>
               <Image
                 source={PRIORITY_ICON_MAP[priority]}

@@ -1,14 +1,19 @@
 import React, { useEffect } from 'react';
 import { NativeBaseProvider, extendTheme } from 'native-base';
 import { useAtom } from 'jotai';
-import { allTasksAtom, atomFilters, displayTasksAtom, allVehiclesAtom } from './atoms';
+import {
+  allTasksAtom,
+  atomFilters,
+  displayTasksAtom,
+  allVehiclesAtom,
+  atomFilterOptions,
+} from './atoms';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Task } from './models/Task';
 import { Vehicle } from './models/Vehicle';
 import { initialFindMakes, initialFindMakeAndModel } from './utils/findTasks';
 import { createMakeAndModelFilter } from './utils/createMakeAndModelFilter';
-import { atomFilterOptions } from './atoms';
 
 import TaskListScreen from './screens/TaskListScreen/TaskListScreen';
 import TaskInfoScreen from './screens/TaskInfoScreen/TaskInfoScreen';
@@ -156,15 +161,14 @@ export default function App() {
       },
     })
       .then((response) => response.json())
-      .then((json) => {
-        setAllVehicles(json);
+      .then((response) => {
+        setAllVehicles(response);
       });
   };
 
   useEffect(() => {
     getTasksAPI();
     getVehicleAPI();
-    console.log(allVehicles);
   }, []);
 
   return (
