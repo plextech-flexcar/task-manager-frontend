@@ -10,8 +10,8 @@ const NameCard = (props: { name: Name; onAssignCall: any }) => {
   const name = first + ' ' + last;
   const { onAssignCall } = props;
   return (
-    <Pressable onPress={() => onAssignCall(name)}>
-      <View style={styles.card}>
+    <Pressable onPress={() => onAssignCall(name)} style={styles.card}>
+
         <VStack p="2" space={0}>
           <HStack>
             <IconComponent first={first} last={last} />
@@ -20,7 +20,7 @@ const NameCard = (props: { name: Name; onAssignCall: any }) => {
               </View>
           </HStack>
         </VStack>
-      </View>
+  
     </Pressable>
   );
 };

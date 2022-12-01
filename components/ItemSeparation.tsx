@@ -5,8 +5,10 @@ const FlatListItemSeparator = () => {
   return (
     <View
       style={{
-        height: 1,
-        width: '100%',
+        height: 0.5,
+        width: '97%',
+        display: 'flex',
+        alignSelf: 'flex-end',
         backgroundColor: 'lightgrey',
       }}
     />

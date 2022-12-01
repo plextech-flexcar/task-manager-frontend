@@ -10,7 +10,7 @@ const NameCardList = (props: { name: Name[]; onAssignCall: any }) => {
   const { onAssignCall } = props;
 
   const renderNameCard: ListRenderItem<Name> = ({ item }) => {
-    return <NameCard name={item} onAssignCall={onAssignCall} />;
+    return (<NameCard name={item} onAssignCall={onAssignCall} />);
   };
 
   return (
