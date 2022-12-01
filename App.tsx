@@ -11,10 +11,11 @@ import { Task } from './models/Task';
 import { initialFindMakes, initialFindMakeAndModel } from './utils/findTasks';
 import { createMakeAndModelFilter } from './utils/createMakeAndModelFilter';
 import { atomFilterOptions } from './atoms';
-
-import TaskListScreen from './screens/TaskListScreen/TaskListScreen';
-import TaskInfoScreen from './screens/TaskInfoScreen/TaskInfoScreen';
 import { Status } from './models/Status';
+import TaskInfoScreen from './screens/TaskInfoScreen/TaskInfoScreen';
+import TaskListScreen from './screens/TaskListScreen/TaskListScreen';
+import AssignModalFunc from './components/TaskAssign/AssignModal';
+import NameListScreen from './screens/NameListScreen/NameListScreen';
 
 
 // Define the config
@@ -156,22 +157,18 @@ export default function App() {
   }, []);
 
   return (
-
-    
     <NativeBaseProvider>
-          <RegisterScreen></RegisterScreen>
-      </NativeBaseProvider>
-    // <NativeBaseProvider>
-    //   <NavigationContainer>
-    //     <Stack.Navigator
-    //       screenOptions={{
-    //         headerShown: false,
-    //       }}
-    //     >
-    //       <Stack.Screen name="TaskListScreen" component={TaskListScreen} />
-    //       <Stack.Screen name="TaskInfoScreen" component={TaskInfoScreen} />
-    //     </Stack.Navigator>
-    //   </NavigationContainer>
-    // </NativeBaseProvider>
+       <NavigationContainer>
+        <Stack.Navigator
+          screenOptions={{
+            headerShown: false,
+          }}
+        >
+          <Stack.Screen name="TaskListScreen" component={TaskListScreen} />
+          <Stack.Screen name="TaskInfoScreen" component={TaskInfoScreen} />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </NativeBaseProvider>
+
   );
 }
