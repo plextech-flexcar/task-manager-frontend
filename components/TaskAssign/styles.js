@@ -2,15 +2,16 @@ import { StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({
   searchBar: {
-    width: 382,
-    height: 40,
+    width: '97%',
+    height: '40px',
     backgroundColor: '#FFFFFF',
     left: 1,
     borderWidth: 2,
     borderRadius: 8,
     borderColor: '#2A00A5',
-    bottom: 16,
-    top: 1,
-    marginBottom: 16,
+    bottom: '16px',
+    top: '20px',
+    marginBottom: '5%',
+    marginTop: '5%'
   },
 });

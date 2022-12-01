@@ -8,10 +8,11 @@ import { Task } from './models/Task';
 import { initialFindMakes, initialFindMakeAndModel } from './utils/findTasks';
 import { createMakeAndModelFilter } from './utils/createMakeAndModelFilter';
 import { atomFilterOptions } from './atoms';
-
-import TaskListScreen from './screens/TaskListScreen/TaskListScreen';
-import TaskInfoScreen from './screens/TaskInfoScreen/TaskInfoScreen';
 import { Status } from './models/Status';
+import TaskInfoScreen from './screens/TaskInfoScreen/TaskInfoScreen';
+import TaskListScreen from './screens/TaskListScreen/TaskListScreen';
+import AssignModalFunc from './components/TaskAssign/AssignModal';
+import NameListScreen from './screens/NameListScreen/NameListScreen';
 
 // Define the config
 const config = {
@@ -153,7 +154,8 @@ export default function App() {
 
   return (
     <NativeBaseProvider>
-      <NavigationContainer>
+      <NameListScreen></NameListScreen>
+      {/* <NavigationContainer>
         <Stack.Navigator
           screenOptions={{
             headerShown: false,
@@ -162,7 +164,7 @@ export default function App() {
           <Stack.Screen name="TaskListScreen" component={TaskListScreen} />
           <Stack.Screen name="TaskInfoScreen" component={TaskInfoScreen} />
         </Stack.Navigator>
-      </NavigationContainer>
+      </NavigationContainer> */}
     </NativeBaseProvider>
   );
 }
