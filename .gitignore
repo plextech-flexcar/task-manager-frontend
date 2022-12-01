@@ -21,3 +21,12 @@ logs
 *.log
 yarn-debug.log*
 yarn-error.log*
+
+### VS Code ###
+.vscode/
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr

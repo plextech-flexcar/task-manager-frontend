@@ -21,7 +21,7 @@ const ReopenTask = ({
   onSubmit: () => void;
 }) => {
   const [comment, setComment] = useState('');
-  const submitIcon = require('../../../assets/submit.png');
+  const submitIcon = require('../../../assets/submit.webp');
   return (
     <View style={styles1.contain}>
       <Modal
@@ -31,9 +31,10 @@ const ReopenTask = ({
         safeAreaTop={true}
         style={styles1.modal}
         size={'full'}
+        presentationStyle="fullScreen"
       >
         <KeyboardAvoidingView
-          style={styles.whitebg}
+          style={styles1.keyboardView}
           behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
         >
           <Modal.Content style={styles1.bottomModal} justifyContent={'center'}>
@@ -66,7 +67,9 @@ const ReopenTask = ({
                 You will need to enter a reason for reopening this task.
               </Text>
             </Modal.Body>
-            <Modal.Footer style={{ borderTopWidth: 0, elevation: 0, margin: 0 }}>
+            <Modal.Footer
+              style={{ borderTopWidth: 0, elevation: 0, margin: 0, width: '100%' }}
+            >
               <FormControl style={styles1.form}>
                 <View
                   style={{

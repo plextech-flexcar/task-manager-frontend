@@ -2,11 +2,12 @@ import { StyleSheet } from 'react-native';
 export const styles1 = StyleSheet.create({
   keyboardView: {
     backgroundColor: '#EDEDED',
-    flex: 1,
+    width: '100%',
   },
   input: {
     borderColor: '#2A00A5',
     padding: 10,
+    outlineStyle: 'none',
   },
   form: {
     placeholderTextColor: '#76757D',
@@ -50,13 +51,13 @@ export const styles1 = StyleSheet.create({
     fontWeight: '700',
   },
   contain: {
-    marginTop: 20,
-    marginBottom: 20,
+    width: '100%',
   },
   modal: {
     width: '100%',
     borderBottomWidth: 0,
     textAlign: 'center',
+    margin: 0,
   },
   bottomModal: {
     marginBottom: 20,

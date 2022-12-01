@@ -1,13 +1,21 @@
 import React, { useState } from 'react';
 import { TouchableHighlight, Text } from 'react-native';
 import { styles } from './styles.js';
+import { atomModalVisible } from '../../atoms';
+import { useAtom } from 'jotai';
 
-export default function HeaderButtons(props: { buttonName: string }) {
+export default function HeaderButton(props: { buttonName: string }) {
   const { buttonName } = props;
   const [isActive, setIsActive] = useState(false);
 
+  const [isModalVisible, setModalVisible] = useAtom(atomModalVisible);
+
   const handleClick = () => {
     setIsActive(!isActive);
+    if (buttonName === 'Sort & Filter') {
+      setModalVisible(true);
+      setIsActive(false);
+    }
   };
 
   return (

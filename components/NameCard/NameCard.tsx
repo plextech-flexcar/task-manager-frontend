@@ -15,11 +15,9 @@ const NameCard = (props: { name: Name; onAssignCall: any }) => {
         <VStack p="2" space={0}>
           <HStack>
             <IconComponent first={first} last={last} />
-            <Text>
               <View style={styles.textSpacing}>
                 <Text style={styles.taskHeading}>{name}</Text>
               </View>
-            </Text>
           </HStack>
         </VStack>
       </View>

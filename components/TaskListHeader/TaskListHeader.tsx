@@ -1,14 +1,12 @@
-import React, { useState } from 'react';
-import { StyleSheet, Text, View, Image } from 'react-native';
+import React from 'react';
+import { Text, View, Image } from 'react-native';
 import { Searchbar } from 'react-native-paper';
-import TaskListScreen from '../../screens/TaskListScreen/TaskListScreen';
-import TaskCardList from '../TaskCardList/TaskCardList';
 import { allTasksAtom } from '../../atoms';
-
 import HeaderButtons from './HeaderButton';
 import { styles } from './styles';
 import { useAtom } from 'jotai';
-
+const user = require('../../assets/HeaderIcons/user.webp');
+const addList = require('../../assets/HeaderIcons/addlist.webp');
 export default function TaskListHeader() {
   const [searchQuery, setSearchQuery] = React.useState('');
   const [allTasks] = useAtom(allTasksAtom);
@@ -17,7 +15,7 @@ export default function TaskListHeader() {
     <View style={styles.headerBack}>
       <View style={styles.headerSearchRow}>
         <Image
-          source={{ uri: require('../../assets/HeaderIcons/user.svg') }}
+          source={user}
           style={styles.iconSize}
         />
         <Searchbar
@@ -29,7 +27,7 @@ export default function TaskListHeader() {
           inputStyle={{ fontSize: 15 }}
         />
         <Image
-          source={{ uri: require('../../assets/HeaderIcons/addlist.svg') }}
+          source={addList}
           style={styles.iconSize}
         />
       </View>

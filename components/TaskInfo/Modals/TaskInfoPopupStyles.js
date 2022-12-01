@@ -39,10 +39,7 @@ export const styles1 = StyleSheet.create({
     color: '#FFF',
     fontWeight: '700',
   },
-  contain: {
-    marginTop: 20,
-    marginBottom: 20,
-  },
+  contain: {},
   modal: {
     width: '100%',
     borderBottomWidth: 0,
