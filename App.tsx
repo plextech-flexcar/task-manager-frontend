@@ -7,6 +7,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 // import TaskInfoScreen from './screens/TaskInfoScreen/TaskInfoScreen';
 // import TaskListScreen from './screens/TaskListScreen/TaskListScreen';
 import NameListScreen from './screens/NameListScreen/NameListScreen';
+import RegisterScreen from './/screens/RegisterScreen/RegisterScreen'
 
 // Define the config
 const config = {
@@ -51,7 +52,7 @@ export default function App() {
 
     
     <NativeBaseProvider>
-          <NameListScreen/>
+          <RegisterScreen></RegisterScreen>
       </NativeBaseProvider>
     // <NativeBaseProvider>
     //   <NavigationContainer>
