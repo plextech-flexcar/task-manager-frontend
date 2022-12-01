@@ -1,10 +1,7 @@
-<<<<<<< HEAD
 import React, { useState, useEffect } from 'react';
 import { Image, SafeAreaView, Text, View } from 'react-native';
-=======
 import React from 'react';
 import { SafeAreaView } from 'react-native';
->>>>>>> 83788c1 (fixed assign modal)
 import TaskInfoHeader from '../../components/TaskInfo/TaskInfoHeader';
 import { HStack, VStack, Divider, View, Text, Image } from 'native-base';
 import { styles } from './TaskInfoStyles.js';
