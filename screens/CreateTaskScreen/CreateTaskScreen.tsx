@@ -14,9 +14,10 @@ import { styles } from "./createTaskScreenStyles"
 const CreateTaskScreen = () => {
     const [type, setType] = useState('');
     const [priority, setPriority] = useState(0);
-    const [priortyText, setPriorityText] = useState('');
+    const [priorityText, setPriorityText] = useState('');
     const [priorityIcon, setPriorityIcon] = useState(null as unknown as ImageSourcePropType)
     const [vehicle, setVehicle] = useState('1');
+    const [description, setDescription] = useState('');
     const [assignedStatus, setAssignedStatus] = useState('');
     const [assigned, setAssigned] = useState('Denver Nguyen');
     const [license, setLicense] = useState('1');
@@ -62,7 +63,7 @@ const CreateTaskScreen = () => {
                         placeholder={"Assign priority"}
                         dropdownArrow={true}
                         onPress={showModal}
-                        value={priortyText}
+                        value={priorityText}
                         icon={priorityIcon}
                     />
                     <DropdownSection 
@@ -70,7 +71,7 @@ const CreateTaskScreen = () => {
                         placeholder={"Define task description"}
                         dropdownArrow={false}
                         onPress={showModal}
-                        // value={}
+                        value={description}
                     />
                     <DropdownSection 
                         title={"Vehicle MVA, VIN, or License plate"} 
@@ -103,12 +104,13 @@ const CreateTaskScreen = () => {
                 </HStack>
             </View>
             <PriorityModal
-                    showModal={visibleModal==="Priority"}
-                    changePriority={changePriority}
-                    onClose={() => setVisibleModal('')}   
+                showModal={visibleModal==="Priority"}
+                changePriority={changePriority}
+                onClose={() => setVisibleModal('')}   
             />    
             <DescriptionModal
                 showModal={visibleModal==="Task Description"}
+                changeDescription={(comment) => setDescription(comment)}
                 onClose={() => setVisibleModal('')}
             />
             <TaskTypeModal

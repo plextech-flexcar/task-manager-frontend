@@ -63,7 +63,6 @@ export const styles = StyleSheet.create({
     width: '100%',
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
-    overflow: 'hidden',
     textAlign: 'center',
     position: 'fixed',
     bottom: 0,
@@ -78,6 +77,8 @@ export const styles = StyleSheet.create({
     width: '97.5%',
     alignContent: 'center',
     textAlign: 'center',
+    flexDirection:'row',
+
   },
   modalHeaderTitle: {
     fontSize: 17,
@@ -125,5 +126,10 @@ export const styles = StyleSheet.create({
     display: "flex", 
     flexDirection:"row", 
     width: "90%", 
+  },
+  icon: {
+    position: 'absolute',
+    top: 4,
+    right: 4,
   },
 });

@@ -13,12 +13,17 @@ import { styles } from './styles.js';
 
 const DescriptionModal = (({
     showModal,
+    changeDescription,
     onClose,
   }: {
     showModal: boolean;
+    changeDescription: (comment:string) => void;
     onClose: () => void;
   }) => {
   const [comment, setComment] = useState('');
+  const onSubmit = () => {
+    changeDescription(comment)
+  }
   return (
     <View>
       <Modal
@@ -40,8 +45,12 @@ const DescriptionModal = (({
               color="#2A00A5"
               style={{}}
             />
-            <Modal.Header style={styles.modalHeader}>
-              <Text style={styles.modalHeaderText}>Task description</Text>
+            <Modal.Header style={[styles.modalHeader, {borderBottomWidth: 0, marginLeft: 0}]}>
+              <Text style={styles.modalHeaderTitle}>Task description</Text>
+            {/* <Image
+                source={displayModalIcon}
+                style={{ height: 16, width: 16 }}
+              ></Image> */}
             </Modal.Header>
             <Modal.Footer style={styles.modalFooter}>
               <FormControl style={[styles.form, {borderColor:'#2A00A5'}]}>

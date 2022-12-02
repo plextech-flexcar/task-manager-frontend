@@ -12,6 +12,7 @@ export default function TaskListHeader() {
   const [allTasks] = useAtom(allTasksAtom);
   const navigation = useNavigation();
   const onChangeSearch = (query: React.SetStateAction<string>) => setSearchQuery(query);
+  
   return (
     <View style={styles.headerBack}>
       <View style={styles.headerSearchRow}>
