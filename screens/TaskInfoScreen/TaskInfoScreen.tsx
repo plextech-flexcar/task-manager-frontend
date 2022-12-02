@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import { Image, SafeAreaView, Text, View } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { SafeAreaView } from 'react-native';
 import TaskInfoHeader from '../../components/TaskInfo/TaskInfoHeader';
-import { HStack, VStack, Divider } from 'native-base';
+import { HStack, VStack, Divider, View, Text, Image } from 'native-base';
 import { styles } from './TaskInfoStyles.js';
 import { PRIORITY_ICON_MAP } from '../../components/TaskCard/TaskCardPriorityIconMap';
 import { Status } from '../../models/Status';
@@ -19,7 +19,6 @@ const TaskInfoScreen = ({ route }) => {
     assigned,
     createdBy,
     date,
-    comment,
     make,
     model,
     color,
@@ -35,6 +34,7 @@ const TaskInfoScreen = ({ route }) => {
   const [allVehicles] = useAtom(allVehiclesAtom);
   //change  3 to vehicleid
   const vehicleData = allVehicles.find((obj) => obj.vehicle_id === 3);
+  const [comments, setComments] = useState([]);
 
   const getPriority = (priority: number) => {
     if (priority === 1) {
@@ -54,8 +54,9 @@ const TaskInfoScreen = ({ route }) => {
       .join('');
   };
   const fromEpochToDate = (date: number) => {
-    const newDate = new Date(date * 1000);
-    return newDate.toLocaleString();
+    // const newDate = new Date(date * 1000);
+    // return newDate.toLocaleString();
+    return new Date(date).toLocaleString();
   };
 
   const statusVar = (status) => {
@@ -66,6 +67,26 @@ const TaskInfoScreen = ({ route }) => {
     }
   };
 
+  const getCommentsAPI = async (taskId: number) => {
+    fetch(`http://localhost:8080/api/v1/comment/${taskId}`, {
+      mode: 'cors',
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+        'Origin': 'http://localhost:19006',
+      },
+    })
+      .then((response) => response.json())
+      .then((json) => {
+        setComments(json);
+      });
+  };
+
+  useEffect(() => {
+    getCommentsAPI(id);
+  }, []);
+  console.log('COMMENTS: ', comments);
   return (
     <SafeAreaView style={styles.whitebg}>
       <TaskInfoHeader />
@@ -125,23 +146,26 @@ const TaskInfoScreen = ({ route }) => {
         </VStack>
       </View>
       <VStack style={styles.commentVStack}>
-        <Text style={styles.vehicleMarginTop}>4 Comments</Text>
-        <HStack>
-          <Divider orientation="vertical" mr={3} />
-          <VStack>
-            <Text style={styles.commentBox}>{comment ? comment : 'No comments'}</Text>
-            <Text style={styles.commentBy}>by Adam Miller on 3/15/22 - 4:30pm</Text>
-          </VStack>
-        </HStack>
-        <HStack>
-          <Divider orientation="vertical" mr={3} mt={5} />
-          <VStack marginTop={5}>
-            <Text style={styles.commentBox}>{comment ? comment : 'No comments'}</Text>
-            <Text style={styles.commentBy}>by Adam Miller on 3/15/22 - 4:30pm</Text>
-          </VStack>
-        </HStack>
+        <Text style={styles.vehicleMarginTop}>{comments.length} Comments</Text>
+        {comments.map((comment) => (
+          <HStack mt={4}>
+            <Divider orientation="vertical" mr={3} />
+            <VStack>
+              <Text style={styles.commentBox}>{comment.content}</Text>
+              <Text style={styles.commentBy}>
+                by {comment.postedBy} on {fromEpochToDate(comment.date)}
+              </Text>
+            </VStack>
+          </HStack>
+        ))}
         <View style={{ marginRight: '5%', marginLeft: '5%' }}>
-          <TaskInfoPopup style={{}} assigned={assigned} taskId={id} />
+          <TaskInfoPopup
+            style={{}}
+            assigned={assigned}
+            taskId={id}
+            comments={comments}
+            setComments={setComments}
+          />
         </View>
       </VStack>
     </SafeAreaView>

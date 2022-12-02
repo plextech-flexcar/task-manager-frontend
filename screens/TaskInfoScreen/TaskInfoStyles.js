@@ -71,8 +71,8 @@ const styles = StyleSheet.create({
     marginTop: 3,
   },
   availableBox: {
-    backgroundColor: '#39BD09',
-    alignSelf: 'flex-start',
+    backgroundColor: "#39BD09",
+    alignSelf: "flex-start",
     padding: 5,
     marginTop: 3,
   },
@@ -110,6 +110,9 @@ const styles = StyleSheet.create({
   priorityImage: {
     width: 20,
     height: 20,
+  },
+  fixedBottom: {
+
   },
 });
 

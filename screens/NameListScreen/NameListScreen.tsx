@@ -1,11 +1,11 @@
 import React from 'react';
-import { Pressable, SafeAreaView, Text } from 'react-native';
+import { Pressable, SafeAreaView } from 'react-native';
 import { styles } from './styles';
 import { Name } from '../../models/Name';
 import NameCardList from '../../components/NameCardList/NameCardList';
 import AssignModalFunc from '../../components/TaskAssign/AssignModal';
 import FlatListItemSeparator from '../../components/ItemSeparation';
-import { IconButton } from 'react-native-paper';
+import { IconButton, Text } from 'react-native-paper';
 
 const NameListScreen = ({ closeCall, onAssignCall }: any) => {
   const name1: Name = {

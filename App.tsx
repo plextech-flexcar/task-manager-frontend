@@ -10,14 +10,18 @@ import {
 } from './atoms';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import NameListScreen from './screens/NameListScreen/NameListScreen';
+import RegisterScreen from './/screens/RegisterScreen/RegisterScreen';
+
 import { Task } from './models/Task';
 import { Vehicle } from './models/Vehicle';
 import { initialFindMakes, initialFindMakeAndModel } from './utils/findTasks';
 import { createMakeAndModelFilter } from './utils/createMakeAndModelFilter';
 
-import TaskListScreen from './screens/TaskListScreen/TaskListScreen';
-import TaskInfoScreen from './screens/TaskInfoScreen/TaskInfoScreen';
 import { Status } from './models/Status';
+import TaskInfoScreen from './screens/TaskInfoScreen/TaskInfoScreen';
+import TaskListScreen from './screens/TaskListScreen/TaskListScreen';
+import AssignModalFunc from './components/TaskAssign/AssignModal';
 
 // Define the config
 const config = {
