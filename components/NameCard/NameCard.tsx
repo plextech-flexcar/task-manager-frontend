@@ -16,6 +16,7 @@ const NameCard = (props: { name: Name; onAssignCall: any }) => {
             <IconComponent first={first} last={last} />
               <View style={styles.textSpacing}>
                 <Text style={styles.taskHeading}>{name}</Text>
+                </View>
           </HStack>
         </VStack>
     </Pressable>
