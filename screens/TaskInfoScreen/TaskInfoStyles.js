@@ -112,8 +112,12 @@ const styles = StyleSheet.create({
     height: 20,
   },
   fixedBottom: {
-
-  },
+    position: 'absolute',
+    bottom: 0,
+    width: "100%",
+    borderTopWidth: 1,
+    borderTopColor: "#CECED0",
+  }
 });
 
 export { styles };

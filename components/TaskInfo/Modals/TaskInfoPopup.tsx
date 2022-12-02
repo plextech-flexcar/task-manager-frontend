@@ -10,7 +10,7 @@ import LeaveComment from './LeaveComment';
 import { styles1 } from './TaskInfoPopupStyles';
 const TaskInfoPopup = (props) => {
   const [showModal, setShowModal] = useState(false);
-  const { assigned, taskId, comments, setComments } = props;
+  const { assigned, taskId } = props;
   const [resolve, setResolve] = useState(assigned !== '');
   const [resolveModal, setResolveModal] = useState(false);
   const [finalResolve, setFinalResolve] = useState(false);
@@ -82,14 +82,7 @@ const TaskInfoPopup = (props) => {
         onResolve={onResolve}
       />
       <ReopenTask showModal={reOpenModel} closeCall={reopenToggle} onSubmit={onSubmit} />
-      <LeaveComment
-        showModal={commentModal}
-        onClose={commentToggle}
-        taskId={taskId}
-        postedBy={'User Name'}
-        comments={comments}
-        setComments={setComments}
-      />
+      <LeaveComment showModal={commentModal} onClose={commentToggle} />
       <View style={styles1.contain}>
         {!resolveModal ? (
           <HStack space={3} alignItems="center" justifyContent={'center'}>
