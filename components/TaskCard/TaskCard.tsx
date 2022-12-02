@@ -34,7 +34,7 @@ const TaskCard = ({
 }: Task) => {
   const [allVehicles] = useAtom(allVehiclesAtom);
   //change  3 to vehicleid
-  const vehicleData = allVehicles.find((obj) => obj.vehicle_id === 3);
+  const vehicleData = allVehicles.find((obj) => obj.vehicle_id === vehicleid);
 
   const navigation = useNavigation();
   const calculateAge = (age: number) => {
