@@ -15,7 +15,6 @@ import { Status } from './models/Status';
 import TaskInfoScreen from './screens/TaskInfoScreen/TaskInfoScreen';
 import TaskListScreen from './screens/TaskListScreen/TaskListScreen';
 import AssignModalFunc from './components/TaskAssign/AssignModal';
-import NameListScreen from './screens/NameListScreen/NameListScreen';
 
 
 // Define the config
