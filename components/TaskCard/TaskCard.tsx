@@ -6,6 +6,8 @@ import { PRIORITY_ICON_MAP } from './TaskCardPriorityIconMap';
 import { Task } from '../../models/Task.js';
 import { useNavigation } from '@react-navigation/native';
 import IconComponent from '../IconComponent';
+import { useAtom } from 'jotai';
+import { allVehiclesAtom } from '../../atoms';
 
 const TaskCard = ({
   id,
@@ -30,6 +32,10 @@ const TaskCard = ({
   state,
   vin,
 }: Task) => {
+  const [allVehicles] = useAtom(allVehiclesAtom);
+  //change  3 to vehicleid
+  const vehicleData = allVehicles.find((obj) => obj.vehicle_id === 3);
+
   const navigation = useNavigation();
   const calculateAge = (age: number) => {
     const minutes = Math.floor(age / 60000);
@@ -89,12 +95,14 @@ const TaskCard = ({
               <Text style={styles.taskDateText}>{calculateAge(age)}</Text>
             </View>
             <View>
-              <Text style={styles.vehicleText}>{model}</Text>
+              <Text style={styles.vehicleText}>
+                {vehicleData?.color} {vehicleData?.makeName} {vehicleData?.modelName}
+              </Text>
             </View>
             <HStack justifyContent="space-between">
               <View>
                 <Text style={styles.vehicleText}>
-                  {license} • {mva}
+                  {vehicleData?.license}, {vehicleData?.state} • {vehicleData?.mva}
                 </Text>
               </View>
               <IconComponent

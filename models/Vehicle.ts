@@ -3,6 +3,7 @@ export interface Vehicle {
   makeID: number;
   makeName: string;
   modelID: number;
+  modelName: string;
   plate: string;
   state: string;
   color: string;
