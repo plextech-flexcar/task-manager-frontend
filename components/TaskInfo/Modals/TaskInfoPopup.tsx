@@ -16,6 +16,7 @@ const TaskInfoPopup = ({
   taskId: number
 }) => {
   const [showModal, setShowModal] = useState(false);
+  const { assigned, taskId, comments, setComments } = props;
   const [resolve, setResolve] = useState(assigned !== '');
   const [resolveModal, setResolveModal] = useState(false);
   const [finalResolve, setFinalResolve] = useState(false);
@@ -64,9 +65,9 @@ const TaskInfoPopup = ({
     setCommentModal(!commentModal);
   };
 
-  const personSearch = require('../../../assets/person_search.png');
+  const personSearch = require('../../../assets/person_search.webp');
   return (
-    <SafeAreaView style={styles.whitebg}>
+    <SafeAreaView>
       <View>
         <Modal
           animationType="slide"
@@ -87,7 +88,14 @@ const TaskInfoPopup = ({
         onResolve={onResolve}
       />
       <ReopenTask showModal={reOpenModel} closeCall={reopenToggle} onSubmit={onSubmit} />
-      <LeaveComment showModal={commentModal} onClose={commentToggle} />
+      <LeaveComment
+        showModal={commentModal}
+        onClose={commentToggle}
+        taskId={taskId}
+        postedBy={'User Name'}
+        comments={comments}
+        setComments={setComments}
+      />
       <View style={styles1.contain}>
         {!resolveModal ? (
           <HStack space={3} alignItems="center" justifyContent={'center'}>

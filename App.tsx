@@ -4,13 +4,18 @@ import { useAtom } from 'jotai';
 import { allTasksAtom, atomFilters, displayTasksAtom } from './atoms';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import NameListScreen from './screens/NameListScreen/NameListScreen';
+import RegisterScreen from './/screens/RegisterScreen/RegisterScreen'
+
 import { Task } from './models/Task';
 import { initialFindMakes, initialFindMakeAndModel } from './utils/findTasks';
 import { atomFilterOptions } from './atoms';
-import CreateTaskScreen from './screens/CreateTaskScreen/CreateTaskScreen'
-import TaskListScreen from './screens/TaskListScreen/TaskListScreen';
+import CreateTaskScreen from './screens/CreateTaskScreen/CreateTaskScreen'import { Status } from './models/Status';
 import TaskInfoScreen from './screens/TaskInfoScreen/TaskInfoScreen';
-import { Status } from './models/Status';
+import TaskListScreen from './screens/TaskListScreen/TaskListScreen';
+import AssignModalFunc from './components/TaskAssign/AssignModal';
+import NameListScreen from './screens/NameListScreen/NameListScreen';
+
 
 // Define the config
 const config = {
@@ -153,7 +158,7 @@ export default function App() {
 
   return (
     <NativeBaseProvider>
-      <NavigationContainer>
+       <NavigationContainer>
         <Stack.Navigator
           screenOptions={{
             headerShown: false,
@@ -165,5 +170,6 @@ export default function App() {
         </Stack.Navigator>
       </NavigationContainer>
     </NativeBaseProvider>
+
   );
 }

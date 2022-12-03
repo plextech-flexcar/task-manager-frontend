@@ -6,7 +6,8 @@ import HeaderButtons from './HeaderButton';
 import { styles } from './styles';
 import { useAtom } from 'jotai';
 import { useNavigation } from '@react-navigation/native';
-
+const user = require('../../assets/HeaderIcons/user.webp');
+const addList = require('../../assets/HeaderIcons/addlist.webp');
 export default function TaskListHeader() {
   const [searchQuery, setSearchQuery] = React.useState('');
   const [allTasks] = useAtom(allTasksAtom);
@@ -17,7 +18,7 @@ export default function TaskListHeader() {
     <View style={styles.headerBack}>
       <View style={styles.headerSearchRow}>
         <Image
-          source={{ uri: require('../../assets/HeaderIcons/user.svg') }}
+          source={user}
           style={styles.iconSize}
         />
         <Searchbar
