@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { Image, SafeAreaView, Text, View } from 'react-native';
-import React from 'react';
 import { SafeAreaView } from 'react-native';
 import TaskInfoHeader from '../../components/TaskInfo/TaskInfoHeader';
 import { HStack, VStack, Divider, View, Text, Image } from 'native-base';
@@ -9,11 +7,14 @@ import { PRIORITY_ICON_MAP } from '../../components/TaskCard/TaskCardPriorityIco
 import { Status } from '../../models/Status';
 import TaskInfoPopup from '../../components/TaskInfo/Modals/TaskInfoPopup';
 import { PRIORITY_ICON_COLOR_MAP } from './TaskCardPriorityColorMap';
+import { allVehiclesAtom } from '../../atoms';
+import { useAtom } from 'jotai';
 const TaskInfoScreen = ({ route }) => {
   const {
     id,
     type,
     status,
+    vehicleid,
     age,
     assigned,
     createdBy,
@@ -30,6 +31,9 @@ const TaskInfoScreen = ({ route }) => {
     state,
     vin,
   } = route.params;
+  const [allVehicles] = useAtom(allVehiclesAtom);
+  //change  3 to vehicleid
+  const vehicleData = allVehicles.find((obj) => obj.vehicle_id === vehicleid);
   const [comments, setComments] = useState([]);
 
   const getPriority = (priority: number) => {
@@ -123,17 +127,17 @@ const TaskInfoScreen = ({ route }) => {
         <View style={styles.middleHorizontalStack}>
           <View>
             <Text style={styles.textCarType}>
-              {color} {make}
+              {vehicleData?.color} {vehicleData?.makeName} {vehicleData?.modelName}
             </Text>
             <Text style={styles.textTop}>
-              {license}, {state} MVA: {mva}
+              {vehicleData?.license}, {vehicleData?.state} • {vehicleData?.mva}
             </Text>
-            <Text style={styles.textTop}>VIN: {vin}</Text>
+            <Text style={styles.textTop}>VIN: {vehicleData?.vin}</Text>
             <View style={vehicleStatus ? styles.availableBox : styles.unavailableBox}>
               <Text>{vehicleStatus ? 'Available' : 'Unavailable/Service'}</Text>
             </View>
           </View>
-          <Image style={styles.image} source={{ uri: carImage }} />
+          <Image style={styles.image} source={{ uri: vehicleData?.carImage }} />
         </View>
         <Divider style={styles.vehicleDivider} />
         <VStack style={styles.vehicleVerticalStack}>
