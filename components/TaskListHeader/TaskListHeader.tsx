@@ -18,24 +18,24 @@ export default function TaskListHeader() {
   const onChangeSearch = (query: string) => {
     setSearchQuery(query)
     console.log(query)
-    let mva: { [vehicleId: number]: string } = {};
-    let license: {[vehicleId: number]: string } = {};
-    for(let vehicleId in allVehicles) {
+    const mva: { [vehicleId: number]: string } = {};
+    const license: {[vehicleId: number]: string } = {};
+    for(const vehicleId in allVehicles) {
       const vehicleIdNum = Number.parseInt(vehicleId);
-      let vehicle = allVehicles[vehicleIdNum]
+      const vehicle = allVehicles[vehicleIdNum]
       mva[vehicleIdNum] = vehicle.mva;
       license[vehicleIdNum] = vehicle.license;
     }
     console.log(mva)
-    var pattern = new RegExp(query + '[a-zA-Z0-9]*');
-    var matches = new Set<number>();
-    for (let vehicleId in mva) {
+    const pattern = new RegExp(query + '[a-zA-Z0-9]*');
+    const matches = new Set<number>();
+    for (const vehicleId in mva) {
       const vehicleIdNum = Number.parseInt(vehicleId);
       if (pattern.test(mva[vehicleIdNum])) {
         matches.add(vehicleIdNum);
       }
     }
-    for (let vehicleId in license) {
+    for (const vehicleId in license) {
       const vehicleIdNum = Number.parseInt(vehicleId);
       if (pattern.test(license[vehicleIdNum])) {
         matches.add(vehicleIdNum);
