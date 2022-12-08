@@ -33,7 +33,7 @@ const TaskInfoScreen = ({ route }) => {
   } = route.params;
   const [allVehicles] = useAtom(allVehiclesAtom);
   //change  3 to vehicleid
-  const vehicleData = allVehicles.find((obj) => obj.vehicle_id === vehicleid);
+  const vehicleData = allVehicles[vehicleid];
   const [comments, setComments] = useState([]);
 
   const getPriority = (priority: number) => {
