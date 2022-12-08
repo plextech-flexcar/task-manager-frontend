@@ -7,6 +7,7 @@ import { Task } from "../../models/Task";
 import HeaderButtons from './HeaderButton';
 import { styles } from './styles';
 import { useAtom } from 'jotai';
+import { Vehicle } from '../../models/Vehicle';
 const user = require('../../assets/HeaderIcons/user.webp');
 const addList = require('../../assets/HeaderIcons/addlist.webp');
 export default function TaskListHeader() {
@@ -18,9 +19,9 @@ export default function TaskListHeader() {
     setSearchQuery(query)
     let mva: {[type : number] : string} = {};
     let license: {[type : number] : string} = {};
-    allVehicles.forEach((value: any, key: number) => {
-      mva[value.getVehicleid() as number] = value.getMva();
-      license[value.getVehicleid() as number] = value.getLicense();
+    allVehicles.forEach((value: Vehicle, key: number) => {
+      mva[value.getVehicleId() as number] = value.getMva();
+      license[value.getVehicleId() as number] = value.getLicense();
     });
     var pattern = new RegExp(query + '[a-zA-Z0-9]*');
     var matches = [];
