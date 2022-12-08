@@ -7,7 +7,6 @@ import {
   } from 'react-native';
 import { Modal, FormControl } from 'native-base';
 import { styles } from './styles.js';
-import { ScrollView } from 'native-base';
 
 const StatusModal = ({
     showModal,
@@ -41,12 +40,12 @@ const StatusModal = ({
               <View style={[styles.modalView, {paddingBottom:83}]}>
                 <View style={styles.modalHeader}>
                   <Text style={styles.modalHeaderTitle}>Status</Text>
-                    {/* <Modal.CloseButton
+                    <Modal.CloseButton
                       variant="#2A00A5"
                       tintColor="#2A00A5"
                       color="#2A00A5"
                       style={{}}
-                    /> */}
+                    />
                 </View>
                 <View style={[styles.circleRow, {marginTop: 8}]}>
                 {status.map((item : string) => {
@@ -65,7 +64,7 @@ const StatusModal = ({
                         )
                     })}
                 </View>
-                {/* <View style={{height: 83}}></View> */}
+                <View style={{height: 83}}></View>
               </View>
             </Modal>
           </View>

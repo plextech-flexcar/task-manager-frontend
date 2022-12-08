@@ -24,6 +24,7 @@ const DescriptionModal = (({
   const onSubmit = () => {
     changeDescription(comment)
   }
+  const submitButton = require('../../../assets/submit.webp');
   return (
     <View>
       <Modal
@@ -76,7 +77,7 @@ const DescriptionModal = (({
                   <View>
                     <Pressable onPress={() => onClose()}>
                       <Image
-                        source={require('../../../assets/submit.png')}
+                        source={submitButton}
                         style={{ width: 20, height: 20 }}
                       />
                     </Pressable>

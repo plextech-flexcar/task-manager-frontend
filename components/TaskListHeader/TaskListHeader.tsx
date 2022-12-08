@@ -31,7 +31,7 @@ export default function TaskListHeader() {
         />
         <Pressable onPress={() => navigation.navigate('CreateTaskScreen', {})}>
           <Image
-          source={{ uri: require('../../assets/HeaderIcons/addlist.svg') }}
+          source={{ uri: require('../../assets/HeaderIcons/addlist.webp') }}
           style={styles.iconSize}
         />
         </Pressable>

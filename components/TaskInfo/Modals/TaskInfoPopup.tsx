@@ -8,15 +8,19 @@ import ResolveTask from './ResolveTask';
 import ReopenTask from './ReopenTask';
 import LeaveComment from './LeaveComment';
 import { styles1 } from './TaskInfoPopupStyles';
-const TaskInfoPopup = ({
-  assigned, 
-  taskId
-} : {
-  assigned : string,
-  taskId: number
-}) => {
+const TaskInfoPopup = (
+  {
+    assigned,
+    taskId,
+    comments,
+    setComments,
+  } : {
+    assigned: string,
+    taskId: number,
+    comments: number[],
+    setComments: () => void
+  }) => {
   const [showModal, setShowModal] = useState(false);
-  const { assigned, taskId, comments, setComments } = props;
   const [resolve, setResolve] = useState(assigned !== '');
   const [resolveModal, setResolveModal] = useState(false);
   const [finalResolve, setFinalResolve] = useState(false);

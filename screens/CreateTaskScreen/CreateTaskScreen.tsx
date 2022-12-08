@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { SafeAreaView, ScrollView, View, Text, ImageSourcePropType } from "react-native";
 import CreateTaskHeader from "../../components/CreateTask/CreateTaskHeader/CreateTaskHeader";
 import DropdownSection from "../../components/CreateTask/DropdownSection/DropdownSection";
-import AssignModal from "../../components/CreateTask/Modals/AssignModal";
+import StatusModal from "../../components/CreateTask/Modals/StatusModal";
 import DescriptionModal from "../../components/CreateTask/Modals/DescriptionModal";
 import PriorityModal from "../../components/CreateTask/Modals/PriorityModal";
 import TaskTypeModal from "../../components/CreateTask/Modals/TaskTypeModal";
@@ -16,17 +16,16 @@ const CreateTaskScreen = () => {
     const [priority, setPriority] = useState(0);
     const [priorityText, setPriorityText] = useState('');
     const [priorityIcon, setPriorityIcon] = useState(null as unknown as ImageSourcePropType)
-    const [vehicle, setVehicle] = useState('1');
+    const [vehicle, setVehicle] = useState('');
     const [description, setDescription] = useState('');
     const [assignedStatus, setAssignedStatus] = useState('');
-    const [assigned, setAssigned] = useState('Denver Nguyen');
-    const [license, setLicense] = useState('1');
+    const [assigned, setAssigned] = useState('');
+    const [license, setLicense] = useState('');
     const [mva, setMva] = useState('');
-    const [visibleModal, setVisibleModal] = useState('1');
+    const [visibleModal, setVisibleModal] = useState('');
     const assignedPair = (assigned) || assignedStatus==="Open";
     const isDisabled = !([priority, vehicle, assignedPair, license, mva].every((value) => !!value));
     const searchIcon = require('../../assets/CreateTaskIcons/searchIcon.png');
-    console.log(isDisabled)
 
     const showModal = (title: string) => {
         setVisibleModal(title)
@@ -118,11 +117,12 @@ const CreateTaskScreen = () => {
                 changeTask={(type) => setType(type)}
                 onClose={() => setVisibleModal('')}
             />
-            <AssignModal
+            <StatusModal
                 showModal={visibleModal==="Status"}
                 changeStatus={(status) => setAssignedStatus(status)}
                 onClose={() => setVisibleModal('')}
             />
+
     </>
     )
 }
