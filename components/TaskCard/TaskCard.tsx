@@ -6,9 +6,12 @@ import { PRIORITY_ICON_MAP } from './TaskCardPriorityIconMap';
 import { Task } from '../../models/Task.js';
 import { useNavigation } from '@react-navigation/native';
 import IconComponent from '../IconComponent';
+import { useAtom } from 'jotai';
+import { allVehiclesAtom } from '../../atoms';
 
 const TaskCard = ({
   id,
+  vehicleid,
   type,
   date,
   comment,
@@ -29,6 +32,10 @@ const TaskCard = ({
   state,
   vin,
 }: Task) => {
+  const [allVehicles] = useAtom(allVehiclesAtom);
+  //change  3 to vehicleid
+  const vehicleData = allVehicles.find((obj) => obj.vehicle_id === vehicleid);
+
   const navigation = useNavigation();
   const calculateAge = (age: number) => {
     const minutes = Math.floor(age / 60000);
@@ -47,6 +54,7 @@ const TaskCard = ({
       onPress={() =>
         navigation.navigate('TaskInfoScreen', {
           id: id,
+          vehicleid,
           type: type,
           age: calculateAge(age),
           assigned: assigned,
@@ -73,10 +81,10 @@ const TaskCard = ({
         <Box>
           <VStack p="4" space={0} width="full" height="hug">
             <HStack justifyContent="space-between">
-              <Box width= '70%'> 
-              <View>
-                <Text style={styles.taskHeading}>{type}</Text>
-              </View>
+              <Box width="70%">
+                <View>
+                  <Text style={styles.taskHeading}>{type}</Text>
+                </View>
               </Box>
               <Image
                 source={PRIORITY_ICON_MAP[priority]}
@@ -87,12 +95,14 @@ const TaskCard = ({
               <Text style={styles.taskDateText}>{calculateAge(age)}</Text>
             </View>
             <View>
-              <Text style={styles.vehicleText}>{model}</Text>
+              <Text style={styles.vehicleText}>
+                {vehicleData?.color} {vehicleData?.makeName} {vehicleData?.modelName}
+              </Text>
             </View>
             <HStack justifyContent="space-between">
               <View>
                 <Text style={styles.vehicleText}>
-                  {license} • {mva}
+                  {vehicleData?.license}, {vehicleData?.state} • {vehicleData?.mva}
                 </Text>
               </View>
               <IconComponent

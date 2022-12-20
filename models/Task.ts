@@ -23,3 +23,4 @@ export interface Task {
   vin: string;
   vehicleStatus: boolean;
 }
+
