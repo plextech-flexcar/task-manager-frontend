@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { StyleSheet } from 'react-native';
 import { View } from 'native-base';
-import SquareCheckBox from './SquareCheckbox';
+import SquareCheckBox from './SquareCheckBox';
 import { useAtom } from 'jotai';
 import { atomFilterOptions } from '../../atoms';
 import { styles } from './styles.js';
