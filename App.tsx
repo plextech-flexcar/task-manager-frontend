@@ -22,6 +22,7 @@ import { Status } from './models/Status';
 import TaskInfoScreen from './screens/TaskInfoScreen/TaskInfoScreen';
 import TaskListScreen from './screens/TaskListScreen/TaskListScreen';
 import AssignModalFunc from './components/TaskAssign/AssignModal';
+import { populateVehicles } from './utils/populateVehicles';
 
 // Define the config
 const config = {
@@ -146,6 +147,7 @@ export default function App() {
       .then((json) => {
         setAllTasks(json);
         setDisplayTasks(json);
+        console.log(json)
         makeAndModel = initialFindMakeAndModel(json);
         makes = initialFindMakes(json);
         filterOptions['Make & Model'] = makeAndModel;
@@ -166,7 +168,8 @@ export default function App() {
     })
       .then((response) => response.json())
       .then((response) => {
-        setAllVehicles(response);
+        console.log(response)
+        setAllVehicles(populateVehicles(response));
       });
   };
 
