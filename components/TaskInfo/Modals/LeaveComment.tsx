@@ -103,11 +103,10 @@ const LeaveComment = ({
                         putComment(postedBy, comment, taskId);
                       }}
                     >
-                      {/* someone pushed broken code this isnt working */}
-                      {/* <Image
+                      <Image
                         source={submitButton}
                         style={{ width: 20, height: 20 }}
-                      /> */}
+                      />
                     </Pressable>
                   </View>
                 </View>
