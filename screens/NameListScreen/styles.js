@@ -22,6 +22,11 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     position: 'relative',
   },
+  modal: {
+      width: '50%',
+      borderBottomWidth: 0,
+      textAlign: 'center',
+    },
 });
 
 export { styles };
