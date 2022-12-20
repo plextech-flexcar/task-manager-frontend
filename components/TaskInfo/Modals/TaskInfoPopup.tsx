@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Alert, SafeAreaView, Modal } from 'react-native';
 import { HStack, View } from 'native-base';
 import { styles } from '../../../screens/TaskInfoScreen/TaskInfoStyles';
@@ -18,7 +18,7 @@ const TaskInfoPopup = (
     assigned: string,
     taskId: number,
     comments: number[],
-    setComments: () => void
+    setComments: React.Dispatch<React.SetStateAction<never[]>>
   }) => {
   const [showModal, setShowModal] = useState(false);
   const [resolve, setResolve] = useState(assigned !== '');

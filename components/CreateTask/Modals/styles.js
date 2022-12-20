@@ -73,21 +73,19 @@ export const styles = StyleSheet.create({
     paddingHorizontal: 15,
     marginLeft: 10,
     display: 'flex',
-    alignItems: 'center',
     width: '97.5%',
-    alignContent: 'center',
-    textAlign: 'center',
     flexDirection:'row',
-
   },
   modalHeaderTitle: {
     fontSize: 17,
     fontWeight: '700',
+    display: 'flex',
+    justifyContent: 'center',
+    width: '100%',
   },
   modalHeaderText: {
     fontWeight: '600',
     textAlign: 'center',
-    justifyContent: 'center',
   },
   bottomModal: {
     marginTop: 'auto',
