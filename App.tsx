@@ -7,6 +7,7 @@ import {
   displayTasksAtom,
   allVehiclesAtom,
   atomFilterOptions,
+  filteredTasksAtom,
 } from './atoms';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -18,6 +19,7 @@ import CreateTaskScreen from './screens/CreateTaskScreen/CreateTaskScreen'
 import { Status } from './models/Status';
 import TaskInfoScreen from './screens/TaskInfoScreen/TaskInfoScreen';
 import TaskListScreen from './screens/TaskListScreen/TaskListScreen';
+import { populateVehicles } from './utils/populateVehicles';
 
 // Define the config
 const config = {
@@ -37,6 +39,7 @@ export default function App() {
   const [allTasks, setAllTasks] = useAtom(allTasksAtom);
   const [allVehicles, setAllVehicles] = useAtom(allVehiclesAtom);
   const [displayTasks, setDisplayTasks] = useAtom(displayTasksAtom);
+  const [filteredTasks, setFilteredTasks] = useAtom(filteredTasksAtom)
   const [filterOptions, setFilterOptions] = useAtom(atomFilterOptions);
   const [filter, setFilter] = useAtom(atomFilters);
 
@@ -142,6 +145,8 @@ export default function App() {
       .then((json) => {
         setAllTasks(json);
         setDisplayTasks(json);
+        setFilteredTasks(json);
+        console.log(json)
         makeAndModel = initialFindMakeAndModel(json);
         makes = initialFindMakes(json);
         filterOptions['Make & Model'] = makeAndModel;
@@ -162,7 +167,8 @@ export default function App() {
     })
       .then((response) => response.json())
       .then((response) => {
-        setAllVehicles(response);
+        console.log(response)
+        setAllVehicles(populateVehicles(response));
       });
   };
 

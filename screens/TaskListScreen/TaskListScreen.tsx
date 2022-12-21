@@ -4,12 +4,13 @@ import { styles } from './styles';
 import TaskCardList from '../../components/TaskCardList/TaskCardList';
 import TaskListHeader from '../../components/TaskListHeader/TaskListHeader';
 import SortFilter from '../../components/SortFilter/SortFilter';
-import { displayTasksAtom  } from "../../atoms";
+import { allVehiclesAtom, displayTasksAtom  } from "../../atoms";
 import { useAtom} from "jotai";
 import { ScrollView } from 'native-base';
 
 const TaskListScreen = () => {
   const [displayTasks] = useAtom(displayTasksAtom);
+  const [vehicles] = useAtom(allVehiclesAtom);
 
   return (
     <SafeAreaView style={styles.view}>

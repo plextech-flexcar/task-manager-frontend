@@ -3,8 +3,9 @@ import { Task } from './models/Task';
 import { Vehicle } from './models/Vehicle';
 
 export const allTasksAtom = atom<Task[]>([])
+export const filteredTasksAtom = atom<Task[]>([])
 export const displayTasksAtom = atom<Task[]>([])
-export const allVehiclesAtom = atom<Vehicle[]>([])
+export const allVehiclesAtom = atom<Record<number, Vehicle>>({})
 export const atomModalVisible = atom(false);
 
 export const atomFilterOptions = atom<Record<string, any>>({

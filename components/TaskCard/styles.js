@@ -4,7 +4,6 @@ const styles = StyleSheet.create({
   card: {
     width: '90%',
     backgroundColor: '#FFFFFF',
-    height: 'hug',
     rounded: 'lg',
     top: 16,
     bottom: 16,
