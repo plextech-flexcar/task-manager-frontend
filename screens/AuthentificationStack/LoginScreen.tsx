@@ -1,0 +1,99 @@
+import React, { useState } from 'react';
+import { SafeAreaView, TextInput } from 'react-native';
+import { styles2 } from './styles.js';
+import { Select, VStack, Image, Text, Box, Spacer } from 'native-base';
+import { Button } from 'native-base';
+import { useAtom } from 'jotai';
+import { userAtom } from '../../atoms';
+
+const TextBox = () => {
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [password, setPassword] = useState('');
+  const [user, setUser] = useAtom(userAtom);
+  const loginGet = async () => {
+    const params = { firstName: firstName, lastName: lastName, password: password };
+    const query = new URLSearchParams(params);
+    fetch(`http://localhost:8080/api/v1/user/${query}`, {
+      mode: 'cors',
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+        'Origin': 'http://localhost:19006',
+      },
+    })
+      .then((response) => response.json())
+      .then((json) => {
+        if (json === null) {
+          alert('User not found. Please try again.');
+        } else {
+          setUser(json);
+        }
+      });
+  };
+  const onSubmitFunc = () => {
+    if (firstName !== '' && lastName !== '' && password !== '') {
+      loginGet();
+    } else {
+      alert('Please fill out all fields');
+    }
+  };
+  return (
+    <SafeAreaView>
+      <VStack style={styles2.menu}>
+        <Image
+          source={{
+            uri: 'https://venturefizz.com/sites/default/files/m/bizzpages/logo/untitled-lexcar2022logo.png',
+          }}
+          style={{
+            width: 200,
+            height: 40,
+            alignSelf: 'center',
+          }}
+          alt="no"
+        />
+        <Text style={{ alignSelf: 'center' }}>LOGIN TO YOUR ACCOUNT</Text>
+        <Spacer>
+          <Box height={10} />
+        </Spacer>
+        <TextInput
+          style={styles2.input}
+          onChangeText={(text) => setFirstName(text)}
+          value={firstName}
+          clearTextOnFocus={true}
+          placeholder={'FirstName'}
+          placeholderTextColor={'grey'}
+        />
+        <TextInput
+          style={styles2.input}
+          onChangeText={(text) => setLastName(text)}
+          value={lastName}
+          clearTextOnFocus={true}
+          placeholder={'LastName'}
+          placeholderTextColor={'grey'}
+        />
+        <TextInput
+          style={styles2.input}
+          onChangeText={(text) => setPassword(text)}
+          value={password}
+          clearTextOnFocus={true}
+          placeholder={'Password'}
+          placeholderTextColor={'grey'}
+        />
+        <Button onPress={() => onSubmitFunc()} style={styles2.button} size={'lg'}>
+          LOGIN
+        </Button>
+        <Button
+          onPress={() => navigation.navigate('NavigateScreen')}
+          style={styles2.button}
+          size={'lg'}
+        >
+          <Text color={'white'}>BACK</Text>
+        </Button>
+      </VStack>
+    </SafeAreaView>
+  );
+};
+
+export default TextBox;

@@ -4,7 +4,7 @@ import { styles2 } from './styles.js';
 import { Select, VStack, Image, Text, Box } from 'native-base';
 import { Button } from 'native-base';
 
-const Navigate = () => {
+const NavigateScreen = ({ navigation }) => {
   const [text1, onChangeText1] = useState('');
   const [text2, onChangeText2] = useState('');
   const [text3, onChangeText3] = useState('');
@@ -30,14 +30,14 @@ const Navigate = () => {
       </Text>
 
       <Button
-        onPress={() => console.log('hello world')}
+        onPress={() => navigation.navigate('RegisterScreen')}
         style={styles2.button}
         size={'lg'}
       >
         REGISTER
       </Button>
       <Button
-        onPress={() => console.log('hello world')}
+        onPress={() => navigation.navigate('LoginScreen')}
         style={styles2.button}
         size={'lg'}
       >
@@ -47,4 +47,4 @@ const Navigate = () => {
   );
 };
 
-export default Navigate;
+export default NavigateScreen;
