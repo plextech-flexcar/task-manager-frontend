@@ -10,13 +10,15 @@ import TaskTypeModal from "../../components/CreateTask/Modals/TaskTypeModal";
 import PlaceholderTaskCard from "../../components/CreateTask/PlaceholderTaskCard/PlaceholderTaskCard";
 import GenericButton from "../../components/GenericButton/GenericButton";
 import { styles } from "./createTaskScreenStyles"
+import VehicleModal from "../../components/CreateTask/Modals/VehicleModal/VehicleModal";
+import AssignTaskModal from "../../components/CreateTask/Modals/AssignTaskModal";
 
 const CreateTaskScreen = () => {
     const [type, setType] = useState('');
     const [priority, setPriority] = useState(0);
     const [priorityText, setPriorityText] = useState('');
     const [priorityIcon, setPriorityIcon] = useState(null as unknown as ImageSourcePropType)
-    const [vehicle, setVehicle] = useState('');
+    const [vehicleId, setVehicleId] = useState(-1);
     const [description, setDescription] = useState('');
     const [assignedStatus, setAssignedStatus] = useState('');
     const [assigned, setAssigned] = useState('');
@@ -24,7 +26,7 @@ const CreateTaskScreen = () => {
     const [mva, setMva] = useState('');
     const [visibleModal, setVisibleModal] = useState('');
     const assignedPair = (assigned) || assignedStatus==="Open";
-    const isDisabled = !([priority, vehicle, assignedPair, license, mva].every((value) => !!value));
+    const isDisabled = !([priority, assignedPair, license, mva].every((value) => !!value) && vehicleId !== -1);
     const searchIcon = require('../../assets/CreateTaskIcons/searchIcon.png');
 
     const showModal = (title: string) => {
@@ -38,17 +40,15 @@ const CreateTaskScreen = () => {
     }
 
     return (
-        <>
+        <SafeAreaView>
             <ScrollView>
                 <VStack style = {styles.vstack}>
                     <CreateTaskHeader/>
                     <PlaceholderTaskCard 
                         type={type} 
                         priority={priority}
-                        vehicle={vehicle}
+                        vehicleId={vehicleId}
                         assigned={assigned}
-                        license={license}
-                        mva={mva}
                     />
                     <DropdownSection 
                         title={"Task Type"} 
@@ -122,8 +122,20 @@ const CreateTaskScreen = () => {
                 changeStatus={(status) => setAssignedStatus(status)}
                 onClose={() => setVisibleModal('')}
             />
+            <VehicleModal
+                showModal={visibleModal==="Vehicle MVA, VIN, or License plate"}
+                changeVehicle={(vehicleId) => setVehicleId(vehicleId)}
+                //add more functionality to change dropdown to display
+                onClose={() => setVisibleModal('')}
+            />
+            <AssignTaskModal
+                showModal={visibleModal==="Assigned To"}
+                changeAssigned={(assignedPerson) => {setAssigned(assignedPerson)}}
+                onClose={() => setVisibleModal('')}
+            />
+            
 
-    </>
+    </SafeAreaView>
     )
 }
 

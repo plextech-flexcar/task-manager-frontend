@@ -2,6 +2,18 @@ import { StyleSheet } from 'react-native';
 export const styles = StyleSheet.create({
   whitebg: {
     backgroundColor: '#EDEDED',
+    height: '90%',
+    width:"100%",
+    display: 'flex',
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
+  },
+  whitebg2: {
+    backgroundColor: '#EDEDED',
+    width:"100%",
+    display: 'flex',
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
   },
   keyboardView: {
     backgroundColor: '#EDEDED',
@@ -56,7 +68,10 @@ export const styles = StyleSheet.create({
   modal: {
     width: '100%',
     borderBottomWidth: 0,
-    textAlign: 'center',
+    display: 'flex',
+    justifyContent: 'flex-end',
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
   },
   modalView: {
     backgroundColor: '#EDEDED',
@@ -64,10 +79,11 @@ export const styles = StyleSheet.create({
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
     textAlign: 'center',
-    position: 'fixed',
+    // position: 'fixed',
     bottom: 0,
   },    
   modalHeader: {
+    width: '100%',
     paddingTop: 20,
     paddingBottom: 10, 
     paddingHorizontal: 15,
@@ -82,6 +98,8 @@ export const styles = StyleSheet.create({
     display: 'flex',
     justifyContent: 'center',
     width: '100%',
+    paddingTop: 5,
+    textAlign: 'center',
   },
   modalHeaderText: {
     fontWeight: '600',
@@ -90,6 +108,8 @@ export const styles = StyleSheet.create({
   bottomModal: {
     marginTop: 'auto',
     borderBottomWidth: 0,
+    // height: '85%',
+    // width: '100%'
   },
   modalFooter: {
     borderTopWidth: 0, 
@@ -129,5 +149,14 @@ export const styles = StyleSheet.create({
     position: 'absolute',
     top: 4,
     right: 4,
+  },
+  searchBar: {
+    height: 40,
+    backgroundColor: '#FFFFFF',
+    borderWidth: 2,
+    borderRadius: 8,
+    borderColor: '#2A00A5',
+    marginTop: '5%',
+    width: '100%'
   },
 });

@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
 import { Alert, SafeAreaView, Modal } from 'react-native';
 import { HStack, View } from 'native-base';
-import { styles } from '../../../screens/TaskInfoScreen/TaskInfoStyles';
 import GenericButton from '../../GenericButton/GenericButton';
 import NameListScreen from '../../../screens/NameListScreen/NameListScreen';
-import ResolveTask from './ResolveTask';
-import ReopenTask from './ReopenTask';
-import LeaveComment from './LeaveComment';
+import ResolveTask from './ResolveTask/ResolveTask';
+import ReopenTask from './ReopenTask/ReopenTask';
+import LeaveComment from './LeaveComment/LeaveComment';
 import { styles1 } from './TaskInfoPopupStyles';
 const TaskInfoPopup = (
   {

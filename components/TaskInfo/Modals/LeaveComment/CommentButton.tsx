@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { Image, SafeAreaView, Text, View, TouchableOpacity } from 'react-native';
 import { HStack } from 'native-base';
-import { styles } from '../../../screens/TaskInfoScreen/TaskInfoStyles.js';
-import { styles1 } from './commentButtonStyles';
+import { styles } from '../../../../screens/TaskInfoScreen/TaskInfoStyles.js';
 const searchButton = require('../../assets/person_search.webp');
 const onPress = () => {};
 const TaskInfoPopup = () => {

@@ -20,9 +20,6 @@ export default function SortFilter() {
   const displayModalIcon = modalIcon === "closeModal" ? 
   require('../../assets/closeModal.png') : require('../../assets/backChevronModal.png');
 
-  const displayModalIcon = modalIcon === "closeModal" ? 
-  require('../../assets/closeModal.png') : require('../../assets/backChevronModal.png');
-
   const toggleModal = () => {
     setTitle('Sort & Filter');
     setModalVisible(!isModalVisible);

@@ -1,12 +1,11 @@
-import React, { useState } from 'react';
-import { Alert, Pressable, SafeAreaView } from 'react-native';
+import React from 'react';
+import { Pressable, SafeAreaView } from 'react-native';
 import { styles } from './styles';
 import { Name } from '../../models/Name';
 import NameCardList from '../../components/NameCardList/NameCardList';
 import AssignModalFunc from '../../components/TaskAssign/AssignModal';
 import FlatListItemSeparator from '../../components/ItemSeparation';
 import { IconButton, Text } from 'react-native-paper';
-import { FormControl, Input, Modal, Button } from 'native-base';
 
 const NameListScreen = ({ closeCall, onAssignCall }: any) => {
   const name1: Name = {
@@ -15,10 +14,7 @@ const NameListScreen = ({ closeCall, onAssignCall }: any) => {
   };
   const nameList: Name[] = [name1, name1, name1, name1, name1, name1];
 
-
-
   return (
-
     <SafeAreaView style={styles.view}>
       <Pressable style={styles.icon}>
         <IconButton icon="close" color="#2A00A5" size={20} onPress={() => closeCall()} />

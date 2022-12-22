@@ -26,7 +26,7 @@ export default function TaskListHeader() {
   }
   const onChangeSearch = (query: string) => {
     setSearchQuery(query)
-    const pattern = new RegExp(query + '[a-zA-Z0-9]*');
+    const pattern = new RegExp('^' + query + '[a-zA-Z0-9]*');
     const matches = new Set<number>();
     for (const vehicleId in mva) {
       const vehicleIdNum = Number.parseInt(vehicleId);

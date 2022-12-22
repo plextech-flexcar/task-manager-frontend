@@ -8,10 +8,9 @@ const styles = StyleSheet.create({
         flexWrap: 1,
         fontWeight: '400',
         color: '#76757D',
-        
     },
     dropdownSection: {
-        height: "10%",
+        height: "8%",
         width: "90%",
         alignSelf: "center",
         margin: 10,

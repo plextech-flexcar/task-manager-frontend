@@ -6,7 +6,6 @@ import TaskListHeader from '../../components/TaskListHeader/TaskListHeader';
 import SortFilter from '../../components/SortFilter/SortFilter';
 import { allVehiclesAtom, displayTasksAtom  } from "../../atoms";
 import { useAtom} from "jotai";
-import { ScrollView } from 'native-base';
 
 const TaskListScreen = () => {
   const [displayTasks] = useAtom(displayTasksAtom);

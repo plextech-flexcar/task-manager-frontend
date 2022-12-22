@@ -22,7 +22,8 @@ const DescriptionModal = (({
   }) => {
   const [comment, setComment] = useState('');
   const onSubmit = () => {
-    changeDescription(comment)
+    changeDescription(comment);
+    onClose();
   }
   const submitButton = require('../../../assets/submit.webp');
   return (
@@ -36,7 +37,7 @@ const DescriptionModal = (({
         size={'full'}
       >
         <KeyboardAvoidingView
-          style={styles.whitebg}
+          style={styles.whitebg2}
           behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
         >
           <Modal.Content style={styles.bottomModal} justifyContent={'center'}>
@@ -48,10 +49,6 @@ const DescriptionModal = (({
             />
             <Modal.Header style={[styles.modalHeader, {borderBottomWidth: 0, marginLeft: 0}]}>
               <Text style={styles.modalHeaderTitle}>Task description</Text>
-            {/* <Image
-                source={displayModalIcon}
-                style={{ height: 16, width: 16 }}
-              ></Image> */}
             </Modal.Header>
             <Modal.Footer style={styles.modalFooter}>
               <FormControl style={[styles.form, {borderColor:'#2A00A5'}]}>
@@ -75,7 +72,7 @@ const DescriptionModal = (({
                   </View>
 
                   <View>
-                    <Pressable onPress={() => onClose()}>
+                    <Pressable onPress={() => onSubmit()}>
                       <Image
                         source={submitButton}
                         style={{ width: 20, height: 20 }}

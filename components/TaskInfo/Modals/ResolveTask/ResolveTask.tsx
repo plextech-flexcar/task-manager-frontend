@@ -1,7 +1,7 @@
 import React from 'react';
 import { SafeAreaView, Text, View, TouchableOpacity } from 'react-native';
 import { HStack, Modal, Button } from 'native-base';
-import { styles } from '../../../screens/TaskInfoScreen/TaskInfoStyles.js';
+import { styles } from '../../../../screens/TaskInfoScreen/TaskInfoStyles.js';
 import { styles1 } from './resolveTaskStyles';
 const ResolveTask = ({ resolveShowModal, onCloseCall, onResolve }) => {
   return (

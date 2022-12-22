@@ -1,11 +1,10 @@
 import * as React from 'react';
 import {
-    Image,
     Text,
     View,
     Pressable,
   } from 'react-native';
-import { Modal, FormControl } from 'native-base';
+import { Modal } from 'native-base';
 import { styles } from './styles.js';
 
 const StatusModal = ({

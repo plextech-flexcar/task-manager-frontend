@@ -41,7 +41,7 @@ const TaskTypeModal = ({
               style={styles.modal}
               size={'full'}
             >
-              <View style={[styles.modalView, {height: "85%"}]}>
+              <View style={[styles.modalView, {height: "90%"}]}>
                 <View style={styles.modalHeader}>
                   <Text style={styles.modalHeaderTitle}>Task Type</Text>
                     <Modal.CloseButton
