@@ -52,6 +52,7 @@ export default function TaskListHeader() {
     })
   };
   const addList = require('../../assets/HeaderIcons/addlist.webp');
+  const navigation = useNavigation();
   return (
     <View style={styles.headerBack}>
       <View style={styles.headerSearchRow}>
@@ -67,7 +68,10 @@ export default function TaskListHeader() {
         {user?.role === 'ASSOCIATE' ? (
           <View style={styles.iconSize}></View>
         ) : (
-          <Image source={addList} style={styles.iconSize} />
+          <Pressable onPress={() => {navigation.navigate('CreateTaskScreen')}}>
+            <Image source={addList} style={styles.iconSize} />
+          </Pressable>
+          
         )}
       </View>
       <View style={styles.headerButtonRow}>

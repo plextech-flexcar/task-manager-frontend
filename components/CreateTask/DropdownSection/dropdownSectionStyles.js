@@ -10,7 +10,7 @@ const styles = StyleSheet.create({
         color: '#76757D',
     },
     dropdownSection: {
-        height: "8%",
+        height: "9%",
         width: "90%",
         alignSelf: "center",
         margin: 10,

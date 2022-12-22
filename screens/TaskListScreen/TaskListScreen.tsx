@@ -9,10 +9,6 @@ import { useAtom } from 'jotai';
 
 const TaskListScreen = () => {
   const [displayTasks, setDisplayTasks] = useAtom(displayTasksAtom);
-  useEffect(() => {
-    const [newTasks] = useAtom(displayTasksAtom);
-    setDisplayTasks(newTasks);
-  }, [displayTasks]);
   return (
     <SafeAreaView style={styles.view}>
       <TaskListHeader />

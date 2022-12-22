@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Image } from 'react-native';
 import { Box, View, HStack, VStack, Text } from 'native-base';
 import  { styles } from './placeholderTaskCardStyles'
@@ -18,7 +18,8 @@ const PlaceholderTaskCard = ({
         vehicleId: number, 
         assigned: string,
     }) => {
-      const [allVehicles, setAllVehicles] = useAtom(allVehiclesAtom);
+  
+      const [allVehicles] = useAtom(allVehiclesAtom);
       const vehicleData = allVehicles[vehicleId];
       return (
         <View style={styles.card}>
@@ -39,8 +40,8 @@ const PlaceholderTaskCard = ({
                     {vehicleId !== -1 ? vehicleData?.license : "License Plate"} • {vehicleId !== -1 ? vehicleData?.mva : "MVA"}
                   </Text>
                 <IconComponent
-                  first={assigned ? assigned.split(' ')[0].charAt(0) : ''}
-                  last={assigned ? assigned.split(' ')[1].charAt(0) : ''}
+                  first={assigned ? assigned.split(' ')[0].charAt(0).toUpperCase() : ''}
+                  last={assigned ? assigned.split(' ')[1].charAt(0).toUpperCase() : ''}
                 />
               </HStack>
             </VStack>

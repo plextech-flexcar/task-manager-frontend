@@ -92,6 +92,7 @@ const CreateTaskScreen = () => {
                             dropdownArrow={false}
                             onPress={showModal}
                             icon={searchIcon}
+                            value={assigned}
                         />
                     }
                 </VStack>   

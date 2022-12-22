@@ -15,26 +15,21 @@ const TaskInfoScreen = ({ route }) => {
     id,
     type,
     status,
-    vehicleid,
+    vehicleId,
     age,
     assigned,
     createdBy,
     date,
-    make,
     model,
-    color,
-    license,
-    mva,
     priority,
     vehicleStatus,
-    carImage,
     description,
-    state,
-    vin,
   } = route.params;
   const [allVehicles] = useAtom(allVehiclesAtom);
   //change  3 to vehicleid
-  const vehicleData = allVehicles[vehicleid];
+  console.log("HIII")
+  console.log(vehicleId)
+  const vehicleData = allVehicles[vehicleId];
   const [comments, setComments] = useState([]);
 
   const getPriority = (priority: number) => {

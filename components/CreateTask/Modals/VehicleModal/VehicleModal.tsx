@@ -39,9 +39,6 @@ const VehicleModal = (({
     license[vehicleIdNum] = vehicle.license;
     vin[vehicleIdNum] = vehicle.vin;
   }
-  // console.log(mva)
-  // console.log(license)
-  // console.log(vin)
   const onChangeSearch = (query: string) => {
     setSearchQuery(query)
     const pattern = new RegExp('^' + query + '[a-zA-Z0-9]*');

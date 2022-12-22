@@ -12,6 +12,7 @@ import {
 } from './atoms';
 import RegisterScreen from './screens/AuthenticationStack/RegisterScreen';
 import NavigateScreen from './screens/AuthenticationStack/NavigateScreen';
+import CreateTaskScreen from './screens/CreateTaskScreen/CreateTaskScreen'
 import LoginScreen from './screens/AuthenticationStack/LoginScreen';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -189,10 +190,11 @@ export default function App() {
             headerShown: false,
           }}
         >
-          {user == null ? (
+          {user == null? (
             <>
               <Stack.Screen name="TaskListScreen" component={TaskListScreen} />
               <Stack.Screen name="TaskInfoScreen" component={TaskInfoScreen} />
+              <Stack.Screen name="CreateTaskScreen" component={CreateTaskScreen} />
             </>
           ) : (
             <>
