@@ -82,7 +82,7 @@ const TaskInfoPopup = (props) => {
             Alert.alert('Modal has been closed.');
             setShowModal(!showModal);
           }}
-          presentationStyle="fullScreen"
+          presentationStyle='pageSheet'
         >
           <NameListScreen closeCall={onShowToggle} onAssignCall={onAssign} />
         </Modal>

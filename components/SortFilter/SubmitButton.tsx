@@ -12,7 +12,7 @@ import { useAtom } from 'jotai';
 
 import {
   allTasksAtom,
-  displayTasksAtom,
+  filteredTasksAtom,
   atomFilters,
   atomModalVisible,
 } from '../../atoms';
@@ -22,13 +22,13 @@ export default function SubmitButton(props: {
   const { changeFilter } = props;
   const [isModalVisible, setModalVisible] = useAtom(atomModalVisible);
   const [allTasks, setAllTasks] = useAtom(allTasksAtom);
-  const [displayTasks, setDisplayTasks] = useAtom(displayTasksAtom);
+  const [filteredTasks, setFilteredTasks] = useAtom(filteredTasksAtom);
   const [filter, setFilter] = useAtom(atomFilters);
 
   const onPress = () => {
-    const newDisplayTasks = filterTasks(filter, allTasks);
+    const filteredTasks = filterTasks(filter, allTasks);
     setModalVisible(false);
-    setDisplayTasks(newDisplayTasks);
+    setFilteredTasks(filteredTasks);
     changeFilter('Sort & Filter');
   };
 

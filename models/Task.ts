@@ -2,7 +2,7 @@ import { Status } from './Status';
 
 export interface Task {
   id: number;
-  vehicleid: number;
+  vehicleId: number;
   type: string;
   date: number;
   description: string;

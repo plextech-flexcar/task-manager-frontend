@@ -9,6 +9,7 @@ import TaskInfoPopup from '../../components/TaskInfo/Modals/TaskInfoPopup';
 import { PRIORITY_ICON_COLOR_MAP } from './TaskCardPriorityColorMap';
 import { allVehiclesAtom } from '../../atoms';
 import { useAtom } from 'jotai';
+import { Comment } from '../../models/Comment';
 const TaskInfoScreen = ({ route }) => {
   const {
     id,
@@ -33,7 +34,7 @@ const TaskInfoScreen = ({ route }) => {
   } = route.params;
   const [allVehicles] = useAtom(allVehiclesAtom);
   //change  3 to vehicleid
-  const vehicleData = allVehicles.find((obj) => obj.vehicle_id === vehicleid);
+  const vehicleData = allVehicles[vehicleid];
   const [comments, setComments] = useState([]);
 
   const getPriority = (priority: number) => {
@@ -59,7 +60,7 @@ const TaskInfoScreen = ({ route }) => {
     return new Date(date).toLocaleString();
   };
 
-  const statusVar = (status) => {
+  const statusVar = (status: Status) => {
     if (status === Status.OPEN) {
       return 'Status: OPEN';
     } else if (status === Status.RESOLVE) {
@@ -147,7 +148,7 @@ const TaskInfoScreen = ({ route }) => {
       </View>
       <VStack style={styles.commentVStack}>
         <Text style={styles.vehicleMarginTop}>{comments.length} Comments</Text>
-        {comments.map((comment) => (
+        {comments.map((comment: Comment) => (
           <HStack mt={4}>
             <Divider orientation="vertical" mr={3} />
             <VStack>

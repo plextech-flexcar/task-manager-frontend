@@ -6,6 +6,7 @@ import NameCardList from '../../components/NameCardList/NameCardList';
 import AssignModalFunc from '../../components/TaskAssign/AssignModal';
 import FlatListItemSeparator from '../../components/ItemSeparation';
 import { IconButton, Text } from 'react-native-paper';
+import { FormControl, Input, Modal, Button } from 'native-base';
 
 const NameListScreen = ({ closeCall, onAssignCall }: any) => {
   const [users, setUsers] = useState([]);
@@ -29,7 +30,10 @@ const NameListScreen = ({ closeCall, onAssignCall }: any) => {
     getUsersAPI();
   }, [users]);
 
+
+
   return (
+
     <SafeAreaView style={styles.view}>
       <Pressable style={styles.icon}>
         <IconButton icon="close" color="#2A00A5" size={20} onPress={() => closeCall()} />
@@ -39,6 +43,7 @@ const NameListScreen = ({ closeCall, onAssignCall }: any) => {
       <FlatListItemSeparator />
       <NameCardList users={users} onAssignCall={onAssignCall} />
     </SafeAreaView>
+
   );
 };
 

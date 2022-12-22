@@ -11,7 +11,7 @@ import { allVehiclesAtom } from '../../atoms';
 
 const TaskCard = ({
   id,
-  vehicleid,
+  vehicleId,
   type,
   date,
   comment,
@@ -72,7 +72,7 @@ const TaskCard = ({
       onPress={() =>
         navigation.navigate('TaskInfoScreen', {
           id: id,
-          vehicleid,
+          vehicleId: vehicleId,
           type: type,
           age: calculateAge(age),
           assigned: user?.firstName + ' ' + user?.lastName,
@@ -97,7 +97,7 @@ const TaskCard = ({
     >
       <View>
         <Box>
-          <VStack p="4" space={0} width="full" height="hug">
+          <VStack p="4" space={0} width="full">
             <HStack justifyContent="space-between">
               <Box width="70%">
                 <View>
