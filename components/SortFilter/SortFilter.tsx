@@ -17,7 +17,6 @@ export default function SortFilter() {
   const [filterOptions] = useAtom(atomFilterOptions);
   const [filter, setFilter] = useAtom(atomFilters);
   const [modalIcon, setModalIcon] = useState('closeModal');
-
   const displayModalIcon = modalIcon === "closeModal" ? 
   require('../../assets/closeModal.png') : require('../../assets/backChevronModal.png');
 

@@ -1,12 +1,14 @@
 import { atom } from 'jotai';
 import { Task } from './models/Task';
+import { User } from './models/User';
 import { Vehicle } from './models/Vehicle';
+
 export const allTasksAtom = atom<Task[]>([])
 export const filteredTasksAtom = atom<Task[]>([])
 export const displayTasksAtom = atom<Task[]>([])
 export const allVehiclesAtom = atom<Record<number, Vehicle>>({})
 export const atomModalVisible = atom(false);
-export const userAtom = atom(null);
+export const userAtom = atom<User|null>(null);
 
 export const atomFilterOptions = atom<Record<string, any>>({
   'Market': ['Boston', 'Atlanta', 'Nashville', 'Charlotte'],

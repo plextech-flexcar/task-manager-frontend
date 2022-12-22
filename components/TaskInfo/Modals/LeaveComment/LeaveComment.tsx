@@ -9,7 +9,6 @@ import {
   Pressable,
 } from 'react-native';
 import { Modal, FormControl } from 'native-base';
-import { styles } from '../../../screens/TaskInfoScreen/TaskInfoStyles.js';
 import { styles1 } from './leaveCommentStyles';
 const LeaveComment = ({
   showModal,
@@ -36,6 +35,7 @@ const LeaveComment = ({
       });
   };
   const [comment, setComment] = useState('');
+  const submitButton = require('../../../../assets/submit.webp')
   return (
     <View style={styles1.contain}>
       <Modal
@@ -102,11 +102,10 @@ const LeaveComment = ({
                         putComment(postedBy, comment, taskId);
                       }}
                     >
-                      {/* someone pushed broken code this isnt working */}
-                      {/* <Image
+                      <Image
                         source={submitButton}
                         style={{ width: 20, height: 20 }}
-                      /> */}
+                      />
                     </Pressable>
                   </View>
                 </View>

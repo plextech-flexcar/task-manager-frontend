@@ -9,7 +9,6 @@ import {
   Pressable,
 } from 'react-native';
 import { Modal, FormControl } from 'native-base';
-import { styles } from '../../../screens/TaskInfoScreen/TaskInfoStyles.js';
 import { styles1 } from './reopenTaskStyles';
 const ReopenTask = ({
   showModal,
@@ -21,7 +20,7 @@ const ReopenTask = ({
   onSubmit: () => void;
 }) => {
   const [comment, setComment] = useState('');
-  const submitIcon = require('../../../assets/submit.webp');
+  const submitIcon = require('../../../../assets/submit.webp');
   return (
     <View style={styles1.contain}>
       <Modal

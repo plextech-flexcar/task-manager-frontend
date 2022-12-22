@@ -1,24 +1,34 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Alert, SafeAreaView, Modal } from 'react-native';
 import { HStack, View } from 'native-base';
-import { styles } from '../../../screens/TaskInfoScreen/TaskInfoStyles';
 import GenericButton from '../../GenericButton/GenericButton';
 import NameListScreen from '../../../screens/NameListScreen/NameListScreen';
-import ResolveTask from './ResolveTask';
-import ReopenTask from './ReopenTask';
-import LeaveComment from './LeaveComment';
+import ResolveTask from './ResolveTask/ResolveTask';
+import ReopenTask from './ReopenTask/ReopenTask';
+import LeaveComment from './LeaveComment/LeaveComment';
 import { styles1 } from './TaskInfoPopupStyles';
 import { User } from '../../../models/User';
 import { useAtom } from 'jotai';
 import { allTasksAtom } from '../../../atoms';
-const TaskInfoPopup = (props) => {
+const TaskInfoPopup = (
+  {
+    assigned,
+    taskId,
+    comments,
+    setComments,
+  } : {
+    assigned: string,
+    taskId: number,
+    comments: number[],
+    setComments: React.Dispatch<React.SetStateAction<never[]>>
+  }) => {
   const [showModal, setShowModal] = useState(false);
-  const { assigned, taskId, comments, setComments } = props;
   const [resolve, setResolve] = useState(assigned !== '');
   const [resolveModal, setResolveModal] = useState(false);
   const [finalResolve, setFinalResolve] = useState(false);
   const [reOpenModel, setReopenModal] = useState(false);
   const [commentModal, setCommentModal] = useState(false);
+  const [assignedName, setAssignedName] = useState('');
   const [tasks, setTasks] = useAtom(allTasksAtom);
 
   const onAssign = (user: User) => {

@@ -9,6 +9,7 @@ const GenericButton = ({
   functionCall,
   cancelResolve,
   commentCall,
+  isDisabled,
 }: {
   isPurple: boolean;
   imageSource?: ImageSourcePropType;
@@ -16,8 +17,10 @@ const GenericButton = ({
   functionCall?: any;
   cancelResolve?: any;
   commentCall?: any;
+  isDisabled?: boolean;
 }) => {
   const funcSelect = () => {
+    //Ask Taiga about the cancelResolve and the commentCall parameter
     if (functionCall) {
       return functionCall;
     } else if (cancelResolve) {
@@ -28,12 +31,13 @@ const GenericButton = ({
   };
   return (
     <TouchableOpacity
-      style={isPurple ? styles.buttonPurple : styles.buttonWhite}
+      style={isDisabled ? styles.buttonDisabled : (isPurple ? styles.buttonPurple : styles.buttonWhite)}
       onPress={() => funcSelect()()}
+      disabled = {isDisabled}
     >
       <HStack space={1} alignItems="center" justifyContent={'center'}>
-        <Text style={isPurple ? styles.buttonTextWhite : styles.buttonTextPurple}>
-          <Text style={{ textAlign: 'center', justifyContent: 'center' }}>{text}</Text>
+        <Text style={isDisabled ? styles.buttonTextWhite : (isPurple ? styles.buttonTextWhite : styles.buttonTextPurple)}>
+          {text}
         </Text>
         {imageSource && <Image style={{ width: 20, height: 20 }} source={imageSource} />}
       </HStack>

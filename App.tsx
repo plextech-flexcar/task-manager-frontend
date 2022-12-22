@@ -8,20 +8,17 @@ import {
   allVehiclesAtom,
   atomFilterOptions,
   userAtom,
-  filterTasksatom,
+  filteredTasksAtom,
 } from './atoms';
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import NameListScreen from './screens/NameListScreen/NameListScreen';
-import RegisterScreen from './screens/AuthentificationStack/RegisterScreen';
-import NavigateScreen from './screens/AuthentificationStack/NavigateScreen';
-import LoginScreen from './screens/AuthentificationStack/LoginScreen';
+import RegisterScreen from './screens/AuthenticationStack/RegisterScreen';
+import NavigateScreen from './screens/AuthenticationStack/NavigateScreen';
+import CreateTaskScreen from './screens/CreateTaskScreen/CreateTaskScreen'
+import LoginScreen from './screens/AuthenticationStack/LoginScreen';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import { Task } from './models/Task';
 import { initialFindMakes, initialFindMakeAndModel } from './utils/findTasks';
-import { createMakeAndModelFilter } from './utils/createMakeAndModelFilter';
 
 import { Status } from './models/Status';
 import TaskInfoScreen from './screens/TaskInfoScreen/TaskInfoScreen';
@@ -126,8 +123,8 @@ export default function App() {
   let makeAndModel = {};
   let makes = {};
 
-  // Loads dummy tasks without connecting to backend
-  // const tasks: Task[] = [task1, task2, task3, task2, task1];
+  // // Loads dummy tasks without connecting to backend
+  // const tasks: Task[] = [task1, task2, task3, task2, task1, task1, task3, task3, task2];
   // useEffect(() => {
   //   setDisplayTasks(tasks);
   //   setAllTasks(tasks);
@@ -193,10 +190,11 @@ export default function App() {
             headerShown: false,
           }}
         >
-          {user == null ? (
+          {user == null? (
             <>
               <Stack.Screen name="TaskListScreen" component={TaskListScreen} />
               <Stack.Screen name="TaskInfoScreen" component={TaskInfoScreen} />
+              <Stack.Screen name="CreateTaskScreen" component={CreateTaskScreen} />
             </>
           ) : (
             <>

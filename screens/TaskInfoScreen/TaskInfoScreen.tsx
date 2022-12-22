@@ -1,40 +1,35 @@
 import React, { useState, useEffect } from 'react';
-import { SafeAreaView } from 'react-native';
+import { Image, SafeAreaView, Text, View } from 'react-native';
+import { Divider, VStack, HStack } from 'native-base';
 import TaskInfoHeader from '../../components/TaskInfo/TaskInfoHeader';
-import { HStack, VStack, Divider, View, Text, Image } from 'native-base';
+import TaskInfoPopup from '../../components/TaskInfo/Modals/TaskInfoPopup';
 import { styles } from './TaskInfoStyles.js';
 import { PRIORITY_ICON_MAP } from '../../components/TaskCard/TaskCardPriorityIconMap';
-import { Status } from '../../models/Status';
-import TaskInfoPopup from '../../components/TaskInfo/Modals/TaskInfoPopup';
 import { PRIORITY_ICON_COLOR_MAP } from './TaskCardPriorityColorMap';
 import { allVehiclesAtom } from '../../atoms';
 import { useAtom } from 'jotai';
+import { Status } from '../../models/Status';
 import { Comment } from '../../models/Comment';
 const TaskInfoScreen = ({ route }) => {
   const {
     id,
     type,
     status,
-    vehicleid,
+    vehicleId,
     age,
     assigned,
     createdBy,
     date,
-    make,
     model,
-    color,
-    license,
-    mva,
     priority,
     vehicleStatus,
-    carImage,
     description,
-    state,
-    vin,
   } = route.params;
   const [allVehicles] = useAtom(allVehiclesAtom);
   //change  3 to vehicleid
-  const vehicleData = allVehicles[vehicleid];
+  console.log("HIII")
+  console.log(vehicleId)
+  const vehicleData = allVehicles[vehicleId];
   const [comments, setComments] = useState([]);
 
   const getPriority = (priority: number) => {
@@ -55,8 +50,6 @@ const TaskInfoScreen = ({ route }) => {
       .join('');
   };
   const fromEpochToDate = (date: number) => {
-    // const newDate = new Date(date * 1000);
-    // return newDate.toLocaleString();
     return new Date(date).toLocaleString();
   };
 
@@ -160,8 +153,7 @@ const TaskInfoScreen = ({ route }) => {
           </HStack>
         ))}
         <View style={{ marginRight: '5%', marginLeft: '5%' }}>
-          <TaskInfoPopup
-            style={{}}
+        <TaskInfoPopup
             assigned={assigned}
             taskId={id}
             comments={comments}

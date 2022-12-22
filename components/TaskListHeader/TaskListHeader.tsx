@@ -1,14 +1,14 @@
 import React from 'react';
-import { Text, View, Image } from 'react-native';
+import { Text, View, Image, Pressable } from 'react-native';
 import { Searchbar } from 'react-native-paper';
 import { displayTasksAtom, allVehiclesAtom, filteredTasksAtom } from '../../atoms';
 import { Task } from "../../models/Task";
 import HeaderButtons from './HeaderButton';
 import { styles } from './styles';
 import { useAtom } from 'jotai';
-import { Box, Spacer } from 'native-base';
-const user = require('../../assets/HeaderIcons/user.webp');
-const addList = require('../../assets/HeaderIcons/addlist.webp');
+import { useNavigation } from '@react-navigation/native';
+import { allTasksAtom, userAtom } from '../../atoms';
+
 
 export default function TaskListHeader() {
   const [searchQuery, setSearchQuery] = React.useState('');
@@ -29,7 +29,7 @@ export default function TaskListHeader() {
   }
   const onChangeSearch = (query: string) => {
     setSearchQuery(query)
-    const pattern = new RegExp(query + '[a-zA-Z0-9]*');
+    const pattern = new RegExp('^' + query + '[a-zA-Z0-9]*');
     const matches = new Set<number>();
     for (const vehicleId in mva) {
       const vehicleIdNum = Number.parseInt(vehicleId);
@@ -51,6 +51,8 @@ export default function TaskListHeader() {
       setDisplayTasks(newDisplayTasks);
     })
   };
+  const addList = require('../../assets/HeaderIcons/addlist.webp');
+  const navigation = useNavigation();
   return (
     <View style={styles.headerBack}>
       <View style={styles.headerSearchRow}>
@@ -66,7 +68,10 @@ export default function TaskListHeader() {
         {user?.role === 'ASSOCIATE' ? (
           <View style={styles.iconSize}></View>
         ) : (
-          <Image source={addList} style={styles.iconSize} />
+          <Pressable onPress={() => {navigation.navigate('CreateTaskScreen')}}>
+            <Image source={addList} style={styles.iconSize} />
+          </Pressable>
+          
         )}
       </View>
       <View style={styles.headerButtonRow}>

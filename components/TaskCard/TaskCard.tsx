@@ -34,7 +34,7 @@ const TaskCard = ({
 }: Task) => {
   const [allVehicles] = useAtom(allVehiclesAtom);
   //change  3 to vehicleid
-  const vehicleData = allVehicles.find((obj) => obj.vehicle_id === vehicleid);
+  const vehicleData = allVehicles[vehicleId];
   const navigation = useNavigation();
   const [user, setUser] = useState(null);
   const getUserByIdAPI = async () => {
@@ -61,7 +61,7 @@ const TaskCard = ({
     } else if (hours < 24) {
       return hours === 1 ? '1 hour old' : hours + ' hours old';
     }
-    return days === 1 ? '1 day old' : hours + ' days old';
+    return days === 1 ? '1 day old' : days + ' days old';
   };
   if (assigned != null) {
     getUserByIdAPI();
