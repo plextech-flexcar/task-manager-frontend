@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { TouchableOpacity, Image } from 'react-native';
 import { Box, View, HStack, VStack, Text } from 'native-base';
 import { styles } from './styles.js';
@@ -34,9 +34,24 @@ const TaskCard = ({
 }: Task) => {
   const [allVehicles] = useAtom(allVehiclesAtom);
   //change  3 to vehicleid
-  const vehicleData = allVehicles[vehicleId]
-
+  const vehicleData = allVehicles.find((obj) => obj.vehicle_id === vehicleid);
   const navigation = useNavigation();
+  const [user, setUser] = useState(null);
+  const getUserByIdAPI = async () => {
+    fetch(`http://localhost:8080/api/v1/user/${assigned}`, {
+      mode: 'cors',
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+        'Origin': 'http://localhost:19006',
+      },
+    })
+      .then((response) => response.json())
+      .then((response) => {
+        setUser(response);
+      });
+  };
   const calculateAge = (age: number) => {
     const minutes = Math.floor(age / 60000);
     const hours = Math.floor(minutes / 60);
@@ -48,6 +63,9 @@ const TaskCard = ({
     }
     return days === 1 ? '1 day old' : hours + ' days old';
   };
+  if (assigned != null) {
+    getUserByIdAPI();
+  }
 
   return (
     <TouchableOpacity
@@ -57,7 +75,7 @@ const TaskCard = ({
           vehicleId: vehicleId,
           type: type,
           age: calculateAge(age),
-          assigned: assigned,
+          assigned: user?.firstName + ' ' + user?.lastName,
           createdBy: createdBy,
           date: date,
           comment: comment,
@@ -105,10 +123,14 @@ const TaskCard = ({
                   {vehicleData?.license}, {vehicleData?.state} • {vehicleData?.mva}
                 </Text>
               </View>
-              <IconComponent
-                first={assigned ? assigned.split(' ')[0].charAt(0) : ''}
-                last={assigned ? assigned.split(' ')[1].charAt(0) : ''}
-              />
+              {assigned != null ? (
+                <IconComponent
+                  first={user ? user.firstName.charAt(0) : ''}
+                  last={user ? user.lastName.charAt(0) : ''}
+                />
+              ) : (
+                <View></View>
+              )}
             </HStack>
           </VStack>
         </Box>

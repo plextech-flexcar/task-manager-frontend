@@ -6,11 +6,15 @@ import { Task } from "../../models/Task";
 import HeaderButtons from './HeaderButton';
 import { styles } from './styles';
 import { useAtom } from 'jotai';
+import { Box, Spacer } from 'native-base';
 const user = require('../../assets/HeaderIcons/user.webp');
 const addList = require('../../assets/HeaderIcons/addlist.webp');
 
 export default function TaskListHeader() {
   const [searchQuery, setSearchQuery] = React.useState('');
+  const [allTasks] = useAtom(allTasksAtom);
+  const [user, setUser] = useAtom(userAtom);
+  console.log('user', user?.role);
   const [displayTasks, setDisplayTasks] = useAtom(displayTasksAtom);
   const [filteredTasks, setFilteredTasks] = useAtom(filteredTasksAtom);
   const [allVehicles] = useAtom(allVehiclesAtom);
@@ -46,15 +50,11 @@ export default function TaskListHeader() {
       }
       setDisplayTasks(newDisplayTasks);
     })
-    //updating displaytasksAtom after implementing the search stuff on displayTasks
   };
   return (
     <View style={styles.headerBack}>
       <View style={styles.headerSearchRow}>
-        <Image
-          source={user}
-          style={styles.iconSize}
-        />
+        <Image source={user} style={styles.iconSize} />
         <Searchbar
           placeholder="Search tasks"
           placeholderTextColor="#76757D"
@@ -63,10 +63,11 @@ export default function TaskListHeader() {
           style={styles.searchBarStyle}
           inputStyle={{ fontSize: 15 }}
         />
-        <Image
-          source={addList}
-          style={styles.iconSize}
-        />
+        {user?.role === 'ASSOCIATE' ? (
+          <View style={styles.iconSize}></View>
+        ) : (
+          <Image source={addList} style={styles.iconSize} />
+        )}
       </View>
       <View style={styles.headerButtonRow}>
         <HeaderButtons buttonName={'Reset '} />

@@ -1,4 +1,4 @@
-import { Status } from "./Status";
+import { Status } from './Status';
 
 export interface Task {
   id: number;
@@ -14,7 +14,7 @@ export interface Task {
   mva: string;
   priority: number;
   age: number;
-  assigned: string | null;
+  assigned: number | null;
   market: string;
   status: Status;
   createdBy: string | null;
@@ -23,4 +23,3 @@ export interface Task {
   vin: string;
   vehicleStatus: boolean;
 }
-
