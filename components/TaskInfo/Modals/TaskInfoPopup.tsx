@@ -7,6 +7,9 @@ import ResolveTask from './ResolveTask/ResolveTask';
 import ReopenTask from './ReopenTask/ReopenTask';
 import LeaveComment from './LeaveComment/LeaveComment';
 import { styles1 } from './TaskInfoPopupStyles';
+import { User } from '../../../models/User';
+import { useAtom } from 'jotai';
+import { allTasksAtom } from '../../../atoms';
 const TaskInfoPopup = (
   {
     assigned,
@@ -26,13 +29,22 @@ const TaskInfoPopup = (
   const [reOpenModel, setReopenModal] = useState(false);
   const [commentModal, setCommentModal] = useState(false);
   const [assignedName, setAssignedName] = useState('');
-  const onAssign = (name: string) => {
+  const [tasks, setTasks] = useAtom(allTasksAtom);
+
+  const onAssign = (user: User) => {
     setShowModal(!showModal);
     setResolve(!resolve);
-    setAssignedName(name);
-    putAssignAPI(name);
+    putAssignAPI(user);
+    const newTasks = tasks.map((task) => {
+      if (task.id === taskId) {
+        task.assigned = user.id;
+      }
+      return task;
+    });
+    setTasks(newTasks);
   };
-  const putAssignAPI = async (name: string) => {
+  const putAssignAPI = async (user: User) => {
+    console.log(user);
     fetch(`http://localhost:8080/api/v1/assign/${taskId}`, {
       mode: 'cors',
       method: 'PUT',
@@ -41,7 +53,7 @@ const TaskInfoPopup = (
         'Accept': 'application/json',
         'Origin': 'http://localhost:19006',
       },
-      body: JSON.stringify({ name: name }),
+      body: JSON.stringify(user),
     });
   };
   const onShowToggle = () => {

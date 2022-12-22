@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { NativeBaseProvider, extendTheme } from 'native-base';
 import { useAtom } from 'jotai';
 import {
@@ -7,14 +7,17 @@ import {
   displayTasksAtom,
   allVehiclesAtom,
   atomFilterOptions,
+  userAtom,
   filteredTasksAtom,
 } from './atoms';
+import RegisterScreen from './screens/AuthenticationStack/RegisterScreen';
+import NavigateScreen from './screens/AuthenticationStack/NavigateScreen';
+import LoginScreen from './screens/AuthenticationStack/LoginScreen';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import { Task } from './models/Task';
 import { initialFindMakes, initialFindMakeAndModel } from './utils/findTasks';
-import CreateTaskScreen from './screens/CreateTaskScreen/CreateTaskScreen'
 
 import { Status } from './models/Status';
 import TaskInfoScreen from './screens/TaskInfoScreen/TaskInfoScreen';
@@ -42,6 +45,7 @@ export default function App() {
   const [filteredTasks, setFilteredTasks] = useAtom(filteredTasksAtom)
   const [filterOptions, setFilterOptions] = useAtom(atomFilterOptions);
   const [filter, setFilter] = useAtom(atomFilters);
+  const [user, __] = useAtom(userAtom);
 
   const task1: Task = {
     id: 4,
@@ -185,9 +189,18 @@ export default function App() {
             headerShown: false,
           }}
         >
-          <Stack.Screen name="TaskListScreen" component={TaskListScreen} />
-          <Stack.Screen name="TaskInfoScreen" component={TaskInfoScreen} />
-          <Stack.Screen name="CreateTaskScreen" component={CreateTaskScreen} />
+          {user == null ? (
+            <>
+              <Stack.Screen name="TaskListScreen" component={TaskListScreen} />
+              <Stack.Screen name="TaskInfoScreen" component={TaskInfoScreen} />
+            </>
+          ) : (
+            <>
+              <Stack.Screen name="NavigateScreen" component={NavigateScreen} />
+              <Stack.Screen name="LoginScreen" component={LoginScreen} />
+              <Stack.Screen name="RegisterScreen" component={RegisterScreen} />
+            </>
+          )}
         </Stack.Navigator>
       </NavigationContainer>
     </NativeBaseProvider>
