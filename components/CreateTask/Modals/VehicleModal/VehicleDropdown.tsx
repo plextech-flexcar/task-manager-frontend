@@ -1,34 +1,38 @@
 import React from 'react';
 import { View, Box, Text, HStack } from "native-base";
-import { styles } from './dropdownSectionStyles';
+import { styles } from '../../DropdownSection/dropdownSectionStyles';
 import { TouchableOpacity, Image, ImageSourcePropType } from 'react-native';
+import VehicleCard from './VehicleCard';
+import { allVehiclesAtom } from '../../../../atoms';
+import { useAtom } from 'jotai';
 
-const DropdownSection = ({
+const VehicleDropdown = ({
         title, 
         placeholder,
         dropdownArrow,
-        value,
+        vehicleId,
         icon,
         onPress,
     } : {
         title: string, 
         placeholder: string,
         dropdownArrow: boolean,
-        value?: string,
+        vehicleId: number,
         icon?: ImageSourcePropType,
         onPress: React.Dispatch<React.SetStateAction<any>>,
     }) => {
-        const downArrow = require('../../../assets/CreateTaskIcons/downArrow.png')
-        
+        const [allVehicles] = useAtom(allVehiclesAtom);
+        const downArrow = require('../../../../assets/CreateTaskIcons/downArrow.png')
+        const vehicleData = allVehicles[vehicleId]
         return (
-            <View style={styles.dropdownSection}>
+            <View style={styles.vehicleDropdownSection}>
                 <Text style={styles.titleText} >{title}</Text>
                 <TouchableOpacity onPress={() => onPress(title)}>
                     <Box style={styles.dropdown}>
                         <HStack justifyContent={dropdownArrow ? "space-between" : ""} alignItems = {"center"}>
-                            <HStack>
+                            <HStack style= {{width: "100%"}}>
                                 {icon && <Image source={icon} style={ {height: 17.5, width: 17.5, marginRight: 11.5} }/>}
-                                {value ? <Text style={styles.valueText}>{value}</Text>
+                                {vehicleId !== -1 ? <VehicleCard vehicle={vehicleData}/>
                                 : <Text style={styles.placeholderText}>{placeholder}</Text>}
                             </HStack>
                             {dropdownArrow && <Image source={downArrow} style={ {height: 8.5, width: 15.5} }/>}
@@ -39,7 +43,7 @@ const DropdownSection = ({
         )
 }
 
-export default DropdownSection
+export default VehicleDropdown
 
 
 

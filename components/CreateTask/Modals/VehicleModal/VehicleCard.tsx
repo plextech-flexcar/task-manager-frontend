@@ -16,6 +16,7 @@ const VehicleCard = ({vehicle} : {vehicle: Vehicle}) => {
                         {vehicle.license}, {vehicle.state} • {vehicle.mva}
                     </Text>
                     <Text style={styles.textTop}>VIN: {vehicle.vin}</Text>
+                    <Text style={styles.textTop}>{vehicle.marketName}</Text>
                     <View style={vehicle.vehicleStatus ? styles.availableBox : styles.unavailableBox}>
                         <Text>{vehicle.vehicleStatus ? 'Available' : 'Unavailable/Service'}</Text>
                     </View>

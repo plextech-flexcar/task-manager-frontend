@@ -33,7 +33,7 @@ const PlaceholderTaskCard = ({
               </HStack>
               <Text style={styles.taskDateText}>Today</Text>
               <Text style={vehicleId !== -1 ? styles.vehicleBlackText : styles.vehicleGrayText}>
-                {vehicleId !== -1 ? vehicleData?.color + vehicleData?.makeName + vehicleData?.modelName : "Vehicle"}
+                {vehicleId !== -1 ? vehicleData?.color + ' ' + vehicleData?.makeName + ' ' + vehicleData?.modelName : "Vehicle"}
                 </Text>
               <HStack justifyContent="space-between">
                   <Text style={vehicleId !== -1 ? styles.vehicleBlackText : styles.vehicleGrayText}>

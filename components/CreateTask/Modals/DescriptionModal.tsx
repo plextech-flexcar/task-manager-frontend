@@ -63,7 +63,7 @@ const DescriptionModal = (({
                 >
                   <View style={{ flex: 8 }}>
                     <TextInput
-                      placeholder="Comment"
+                      placeholder="Define task description"
                       autoFocus={false}
                       style={styles.input}
                       onChangeText={(text) => setComment(text)}

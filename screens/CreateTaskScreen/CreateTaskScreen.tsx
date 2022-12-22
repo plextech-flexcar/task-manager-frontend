@@ -12,6 +12,11 @@ import GenericButton from "../../components/GenericButton/GenericButton";
 import { styles } from "./createTaskScreenStyles"
 import VehicleModal from "../../components/CreateTask/Modals/VehicleModal/VehicleModal";
 import AssignTaskModal from "../../components/CreateTask/Modals/AssignTaskModal";
+import VehicleDropdown from "../../components/CreateTask/Modals/VehicleModal/VehicleDropdown";
+import { Task } from "../../models/Task";
+import { allTasksAtom, userAtom } from "../../atoms";
+import { useAtom } from "jotai";
+import { useNavigation } from "@react-navigation/native";
 
 const CreateTaskScreen = () => {
     const [type, setType] = useState('');
@@ -22,12 +27,46 @@ const CreateTaskScreen = () => {
     const [description, setDescription] = useState('');
     const [assignedStatus, setAssignedStatus] = useState('');
     const [assigned, setAssigned] = useState('');
-    const [license, setLicense] = useState('');
-    const [mva, setMva] = useState('');
+    const [userId, setUserId] = useState(-1);
     const [visibleModal, setVisibleModal] = useState('');
     const assignedPair = (assigned) || assignedStatus==="Open";
-    const isDisabled = !([priority, assignedPair, license, mva].every((value) => !!value) && vehicleId !== -1);
+    const isDisabled = !([priority, assignedPair, description].every((value) => !!value) && vehicleId !== -1);
     const searchIcon = require('../../assets/CreateTaskIcons/searchIcon.png');
+    const [currUser] = useAtom(userAtom);
+    const [allTasks, setAllTasks] = useAtom(allTasksAtom);
+    const navigation = useNavigation();
+
+    const submitTask = async () => {
+        const newTask: Task = {
+            vehicleId: vehicleId,
+            type: type,
+            status: assignedStatus === "Open" ? "OPEN" : "ASSIGNED",
+            description: description,
+            assigned: userId,
+            creator: currUser?.firstName + ' ' + currUser?.lastName,
+            priority: priority
+        }
+        console.log(newTask)
+        fetch(`http://localhost:8080/api/v1/createTask`, {
+          mode: 'cors',
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+            'Origin': 'http://localhost:19006',
+          },
+          body: JSON.stringify(newTask),
+        })
+          .then((response) => response.json())
+          .then((json) => {
+            setAllTasks([...allTasks, json]);
+          });
+      };
+    const onSubmit = () => {
+        submitTask();
+        navigation.navigate('TaskListScreen')
+    }
+    
 
     const showModal = (title: string) => {
         setVisibleModal(title)
@@ -72,11 +111,19 @@ const CreateTaskScreen = () => {
                         onPress={showModal}
                         value={description}
                     />
-                    <DropdownSection 
+                    {/* <DropdownSection 
                         title={"Vehicle MVA, VIN, or License plate"} 
                         placeholder={"Search for vehicle"}
                         dropdownArrow={false}
                         onPress={showModal}
+                        value={String(vehicleId)}
+                    /> */}
+                    <VehicleDropdown
+                        title={"Vehicle MVA, VIN, or License plate"} 
+                        placeholder={"Search for vehicle"}
+                        dropdownArrow={false}
+                        onPress={showModal}
+                        vehicleId={vehicleId}
                     />
                     <DropdownSection 
                         title={"Status"} 
@@ -100,7 +147,7 @@ const CreateTaskScreen = () => {
             <View style={styles.footer}>
                 <HStack space={3} style={styles.buttonContainer}>
                     <GenericButton isPurple={false} text={'CANCEL'}/>
-                    <GenericButton isPurple={true} text={'CREATE TASK'} isDisabled={isDisabled}/>
+                    <GenericButton isPurple={true} text={'CREATE TASK'} isDisabled={isDisabled} functionCall={onSubmit}/>
                 </HStack>
             </View>
             <PriorityModal
@@ -133,6 +180,7 @@ const CreateTaskScreen = () => {
                 showModal={visibleModal==="Assigned To"}
                 changeAssigned={(assignedPerson) => {setAssigned(assignedPerson)}}
                 onClose={() => setVisibleModal('')}
+                changeUser={(userId) => setUserId(userId)}
             />
             
 

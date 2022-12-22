@@ -28,7 +28,6 @@ const TaskInfoPopup = (
   const [finalResolve, setFinalResolve] = useState(false);
   const [reOpenModel, setReopenModal] = useState(false);
   const [commentModal, setCommentModal] = useState(false);
-  const [assignedName, setAssignedName] = useState('');
   const [tasks, setTasks] = useAtom(allTasksAtom);
 
   const onAssign = (user: User) => {
