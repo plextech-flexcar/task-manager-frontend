@@ -25,7 +25,7 @@ const VehicleDropdown = ({
         const downArrow = require('../../../../assets/CreateTaskIcons/downArrow.png')
         const vehicleData = allVehicles[vehicleId]
         return (
-            <View style={styles.vehicleDropdownSection}>
+            <View style={vehicleId === -1 ? styles.dropdownSection :styles.vehicleDropdownSection}>
                 <Text style={styles.titleText} >{title}</Text>
                 <TouchableOpacity onPress={() => onPress(title)}>
                     <Box style={styles.dropdown}>

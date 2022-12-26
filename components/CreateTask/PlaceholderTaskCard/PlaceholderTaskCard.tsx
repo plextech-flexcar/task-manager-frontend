@@ -24,7 +24,7 @@ const PlaceholderTaskCard = ({
       return (
         <View style={styles.card}>
           <Box>
-            <VStack p="4" space={0} width="full" height="hug">
+            <VStack p="4" space={0} width="full">
               <HStack justifyContent="space-between">
                   <Text style={type ? styles.taskHeadingBlack : styles.taskHeadingGray}>
                     {type ? type : "Task Type"}

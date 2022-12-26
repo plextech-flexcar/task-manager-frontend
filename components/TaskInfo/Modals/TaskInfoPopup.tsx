@@ -17,13 +17,13 @@ const TaskInfoPopup = (
     comments,
     setComments,
   } : {
-    assigned: string,
-    taskId: number,
+    assigned: number,
+    taskId: number|undefined,
     comments: number[],
     setComments: React.Dispatch<React.SetStateAction<never[]>>
   }) => {
   const [showModal, setShowModal] = useState(false);
-  const [resolve, setResolve] = useState(assigned !== '');
+  const [resolve, setResolve] = useState(assigned !== -1);
   const [resolveModal, setResolveModal] = useState(false);
   const [finalResolve, setFinalResolve] = useState(false);
   const [reOpenModel, setReopenModal] = useState(false);

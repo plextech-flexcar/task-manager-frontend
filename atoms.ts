@@ -8,7 +8,8 @@ export const filteredTasksAtom = atom<Task[]>([])
 export const displayTasksAtom = atom<Task[]>([])
 export const allVehiclesAtom = atom<Record<number, Vehicle>>({})
 export const atomModalVisible = atom(false);
-export const userAtom = atom<User|null>(null);
+export const currUserAtom = atom<User|null>(null);
+export const allUsersAtom = atom<Record<number, User>>([]);
 
 export const atomFilterOptions = atom<Record<string, any>>({
   'Market': ['Boston', 'Atlanta', 'Nashville', 'Charlotte'],

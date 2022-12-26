@@ -1,5 +1,3 @@
-import { Status } from './Status';
-
 export interface Task {
   id?: number;
   vehicleId: number;
@@ -7,7 +5,7 @@ export interface Task {
   date?: number;
   description: string;
   priority: number;
-  assigned: number | null;
+  assigned: number;
   status: string;
-  creator: string | null;
+  creator: number;
 }

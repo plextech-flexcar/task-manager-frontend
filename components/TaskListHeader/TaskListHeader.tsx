@@ -7,14 +7,13 @@ import HeaderButtons from './HeaderButton';
 import { styles } from './styles';
 import { useAtom } from 'jotai';
 import { useNavigation } from '@react-navigation/native';
-import { allTasksAtom, userAtom } from '../../atoms';
+import { currUserAtom } from '../../atoms';
 
 
 export default function TaskListHeader() {
   const [searchQuery, setSearchQuery] = React.useState('');
-  const [allTasks] = useAtom(allTasksAtom);
-  const [user, setUser] = useAtom(userAtom);
-  console.log('user', user?.role);
+  const [currUser, setCurrUser] = useAtom(currUserAtom);
+  console.log('user', currUser?.role);
   const [displayTasks, setDisplayTasks] = useAtom(displayTasksAtom);
   const [filteredTasks, setFilteredTasks] = useAtom(filteredTasksAtom);
   const [allVehicles] = useAtom(allVehiclesAtom);
@@ -52,11 +51,12 @@ export default function TaskListHeader() {
     })
   };
   const addList = require('../../assets/HeaderIcons/addlist.webp');
+  const userIcon = require('../../assets/HeaderIcons/user.webp')
   const navigation = useNavigation();
   return (
     <View style={styles.headerBack}>
       <View style={styles.headerSearchRow}>
-        <Image source={user} style={styles.iconSize} />
+        <Image source={userIcon} style={styles.iconSize} />
         <Searchbar
           placeholder="Search tasks"
           placeholderTextColor="#76757D"
@@ -65,7 +65,7 @@ export default function TaskListHeader() {
           style={styles.searchBarStyle}
           inputStyle={{ fontSize: 15 }}
         />
-        {user?.role === 'ASSOCIATE' ? (
+        {currUser?.role === 'ASSOCIATE' ? (
           <View style={styles.iconSize}></View>
         ) : (
           <Pressable onPress={() => {navigation.navigate('CreateTaskScreen')}}>

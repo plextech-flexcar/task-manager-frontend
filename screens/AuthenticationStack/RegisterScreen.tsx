@@ -4,14 +4,16 @@ import { styles2 } from './styles.js';
 import { Select, VStack, Image, Text, Box, Spacer } from 'native-base';
 import { Button } from 'native-base';
 import { useAtom } from 'jotai';
-import { userAtom } from '../../atoms';
+import { currUserAtom } from '../../atoms';
+import { useNavigation } from '@react-navigation/native';
 
 const TextBox = () => {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [password, setPassword] = useState('');
   const [role, setRole] = useState('');
-  const [user, setUser] = useAtom(userAtom);
+  const [currUser, setCurrUser] = useAtom(currUserAtom);
+  const navigation = useNavigation();
 
   const registerPost = async () => {
     fetch(`http://localhost:8080/api/v1/newUser`, {
@@ -31,7 +33,7 @@ const TextBox = () => {
     })
       .then((response) => response.json())
       .then((json) => {
-        setUser(json);
+        setCurrUser(json);
       });
   };
   const onSubmitFunc = () => {

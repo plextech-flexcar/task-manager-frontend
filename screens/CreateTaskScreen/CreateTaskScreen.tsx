@@ -14,11 +14,13 @@ import VehicleModal from "../../components/CreateTask/Modals/VehicleModal/Vehicl
 import AssignTaskModal from "../../components/CreateTask/Modals/AssignTaskModal";
 import VehicleDropdown from "../../components/CreateTask/Modals/VehicleModal/VehicleDropdown";
 import { Task } from "../../models/Task";
-import { allTasksAtom, userAtom } from "../../atoms";
+import { allTasksAtom, currUserAtom } from "../../atoms";
 import { useAtom } from "jotai";
 import { useNavigation } from "@react-navigation/native";
 
 const CreateTaskScreen = () => {
+    const [currUser] = useAtom(currUserAtom);
+    const [allTasks, setAllTasks] = useAtom(allTasksAtom);
     const [type, setType] = useState('');
     const [priority, setPriority] = useState(0);
     const [priorityText, setPriorityText] = useState('');
@@ -32,11 +34,25 @@ const CreateTaskScreen = () => {
     const assignedPair = (assigned) || assignedStatus==="Open";
     const isDisabled = !([priority, assignedPair, description].every((value) => !!value) && vehicleId !== -1);
     const searchIcon = require('../../assets/CreateTaskIcons/searchIcon.png');
-    const [currUser] = useAtom(userAtom);
-    const [allTasks, setAllTasks] = useAtom(allTasksAtom);
     const navigation = useNavigation();
 
-    const submitTask = async () => {
+    const submitTask = async (inputTask: Task) => {
+        fetch(`http://localhost:8080/api/v1/createTask`, {
+          mode: 'cors',
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+            'Origin': 'http://localhost:19006',
+          },
+          body: JSON.stringify(inputTask),
+        })
+          .then((response) => response.json())
+          .then((json) => {
+            setAllTasks([...allTasks, json]);
+          });
+      };
+    const onSubmit = () => {
         const newTask: Task = {
             vehicleId: vehicleId,
             type: type,
@@ -46,24 +62,9 @@ const CreateTaskScreen = () => {
             creator: currUser?.firstName + ' ' + currUser?.lastName,
             priority: priority
         }
-        console.log(newTask)
-        fetch(`http://localhost:8080/api/v1/createTask`, {
-          mode: 'cors',
-          method: 'PUT',
-          headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json',
-            'Origin': 'http://localhost:19006',
-          },
-          body: JSON.stringify(newTask),
-        })
-          .then((response) => response.json())
-          .then((json) => {
-            setAllTasks([...allTasks, json]);
-          });
-      };
-    const onSubmit = () => {
-        submitTask();
+        submitTask(newTask);
+        allTasks.push(newTask)
+        setAllTasks(allTasks)
         navigation.navigate('TaskListScreen')
     }
     
