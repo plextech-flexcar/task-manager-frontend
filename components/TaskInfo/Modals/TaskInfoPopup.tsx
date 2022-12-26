@@ -43,7 +43,6 @@ const TaskInfoPopup = (
     setTasks(newTasks);
   };
   const putAssignAPI = async (user: User) => {
-    console.log(user);
     fetch(`http://localhost:8080/api/v1/assign/${taskId}`, {
       mode: 'cors',
       method: 'PUT',

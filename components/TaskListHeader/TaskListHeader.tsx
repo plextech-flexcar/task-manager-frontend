@@ -13,7 +13,6 @@ import { currUserAtom } from '../../atoms';
 export default function TaskListHeader() {
   const [searchQuery, setSearchQuery] = React.useState('');
   const [currUser, setCurrUser] = useAtom(currUserAtom);
-  console.log('user', currUser?.role);
   const [displayTasks, setDisplayTasks] = useAtom(displayTasksAtom);
   const [filteredTasks, setFilteredTasks] = useAtom(filteredTasksAtom);
   const [allVehicles] = useAtom(allVehiclesAtom);

@@ -30,6 +30,19 @@ export default function SortFilter() {
     setModalIcon('backChevronModal');
   };
 
+  const filterModal = (title: string) => {
+    if (title === "Sort & Filter") {
+      return (<>
+        <CircleCheckBox />
+        <FilterBox changeFilter={changeFilter} />
+      </>);
+    } else if (title === 'Make & Model') {
+      return (<CheckBoxFilter changeFilter={changeFilter} />)
+    } else {
+      return (<SquareBoxes filterCategory={title} />)
+    }
+  }
+
   const resetFilters = () => {
     const defaultFilter = {
       "Market": [],
@@ -88,7 +101,7 @@ export default function SortFilter() {
             </TouchableOpacity>
           </View>
           <ScrollView>
-            {title === 'Sort & Filter' && (
+            {/* {title === 'Sort & Filter' && (
               <>
                 <CircleCheckBox />
                 <FilterBox changeFilter={changeFilter} />
@@ -104,7 +117,8 @@ export default function SortFilter() {
             {title === 'Quick View' && <SquareBoxes filterCategory={title} />}
             {title in filterOptions['Make & Model'] && (
               <SquareBoxes filterCategory={title} />
-            )}
+            )} */}
+            {filterModal(title)}
           </ScrollView>
           <View>
             {' '}

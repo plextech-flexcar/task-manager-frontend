@@ -81,12 +81,6 @@ export default function App() {
         setDisplayTasks(json);
         setFilteredTasks(json);
         console.log("TASKS: ", json)
-        makeAndModel = initialFindMakeAndModel(json);
-        makes = initialFindMakes(json);
-        filterOptions['Make & Model'] = makeAndModel;
-        filter['Make & Model'] = makes;
-        setFilterOptions(filterOptions);
-        setFilter(filter);
       });
   };
   const getVehicleAPI = async () => {
@@ -102,6 +96,12 @@ export default function App() {
       .then((response) => response.json())
       .then((json) => {
         console.log(json)
+        makeAndModel = initialFindMakeAndModel(json);
+        makes = initialFindMakes(json);
+        filterOptions['Make & Model'] = makeAndModel;
+        filter['Make & Model'] = makes;
+        setFilterOptions(filterOptions);
+        setFilter(filter);
         setAllVehicles(populateVehicles(json));
       });
   };
