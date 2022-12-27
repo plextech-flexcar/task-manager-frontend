@@ -25,7 +25,7 @@ const DescriptionModal = (({
     changeDescription(comment);
     onClose();
   }
-  const submitButton = require('../../../assets/submit.webp');
+  const submitButton = require('../../../assets/images/navigation/submit.webp');
   return (
     <View>
       <Modal

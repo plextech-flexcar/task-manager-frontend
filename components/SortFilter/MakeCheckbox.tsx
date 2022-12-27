@@ -53,7 +53,7 @@ const MakeCheckbox = (props: {
           >
               <Text style={styles.filterText}>{title}</Text>
               <Image
-                source={require('../../assets/next.png')}
+                source={require('../../assets/images/navigation/next-arrow.webp')}
                 style={{ height: 15, width: 15 }}
               ></Image>
           </TouchableOpacity>

@@ -27,7 +27,7 @@ const CreateTaskScreen = () => {
     const [visibleModal, setVisibleModal] = useState('');
     const assignedPair = (assigned) || assignedStatus==="Open";
     const isDisabled = !([priority, assignedPair, license, mva].every((value) => !!value) && vehicleId !== -1);
-    const searchIcon = require('../../assets/CreateTaskIcons/searchIcon.png');
+    const searchIcon = require('../../assets/images/navigation/search-icon.webp');
 
     const showModal = (title: string) => {
         setVisibleModal(title)

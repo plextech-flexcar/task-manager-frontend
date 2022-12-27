@@ -51,7 +51,7 @@ export default function TaskListHeader() {
       setDisplayTasks(newDisplayTasks);
     })
   };
-  const addList = require('../../assets/HeaderIcons/addlist.webp');
+  const addList = require('../../assets/images/header/create-task.webp');
   const navigation = useNavigation();
   return (
     <View style={styles.headerBack}>
