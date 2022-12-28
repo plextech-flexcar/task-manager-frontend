@@ -23,8 +23,8 @@ export default function TaskListHeader() {
     const newDisplayTasks = searchFilteredTasks(query, mva, license, filteredTasks)
     setDisplayTasks(newDisplayTasks);
   };
-  const addList = require('../../assets/HeaderIcons/addlist.webp');
   const userIcon = require('../../assets/HeaderIcons/user.webp')
+  const addList = require('../../assets/images/header/create-task.webp');
   const navigation = useNavigation();
   return (
     <View style={styles.headerBack}>

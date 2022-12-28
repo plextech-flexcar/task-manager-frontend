@@ -35,7 +35,7 @@ const LeaveComment = ({
       });
   };
   const [comment, setComment] = useState('');
-  const submitButton = require('../../../../assets/submit.webp')
+  const submitButton = require('../../../../assets/images/navigation/submit.webp')
   return (
     <View style={styles1.contain}>
       <Modal

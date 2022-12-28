@@ -78,7 +78,7 @@ const TaskInfoPopup = (
     setCommentModal(!commentModal);
   };
 
-  const personSearch = require('../../../assets/person_search.webp');
+  const personSearch = require('../../../assets/images/navigation/person-search.webp');
   return (
     <SafeAreaView>
       <View>

@@ -69,15 +69,15 @@ const CreateTaskScreen = () => {
     }
     
 
-    const showModal = (title: string) => {
-        setVisibleModal(title)
-    }
+  const showModal = (title: string) => {
+    setVisibleModal(title);
+  };
 
-    const changePriority = (p: number, t: string, i: ImageSourcePropType) => {
-        setPriority(p); 
-        setPriorityText(t);
-        setPriorityIcon(i);
-    }
+  const changePriority = (p: number, t: string, i: ImageSourcePropType) => {
+    setPriority(p);
+    setPriorityText(t);
+    setPriorityIcon(i);
+  };
 
     return (
         <SafeAreaView>
@@ -112,13 +112,6 @@ const CreateTaskScreen = () => {
                         onPress={showModal}
                         value={description}
                     />
-                    {/* <DropdownSection 
-                        title={"Vehicle MVA, VIN, or License plate"} 
-                        placeholder={"Search for vehicle"}
-                        dropdownArrow={false}
-                        onPress={showModal}
-                        value={String(vehicleId)}
-                    /> */}
                     <VehicleDropdown
                         title={"Vehicle MVA, VIN, or License plate"} 
                         placeholder={"Search for vehicle"}
@@ -186,7 +179,7 @@ const CreateTaskScreen = () => {
             
 
     </SafeAreaView>
-    )
-}
+  );
+};
 
-export default CreateTaskScreen
+export default CreateTaskScreen;

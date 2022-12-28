@@ -18,7 +18,7 @@ export default function SortFilter() {
   const [filter, setFilter] = useAtom(atomFilters);
   const [modalIcon, setModalIcon] = useState('closeModal');
   const displayModalIcon = modalIcon === "closeModal" ? 
-  require('../../assets/closeModal.png') : require('../../assets/backChevronModal.png');
+  require('../../assets/images/navigation/close-button.webp') : require('../../assets/images/navigation/back-arrow.webp');
 
   const toggleModal = () => {
     setTitle('Sort & Filter');
@@ -27,7 +27,7 @@ export default function SortFilter() {
 
   const changeFilter = (filterName: string) => {
     setTitle(filterName);
-    setModalIcon('backChevronModal');
+    setModalIcon('backArrow');
   };
 
   const filterModal = (title: string) => {

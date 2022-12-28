@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
-import { TouchableOpacity, Image } from 'react-native';
+import { TouchableOpacity } from 'react-native';
 import { Box, View, HStack, VStack, Text } from 'native-base';
 import { styles } from './styles.js';
-import { PRIORITY_ICON_MAP } from './TaskCardPriorityIconMap';
 import { Task } from '../../models/Task.js';
 import { useNavigation } from '@react-navigation/native';
 import IconComponent from '../IconComponent';
 import { useAtom } from 'jotai';
 import { allUsersAtom, allVehiclesAtom } from '../../atoms';
+import Priority from '../Icon/Priority/index';
 
 const TaskCard = ({
   id,
@@ -65,10 +65,7 @@ const TaskCard = ({
                   <Text style={styles.taskHeading}>{type}</Text>
                 </View>
               </Box>
-              <Image
-                source={PRIORITY_ICON_MAP[priority]}
-                style={{ width: 27, height: 27 }}
-              />
+              <Priority priority={priority} />
             </HStack>
             <View>
               <Text style={styles.taskDateText}>{calculateAge(Date.now() - date)}</Text>
@@ -84,7 +81,7 @@ const TaskCard = ({
                   {vehicleData?.license}, {vehicleData?.state} • {vehicleData?.mva}
                 </Text>
               </View>
-              {assigned != -1 ? (
+              {assigned !== -1 ? (
                 <IconComponent
                   first={assignedUser ? assignedUser.firstName.charAt(0).toUpperCase() : ''}
                   last={assignedUser ? assignedUser.lastName.charAt(0).toUpperCase() : ''}

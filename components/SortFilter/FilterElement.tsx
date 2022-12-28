@@ -11,8 +11,8 @@ const FilterElement= (props: {
   }) => {
     const [filter] = useAtom(atomFilters);
     const { changeFilter, title } = props;
-    const nextArrow = require('../../assets/next.png');
-    const filterVector = require('../../assets/FilterVector.png');
+    const nextArrow = require('../../assets/images/navigation/next-arrow.webp');
+    const filterVector = require('../../assets/images/navigation/filter-select.webp');
     let hasFilter = filter[title].length > 0;
     if (title === 'Make & Model') {
       Object.values(filter['Make & Model']).forEach(makeArray => {

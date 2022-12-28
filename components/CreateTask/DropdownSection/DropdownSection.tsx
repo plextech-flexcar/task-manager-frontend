@@ -18,7 +18,7 @@ const DropdownSection = ({
         icon?: ImageSourcePropType,
         onPress: React.Dispatch<React.SetStateAction<any>>,
     }) => {
-        const downArrow = require('../../../assets/CreateTaskIcons/downArrow.png')
+        const downArrow = require('../../../assets/images/navigation/down-arrow.webp')
         
         return (
             <View style={styles.dropdownSection}>
