@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
-import { TouchableOpacity, Image } from 'react-native';
+import { TouchableOpacity } from 'react-native';
 import { Box, View, HStack, VStack, Text } from 'native-base';
 import { styles } from './styles.js';
-import { PRIORITY_ICON_MAP } from './TaskCardPriorityIconMap';
 import { Task } from '../../models/Task.js';
 import { useNavigation } from '@react-navigation/native';
 import IconComponent from '../IconComponent';
 import { useAtom } from 'jotai';
 import { allVehiclesAtom } from '../../atoms';
+import Priority from '../Icon/Priority/index';
 
 const TaskCard = ({
   id,
@@ -104,10 +104,7 @@ const TaskCard = ({
                   <Text style={styles.taskHeading}>{type}</Text>
                 </View>
               </Box>
-              <Image
-                source={PRIORITY_ICON_MAP[priority]}
-                style={{ width: 27, height: 27 }}
-              />
+              <Priority priority={priority} />
             </HStack>
             <View>
               <Text style={styles.taskDateText}>{calculateAge(age)}</Text>
@@ -123,13 +120,11 @@ const TaskCard = ({
                   {vehicleData?.license}, {vehicleData?.state} • {vehicleData?.mva}
                 </Text>
               </View>
-              {assigned != null ? (
+              {assigned != null && (
                 <IconComponent
                   first={user ? user.firstName.charAt(0) : ''}
                   last={user ? user.lastName.charAt(0) : ''}
                 />
-              ) : (
-                <View></View>
               )}
             </HStack>
           </VStack>
