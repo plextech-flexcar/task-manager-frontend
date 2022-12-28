@@ -9,13 +9,19 @@ import {
 import { styles } from '../../screens/TaskInfoScreen/TaskInfoStyles.js';
 import { filterTasks } from './utilityFilter';
 import { useAtom } from 'jotai';
-
 import {
   allTasksAtom,
   filteredTasksAtom,
   atomFilters,
   atomModalVisible,
+  searchQueryAtom,
+  vehicleIdToLicense,
+  vehicleIdToMVA,
+  displayTasksAtom,
+  allVehiclesAtom
 } from '../../atoms';
+import { searchFilteredTasks } from '../../utils/searchFilteredTasks';
+
 export default function SubmitButton(props: {
   changeFilter: React.Dispatch<React.SetStateAction<any>>;
 }) {
@@ -24,11 +30,19 @@ export default function SubmitButton(props: {
   const [allTasks, setAllTasks] = useAtom(allTasksAtom);
   const [filteredTasks, setFilteredTasks] = useAtom(filteredTasksAtom);
   const [filter, setFilter] = useAtom(atomFilters);
+  const [allVehicles, setAllVehicles] = useAtom(allVehiclesAtom);
+  const [displayTasks, setDisplayTasks] = useAtom(displayTasksAtom)
+  const [searchQuery] = useAtom(searchQueryAtom);
+  const [mva] = useAtom(vehicleIdToMVA);
+  const [license] = useAtom(vehicleIdToLicense);
 
   const onPress = () => {
-    const filteredTasks = filterTasks(filter, allTasks);
+    console.log(filter)
+    const filteredTasks = filterTasks(filter, allTasks, allVehicles);
     setModalVisible(false);
     setFilteredTasks(filteredTasks);
+    const newDisplayTasks = searchFilteredTasks(searchQuery, mva, license, filteredTasks)
+    setDisplayTasks(newDisplayTasks);
     changeFilter('Sort & Filter');
   };
 
@@ -36,10 +50,8 @@ export default function SubmitButton(props: {
     <SafeAreaView style={styles.whitebg}>
       <View style={styles1.contain}>
         <TouchableOpacity onPress={onPress} style={styles1.buttonPurple}>
-          <Text style={styles1.buttonTextWhite}>
-            <Text style={{ textAlign: 'center', justifyContent: 'center' }}>
+          <Text style={[styles1.buttonTextWhite, { textAlign: 'center', justifyContent: 'center' }]}>
               SHOW RESULTS
-            </Text>
           </Text>
         </TouchableOpacity>
       </View>

@@ -8,6 +8,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderBottomWidth: 10,
     overflow: 'hidden',
+    minHeight: '100%',
   },
 });
 

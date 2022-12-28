@@ -9,6 +9,7 @@ import {
 import { Modal, FormControl } from 'native-base';
 import { styles } from './styles.js';
 import { PRIORITY_ICON_MAP } from '../../TaskCard/TaskCardPriorityIconMap';
+import { PRIORITY_MAPPING } from '../../TaskCard/priorityToNumber.js';
 
 const PriorityModal = ({
     showModal,

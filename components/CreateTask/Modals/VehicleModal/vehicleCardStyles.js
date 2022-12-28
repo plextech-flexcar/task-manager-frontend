@@ -1,6 +1,12 @@
 import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
+  vehicleList: {
+    width: '100%', 
+    height:'100%', 
+    display: 'flex', 
+    backgroundColor: '#FFFFFF', 
+    borderRadius: 8},
   card: {
     width: '100%',
     backgroundColor: '#FFFFFF',

@@ -10,6 +10,8 @@ import {
   currUserAtom,
   filteredTasksAtom,
   allUsersAtom,
+  vehicleIdToMVA,
+  vehicleIdToLicense
 } from './atoms';
 import RegisterScreen from './screens/AuthenticationStack/RegisterScreen';
 import NavigateScreen from './screens/AuthenticationStack/NavigateScreen';
@@ -24,6 +26,7 @@ import TaskInfoScreen from './screens/TaskInfoScreen/TaskInfoScreen';
 import TaskListScreen from './screens/TaskListScreen/TaskListScreen';
 import { populateVehicles } from './utils/populateVehicles';
 import { populateUsers } from './utils/populateUsers';
+import { populateMVAandLicense } from './utils/populateMVAandLicense';
 
 // Define the config
 const config = {
@@ -48,6 +51,8 @@ export default function App() {
   const [allUsers, setAllUsers] = useAtom(allUsersAtom);
   const [filter, setFilter] = useAtom(atomFilters);
   const [currUser, __] = useAtom(currUserAtom);
+  const [mva, setMVA] = useAtom(vehicleIdToMVA);
+  const [license, setLicense] = useAtom(vehicleIdToLicense);
 
   let makeAndModel = {};
   let makes = {};
@@ -102,7 +107,11 @@ export default function App() {
         filter['Make & Model'] = makes;
         setFilterOptions(filterOptions);
         setFilter(filter);
-        setAllVehicles(populateVehicles(json));
+        const vehicles = populateVehicles(json)
+        setAllVehicles(vehicles);
+        const mvaLicensePair = populateMVAandLicense(vehicles)
+        setMVA(mvaLicensePair[0])
+        setLicense(mvaLicensePair[1])
       });
   };
   const getUsersAPI = async () => {

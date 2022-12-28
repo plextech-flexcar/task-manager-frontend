@@ -4,6 +4,7 @@ import { View } from 'native-base';
 import { atomSorts } from '../../atoms';
 import { useAtom } from 'jotai';
 import { styles } from './styles.js';
+import { Pressable, Text } from 'react-native';
 
 export default function CircleCheckBox() {
   const [sorts, setSorts] = useAtom(atomSorts);
@@ -24,23 +25,22 @@ export default function CircleCheckBox() {
   const lastElem = data.at(-1);
   return (
     <View style={styles.circleRow}>
-      <RadioButton.Group onValueChange={changeSorts} value={value}>
         {data.map((title) => {
           return (
-            <>
-            <RadioButton.Item
-              label={title}
-              value={title}
-              key={title}
-              position={'leading'}
-              labelStyle={{ textAlign: 'left' }}
-              color={'#2A00A5'}
-            />
+            <Pressable onPress={() => changeSorts(title)}>
+            <View style={styles.makesRow}>
+              <RadioButton.Android
+                value={title}
+                key={title}
+                color={'#2A00A5'}
+                status={title === value ? 'checked' : 'unchecked'}
+              />
+              <Text style={styles.filterText}>{title}</Text>
+            </View>
             {!(lastElem === title) && <View style={styles.lineSeparator}/>}
-            </>
+            </Pressable>
           );
         })}
-      </RadioButton.Group>
     </View>
   );
 }

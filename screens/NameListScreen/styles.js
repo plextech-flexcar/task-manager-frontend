@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
 
   },
   text: {
-    fontFamily: 'Inter',
+    fontfamily: 'Inter',
     fontSize: 15,
     fontWeight: 'bold',
     position: 'relative',

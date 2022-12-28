@@ -90,39 +90,21 @@ export default function SortFilter() {
                   source={displayModalIcon}
                   style={{ height: 16, width: 16 }}
                 ></Image>
-                {title !== 'Sort & Filter' && <Text style={styles.backText}> Back </Text>}
+                {title !== 'Sort & Filter' ? <Text style={styles.backText}> Back </Text> : <></>}
               </View>
             </TouchableOpacity>
             <Text style={styles.modalHeaderTitle}>{title}</Text>
             <TouchableOpacity onPress={resetFilters}>
               <View style={styles.modalIcon}>
-                {title === 'Sort & Filter' && <Text style={styles.resetText}> Reset </Text>}
+                {title === 'Sort & Filter' ? <Text style={styles.resetText}> Reset </Text> : <></>}
               </View>
             </TouchableOpacity>
           </View>
           <ScrollView>
-            {/* {title === 'Sort & Filter' && (
-              <>
-                <CircleCheckBox />
-                <FilterBox changeFilter={changeFilter} />
-              </>
-            )}
-            {title === 'Market' && <SquareBoxes filterCategory={title} />}
-            {title === 'Task Type' && <SquareBoxes filterCategory={title} />}
-            {title === 'Make & Model' && (
-              <CheckBoxFilter changeFilter={changeFilter} />
-            )}
-            {title === 'Status' && <SquareBoxes filterCategory={title} />}
-            {title === 'Priority' && <SquareBoxes filterCategory={title} />}
-            {title === 'Quick View' && <SquareBoxes filterCategory={title} />}
-            {title in filterOptions['Make & Model'] && (
-              <SquareBoxes filterCategory={title} />
-            )} */}
             {filterModal(title)}
           </ScrollView>
           <View>
-            {' '}
-            <SubmitButton changeFilter={changeFilter} />{' '}
+            <SubmitButton changeFilter={changeFilter}/>
           </View>
         </View>
       </Modal>

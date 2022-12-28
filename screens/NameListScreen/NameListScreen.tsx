@@ -12,13 +12,13 @@ import { useAtom } from 'jotai';
 const NameListScreen = ({ closeCall, onAssignCall }: any) => {
   const [users, setUsers] = useAtom(allUsersAtom);
   const [searchQuery, setSearchQuery] = useState('');
-  const [searchedUsers, setSearchedUsers] = useState([...users]);
+  const [searchedUsers, setSearchedUsers] = useState(Object.values(users));
   
   
   const onChangeSearch = (query: string) => {
     setSearchQuery(query)
     const pattern = new RegExp('^' + query + '[a-zA-Z0-9]*');
-    setSearchedUsers(users.filter((elem: User) => {return pattern.test(elem.firstName + ' ' + elem.lastName)}))
+    setSearchedUsers(Object.values(users).filter((elem: User) => {return pattern.test(elem.firstName + ' ' + elem.lastName)}))
   }
   return (
     <SafeAreaView style={styles.view}>
