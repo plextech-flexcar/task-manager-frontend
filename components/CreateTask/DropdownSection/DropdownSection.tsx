@@ -16,7 +16,7 @@ const DropdownSection = ({
         placeholder: string,
         dropdownArrow: boolean,
         value?: string,
-        icon?: ImageSourcePropType | JSX.Element,
+        icon?: ImageSourcePropType,
         onPress: React.Dispatch<React.SetStateAction<any>>,
     }) => {
         const downArrow = require('../../../assets/images/navigation/down-arrow.webp')
