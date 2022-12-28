@@ -1,14 +1,13 @@
-import * as React from 'react';
+import React from 'react';
 import {
-    Image,
     Text,
     View,
     Pressable,
     ImageSourcePropType,
   } from 'react-native';
-import { Modal, FormControl } from 'native-base';
+import { Modal } from 'native-base';
 import { styles } from './styles.js';
-import { PRIORITY_ICON_MAP } from '../../TaskCard/TaskCardPriorityIconMap';
+import Priority, { PRIORITY_MAP } from '../../Icon/Priority/index';
 
 const PriorityModal = ({
     showModal,
@@ -30,7 +29,7 @@ const PriorityModal = ({
     const lastElem = priority[3][1];
 
     const onPress = (p:number, t:string) => {
-      const icon = PRIORITY_ICON_MAP[p];
+      const icon = PRIORITY_MAP[p].link;
       changePriority(p, t, icon);
       onClose();
     }
@@ -64,10 +63,7 @@ const PriorityModal = ({
                             style={styles.makesRowPressable} 
                             onPress={() => onPress(pair[0] as number, pair[1] as string)}
                           >
-                            <Image
-                                source={{ uri: PRIORITY_ICON_MAP[pair[0] as number] }}
-                                style={{ width: 20, height: 20 }}
-                            />
+                            <Priority priority={pair[0] as number}/>
                             <Text style={styles.priorityText}> {pair[1]} </Text>
                           </Pressable>
                         </View>
