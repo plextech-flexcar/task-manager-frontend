@@ -4,12 +4,12 @@ import { Divider, VStack, HStack } from 'native-base';
 import TaskInfoHeader from '../../components/TaskInfo/TaskInfoHeader';
 import TaskInfoPopup from '../../components/TaskInfo/Modals/TaskInfoPopup';
 import { styles } from './TaskInfoStyles.js';
-import { PRIORITY_ICON_MAP } from '../../components/TaskCard/TaskCardPriorityIconMap';
-import { PRIORITY_ICON_COLOR_MAP } from './TaskCardPriorityColorMap';
 import { allVehiclesAtom } from '../../atoms';
 import { useAtom } from 'jotai';
 import { Status } from '../../models/Status';
 import { Comment } from '../../models/Comment';
+import Priority from '../../components/Icon/Priority/index';
+
 const TaskInfoScreen = ({ route }) => {
   const {
     id,
@@ -32,17 +32,6 @@ const TaskInfoScreen = ({ route }) => {
   const vehicleData = allVehicles[vehicleId];
   const [comments, setComments] = useState([]);
 
-  const getPriority = (priority: number) => {
-    if (priority === 1) {
-      return 'Low';
-    } else if (priority === 2) {
-      return 'Normal';
-    } else if (priority === 3) {
-      return 'High';
-    } else {
-      return 'Top';
-    }
-  };
   const getInitials = (name: string) => {
     return name
       .split(' ')
@@ -93,12 +82,7 @@ const TaskInfoScreen = ({ route }) => {
             </Text>
           </View>
 
-          <View style={styles.priorityView}>
-            <Image source={PRIORITY_ICON_MAP[priority]} style={styles.priorityImage} />
-            <Text style={{ color: PRIORITY_ICON_COLOR_MAP[priority] }}>
-              {getPriority(priority)}
-            </Text>
-          </View>
+          <Priority priority={priority} showName={true}/>
         </View>
 
         <Text style={styles.textDate}>{age}</Text>
