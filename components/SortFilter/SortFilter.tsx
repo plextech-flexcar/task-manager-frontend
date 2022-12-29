@@ -80,7 +80,6 @@ export default function SortFilter() {
         isVisible={isModalVisible}
         style={styles.view}
         onSwipeComplete={toggleModal}
-        // swipeDirection="down"
       >
         <SafeAreaView style={styles.modalView}>
           <View style={styles.modalHeader}>

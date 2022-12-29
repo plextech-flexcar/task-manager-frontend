@@ -8,7 +8,6 @@ import { Pressable, Text } from 'react-native';
 
 export default function CircleCheckBox() {
   const [sorts, setSorts] = useAtom(atomSorts);
-  const [value, setValue] = React.useState(sorts);
 
   const data = [
     'Priority: Top to low',
@@ -19,7 +18,6 @@ export default function CircleCheckBox() {
   ];
 
   const changeSorts = (value: string) => {
-    setValue(value);
     setSorts(value);
   };
   const lastElem = data.at(-1);
@@ -33,7 +31,7 @@ export default function CircleCheckBox() {
                 value={title}
                 key={title}
                 color={'#2A00A5'}
-                status={title === value ? 'checked' : 'unchecked'}
+                status={title === sorts ? 'checked' : 'unchecked'}
               />
               <Text style={styles.filterText}>{title}</Text>
             </View>

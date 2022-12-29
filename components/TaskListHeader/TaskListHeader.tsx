@@ -1,7 +1,13 @@
 import React from 'react';
 import { Text, View, Image, Pressable } from 'react-native';
 import { Searchbar } from 'react-native-paper';
-import { displayTasksAtom, filteredTasksAtom, searchQueryAtom, vehicleIdToLicense, vehicleIdToMVA } from '../../atoms';
+import { 
+  displayTasksAtom, 
+  filteredTasksAtom, 
+  searchQueryAtom, 
+  vehicleIdToLicense, 
+  vehicleIdToMVA 
+} from '../../atoms';
 import HeaderButtons from './HeaderButton';
 import { styles } from './styles';
 import { useAtom } from 'jotai';

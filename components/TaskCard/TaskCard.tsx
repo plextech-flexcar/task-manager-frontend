@@ -87,7 +87,7 @@ const TaskCard = ({
                   last={assignedUser ? assignedUser.lastName.charAt(0).toUpperCase() : ''}
                 />
                ) : (
-                <View></View>
+                null
               )} 
             </HStack>
           </VStack>

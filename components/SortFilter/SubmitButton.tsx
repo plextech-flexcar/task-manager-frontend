@@ -18,10 +18,12 @@ import {
   vehicleIdToLicense,
   vehicleIdToMVA,
   displayTasksAtom,
-  allVehiclesAtom
+  allVehiclesAtom,
+  atomSorts
 } from '../../atoms';
 import { searchFilteredTasks } from '../../utils/searchFilteredTasks';
 import GenericButton from '../GenericButton/GenericButton';
+import { SORT_MAP } from './utilitySort';
 
 export default function SubmitButton(props: {
   changeFilter: React.Dispatch<React.SetStateAction<any>>;
@@ -36,6 +38,7 @@ export default function SubmitButton(props: {
   const [searchQuery] = useAtom(searchQueryAtom);
   const [mva] = useAtom(vehicleIdToMVA);
   const [license] = useAtom(vehicleIdToLicense);
+  const [sort] = useAtom(atomSorts)
 
   const onPress = () => {
     console.log(filter)
@@ -43,8 +46,11 @@ export default function SubmitButton(props: {
     setModalVisible(false);
     setFilteredTasks(filteredTasks);
     const newDisplayTasks = searchFilteredTasks(searchQuery, mva, license, filteredTasks)
-    setDisplayTasks(newDisplayTasks);
+    const sortFunction = SORT_MAP[sort] as Function
+    const sortedDisplayTasks = sortFunction(newDisplayTasks)
+    setDisplayTasks(sortedDisplayTasks);
     changeFilter('Sort & Filter');
+    
   };
 
   return (
@@ -57,8 +63,6 @@ export default function SubmitButton(props: {
           />
         </View>
     </SafeAreaView>
-    
-
   );
 }
 
