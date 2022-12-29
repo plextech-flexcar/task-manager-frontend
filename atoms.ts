@@ -11,10 +11,12 @@ export const allVehiclesAtom = atom<Record<number, Vehicle>>({})
 export const vehicleIdToMVA = atom<Record<number, string>>({})
 export const vehicleIdToLicense = atom<Record<number, string>>({})
 
-export const atomModalVisible = atom(false);
 export const currUserAtom = atom<User|null>(null);
 export const allUsersAtom = atom<Record<number, User>>([]);
+
+export const atomModalVisible = atom(false);
 export const searchQueryAtom = atom<string>('')
+export const sortFilterHeaderAtom = atom(false)
 
 export const atomFilterOptions = atom<Record<string, any>>({
   'Market': ['Boston', 'Atlanta', 'Nashville', 'Charlotte'],

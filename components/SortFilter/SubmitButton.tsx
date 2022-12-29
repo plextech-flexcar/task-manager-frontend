@@ -21,6 +21,7 @@ import {
   allVehiclesAtom
 } from '../../atoms';
 import { searchFilteredTasks } from '../../utils/searchFilteredTasks';
+import GenericButton from '../GenericButton/GenericButton';
 
 export default function SubmitButton(props: {
   changeFilter: React.Dispatch<React.SetStateAction<any>>;
@@ -47,15 +48,17 @@ export default function SubmitButton(props: {
   };
 
   return (
-    <SafeAreaView style={styles.whitebg}>
-      <View style={styles1.contain}>
-        <TouchableOpacity onPress={onPress} style={styles1.buttonPurple}>
-          <Text style={[styles1.buttonTextWhite, { textAlign: 'center', justifyContent: 'center' }]}>
-              SHOW RESULTS
-          </Text>
-        </TouchableOpacity>
-      </View>
+    <SafeAreaView style={styles.footer}>
+        <View style={{margin: 15, height: '100%'}}>
+          <GenericButton
+            isPurple={true}
+            functionCall={onPress}
+            text={'SHOW RESULTS'}
+          />
+        </View>
     </SafeAreaView>
+    
+
   );
 }
 
@@ -84,11 +87,13 @@ const styles1 = StyleSheet.create({
     textAlign: 'center',
     backgroundColor: '#2A00A5',
     padding: 10,
-    borderRadius: 30,
+    height: "100%",
+    // borderRadius: 30,
     width: '100%',
     flex: 1,
   },
   buttonTextWhite: {
+    fontfamily: 'Inter',
     color: '#FFF',
     fontWeight: '700',
   },

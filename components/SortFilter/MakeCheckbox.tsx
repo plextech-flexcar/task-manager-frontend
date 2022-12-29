@@ -39,7 +39,7 @@ const MakeCheckbox = (props: {
   };
     return (
     <View style={styles.makesRow}>
-        <Checkbox
+        <Checkbox.Android
           key={title}
           status={checkType}
           onPress={checkboxChangeState}

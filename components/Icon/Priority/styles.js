@@ -2,7 +2,6 @@ import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
   priorityView: {
-    marginRight: 30,
     display: 'flex',
     alignContent: 'center',
     alignItems: 'center',

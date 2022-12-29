@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { TouchableOpacity } from 'react-native';
 import { Box, View, HStack, VStack, Text } from 'native-base';
 import { styles } from './styles.js';

@@ -33,7 +33,7 @@ const CreateTaskScreen = () => {
     const [visibleModal, setVisibleModal] = useState('');
     const assignedPair = (assigned) || assignedStatus==="Open";
     const isDisabled = !([priority, assignedPair, description].every((value) => !!value) && vehicleId !== -1);
-    const searchIcon = require('../../assets/CreateTaskIcons/searchIcon.png');
+    const searchIcon = require('../../assets/images/navigation/search-icon.webp');
     const navigation = useNavigation();
 
     const submitTask = async (inputTask: Task) => {
@@ -59,7 +59,7 @@ const CreateTaskScreen = () => {
             status: assignedStatus === "Open" ? "OPEN" : "ASSIGNED",
             description: description,
             assigned: userId,
-            creator: currUser?.firstName + ' ' + currUser?.lastName,
+            creator: currUser?.id,
             priority: priority
         }
         submitTask(newTask);

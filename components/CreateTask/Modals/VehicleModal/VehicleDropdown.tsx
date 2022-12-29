@@ -22,7 +22,8 @@ const VehicleDropdown = ({
         onPress: React.Dispatch<React.SetStateAction<any>>,
     }) => {
         const [allVehicles] = useAtom(allVehiclesAtom);
-        const downArrow = require('../../../../assets/CreateTaskIcons/downArrow.png')
+        
+        const downArrow = require('../../../../assets/images/navigation/down-arrow.webp')
         const vehicleData = allVehicles[vehicleId]
         return (
             <View style={vehicleId === -1 ? styles.dropdownSection :styles.vehicleDropdownSection}>

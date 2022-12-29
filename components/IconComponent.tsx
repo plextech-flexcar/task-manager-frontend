@@ -25,7 +25,6 @@ const IconComponent = (props: { first: string; last: string }) => {
       bg={[fillColor]}
       width="27px"
       height="27px"
-      marginRight="30px"
     >
       {props.first.charAt(0) + props.last.charAt(0)}
     </Box>

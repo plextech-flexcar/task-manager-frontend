@@ -1,6 +1,6 @@
 import { ScrollView } from 'native-base';
 import React, { useState } from 'react';
-import { Text, View, TouchableOpacity, Image } from 'react-native';
+import { Text, View, TouchableOpacity, Image, SafeAreaView } from 'react-native';
 import Modal from 'react-native-modal';
 import CircleCheckBox from './CircleCheckBox';
 import FilterBox from './FilterBox';
@@ -71,7 +71,7 @@ export default function SortFilter() {
   };
 
   return (
-    <View style={styles.sortFilterView}>
+    <SafeAreaView style={styles.sortFilterView}>
       <Modal
         hideModalContentWhileAnimating
         animationOut={'slideOutDown'}
@@ -80,16 +80,16 @@ export default function SortFilter() {
         isVisible={isModalVisible}
         style={styles.view}
         onSwipeComplete={toggleModal}
-        swipeDirection="down"
+        // swipeDirection="down"
       >
-        <View style={styles.modalView}>
+        <SafeAreaView style={styles.modalView}>
           <View style={styles.modalHeader}>
             <TouchableOpacity onPress={modalNavigation}>
               <View style={styles.modalIcon}>
                 <Image
                   source={displayModalIcon}
                   style={{ height: 16, width: 16 }}
-                ></Image>
+                />
                 {title !== 'Sort & Filter' ? <Text style={styles.backText}> Back </Text> : <></>}
               </View>
             </TouchableOpacity>
@@ -100,14 +100,14 @@ export default function SortFilter() {
               </View>
             </TouchableOpacity>
           </View>
-          <ScrollView>
-            {filterModal(title)}
-          </ScrollView>
-          <View>
+          <View style={{display: 'flex', justifyContent: 'space-between', height: '90%'}}>
+            <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
+              {filterModal(title)}
+            </ScrollView>
             <SubmitButton changeFilter={changeFilter}/>
           </View>
-        </View>
+        </SafeAreaView>
       </Modal>
-    </View>
+    </SafeAreaView>
   );
 }

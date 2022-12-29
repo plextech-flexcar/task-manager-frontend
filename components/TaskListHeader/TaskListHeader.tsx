@@ -1,7 +1,7 @@
 import React from 'react';
 import { Text, View, Image, Pressable } from 'react-native';
 import { Searchbar } from 'react-native-paper';
-import { displayTasksAtom, allVehiclesAtom, filteredTasksAtom, searchQueryAtom, vehicleIdToLicense, vehicleIdToMVA } from '../../atoms';
+import { displayTasksAtom, filteredTasksAtom, searchQueryAtom, vehicleIdToLicense, vehicleIdToMVA } from '../../atoms';
 import HeaderButtons from './HeaderButton';
 import { styles } from './styles';
 import { useAtom } from 'jotai';
@@ -23,7 +23,7 @@ export default function TaskListHeader() {
     const newDisplayTasks = searchFilteredTasks(query, mva, license, filteredTasks)
     setDisplayTasks(newDisplayTasks);
   };
-  const userIcon = require('../../assets/HeaderIcons/user.webp')
+  const userIcon = require('../../assets/images/header/user-profile.webp')
   const addList = require('../../assets/images/header/create-task.webp');
   const navigation = useNavigation();
   return (
@@ -44,7 +44,6 @@ export default function TaskListHeader() {
           <Pressable onPress={() => {navigation.navigate('CreateTaskScreen')}}>
             <Image source={addList} style={styles.iconSize} />
           </Pressable>
-          
         )}
       </View>
       <View style={styles.headerButtonRow}>
