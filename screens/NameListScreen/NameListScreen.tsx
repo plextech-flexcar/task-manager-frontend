@@ -1,32 +1,41 @@
 import React, { useState } from 'react';
-import { Alert, Pressable, SafeAreaView } from 'react-native';
+import { Pressable, SafeAreaView } from 'react-native';
 import { styles } from './styles';
-import { Name } from '../../models/Name';
 import NameCardList from '../../components/NameCardList/NameCardList';
-import AssignModalFunc from '../../components/TaskAssign/AssignModal';
 import FlatListItemSeparator from '../../components/ItemSeparation';
 import { IconButton, Text } from 'react-native-paper';
-import { FormControl, Input, Modal, Button } from 'native-base';
+import { Searchbar } from 'react-native-paper';
+import { User } from '../../models/User'
+import { allUsersAtom } from '../../atoms';
+import { useAtom } from 'jotai';
 
 const NameListScreen = ({ closeCall, onAssignCall }: any) => {
-  const name1: Name = {
-    first: 'Denver',
-    last: 'Chao',
-  };
-  const nameList: Name[] = [name1, name1, name1, name1, name1, name1];
-
-
-
+  const [users, setUsers] = useAtom(allUsersAtom);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [searchedUsers, setSearchedUsers] = useState(Object.values(users));
+  
+  
+  const onChangeSearch = (query: string) => {
+    setSearchQuery(query)
+    const pattern = new RegExp('^' + query + '[a-zA-Z0-9]*');
+    setSearchedUsers(Object.values(users).filter((elem: User) => {return pattern.test(elem.firstName + ' ' + elem.lastName)}))
+  }
   return (
-
     <SafeAreaView style={styles.view}>
       <Pressable style={styles.icon}>
         <IconButton icon="close" color="#2A00A5" size={20} onPress={() => closeCall()} />
       </Pressable>
       <Text style={styles.text}>Assign Tasks</Text>
-      <AssignModalFunc />
-      <FlatListItemSeparator/>
-      <NameCardList name={nameList} onAssignCall={onAssignCall} />
+      <Searchbar
+        placeholder="Search users"
+        placeholderTextColor="#76757D"
+        onChangeText={onChangeSearch}
+        value={searchQuery}
+        style={styles.searchBar}
+        inputStyle={{ fontSize: 15 }}
+    />
+      <FlatListItemSeparator />
+      <NameCardList users={searchedUsers} onAssignCall={onAssignCall} />
     </SafeAreaView>
 
   );

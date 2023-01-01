@@ -1,12 +1,12 @@
-import { Task } from '../models/Task';
+import { Vehicle } from '../models/Vehicle';
 
 
-export function initialFindMakeAndModel(tasklist: Task[]){
+export function initialFindMakeAndModel(vehicleList: Vehicle[]){
     const makeFilter: {[type : string] : string[]} = {}
-    for (let i = 0; i < tasklist.length; i++) {
+    for (let i = 0; i < vehicleList.length; i++) {
         // if make NOT in dict, add make and model
-        const currMake = tasklist[i].make
-        const currModel = tasklist[i].model
+        const currMake = vehicleList[i].makeName
+        const currModel = vehicleList[i].modelName
         if (!(currMake in makeFilter)){
             makeFilter[currMake] = []
             makeFilter[currMake].push(currModel)
@@ -20,14 +20,15 @@ export function initialFindMakeAndModel(tasklist: Task[]){
         }
         //if model is in list of dict, don't do anything
       }
+      console.log(makeFilter)
       return makeFilter;
 }
 
-export function initialFindMakes(taskList : Task[]) {
+export function initialFindMakes(vehicleList : Vehicle[]) {
     const makeFilter: {[type : string] : string[]} = {}
-    for (let i = 0; i < taskList.length; i++) {
+    for (let i = 0; i < vehicleList.length; i++) {
         // if make NOT in dict, add make and model
-        const currMake = taskList[i].make
+        const currMake = vehicleList[i].makeName
         if (!(currMake in makeFilter)){
             makeFilter[currMake] = []
         }

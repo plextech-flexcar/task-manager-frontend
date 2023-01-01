@@ -1,3 +1,4 @@
+import { Hidden } from 'native-base';
 import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
@@ -6,6 +7,8 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     alignItems: 'center',
     borderBottomWidth: 10,
+    overflow: 'hidden',
+    minHeight: '100%',
   },
 });
 

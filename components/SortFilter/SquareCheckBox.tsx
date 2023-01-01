@@ -2,6 +2,8 @@ import * as React from 'react';
 import { Checkbox } from 'react-native-paper';
 import { atomFilters } from '../../atoms';
 import { useAtom } from 'jotai';
+import { Text, Pressable } from 'react-native';
+import { styles } from './styles.js';
 
 export default function SquareCheckBox(props: {
   checkBoxLabel: string;
@@ -44,15 +46,14 @@ export default function SquareCheckBox(props: {
   };
 
   return (
-    <Checkbox.Item
-      label={checkBoxLabel}
+    <Pressable style={styles.makesRow} onPress={checkFilter}>
+      <Checkbox.Android
       key={checkBoxLabel}
-      position={'leading'}
       status={checked ? 'checked' : 'unchecked'}
-      labelStyle={{ textAlign: 'left' }}
-      onPress={checkFilter}
       uncheckedColor={'#2A00A5'}
       color={'#2A00A5'}
     />
+      <Text style={styles.filterText}>{checkBoxLabel}</Text>
+    </Pressable>
   );
 }

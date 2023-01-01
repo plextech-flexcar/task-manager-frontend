@@ -1,43 +1,34 @@
 import React from 'react';
-import { TouchableOpacity, Image } from 'react-native';
+import { TouchableOpacity } from 'react-native';
 import { Box, View, HStack, VStack, Text } from 'native-base';
 import { styles } from './styles.js';
-import { PRIORITY_ICON_MAP } from './TaskCardPriorityIconMap';
 import { Task } from '../../models/Task.js';
 import { useNavigation } from '@react-navigation/native';
 import IconComponent from '../IconComponent';
 import { useAtom } from 'jotai';
-import { allVehiclesAtom } from '../../atoms';
+import { allUsersAtom, allVehiclesAtom } from '../../atoms';
+import Priority from '../Icon/Priority/index';
 
 const TaskCard = ({
   id,
   vehicleId,
   type,
   date,
-  comment,
-  make,
-  model,
-  color,
-  license,
-  mva,
   priority,
-  age,
   assigned,
-  market,
   status,
-  vehicleStatus,
-  createdBy,
-  carImage,
   description,
-  state,
-  vin,
+  creator
 }: Task) => {
   const [allVehicles] = useAtom(allVehiclesAtom);
-  //change  3 to vehicleid
-  const vehicleData = allVehicles[vehicleId]
-
+  const [allUsers] = useAtom(allUsersAtom);
+  const vehicleData = allVehicles[vehicleId];
+  const assignedUser = allUsers[assigned]
   const navigation = useNavigation();
-  const calculateAge = (age: number) => {
+  const calculateAge = (age?: number) => {
+    if (!age) {
+      return null
+    }
     const minutes = Math.floor(age / 60000);
     const hours = Math.floor(minutes / 60);
     const days = Math.floor(hours / 24);
@@ -46,33 +37,21 @@ const TaskCard = ({
     } else if (hours < 24) {
       return hours === 1 ? '1 hour old' : hours + ' hours old';
     }
-    return days === 1 ? '1 day old' : hours + ' days old';
+    return days === 1 ? '1 day old' : days + ' days old';
   };
-
   return (
     <TouchableOpacity
       onPress={() =>
         navigation.navigate('TaskInfoScreen', {
-          id: id,
-          vehicleId: vehicleId,
-          type: type,
-          age: calculateAge(age),
-          assigned: assigned,
-          createdBy: createdBy,
-          date: date,
-          comment: comment,
-          make: make,
-          model: model,
-          color: color,
-          license: license,
-          mva: mva,
-          priority: priority,
-          status: status,
-          vehicleStatus: vehicleStatus,
-          carImage: carImage,
-          description: description,
-          state: state,
-          vin: vin,
+          id,
+          vehicleId,
+          type,
+          date,
+          description,
+          priority,
+          assigned,
+          status,
+          creator
         })
       }
       style={styles.card}
@@ -86,13 +65,10 @@ const TaskCard = ({
                   <Text style={styles.taskHeading}>{type}</Text>
                 </View>
               </Box>
-              <Image
-                source={PRIORITY_ICON_MAP[priority]}
-                style={{ width: 27, height: 27 }}
-              />
+              <Priority priority={priority} />
             </HStack>
             <View>
-              <Text style={styles.taskDateText}>{calculateAge(age)}</Text>
+              <Text style={styles.taskDateText}>{calculateAge(Date.now() - date)}</Text>
             </View>
             <View>
               <Text style={styles.vehicleText}>
@@ -105,10 +81,14 @@ const TaskCard = ({
                   {vehicleData?.license}, {vehicleData?.state} • {vehicleData?.mva}
                 </Text>
               </View>
-              <IconComponent
-                first={assigned ? assigned.split(' ')[0].charAt(0) : ''}
-                last={assigned ? assigned.split(' ')[1].charAt(0) : ''}
-              />
+              {assigned !== -1 ? (
+                <IconComponent
+                  first={assignedUser ? assignedUser.firstName.charAt(0).toUpperCase() : ''}
+                  last={assignedUser ? assignedUser.lastName.charAt(0).toUpperCase() : ''}
+                />
+               ) : (
+                null
+              )} 
             </HStack>
           </VStack>
         </Box>

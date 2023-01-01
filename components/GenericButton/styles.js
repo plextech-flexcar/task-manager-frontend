@@ -14,9 +14,12 @@ export const styles = StyleSheet.create({
   buttonTextPurple: {
     color: '#2A00A5',
     fontWeight: '700',
+    fontSize: 17,
   },
   buttonPurple: {
     textAlign: 'center',
+    borderWidth: 2,
+    borderColor: '#2A00A5',
     backgroundColor: '#2A00A5',
     padding: 10,
     borderRadius: 30,
@@ -26,6 +29,17 @@ export const styles = StyleSheet.create({
   buttonTextWhite: {
     color: '#FFFFFF',
     fontWeight: '700',
+    fontSize: 17,
+  },
+  buttonDisabled: {
+    textAlign: 'center',
+    borderWidth: 2,
+    borderColor: '#BABABE',
+    backgroundColor: '#BABABE',
+    padding: 10,
+    borderRadius: 30,
+    width: '100%',
+    flex: 1,
   },
   contain: {
     marginTop: 20,

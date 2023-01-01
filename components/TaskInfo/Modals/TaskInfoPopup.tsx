@@ -1,29 +1,48 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Alert, SafeAreaView, Modal } from 'react-native';
 import { HStack, View } from 'native-base';
-import { styles } from '../../../screens/TaskInfoScreen/TaskInfoStyles';
 import GenericButton from '../../GenericButton/GenericButton';
 import NameListScreen from '../../../screens/NameListScreen/NameListScreen';
-import ResolveTask from './ResolveTask';
-import ReopenTask from './ReopenTask';
-import LeaveComment from './LeaveComment';
+import ResolveTask from './ResolveTask/ResolveTask';
+import ReopenTask from './ReopenTask/ReopenTask';
+import LeaveComment from './LeaveComment/LeaveComment';
 import { styles1 } from './TaskInfoPopupStyles';
-const TaskInfoPopup = (props) => {
+import { User } from '../../../models/User';
+import { useAtom } from 'jotai';
+import { allTasksAtom } from '../../../atoms';
+const TaskInfoPopup = (
+  {
+    assigned,
+    taskId,
+    comments,
+    setComments,
+  } : {
+    assigned: number,
+    taskId: number|undefined,
+    comments: number[],
+    setComments: React.Dispatch<React.SetStateAction<never[]>>
+  }) => {
   const [showModal, setShowModal] = useState(false);
-  const { assigned, taskId, comments, setComments } = props;
-  const [resolve, setResolve] = useState(assigned !== '');
+  const [resolve, setResolve] = useState(assigned !== -1);
   const [resolveModal, setResolveModal] = useState(false);
   const [finalResolve, setFinalResolve] = useState(false);
   const [reOpenModel, setReopenModal] = useState(false);
   const [commentModal, setCommentModal] = useState(false);
-  const [assignedName, setAssignedName] = useState('');
-  const onAssign = (name: String) => {
+  const [tasks, setTasks] = useAtom(allTasksAtom);
+
+  const onAssign = (user: User) => {
     setShowModal(!showModal);
     setResolve(!resolve);
-    setAssignedName(name);
-    putAssignAPI(name);
+    putAssignAPI(user);
+    const newTasks = tasks.map((task) => {
+      if (task.id === taskId) {
+        task.assigned = user.id;
+      }
+      return task;
+    });
+    setTasks(newTasks);
   };
-  const putAssignAPI = async (name: String) => {
+  const putAssignAPI = async (user: User) => {
     fetch(`http://localhost:8080/api/v1/assign/${taskId}`, {
       mode: 'cors',
       method: 'PUT',
@@ -32,7 +51,7 @@ const TaskInfoPopup = (props) => {
         'Accept': 'application/json',
         'Origin': 'http://localhost:19006',
       },
-      body: JSON.stringify({ name: name }),
+      body: JSON.stringify(user),
     });
   };
   const onShowToggle = () => {
@@ -59,7 +78,7 @@ const TaskInfoPopup = (props) => {
     setCommentModal(!commentModal);
   };
 
-  const personSearch = require('../../../assets/person_search.webp');
+  const personSearch = require('../../../assets/images/navigation/person-search.webp');
   return (
     <SafeAreaView>
       <View>

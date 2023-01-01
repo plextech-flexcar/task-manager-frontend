@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { NativeBaseProvider, extendTheme } from 'native-base';
 import { useAtom } from 'jotai';
 import {
@@ -56,6 +56,19 @@ export default function App() {
 
   let makeAndModel = {};
   let makes = {};
+
+  // // Loads dummy tasks without connecting to backend
+  // const tasks: Task[] = [task1, task2, task3, task2, task1, task1, task3, task3, task2];
+  // useEffect(() => {
+  //   setDisplayTasks(tasks);
+  //   setAllTasks(tasks);
+  //   makeAndModel = initialFindMakeAndModel(tasks);
+  //   makes = initialFindMakes(tasks);
+  //   filterOptions['Make & Model'] = makeAndModel;
+  //   filter['Make & Model'] = makes;
+  //   setFilterOptions(filterOptions);
+  //   setFilter(filter);
+  // }, []);
 
   const getTasksAPI = async () => {
     fetch('http://localhost:8080/api/v1/task', {
