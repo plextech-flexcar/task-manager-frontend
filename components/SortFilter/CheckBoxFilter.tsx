@@ -18,7 +18,7 @@ export default function CheckBoxFilter(props: {
         return (
           <>
           <MakeCheckbox title = {title} changeFilter = {changeFilter}/>
-            {!(lastElem === title) && <View style={styles.lineSeparator}/>}
+            {!(lastElem === title) ? <View style={styles.lineSeparator}/> : <></>}
           </>
         );
       })}

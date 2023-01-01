@@ -17,18 +17,17 @@ const TaskInfoPopup = (
     comments,
     setComments,
   } : {
-    assigned: string,
-    taskId: number,
+    assigned: number,
+    taskId: number|undefined,
     comments: number[],
     setComments: React.Dispatch<React.SetStateAction<never[]>>
   }) => {
   const [showModal, setShowModal] = useState(false);
-  const [resolve, setResolve] = useState(assigned !== '');
+  const [resolve, setResolve] = useState(assigned !== -1);
   const [resolveModal, setResolveModal] = useState(false);
   const [finalResolve, setFinalResolve] = useState(false);
   const [reOpenModel, setReopenModal] = useState(false);
   const [commentModal, setCommentModal] = useState(false);
-  const [assignedName, setAssignedName] = useState('');
   const [tasks, setTasks] = useAtom(allTasksAtom);
 
   const onAssign = (user: User) => {
@@ -44,7 +43,6 @@ const TaskInfoPopup = (
     setTasks(newTasks);
   };
   const putAssignAPI = async (user: User) => {
-    console.log(user);
     fetch(`http://localhost:8080/api/v1/assign/${taskId}`, {
       mode: 'cors',
       method: 'PUT',

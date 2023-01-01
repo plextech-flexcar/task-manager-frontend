@@ -4,13 +4,14 @@ import { styles2 } from './styles.js';
 import { Select, VStack, Image, Text, Box, Spacer } from 'native-base';
 import { Button } from 'native-base';
 import { useAtom } from 'jotai';
-import { userAtom } from '../../atoms';
+import { currUserAtom } from '../../atoms';
+import { useNavigation } from '@react-navigation/native';
 
 const TextBox = () => {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [password, setPassword] = useState('');
-  const [user, setUser] = useAtom(userAtom);
+  const [currUser, setCurrUser] = useAtom(currUserAtom);
   const loginGet = async () => {
     const params = { firstName: firstName, lastName: lastName, password: password };
     const query = new URLSearchParams(params);
@@ -28,7 +29,7 @@ const TextBox = () => {
         if (json === null) {
           alert('User not found. Please try again.');
         } else {
-          setUser(json);
+          setCurrUser(json);
         }
       });
   };
@@ -39,6 +40,7 @@ const TextBox = () => {
       alert('Please fill out all fields');
     }
   };
+  const navigation = useNavigation();
   return (
     <SafeAreaView>
       <VStack style={styles2.menu}>

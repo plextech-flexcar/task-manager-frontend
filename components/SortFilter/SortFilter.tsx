@@ -1,6 +1,6 @@
 import { ScrollView } from 'native-base';
 import React, { useState } from 'react';
-import { Text, View, TouchableOpacity, Image } from 'react-native';
+import { Text, View, TouchableOpacity, Image, SafeAreaView } from 'react-native';
 import Modal from 'react-native-modal';
 import CircleCheckBox from './CircleCheckBox';
 import FilterBox from './FilterBox';
@@ -30,6 +30,19 @@ export default function SortFilter() {
     setModalIcon('backArrow');
   };
 
+  const filterModal = (title: string) => {
+    if (title === "Sort & Filter") {
+      return (<>
+        <CircleCheckBox />
+        <FilterBox changeFilter={changeFilter} />
+      </>);
+    } else if (title === 'Make & Model') {
+      return (<CheckBoxFilter changeFilter={changeFilter} />)
+    } else {
+      return (<SquareBoxes filterCategory={title} />)
+    }
+  }
+
   const resetFilters = () => {
     const defaultFilter = {
       "Market": [],
@@ -58,7 +71,7 @@ export default function SortFilter() {
   };
 
   return (
-    <View style={styles.sortFilterView}>
+    <SafeAreaView style={styles.sortFilterView}>
       <Modal
         hideModalContentWhileAnimating
         animationOut={'slideOutDown'}
@@ -67,51 +80,33 @@ export default function SortFilter() {
         isVisible={isModalVisible}
         style={styles.view}
         onSwipeComplete={toggleModal}
-        swipeDirection="down"
       >
-        <View style={styles.modalView}>
+        <SafeAreaView style={styles.modalView}>
           <View style={styles.modalHeader}>
             <TouchableOpacity onPress={modalNavigation}>
               <View style={styles.modalIcon}>
                 <Image
                   source={displayModalIcon}
                   style={{ height: 16, width: 16 }}
-                ></Image>
-                {title !== 'Sort & Filter' && <Text style={styles.backText}> Back </Text>}
+                />
+                {title !== 'Sort & Filter' ? <Text style={styles.backText}> Back </Text> : <></>}
               </View>
             </TouchableOpacity>
             <Text style={styles.modalHeaderTitle}>{title}</Text>
             <TouchableOpacity onPress={resetFilters}>
               <View style={styles.modalIcon}>
-                {title === 'Sort & Filter' && <Text style={styles.resetText}> Reset </Text>}
+                {title === 'Sort & Filter' ? <Text style={styles.resetText}> Reset </Text> : <></>}
               </View>
             </TouchableOpacity>
           </View>
-          <ScrollView>
-            {title === 'Sort & Filter' && (
-              <>
-                <CircleCheckBox />
-                <FilterBox changeFilter={changeFilter} />
-              </>
-            )}
-            {title === 'Market' && <SquareBoxes filterCategory={title} />}
-            {title === 'Task Type' && <SquareBoxes filterCategory={title} />}
-            {title === 'Make & Model' && (
-              <CheckBoxFilter changeFilter={changeFilter} />
-            )}
-            {title === 'Status' && <SquareBoxes filterCategory={title} />}
-            {title === 'Priority' && <SquareBoxes filterCategory={title} />}
-            {title === 'Quick View' && <SquareBoxes filterCategory={title} />}
-            {title in filterOptions['Make & Model'] && (
-              <SquareBoxes filterCategory={title} />
-            )}
-          </ScrollView>
-          <View>
-            {' '}
-            <SubmitButton changeFilter={changeFilter} />{' '}
+          <View style={{display: 'flex', justifyContent: 'space-between', height: '90%'}}>
+            <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
+              {filterModal(title)}
+            </ScrollView>
+            <SubmitButton changeFilter={changeFilter}/>
           </View>
-        </View>
+        </SafeAreaView>
       </Modal>
-    </View>
+    </SafeAreaView>
   );
 }

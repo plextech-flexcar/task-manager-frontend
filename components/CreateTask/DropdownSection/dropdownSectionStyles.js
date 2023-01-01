@@ -13,9 +13,19 @@ const styles = StyleSheet.create({
         height: "9%",
         width: "90%",
         alignSelf: "center",
+        margin: 15,
+        display: "flex",
+        justifyContent: "center",
+    },
+    vehicleDropdownSection: {
+        minHeight: "10%",
+        maxHeight: "25%",
+        width: "90%",
+        alignSelf: "center",
         margin: 10,
         display: "flex",
         justifyContent: "center",
+        paddingVertical: 10
     },
     dropdown : {
         height: "100%",

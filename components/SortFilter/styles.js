@@ -7,6 +7,7 @@ const styles = StyleSheet.create({
         alignItems: "center",
     },
     sortFilterView: { 
+        height: '85%',
         flex: 1, 
         justifyContent: 'center', 
         alignItems: 'center' 
@@ -57,11 +58,12 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     modalView: {
-        height: '85%',
+        height: '80%',
         backgroundColor: '#EDEDED',
         borderTopLeftRadius: 20,
         borderTopRightRadius: 20,
         overflow: 'hidden',
+        display: 'flex',
     },
     modalHeader: {
         paddingTop: 20,

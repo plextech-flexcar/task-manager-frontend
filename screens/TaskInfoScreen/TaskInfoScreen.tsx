@@ -4,7 +4,7 @@ import { Divider, VStack, HStack } from 'native-base';
 import TaskInfoHeader from '../../components/TaskInfo/TaskInfoHeader';
 import TaskInfoPopup from '../../components/TaskInfo/Modals/TaskInfoPopup';
 import { styles } from './TaskInfoStyles.js';
-import { allVehiclesAtom } from '../../atoms';
+import { allVehiclesAtom, allUsersAtom } from '../../atoms';
 import { useAtom } from 'jotai';
 import { Status } from '../../models/Status';
 import { Comment } from '../../models/Comment';
@@ -13,33 +13,51 @@ import Priority from '../../components/Icon/Priority/index';
 const TaskInfoScreen = ({ route }) => {
   const {
     id,
-    type,
-    status,
     vehicleId,
-    age,
-    assigned,
-    createdBy,
+    type,
     date,
-    model,
-    priority,
-    vehicleStatus,
     description,
+    priority,
+    assigned,
+    status,
+    creator
   } = route.params;
   const [allVehicles] = useAtom(allVehiclesAtom);
-  //change  3 to vehicleid
-  console.log("HIII")
-  console.log(vehicleId)
+  const [allUsers] = useAtom(allUsersAtom);
+  const creatorUser = allUsers[creator]
+  const assignedUser = allUsers[assigned]
   const vehicleData = allVehicles[vehicleId];
   const [comments, setComments] = useState([]);
+
+  const calculateAge = (age?: number) => {
+    if (!age) {
+      return null
+    }
+    const minutes = Math.floor(age / 60000);
+    const hours = Math.floor(minutes / 60);
+    const days = Math.floor(hours / 24);
+    if (minutes < 60) {
+      return minutes === 1 ? '1 minute old' : minutes + ' minutes old';
+    } else if (hours < 24) {
+      return hours === 1 ? '1 hour old' : hours + ' hours old';
+    }
+    return days === 1 ? '1 day old' : days + ' days old';
+  };
 
   const getInitials = (name: string) => {
     return name
       .split(' ')
-      .map((n) => n[0])
+      .map((n) => n[0].toUpperCase())
       .join('');
   };
   const fromEpochToDate = (date: number) => {
-    return new Date(date).toLocaleString();
+    return new Date(date).toLocaleString("en-US", {
+      year: "numeric",
+      month: "numeric",
+      day: "numeric",
+      hour: "numeric",
+      minute: "numeric"
+    });
   };
 
   const statusVar = (status: Status) => {
@@ -69,7 +87,6 @@ const TaskInfoScreen = ({ route }) => {
   useEffect(() => {
     getCommentsAPI(id);
   }, []);
-  console.log('COMMENTS: ', comments);
   return (
     <SafeAreaView style={styles.whitebg}>
       <TaskInfoHeader />
@@ -78,26 +95,26 @@ const TaskInfoScreen = ({ route }) => {
         <View style={styles.headerHorizontalStack}>
           <View style={styles.headerContainer}>
             <Text style={styles.header}>
-              {type} {model}
+              {type} {vehicleData?.modelName}
             </Text>
           </View>
 
           <Priority priority={priority} showName={true}/>
         </View>
 
-        <Text style={styles.textDate}>{age}</Text>
+        <Text style={styles.textDate}>{calculateAge(Date.now() - date)}</Text>
         <View style={styles.viewMarginLeft}>
           <HStack>
             <Text style={styles.textTop}>{statusVar(status)}</Text>
-            {assigned && status !== Status.OPEN ? (
+            {assigned !== -1 && status !== statusVar(Status.OPEN) ? (
               <View style={styles.assignBox}>
-                <Text style={styles.assignBoxText}>{getInitials(assigned)}</Text>
+                <Text style={styles.assignBoxText}>{getInitials(assignedUser.firstName + ' ' + assignedUser.lastName)}</Text>
               </View>
             ) : null}
           </HStack>
         </View>
         <Text style={[styles.textTop, styles.viewMarginLeft]}>
-          Created by: {createdBy} on {fromEpochToDate(date)}
+          Created by: {creatorUser.firstName + ' ' + creatorUser.lastName} on {fromEpochToDate(date)}
         </Text>
       </View>
 
@@ -111,8 +128,8 @@ const TaskInfoScreen = ({ route }) => {
               {vehicleData?.license}, {vehicleData?.state} • {vehicleData?.mva}
             </Text>
             <Text style={styles.textTop}>VIN: {vehicleData?.vin}</Text>
-            <View style={vehicleStatus ? styles.availableBox : styles.unavailableBox}>
-              <Text>{vehicleStatus ? 'Available' : 'Unavailable/Service'}</Text>
+            <View style={vehicleData.vehicleStatus ? styles.availableBox : styles.unavailableBox}>
+              <Text>{vehicleData.vehicleStatus ? 'Available' : 'Unavailable/Service'}</Text>
             </View>
           </View>
           <Image style={styles.image} source={{ uri: vehicleData?.carImage }} />

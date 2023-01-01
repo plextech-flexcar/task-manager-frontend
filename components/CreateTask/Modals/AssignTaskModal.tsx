@@ -10,15 +10,18 @@ const AssignTaskModal = (
         showModal,
         changeAssigned,
         onClose,
+        changeUser,
       }: {
         showModal: boolean;
         changeAssigned: (s: string) => void;
         onClose: () => void;
+        changeUser: (u: number) => void
       }
 ) => {
     const onAssign = (user: User) => {
       onClose();
       changeAssigned(user.firstName + ' ' + user.lastName)
+      changeUser(user.id)
     };
     return (
         <Modal

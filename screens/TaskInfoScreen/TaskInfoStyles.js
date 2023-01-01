@@ -1,6 +1,16 @@
 import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
+  footer: { 
+  backgroundColor: '#EDEDED', 
+  height: '7%', 
+  shadowRadius: 10,
+  shadowOffset: { width: 0, height: -8 },
+  marginTop: 4,
+  shadowColor: '#000000',
+  elevation: 4,
+  shadowOpacity: 0.25,
+  },
   whitebg: {
     backgroundColor: '#EDEDED',
   },

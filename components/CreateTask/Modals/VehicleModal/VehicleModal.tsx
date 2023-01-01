@@ -22,12 +22,12 @@ const VehicleModal = (({
     changeVehicle: (vehicleId:number) => void;
     onClose: () => void;
   }) => {
-  const [vehicleId, setVehicleId] = useState(-1);
-  const [allVehicles, setAllVehicles] = useAtom(allVehiclesAtom);
+  const [allVehicles] = useAtom(allVehiclesAtom);
   const [searchQuery, setSearchQuery] = React.useState('');
   const [displayVehicles, setDisplayVehicles] = useState(Object.values(allVehicles))
-  const onSubmit = () => {
-    changeVehicle(vehicleId)
+  const onSubmit = (vehicleId: number) => {
+    changeVehicle(vehicleId);
+    onClose();
   }
   const mva: { [vehicleId: number]: string } = {};
   const license: {[vehicleId: number]: string } = {};
@@ -47,28 +47,24 @@ const VehicleModal = (({
     for (const vehicleId in mva) {
       const vehicleIdNum = Number.parseInt(vehicleId);
       if (pattern.test(mva[vehicleIdNum])) {
-        console.log()
         matches.add(vehicleIdNum);
       }
     }
-    console.log(1)
-    console.log(matches)
+
     for (const vehicleId in license) {
       const vehicleIdNum = Number.parseInt(vehicleId);
       if (pattern.test(license[vehicleIdNum])) {
         matches.add(vehicleIdNum);
       }
     }
-    console.log(2)
-    console.log(matches)
+
     for (const vehicleId in vin) {
       const vehicleIdNum = Number.parseInt(vehicleId);
       if (pattern.test(vin[vehicleIdNum])) {
         matches.add(vehicleIdNum);
       }
     }
-    console.log(3)
-    console.log(matches)
+
     const newDisplayVehicles: Vehicle[] = [];
     matches.forEach((vehicleId: number) => {
       newDisplayVehicles.push(allVehicles[vehicleId])
@@ -109,7 +105,7 @@ const VehicleModal = (({
             />
           </Modal.Header>
           <Modal.Body style={{display: 'flex', justifyContent: 'flex-start'}}>
-            <VehicleList vehicles={displayVehicles}/>
+            <VehicleList vehicles={displayVehicles} changeVehicle={onSubmit}/>
           </Modal.Body>
         </KeyboardAvoidingView>
       </Modal>
