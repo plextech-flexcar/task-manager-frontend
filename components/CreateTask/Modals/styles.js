@@ -25,7 +25,6 @@ export const styles = StyleSheet.create({
   },
   form: {
     placeholderTextColor: "#2A00A5",
-    // placeholderTextColor: '#76757D',
     borderWidth: 2,
     borderRadius: 10,
     borderColor: '#FFFFFF',
@@ -79,7 +78,6 @@ export const styles = StyleSheet.create({
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
     textAlign: 'center',
-    // position: 'fixed',
     bottom: 0,
   },    
   modalHeader: {

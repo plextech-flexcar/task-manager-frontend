@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, ListRenderItem } from 'react-native';
+import { ListRenderItem } from 'react-native';
 import NameCard from '../NameCard/NameCard';
 import FlatListItemSeparator from '../ItemSeparation';
 import { styles } from './styles';

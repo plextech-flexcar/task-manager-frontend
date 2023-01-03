@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Image, SafeAreaView, Text, View } from 'react-native';
 import { Divider, VStack, HStack } from 'native-base';
-import TaskInfoHeader from '../../components/TaskInfo/TaskInfoHeader';
-import TaskInfoPopup from '../../components/TaskInfo/Modals/TaskInfoPopup';
+import TaskInfoHeader from '../../components/TaskInfoModals/TaskInfoHeader';
+import TaskInfoPopup from '../../components/TaskInfoModals/Modals/TaskInfoPopup';
 import { styles } from './TaskInfoStyles.js';
 import { allVehiclesAtom, allUsersAtom } from '../../atoms';
 import { useAtom } from 'jotai';

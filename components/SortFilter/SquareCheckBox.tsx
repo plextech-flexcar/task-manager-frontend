@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { Checkbox } from 'react-native-paper';
 import { atomFilters } from '../../atoms';
 import { useAtom } from 'jotai';

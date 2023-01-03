@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
 
-const styles2 = StyleSheet.create({
+const styles = StyleSheet.create({
   input: {
     height: 45,
     marginLeft: 30,
@@ -26,4 +26,4 @@ const styles2 = StyleSheet.create({
   },
 });
 
-export { styles2 };
+export { styles };

@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, HStack, VStack, Text } from 'native-base';
 import { styles } from './styles.js';
-import { User } from '../../models/Name.js';
+import { User } from '../../models/User';
 import IconComponent from '../IconComponent';
 import { Pressable } from 'react-native';
 const NameCard = (props: { user: User; onAssignCall: any }) => {

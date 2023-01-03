@@ -9,7 +9,7 @@ import LeaveComment from './LeaveComment/LeaveComment';
 import { styles1 } from './TaskInfoPopupStyles';
 import { User } from '../../../models/User';
 import { useAtom } from 'jotai';
-import { allTasksAtom } from '../../../atoms';
+import { allTasksAtom, currUserAtom } from '../../../atoms';
 const TaskInfoPopup = (
   {
     assigned,
@@ -29,6 +29,7 @@ const TaskInfoPopup = (
   const [reOpenModel, setReopenModal] = useState(false);
   const [commentModal, setCommentModal] = useState(false);
   const [tasks, setTasks] = useAtom(allTasksAtom);
+  const [currUser] = useAtom(currUserAtom)
 
   const onAssign = (user: User) => {
     setShowModal(!showModal);
@@ -105,7 +106,7 @@ const TaskInfoPopup = (
         showModal={commentModal}
         onClose={commentToggle}
         taskId={taskId}
-        postedBy={'User Name'}
+        postedBy={currUser?.firstName + ' ' + currUser?.lastName}
         comments={comments}
         setComments={setComments}
       />

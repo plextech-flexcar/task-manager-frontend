@@ -1,6 +1,6 @@
 import { HStack, VStack } from "native-base";
 import React, { useState } from "react";
-import { SafeAreaView, ScrollView, View, Text, ImageSourcePropType } from "react-native";
+import { SafeAreaView, ScrollView, View, ImageSourcePropType } from "react-native";
 import CreateTaskHeader from "../../components/CreateTask/CreateTaskHeader/CreateTaskHeader";
 import DropdownSection from "../../components/CreateTask/DropdownSection/DropdownSection";
 import StatusModal from "../../components/CreateTask/Modals/StatusModal";
@@ -59,7 +59,7 @@ const CreateTaskScreen = () => {
             status: assignedStatus === "Open" ? "OPEN" : "ASSIGNED",
             description: description,
             assigned: userId,
-            creator: currUser?.id,
+            creator: currUser ? currUser.id : -1,
             priority: priority
         }
         submitTask(newTask);
@@ -167,7 +167,6 @@ const CreateTaskScreen = () => {
             <VehicleModal
                 showModal={visibleModal==="Vehicle MVA, VIN, or License plate"}
                 changeVehicle={(vehicleId) => setVehicleId(vehicleId)}
-                //add more functionality to change dropdown to display
                 onClose={() => setVisibleModal('')}
             />
             <AssignTaskModal

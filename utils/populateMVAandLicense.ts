@@ -1,6 +1,6 @@
 import { Vehicle } from "../models/Vehicle";
 
-export const populateMVAandLicense = (allVehicles: { [vehicleId: number]: Vehicle}) => {
+export const populateMVAAndLicense = (allVehicles: { [vehicleId: number]: Vehicle}) => {
     const mva: { [vehicleId: number]: string } = {};
     const license: {[vehicleId: number]: string } = {};
     for (const vehicleId in allVehicles) {

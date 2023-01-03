@@ -1,10 +1,8 @@
 import React from 'react';
 import {
   SafeAreaView,
-  Text,
   View,
   StyleSheet,
-  TouchableOpacity,
 } from 'react-native';
 import { styles } from '../../screens/TaskInfoScreen/TaskInfoStyles.js';
 import { filterTasks } from './utilityFilter';
@@ -41,7 +39,6 @@ export default function SubmitButton(props: {
   const [sort] = useAtom(atomSorts)
 
   const onPress = () => {
-    console.log(filter)
     const filteredTasks = filterTasks(filter, allTasks, allVehicles);
     setModalVisible(false);
     setFilteredTasks(filteredTasks);
@@ -65,55 +62,3 @@ export default function SubmitButton(props: {
     </SafeAreaView>
   );
 }
-
-const styles1 = StyleSheet.create({
-  buttonGroup: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    width: '100%',
-  },
-  button: {
-    textAlign: 'center',
-    backgroundColor: '#FFF',
-    borderColor: '#2A00A5',
-    borderWidth: 2,
-    padding: 10,
-    borderRadius: 30,
-    width: '100%',
-    flex: 1,
-  },
-  buttonText: {
-    color: '#2A00A5',
-    fontWeight: '700',
-  },
-  buttonPurple: {
-    textAlign: 'center',
-    backgroundColor: '#2A00A5',
-    padding: 10,
-    height: "100%",
-    // borderRadius: 30,
-    width: '100%',
-    flex: 1,
-  },
-  buttonTextWhite: {
-    fontfamily: 'Inter',
-    color: '#FFF',
-    fontWeight: '700',
-  },
-  contain: {
-    marginTop: 20,
-    marginBottom: 20,
-    marginHorizontal: 20,
-  },
-  modal: {
-    width: '100%',
-    borderBottomWidth: 0,
-    textAlign: 'center',
-  },
-  bottomModal: {
-    marginBottom: 0,
-    marginTop: 'auto',
-    borderBottomWidth: 0,
-  },
-});

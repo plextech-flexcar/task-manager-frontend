@@ -16,7 +16,6 @@ const CreateTaskHeader = () => {
         />
           <Text style={styles.backText}> All Tasks </Text>
       </Pressable>
-
       <View style={styles.createTaskHeader}>
         <Text style={{ fontWeight: "bold" }}>Create Task</Text>
       </View>

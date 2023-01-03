@@ -20,7 +20,6 @@ const GenericButton = ({
   isDisabled?: boolean;
 }) => {
   const funcSelect = () => {
-    //Ask Taiga about the cancelResolve and the commentCall parameter
     if (functionCall) {
       return functionCall;
     } else if (cancelResolve) {

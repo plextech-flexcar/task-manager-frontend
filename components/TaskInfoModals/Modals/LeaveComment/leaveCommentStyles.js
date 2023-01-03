@@ -1,5 +1,8 @@
 import { StyleSheet } from 'react-native';
-export const styles1 = StyleSheet.create({
+export const styles = StyleSheet.create({
+  whitebg: {
+    backgroundColor: '#EDEDED',
+  },
   keyboardView: {
     backgroundColor: '#EDEDED',
     width: '100%',

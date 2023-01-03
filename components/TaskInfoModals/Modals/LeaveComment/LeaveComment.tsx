@@ -9,7 +9,7 @@ import {
   Pressable,
 } from 'react-native';
 import { Modal, FormControl } from 'native-base';
-import { styles1 } from './leaveCommentStyles';
+import { styles } from './leaveCommentStyles';
 const LeaveComment = ({
   showModal,
   onClose,
@@ -17,6 +17,13 @@ const LeaveComment = ({
   postedBy,
   comments,
   setComments,
+} : {
+  showModal: boolean,
+  onClose: () => void,
+  taskId: number | undefined,
+  postedBy: string,
+  comments: number[],
+  setComments: (React.Dispatch<React.SetStateAction<any>>),
 }) => {
   const putComment = async (postedBy: String, content: String, taskId: String) => {
     fetch(`http://localhost:8080/api/v1/newComment`, {
@@ -37,20 +44,20 @@ const LeaveComment = ({
   const [comment, setComment] = useState('');
   const submitButton = require('../../../../assets/images/navigation/submit.webp')
   return (
-    <View style={styles1.contain}>
+    <View style={styles.contain}>
       <Modal
         _backdrop={{ bg: '#2A00A5' }}
         isOpen={showModal}
         onClose={() => onClose()}
         safeAreaTop={true}
-        style={styles1.modal}
+        style={styles.modal}
         size={'full'}
       >
         <KeyboardAvoidingView
-          style={styles1.keyboardView}
+          style={styles.keyboardView}
           behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
         >
-          <Modal.Content style={styles1.bottomModal} justifyContent={'center'}>
+          <Modal.Content style={styles.bottomModal} justifyContent={'center'}>
             <Modal.CloseButton
               variant="#2A00A5"
               tintColor="#2A00A5"
@@ -75,7 +82,7 @@ const LeaveComment = ({
               </Text>
             </Modal.Header>
             <Modal.Footer style={{ borderTopWidth: 0, elevation: 0, margin: 0 }}>
-              <FormControl style={styles1.form}>
+              <FormControl style={styles.form}>
                 <View
                   style={{
                     flexDirection: 'row',
@@ -89,7 +96,7 @@ const LeaveComment = ({
                     <TextInput
                       placeholder="Reason"
                       autoFocus={false}
-                      style={styles1.input}
+                      style={styles.input}
                       onChangeText={(text) => setComment(text)}
                       onSubmitEditing={() => onClose()}
                     />

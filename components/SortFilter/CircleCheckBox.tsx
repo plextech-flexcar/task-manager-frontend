@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { RadioButton } from 'react-native-paper';
 import { View } from 'native-base';
 import { atomSorts } from '../../atoms';

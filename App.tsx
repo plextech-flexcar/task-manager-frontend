@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { NativeBaseProvider, extendTheme } from 'native-base';
 import { useAtom } from 'jotai';
 import {
@@ -26,20 +26,7 @@ import TaskInfoScreen from './screens/TaskInfoScreen/TaskInfoScreen';
 import TaskListScreen from './screens/TaskListScreen/TaskListScreen';
 import { populateVehicles } from './utils/populateVehicles';
 import { populateUsers } from './utils/populateUsers';
-import { populateMVAandLicense } from './utils/populateMVAandLicense';
-
-// Define the config
-const config = {
-  useSystemColorMode: false,
-  initialColorMode: 'dark',
-};
-
-// extend the theme
-export const theme = extendTheme({ config });
-type MyThemeType = typeof theme;
-declare module 'native-base' {
-  interface ICustomTheme extends MyThemeType {}
-}
+import { populateMVAAndLicense } from './utils/populateMVAAndLicense';
 
 const Stack = createNativeStackNavigator();
 export default function App() {
@@ -56,19 +43,6 @@ export default function App() {
 
   let makeAndModel = {};
   let makes = {};
-
-  // // Loads dummy tasks without connecting to backend
-  // const tasks: Task[] = [task1, task2, task3, task2, task1, task1, task3, task3, task2];
-  // useEffect(() => {
-  //   setDisplayTasks(tasks);
-  //   setAllTasks(tasks);
-  //   makeAndModel = initialFindMakeAndModel(tasks);
-  //   makes = initialFindMakes(tasks);
-  //   filterOptions['Make & Model'] = makeAndModel;
-  //   filter['Make & Model'] = makes;
-  //   setFilterOptions(filterOptions);
-  //   setFilter(filter);
-  // }, []);
 
   const getTasksAPI = async () => {
     fetch('http://localhost:8080/api/v1/task', {
@@ -109,7 +83,7 @@ export default function App() {
         setFilter(filter);
         const vehicles = populateVehicles(json)
         setAllVehicles(vehicles);
-        const mvaLicensePair = populateMVAandLicense(vehicles)
+        const mvaLicensePair = populateMVAAndLicense(vehicles)
         setMVA(mvaLicensePair[0])
         setLicense(mvaLicensePair[1])
       });
@@ -144,8 +118,7 @@ export default function App() {
             headerShown: false,
           }}
         >
-          {/* CHANGE THIS TO USER */}
-          {currUser == null ? (
+          {currUser ? (
             <>
               <Stack.Screen name="TaskListScreen" component={TaskListScreen} />
               <Stack.Screen name="TaskInfoScreen" component={TaskInfoScreen} />

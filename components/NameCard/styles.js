@@ -5,7 +5,6 @@ const styles = StyleSheet.create({
     width: '100%',
     backgroundColor:'white',
     flex: 1,
-    
   },
   taskHeading: {
     fontfamily: 'Inter',
@@ -14,7 +13,6 @@ const styles = StyleSheet.create({
     color: 'black',
     marginTop: '1.8%',
     marginLeft: '3%'
-
   },
   textSpacing: {
     marginLeft: 20,

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { SafeAreaView, TextInput } from 'react-native';
-import { styles2 } from './styles.js';
+import { styles } from './styles.js';
 import { Select, VStack, Image, Text, Box, Spacer } from 'native-base';
 import { Button } from 'native-base';
 import { useAtom } from 'jotai';
@@ -45,7 +45,7 @@ const TextBox = () => {
   };
   return (
     <SafeAreaView>
-      <VStack style={styles2.menu}>
+      <VStack style={styles.menu}>
         <Image
           source={{
             uri: 'https://venturefizz.com/sites/default/files/m/bizzpages/logo/untitled-lexcar2022logo.png',
@@ -77,13 +77,8 @@ const TextBox = () => {
           <Select.Item label="Manager" value="MANAGER" />
           <Select.Item label="Superuser" value="SUPERUSER" />
         </Select>
-
-        <Spacer>
-          <Box height={10} />
-        </Spacer>
-
         <TextInput
-          style={styles2.input}
+          style={styles.input}
           onChangeText={(text) => setFirstName(text)}
           value={firstName}
           clearTextOnFocus={true}
@@ -91,7 +86,7 @@ const TextBox = () => {
           placeholderTextColor={'grey'}
         />
         <TextInput
-          style={styles2.input}
+          style={styles.input}
           onChangeText={(text) => setLastName(text)}
           value={lastName}
           clearTextOnFocus={true}
@@ -99,19 +94,19 @@ const TextBox = () => {
           placeholderTextColor={'grey'}
         />
         <TextInput
-          style={styles2.input}
+          style={styles.input}
           onChangeText={(text) => setPassword(text)}
           value={password}
           clearTextOnFocus={true}
           placeholder={'Password'}
           placeholderTextColor={'grey'}
         />
-        <Button onPress={() => onSubmitFunc()} style={styles2.button} size={'lg'}>
+        <Button onPress={() => onSubmitFunc()} style={styles.button} size={'lg'}>
           REGISTER
         </Button>
         <Button
           onPress={() => navigation.navigate('NavigateScreen')}
-          style={styles2.button}
+          style={styles.button}
           size={'lg'}
         >
           <Text color={'white'}>BACK</Text>

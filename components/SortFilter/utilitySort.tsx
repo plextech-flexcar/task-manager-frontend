@@ -1,8 +1,5 @@
 import { Task } from "../../models/Task"
-
 //take in list of task objects and sort them
-
-
 
 const sortByPriorityAscending = (tasks: Task[]) => {
     return tasks.sort((a: Task, b: Task) => (a.priority - b.priority));

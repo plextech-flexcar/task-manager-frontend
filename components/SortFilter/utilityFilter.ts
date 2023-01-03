@@ -1,6 +1,6 @@
 import { Task } from "../../models/Task";
 import { Vehicle } from "../../models/Vehicle";
-import { PRIORITY_MAPPING } from "../TaskCard/priorityToNumber";
+import { PRIORITY_MAP } from "../Icon/Priority";
 
 export function filterTasks(filter : any, allTasks : Task[], allVehicles: Record<number, Vehicle>) {
     
@@ -13,8 +13,7 @@ export function filterTasks(filter : any, allTasks : Task[], allVehicles: Record
             (filter["Market"].length === 0 || filter["Market"].includes(vehicle.marketName)) &&
             (filter["Task Type"].length === 0 || filter["Task Type"].includes(task.type)) &&
             (filter["Status"].length === 0 || filter["Status"].includes(task.status)) &&
-             // TO-DO: map priorities to strings PLEASE or else will break
-             (filter["Priority"].length === 0 || filter["Priority"].includes(PRIORITY_MAPPING[task.priority])) &&
+             (filter["Priority"].length === 0 || filter["Priority"].includes(PRIORITY_MAP[task.priority].name)) &&
             (
                 typeof(vehicle) != "undefined" &&
                 vehicle.makeName in filter["Make & Model"] && 

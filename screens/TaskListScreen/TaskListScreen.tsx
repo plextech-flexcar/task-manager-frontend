@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { SafeAreaView } from 'react-native';
 import { styles } from './styles';
 import TaskCardList from '../../components/TaskCardList/TaskCardList';
@@ -8,7 +8,7 @@ import { displayTasksAtom } from '../../atoms';
 import { useAtom } from 'jotai';
 
 const TaskListScreen = () => {
-  const [displayTasks, setDisplayTasks] = useAtom(displayTasksAtom);
+  const [displayTasks] = useAtom(displayTasksAtom);
   return (
     <SafeAreaView style={styles.view}>
       <TaskListHeader />

@@ -1,14 +1,10 @@
 import React, { useState } from 'react';
-import { SafeAreaView, TextInput } from 'react-native';
-import { styles2 } from './styles.js';
-import { Select, VStack, Image, Text, Box } from 'native-base';
+import { SafeAreaView } from 'react-native';
+import { styles } from './styles.js';
+import { Image, Text, } from 'native-base';
 import { Button } from 'native-base';
 
 const NavigateScreen = ({ navigation }) => {
-  const [text1, onChangeText1] = useState('');
-  const [text2, onChangeText2] = useState('');
-  const [text3, onChangeText3] = useState('');
-  const [language, setLanguage] = useState('');
 
   return (
     <SafeAreaView>
@@ -31,14 +27,14 @@ const NavigateScreen = ({ navigation }) => {
 
       <Button
         onPress={() => navigation.navigate('RegisterScreen')}
-        style={styles2.button}
+        style={styles.button}
         size={'lg'}
       >
         REGISTER
       </Button>
       <Button
         onPress={() => navigation.navigate('LoginScreen')}
-        style={styles2.button}
+        style={styles.button}
         size={'lg'}
       >
         LOGIN

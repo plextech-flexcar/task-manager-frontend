@@ -9,7 +9,7 @@ import { atomFilterOptions, atomFilters, atomModalVisible } from '../../atoms';
 import { useAtom } from 'jotai';
 import SubmitButton from './SubmitButton';
 import { styles } from './styles.js';
-import CheckBoxFilter from './CheckBoxFilter';
+import MakesCheckbox from './MakesCheckbox';
 
 export default function SortFilter() {
   const [isModalVisible, setModalVisible] = useAtom(atomModalVisible);
@@ -37,7 +37,7 @@ export default function SortFilter() {
         <FilterBox changeFilter={changeFilter} />
       </>);
     } else if (title === 'Make & Model') {
-      return (<CheckBoxFilter changeFilter={changeFilter} />)
+      return (<MakesCheckbox changeFilter={changeFilter} />)
     } else {
       return (<SquareBoxes filterCategory={title} />)
     }
@@ -99,7 +99,7 @@ export default function SortFilter() {
               </View>
             </TouchableOpacity>
           </View>
-          <View style={{display: 'flex', justifyContent: 'space-between', height: '90%'}}>
+          <View style={styles.modalContent}>
             <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
               {filterModal(title)}
             </ScrollView>

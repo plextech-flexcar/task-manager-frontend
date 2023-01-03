@@ -25,8 +25,6 @@ const PriorityModal = ({
       [3, 'High'],
       [4, 'Top'],
     ];
-    
-    const lastElem = priority[3][1];
 
     const onPress = (p:number, t:string) => {
       const icon = PRIORITY_MAP[p].link;
@@ -67,7 +65,7 @@ const PriorityModal = ({
                             <Text style={styles.priorityText}> {pair[1]} </Text>
                           </Pressable>
                         </View>
-                        {!(lastElem === pair[1]) && <View style={styles.lineSeparator}/>}
+                        {!('High' === pair[1]) && <View style={styles.lineSeparator}/>}
                         </>
                         )
                     })}

@@ -1,5 +1,4 @@
-import * as React from 'react';
-import { StyleSheet } from 'react-native';
+import React from 'react';
 import { View } from 'native-base';
 import SquareCheckBox from './SquareCheckBox';
 import { useAtom } from 'jotai';

@@ -6,7 +6,7 @@ import { styles } from './styles.js';
 import { useAtom } from 'jotai';
 import { atomFilterOptions, atomFilters } from '../../atoms';
 
-const MakeCheckbox = (props: {
+const ModelsCheckbox = (props: {
   changeFilter: React.Dispatch<React.SetStateAction<any>>;
   title: string;
 }) => {
@@ -61,4 +61,4 @@ const MakeCheckbox = (props: {
     )
 }
 
-export default MakeCheckbox;
+export default ModelsCheckbox;

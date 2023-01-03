@@ -4,7 +4,7 @@ import { Image, ImageSourcePropType, Text } from 'react-native';
 import styles from './styles';
 
 /**
- * A mapping for every priority level that provies the name, URI link, and color.
+ * A mapping for every priority level that provides the name, URI link, and color.
  */
 export const PRIORITY_MAP: {
   [key: number]: { name: string; link: ImageSourcePropType; color: string };

@@ -10,7 +10,7 @@ import { allUsersAtom } from '../../atoms';
 import { useAtom } from 'jotai';
 
 const NameListScreen = ({ closeCall, onAssignCall }: any) => {
-  const [users, setUsers] = useAtom(allUsersAtom);
+  const [users] = useAtom(allUsersAtom);
   const [searchQuery, setSearchQuery] = useState('');
   const [searchedUsers, setSearchedUsers] = useState(Object.values(users));
   

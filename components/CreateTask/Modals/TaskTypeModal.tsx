@@ -4,7 +4,7 @@ import {
     View,
     Pressable,
   } from 'react-native';
-import { Modal, FormControl } from 'native-base';
+import { Modal } from 'native-base';
 import { styles } from './styles.js';
 import { useAtom } from 'jotai';
 import { atomFilterOptions } from '../../../atoms';

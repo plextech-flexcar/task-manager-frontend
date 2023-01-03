@@ -1,6 +1,11 @@
 import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
+    modalContent: {
+        display: 'flex', 
+        justifyContent: 'space-between', 
+        height: '90%'
+    },
     filterVector: {
         display: "flex", 
         flexDirection: "row",
