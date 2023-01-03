@@ -5,7 +5,7 @@ import {
   StyleSheet,
 } from 'react-native';
 import { styles } from '../../screens/TaskInfoScreen/TaskInfoStyles.js';
-import { filterTasks } from './utilityFilter';
+import { filterTasks } from '../../utils/utilityFilter';
 import { useAtom } from 'jotai';
 import {
   allTasksAtom,
@@ -21,7 +21,7 @@ import {
 } from '../../atoms';
 import { searchFilteredTasks } from '../../utils/searchFilteredTasks';
 import GenericButton from '../GenericButton/GenericButton';
-import { SORT_MAP } from './utilitySort';
+import { SORT_MAP } from '../../utils/utilitySort';
 
 export default function SubmitButton(props: {
   changeFilter: React.Dispatch<React.SetStateAction<any>>;

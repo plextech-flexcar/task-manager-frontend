@@ -1,6 +1,6 @@
-import { Task } from "../../models/Task";
-import { Vehicle } from "../../models/Vehicle";
-import { PRIORITY_MAP } from "../Icon/Priority";
+import { Task } from "../models/Task";
+import { Vehicle } from "../models/Vehicle";
+import { PRIORITY_MAP } from "../components/Icon/Priority";
 
 export function filterTasks(filter : any, allTasks : Task[], allVehicles: Record<number, Vehicle>) {
     

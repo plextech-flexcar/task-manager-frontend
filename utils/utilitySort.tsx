@@ -1,4 +1,4 @@
-import { Task } from "../../models/Task"
+import { Task } from "../models/Task"
 //take in list of task objects and sort them
 
 const sortByPriorityAscending = (tasks: Task[]) => {
